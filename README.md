@@ -22,11 +22,10 @@ npm run build
 ## Project structure
 
 - `app/`: routes, layouts and global styles
+- `components/header/`: shared header and interactive navigation controls
 - `content/`: typed editable content
+- `messages/`: English, French, German and Arabic translations
+- `i18n/` and `proxy.ts`: language routes and automatic language detection
 - `public/brand/`: association brand assets
 - `AGENTS.md`: development guidelines
 - `specifications.md`: website requirements
-
-The starter has been cleaned up. The homepage currently contains only a minimal
-association introduction; navigation, locale routes and the full page content
-will be implemented separately.
