@@ -354,6 +354,7 @@ Prefer small, focused changes over large rewrites.
 Git:
 
 - create a new focused branch whenever it facilitates review
+- ask the user before merging to main; delete the feature branch after merging
 - use small logical commits
 - one logical change per commit
 - do not mix feature work with unrelated formatting/refactors
