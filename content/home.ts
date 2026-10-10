@@ -5,11 +5,14 @@ type HomeImage = {
 };
 
 type HomeContent = {
+  introductionAnimalName: string;
   introductionImage: HomeImage;
   workImage: HomeImage;
 };
 
 export const homeContent: HomeContent = {
+  // TODO: replace the sample name and greeting with the real animal’s details.
+  introductionAnimalName: "Luna",
   introductionImage: {
     // TODO: replace with a real association photo.
     // Photo source: https://images.unsplash.com/photo-1532666731504-52cd5e6b54dd

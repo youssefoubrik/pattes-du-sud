@@ -1,6 +1,7 @@
 import { ArrowRight, House, Soup, Stethoscope, UsersRound } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
+import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
 import { SectionImage } from "@/components/ui/section-image";
 import { homeContent } from "@/content/home";
@@ -30,11 +31,14 @@ export function WhatWeDo({ locale }: { locale: Locale }) {
         <path d="M0 40C240 72 400 8 680 24S1120 72 1440 24V64H0Z" />
       </svg>
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <SectionImage
-          src={image.src}
-          alt={text.imageAlt}
-          objectPosition="center 65%"
-        />
+        <figure>
+          <SectionImage
+            src={image.src}
+            alt={text.imageAlt}
+            objectPosition="center 65%"
+          />
+          <PhotoCaption>{text.imageCaption}</PhotoCaption>
+        </figure>
         <div>
           <h2 id="what-we-do-title" className="text-3xl font-semibold text-heading sm:text-4xl">
             {text.title}
@@ -53,7 +57,7 @@ export function WhatWeDo({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
-          <ButtonLink href={`/${locale}/about`} variant="secondary" compact className="mt-8 gap-2 bg-background">
+          <ButtonLink href={`/${locale}/about`} variant="secondary" compact className="mt-8 max-w-full gap-2 bg-background py-2 text-center">
             {text.meetTeam}
             <ArrowRight size={18} className="shrink-0 rtl:rotate-180" aria-hidden="true" />
           </ButtonLink>

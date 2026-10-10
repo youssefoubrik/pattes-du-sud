@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { AnimalGreeting } from "@/components/animal-greeting";
 import { LocationLabel } from "@/components/location-label";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -36,7 +37,7 @@ export function Introduction({ locale }: { locale: Locale }) {
             <ButtonLink
               href={`/${locale}/animals`}
               variant="secondary"
-              className="min-h-13 gap-3"
+              className="min-h-13 max-w-full gap-3 py-2 text-center"
             >
               {text.meetAnimals}
               <ArrowRight
@@ -48,12 +49,16 @@ export function Introduction({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <figure>
+        <figure className="relative">
           <SectionImage
             src={image.src}
             alt={text.imageAlt}
             preload
             objectPosition="60% center"
+          />
+          <AnimalGreeting
+            greeting={text.animalGreeting.replace("{name}", homeContent.introductionAnimalName)}
+            message={text.animalWelcome}
           />
         </figure>
       </Container>
