@@ -117,14 +117,15 @@ Expected public structure:
 Public:
 
 - `/` — Home
-- `/our-story` — Story, team, trust
+- `/about` — Association story, team, work, and registration details
 - `/animals` — Animals gallery
 - `/animals/[slug]` — Animal details
+- `/adopt` — Adoption process, requirements, and local/international adoption guidance
 - `/donate` — Donate
 - `/donate/thank-you` — Thank-you page
 - `/mirleft` — QR landing page
 - `/contact` — Contact
-- `/get-involved` — Volunteer opportunities and how to get involved
+- `/volunteer` — Volunteer opportunities and how to arrange a visit
 - `/privacy` — Privacy
 
 Admin:
@@ -136,8 +137,10 @@ Admin:
 Languages use locale prefixes:
 `/en`, `/fr`, `/de`, `/ar`
 
-The public header navigation includes Our story, Adopt, Get involved, and Contact,
+The public header navigation includes About, Animals, Volunteer, and Contact,
 alongside a language selector and a prominent Donate button.
+
+The Animals gallery links to the dedicated Adopt page explaining how adoption works.
 
 The website does not have a news section or news administration routes.
 

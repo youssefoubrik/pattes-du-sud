@@ -39,7 +39,7 @@
 ### Shared header
 
 - Logo linking to the home page
-- Navigation: **Our story**, **Adopt**, **Get involved**, **Contact**
+- Navigation: **About**, **Animals**, **Volunteer**, **Contact**
 - Language selector: **English, Français, Deutsch, العربية**
 - A prominent orange **Donate** button
 - On mobile: logo, Donate button and a menu button; navigation and languages inside the menu
@@ -53,7 +53,7 @@
 - One big real photo of one of your animals, ideally with someone from the team, in Mirleft
 - One clear sentence, for example: _"We feed, treat and sterilize the street dogs and cats of Mirleft."_
 - Your tagline, for example: _"Because every life counts"_
-- A main **Donate** button and a second button **Adopt**
+- A main **Donate** button and a second button **Animals**
 
 **🟢 Why people can trust you**
 
@@ -63,23 +63,36 @@
 
 - A short "your impact" section, for example _"€25 = one vaccination"_
 
-### 💛 Our story
+### 💛 About
 
 **🟢 Proof that the association is real**
 
 - How and why Pattes du Sud started, in a few honest sentences with a photo
 - Your team: photos, first names and roles
+- What the association does to care for animals in Mirleft
 - Official name and registration number of the association
 - Where you work in Mirleft (small map)
 - Links to your Instagram and Facebook
 
-### 🐶 Adopt (animals gallery)
+### 🐶 Animals (gallery and adoption information)
 
 **🟢 Browse the animals**
 
 - All your dogs and cats as cards: big photo, name, age, one short line about their personality
 - Simple filters: **All, Dogs, Cats**, and **Available / Adopted**
 - Adopted animals stay visible as happy endings, which also builds trust
+
+**🟢 How to adopt**
+
+- Link from the Animals gallery to the dedicated **Adopt** page at `/adopt`
+
+### 🐾 Adopt
+
+**🟢 Adoption guidance**
+
+- Explain the adoption process, requirements, and how to contact the team
+- Clarify local and international adoption
+- Accessible from Animals; the main header label remains **Animals**
 
 ### 🐱 Page for each animal
 
@@ -119,11 +132,11 @@
 **🟢 For tourists who meet your animals in town**
 
 - A short mobile page reached by scanning a QR code: _"You've probably met our dogs and cats in Mirleft…"_
-- One photo and 3 buttons: **Donate**, **Adopt**, **Contact us**
+- One photo and 3 buttons: **Donate**, **Animals**, **Contact us**
 - QR codes can go on flyers, in cafés, hotels and surf schools
 - We can see which places bring the most visitors
 
-### 🤝 Get involved
+### 🤝 Volunteer
 
 **🟢 Visit or volunteer**
 
@@ -136,7 +149,8 @@
 **🟢 WhatsApp, one tap away**
 
 - A WhatsApp button on every page
-- Ready-made messages: _"I want to report an animal in need"_, _"I want to help"_
+- Contact remains accessible from both the header and footer
+- Ready-made message: _"I want to help"_
 - A simple contact form for people who prefer email
 
 ### 🔒 Privacy
@@ -181,56 +195,6 @@
 
 ## Later, after launch
 
+- ⚪ **Report an animal in need:** a dedicated reporting option with a prepared WhatsApp message requesting location, a photo, and a description. Confirm who monitors messages, availability, and coverage before presenting an emergency-response service. This is not part of the launch header or mobile menu.
 - ⚪ **Sponsor an animal:** monthly support for one specific animal, with news and photos
 - 🟡 **Monthly donations,** if not possible at launch
-
-## To discuss together
-
-These depend on how you work today, so let's decide together:
-
-- **Get involved:** confirm the practical details for visits and volunteering (walking dogs, bringing supplies…)
-- **International adoption:** explaining if and how people abroad can adopt one of your animals
-
-## What we'll need from you
-
-- [ ] Photos and short stories of your dogs and cats (thank you for the first ones!)
-- [ ] A few photos of you and the team with the animals
-- [ ] The logo in good quality (original file)
-- [ ] Your story: how and why Pattes du Sud started
-- [ ] Official name and registration number of the association
-- [ ] Bank details: RIB, IBAN, SWIFT, account holder name, bank name
-- [ ] PayPal account details
-- [ ] WhatsApp number for visitors
-- [ ] Your real costs: food per month, vaccination, sterilization, emergency care
-- [ ] Any numbers so far: animals fed, sterilized, treated, adopted
-- [ ] Links to your Instagram and Facebook
-
-## Questions for client
-
-**About you**
-
-1. What is the association's official name and registration number?
-2. Is the logo with the heart and the beach the official one? Is _"Parce que chaque vie compte"_ your official tagline?
-3. Which sentence best describes what you do?
-4. Is everyone in the team OK with their photo and first name on the website?
-
-**Languages**
-
-1. Which languages matter most at launch?
-2. Who could check the German and Arabic texts? For Arabic, standard Arabic or Darija?
-
-**Donations**
-
-1. Is there a PayPal account in the association's name? Does it allow monthly donations?
-2. Is the bank account in the association's name, and can it receive transfers from abroad?
-3. What are your real costs (food, vaccination, sterilization, emergencies)?
-
-**Animals and visitors**
-
-1. Do you do adoptions, locally or abroad? How does it work? yes
-2. Would you like visitors or volunteers to come and help? yes
-3. Which WhatsApp number should visitors use, and who answers it? Can you respond to emergencies?
-
-**Day-to-day**
-
-1. Where could QR codes be placed in Mirleft?
