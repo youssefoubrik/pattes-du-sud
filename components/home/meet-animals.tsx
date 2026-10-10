@@ -1,8 +1,8 @@
-import { PawPrint } from "lucide-react";
 import { AnimalPreview } from "@/components/animal-preview";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { getHomepageAnimals } from "@/content/animals";
 import type { Locale } from "@/i18n/routing";
 import { animalMessages } from "@/messages/animals";
@@ -14,18 +14,7 @@ export function MeetAnimals({ locale }: { locale: Locale }) {
 
   return (
     <Section aria-labelledby="meet-animals-title" className="relative">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-8 sm:h-12">
-        <svg
-          focusable="false"
-          viewBox="0 0 1440 48"
-          preserveAspectRatio="none"
-          className="h-full w-full fill-secondary"
-        >
-          <path d="M0 0H1440V14C1180 48 1010 8 740 22S270 48 0 18Z" />
-        </svg>
-        <PawPrint size={26} fill="currentColor" className="absolute end-[12%] top-2 -rotate-12 text-heading/30 rtl:rotate-12" />
-        <PawPrint size={22} fill="currentColor" className="absolute end-[8%] top-4 rotate-12 text-heading/30 rtl:-rotate-12" />
-      </div>
+      <SectionDivider direction="leave" paws />
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2

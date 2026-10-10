@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionImage } from "@/components/ui/section-image";
 import { homeContent } from "@/content/home";
 import type { Locale } from "@/i18n/routing";
@@ -21,15 +22,7 @@ export function WhatWeDo({ locale }: { locale: Locale }) {
 
   return (
     <Section aria-labelledby="what-we-do-title" className="relative bg-secondary">
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        viewBox="0 0 1440 64"
-        preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-x-0 bottom-full -mb-px h-8 w-full fill-secondary sm:h-12 lg:h-16"
-      >
-        <path d="M0 40C240 72 400 8 680 24S1120 72 1440 24V64H0Z" />
-      </svg>
+      <SectionDivider direction="enter" />
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <figure>
           <SectionImage
