@@ -124,19 +124,22 @@ Public:
 - `/donate/thank-you` — Thank-you page
 - `/mirleft` — QR landing page
 - `/contact` — Contact
+- `/get-involved` — Volunteer opportunities and how to get involved
 - `/privacy` — Privacy
-- `/news` — Updates
-- `/news/[slug]` — Update details
 
 Admin:
 
 - `/admin`
 - `/admin/animals`
-- `/admin/news`
 - `/admin/settings`
 
 Languages use locale prefixes:
 `/en`, `/fr`, `/de`, `/ar`
+
+The public header navigation includes Our story, Adopt, Get involved, and Contact,
+alongside a language selector and a prominent Donate button.
+
+The website does not have a news section or news administration routes.
 
 ## Visual Direction
 
