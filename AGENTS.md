@@ -292,6 +292,8 @@ Structure it so the source can later be replaced by a CMS without rewriting UI c
 
 ---
 
+Homepage animal previews use a staggered photo gallery with names and clear statuses. Reuse animal records, including cats, dogs, and adopted animals; optional personality text needs no separate homepage copy.
+
 ## Editable Images
 
 Images representing editable content must also go through the content/data layer.

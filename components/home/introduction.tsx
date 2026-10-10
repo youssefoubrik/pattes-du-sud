@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import { AnimalGreeting } from "@/components/animal-greeting";
 import { LocationLabel } from "@/components/location-label";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -37,14 +36,10 @@ export function Introduction({ locale }: { locale: Locale }) {
             <ButtonLink
               href={`/${locale}/animals`}
               variant="secondary"
+              arrow
               className="min-h-13 max-w-full gap-3 py-2 text-center"
             >
               {text.meetAnimals}
-              <ArrowRight
-                size={20}
-                className="shrink-0 rtl:rotate-180"
-                aria-hidden="true"
-              />
             </ButtonLink>
           </div>
         </div>
