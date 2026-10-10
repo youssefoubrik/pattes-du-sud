@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import { siteContent } from "@/content/site";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/header/header";
+import { Footer } from "@/components/footer/footer";
 import { isLocale, routing } from "@/i18n/routing";
 import { messages } from "@/messages";
 import "../globals.css";
@@ -40,6 +41,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
       <body className="min-h-full flex flex-col">
         <Header locale={locale} />
         {children}
+        <Footer locale={locale} />
       </body>
     </html>
   );
