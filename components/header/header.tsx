@@ -24,7 +24,7 @@ export function Header({ locale }: { locale: Locale }) {
         <div className="hidden lg:block">
           <LanguageSwitcher locale={locale} label={labels.language} />
         </div>
-        <ButtonLink href={`/${locale}/donate`} compact className="ms-auto lg:ms-0">
+        <ButtonLink href={`/${locale}/donate`} variant="donate" compact className="ms-auto text-base! sm:text-[19px]! lg:ms-0">
           {labels.donate}
         </ButtonLink>
         <Disclosure

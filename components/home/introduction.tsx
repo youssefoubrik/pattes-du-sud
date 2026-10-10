@@ -30,7 +30,7 @@ export function Introduction({ locale }: { locale: Locale }) {
             {text.description}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href={`/${locale}/donate`} className="min-h-13">
+            <ButtonLink href={`/${locale}/donate`} variant="donate" className="min-h-13">
               {messages[locale].donate}
             </ButtonLink>
             <ButtonLink

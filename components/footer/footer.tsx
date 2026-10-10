@@ -41,7 +41,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 </li>
               ))}
               <li><Link href={`/${locale}/adopt`} className={linkClass}>{footer.adopt}</Link></li>
-              <li className="my-3"><ButtonLink href={`/${locale}/donate`}>{labels.donate}</ButtonLink></li>
+              <li className="my-3"><ButtonLink href={`/${locale}/donate`} variant="donate">{labels.donate}</ButtonLink></li>
             </ul>
           </nav>
 

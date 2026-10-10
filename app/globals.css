@@ -7,6 +7,7 @@
   --primary: #e75015;
   --primary-foreground: #ffffff;
   --primary-hover: #c9400e;
+  --donate-hover: #ed5b22;
   --secondary: #f6e5d2;
   --secondary-button-hover: #7b4b37;
   --muted-foreground: #76645b;
@@ -30,6 +31,7 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
+  --color-donate-hover: var(--donate-hover);
   --color-secondary: var(--secondary);
   --color-secondary-button-hover: var(--secondary-button-hover);
   --color-muted-foreground: var(--muted-foreground);

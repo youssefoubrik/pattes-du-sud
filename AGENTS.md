@@ -65,7 +65,8 @@ Use the website color palette consistently. Do not introduce new colors unless t
 - Use `#5A1F08` for headings, strong labels, and important dark UI elements.
 - Use `#E75015` for the main CTA, especially **Donate**.
 - Main CTA text should normally be white.
-- Use a darker orange such as `#C9400E` for primary-button hover states.
+- Donate buttons include a heart and use `--donate-hover` (`#ED5B22`) with a subtle lift; respect reduced motion.
+- Use a darker orange such as `#C9400E` for other primary-button hover states.
 - Secondary buttons use `--secondary-button-hover` (`#7B4B37`) with white text on hover.
 - Use `#168EB5` sparingly for links, small highlights, informational elements, or secondary accents.
 - Use `#F5A25D` only as a subtle decorative accent.
