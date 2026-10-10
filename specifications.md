@@ -55,7 +55,8 @@ Suggested layout, with room to adapt:
 3. **Meet our furry friends:** up to six recent animals, including cats, dogs, and adopted animals. A staggered photo gallery shows names, statuses, age if known, and optional personality on the photos; each photo opens the animal’s profile. Editors can feature animals; **Meet all our friends** opens the gallery.
 4. **Our team:** real team photo, short introduction, and link to **About**. Include impact numbers when available.
 5. **How to help:** what donations support and an invitation to volunteer. Use donation amounts only with confirmed costs.
-6. **Footer:** contact details, WhatsApp, social links, and association information.
+6. **The organisations that support us:** confirmed organisation names and logos, with links to their websites, to build trust.
+7. **Footer:** contact details, WhatsApp, social links, and association information.
 
 Warm, photo-led design: mostly ivory, occasional sand sections, brown headings, orange donation buttons, and small blue accents. Show real animals and the people caring for them early. Short captions on real photos help build trust.
 
