@@ -373,3 +373,4 @@ When implementing a task:
 . Mention genuine remaining limitations.
 . If several implementation approaches are reasonable, choose the simplest production-quality solution.
 . Do not overengineer.
+. Keep Markdown updates brief and necessary. Do not add progress notes, implementation summaries, or routine UI details unless requested. Keep the README focused on setup and reference information.
