@@ -18,7 +18,7 @@ export const animals: Animal[] = [
   { slug: "milo", name: "Milo", species: "cat", status: "available", ageYears: 2, personality: "curious", image: { src: "/images/animals/milo.jpg" }, addedAt: "2026-10-05" },
   { slug: "nala", name: "Nala", species: "dog", status: "inCare", personality: "shy", image: { src: "/images/animals/nala.jpg" }, addedAt: "2026-10-04" },
   { slug: "sami", name: "Sami", species: "cat", status: "adopted", ageYears: 4, personality: "gentle", image: { src: "/images/animals/sami.jpg" }, addedAt: "2026-10-03" },
-  { slug: "jack", name: "Jack", species: "dog", status: "adopted", ageYears: 3, personality: "playful", image: { src: "/images/animals/toby.jpg" }, addedAt: "2026-10-02" },
+  { slug: "jack", name: "Jack", species: "dog", status: "adopted", ageYears: 3, personality: "playful", image: { src: "/images/animals/jack.jpg" }, addedAt: "2026-10-02" },
   { slug: "mimi", name: "Mimi", species: "cat", status: "available", personality: "playful", image: { src: "/images/animals/mimi.jpg" }, addedAt: "2026-10-01" },
 ];
 

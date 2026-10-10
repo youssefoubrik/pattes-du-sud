@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Heart } from "lucide-react";
 import type { Animal } from "@/content/animals";
 import type { Locale } from "@/i18n/routing";
 import { animalMessages } from "@/messages/animals";
@@ -27,7 +28,12 @@ export function AnimalPreview({ animal, locale, portrait = true }: Props) {
           />
           <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-foreground via-foreground/35 via-35% to-transparent to-70%" />
           <figcaption className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground sm:p-6">
-            <p className="mb-2 text-sm font-semibold">{text.status[animal.status]}</p>
+            <p className="mb-2 flex items-center gap-2 text-sm font-semibold">
+              {animal.status === "adopted" && (
+                <Heart size={14} fill="currentColor" className="shrink-0" aria-hidden="true" />
+              )}
+              {text.status[animal.status]}
+            </p>
             <h3 className="text-3xl font-semibold">{animal.name}</h3>
             <p className="mt-2 text-sm">
               {text.species[animal.species]}
