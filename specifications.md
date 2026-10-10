@@ -48,20 +48,16 @@
 
 ### 🏠 Home page
 
-**🟢 Who you are, in a few seconds**
+Suggested layout, with room to adapt:
 
-- One big real photo of one of your animals, ideally with someone from the team, in Mirleft
-- One clear sentence, for example: _"We feed, treat and sterilize the street dogs and cats of Mirleft."_
-- Your tagline, for example: _"Because every life counts"_
-- A main **Donate** button and a second button **Animals**
+1. **Introduction:** clear heading, short explanation, **Donate** and **Meet the animals** buttons. Text beside a real photo of the animals and team; text first on mobile.
+2. **What we do:** **Feed · Treat · Sterilize**, each with a short explanation.
+3. **Meet the animals:** three animal cards with photos, names, and personality; link to the full gallery.
+4. **Our team:** real team photo, short introduction, and link to **About**. Include impact numbers when available.
+5. **How to help:** what donations support and an invitation to volunteer. Use donation amounts only with confirmed costs.
+6. **Footer:** contact details, WhatsApp, social links, and association information.
 
-**🟢 Why people can trust you**
-
-- A short section with your team, a few key numbers (animals fed, sterilized, treated) and your location in Mirleft
-
-**🟢 What donations do**
-
-- A short "your impact" section, for example _"€25 = one vaccination"_
+Warm, photo-led design: mostly ivory, occasional sand sections, brown headings, orange donation buttons, and small blue accents. Show real animals and the people caring for them early.
 
 ### 💛 About
 
