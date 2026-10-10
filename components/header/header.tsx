@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { siteContent } from "@/content/site";
+import { LogoLink } from "@/components/logo-link";
+import { ButtonLink } from "@/components/ui/button-link";
+import { Container } from "@/components/ui/container";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { Disclosure } from "./disclosure";
@@ -16,27 +16,17 @@ export function Header({ locale }: { locale: Locale }) {
       <a href="#main-content" className="absolute start-4 top-2 z-50 -translate-y-24 rounded-lg bg-heading px-4 py-3 text-primary-foreground focus:translate-y-0">
         {labels.skip}
       </a>
-      <div className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6 lg:min-h-24 lg:px-8">
-        <Link href={`/${locale}`} aria-label={labels.home} className="shrink-0 rounded-sm">
-          <Image
-            src={siteContent.logo.src}
-            width={siteContent.logo.width}
-            height={siteContent.logo.height}
-            alt={siteContent.name}
-            sizes="(min-width: 640px) 204px, (min-width: 375px) 128px, 88px"
-            loading="eager"
-            className="h-auto w-[88px] min-[375px]:w-[128px] sm:w-[204px]"
-          />
-        </Link>
+      <Container padding="compact" className="relative flex min-h-20 items-center justify-between gap-2 sm:gap-4 lg:min-h-24">
+        <LogoLink locale={locale} responsive />
         <div className="ms-auto hidden lg:block">
           <Navigation locale={locale} labels={labels} />
         </div>
         <div className="hidden lg:block">
           <LanguageSwitcher locale={locale} label={labels.language} />
         </div>
-        <Link href={`/${locale}/donate`} className="ms-auto inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-primary px-3 text-[19px] font-bold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-6 lg:ms-0">
+        <ButtonLink href={`/${locale}/donate`} compact className="ms-auto lg:ms-0">
           {labels.donate}
-        </Link>
+        </ButtonLink>
         <Disclosure
           label={labels.menu}
           closeLabel={labels.closeMenu}
@@ -50,7 +40,7 @@ export function Header({ locale }: { locale: Locale }) {
           <Navigation locale={locale} labels={labels} mobile />
           <LanguageSwitcher locale={locale} label={labels.language} mobile />
         </Disclosure>
-      </div>
+      </Container>
     </header>
   );
 }

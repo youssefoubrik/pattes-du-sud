@@ -1,9 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { footerContent } from "@/content/footer";
 import { navigation } from "@/content/navigation";
-import { siteContent } from "@/content/site";
+import { LogoLink } from "@/components/logo-link";
+import { SocialLinks } from "@/components/social-links";
+import { ButtonLink } from "@/components/ui/button-link";
+import { Container } from "@/components/ui/container";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { footerMessages } from "@/messages/footer";
@@ -17,19 +19,10 @@ export function Footer({ locale }: { locale: Locale }) {
 
   return (
     <footer className="mt-auto border-t-2 border-primary bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 pt-12 sm:px-8 lg:px-8">
+      <Container className="pt-12">
         <div className="grid gap-10 pb-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-16">
           <div className="md:col-span-2 lg:col-span-1">
-            <Link href={`/${locale}`} aria-label={labels.home} className="inline-block rounded-sm">
-              <Image
-                src={siteContent.logo.src}
-                width={siteContent.logo.width}
-                height={siteContent.logo.height}
-                alt={officialName}
-                sizes="224px"
-                className="h-auto w-56 max-w-full"
-              />
-            </Link>
+            <LogoLink locale={locale} />
             <p className="mt-4 max-w-sm text-lg leading-relaxed text-foreground">{footer.mission}</p>
             <p className="mt-4 flex items-center gap-2 text-base text-heading">
               <MapPin size={18} className="text-accent" aria-hidden="true" />
@@ -50,7 +43,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 </li>
               ))}
               <li><Link href={`/${locale}/adopt`} className={linkClass}>{footer.adopt}</Link></li>
-              <li className="my-3"><Link href={`/${locale}/donate`} className="inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-[19px] font-bold text-primary-foreground transition-colors hover:bg-primary-hover">{labels.donate}</Link></li>
+              <li className="my-3"><ButtonLink href={`/${locale}/donate`}>{labels.donate}</ButtonLink></li>
             </ul>
           </nav>
 
@@ -71,25 +64,9 @@ export function Footer({ locale }: { locale: Locale }) {
               </a>
             </address>
             <Link href={`/${locale}/contact`} className={`${linkClass} mt-2`}>{labels.contact}</Link>
-            <p id="footer-social" className="mt-5 text-sm font-semibold text-heading">{footer.findUs}</p>
-            <ul className="mt-2 flex flex-wrap gap-3" aria-labelledby="footer-social">
-              <li>
-                <a href={contact.instagram} aria-label="Instagram" className="flex size-11 items-center justify-center rounded-full border border-border text-heading transition-colors hover:border-primary-hover hover:text-primary-hover">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                    <rect x="3" y="3" width="18" height="18" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href={contact.facebook} aria-label="Facebook" className="flex size-11 items-center justify-center rounded-full border border-border text-heading transition-colors hover:border-primary-hover hover:text-primary-hover">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M14 22v-9h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.4A25 25 0 0 0 15 1c-3 0-5 1.8-5 5v3H7v4h3v9z" />
-                  </svg>
-                </a>
-              </li>
-            </ul>
+            <div className="mt-5">
+              <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footer.findUs} />
+            </div>
           </div>
         </div>
 
@@ -102,7 +79,7 @@ export function Footer({ locale }: { locale: Locale }) {
             </ul>
           </nav>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }
