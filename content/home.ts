@@ -1,9 +1,12 @@
+type HomeImage = {
+  src: string;
+  width: number;
+  height: number;
+};
+
 type HomeContent = {
-  introductionImage: {
-    src: string;
-    width: number;
-    height: number;
-  };
+  introductionImage: HomeImage;
+  workImage: HomeImage;
 };
 
 export const homeContent: HomeContent = {
@@ -13,5 +16,12 @@ export const homeContent: HomeContent = {
     src: "/images/home-introduction.jpg",
     width: 1200,
     height: 800,
+  },
+  workImage: {
+    // TODO: replace with a real photo of the association’s work.
+    // Photo source: https://www.pexels.com/photo/photo-of-person-feeding-dog-outside-1868860/
+    src: "/images/home-work.jpg",
+    width: 1200,
+    height: 1800,
   },
 };

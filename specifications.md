@@ -51,7 +51,7 @@
 Suggested layout, with room to adapt:
 
 1. **Introduction:** clear heading, short explanation, **Donate** and **Meet the animals** buttons. Text beside a real photo of the animals and team; text first on mobile.
-2. **What we do:** **Feed · Treat · Sterilize**, each with a short explanation.
+2. **What we do:** **Health & care · Food & shelter · Adoption · Awareness**, each with one short line. Explain monitoring and documentation on About.
 3. **Meet the animals:** three animal cards with photos, names, and personality; link to the full gallery.
 4. **Our team:** real team photo, short introduction, and link to **About**. Include impact numbers when available.
 5. **How to help:** what donations support and an invitation to volunteer. Use donation amounts only with confirmed costs.

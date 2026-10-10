@@ -1,8 +1,9 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { LocationLabel } from "@/components/location-label";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
+import { Section } from "@/components/ui/section";
+import { SectionImage } from "@/components/ui/section-image";
 import { homeContent } from "@/content/home";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
@@ -13,9 +14,8 @@ export function Introduction({ locale }: { locale: Locale }) {
   const image = homeContent.introductionImage;
 
   return (
-    <section
+    <Section
       aria-labelledby="introduction-title"
-      className="py-12 sm:py-16 lg:py-20"
     >
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
@@ -49,18 +49,14 @@ export function Introduction({ locale }: { locale: Locale }) {
         </div>
 
         <figure>
-          <div className="relative aspect-4/3 overflow-hidden rounded-3xl bg-secondary lg:aspect-5/4">
-            <Image
-              src={image.src}
-              alt={text.imageAlt}
-              fill
-              sizes="(min-width: 1280px) 576px, (min-width: 1024px) calc((100vw - 128px) / 2), calc(100vw - 48px)"
-              preload
-              className="object-cover object-[60%_center]"
-            />
-          </div>
+          <SectionImage
+            src={image.src}
+            alt={text.imageAlt}
+            preload
+            objectPosition="60% center"
+          />
         </figure>
       </Container>
-    </section>
+    </Section>
   );
 }
