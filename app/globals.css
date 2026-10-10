@@ -66,6 +66,21 @@ h1, h2, h3, h4, h5, h6 {
   scroll-margin-top: 7rem;
 }
 
+@keyframes donate-heartbeat {
+  50% { transform: scale(1.18); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .donate-link {
+    --donate-motion-duration: 360ms;
+    transition-duration: var(--donate-motion-duration);
+  }
+
+  .donate-link:is(:hover, :focus-visible) .donate-heart {
+    animation: donate-heartbeat var(--donate-motion-duration) ease-in-out;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition: none !important;
