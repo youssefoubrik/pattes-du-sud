@@ -13,6 +13,13 @@
   --decoration: #f5a25d;
   --border: #e9d7c7;
   --surface: #ffffff;
+  --font-body: var(--font-nunito-sans);
+  --font-heading: var(--font-lora);
+}
+
+:root[lang="ar"] {
+  --font-body: var(--font-noto-sans-arabic);
+  --font-heading: var(--font-noto-sans-arabic);
 }
 
 @theme inline {
@@ -28,13 +35,22 @@
   --color-decoration: var(--decoration);
   --color-border: var(--border);
   --color-surface: var(--surface);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), Georgia, serif;
+}
+
+:root[lang="ar"] :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.4;
 }
 
 :focus-visible {

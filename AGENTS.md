@@ -158,6 +158,12 @@ The website should feel:
 
 ---
 
+## Typography
+
+- Lora for headings; Nunito Sans for body text and navigation.
+- Noto Sans Arabic for Arabic text and headings.
+- Load fonts through `next/font` and use shared font tokens.
+
 ## Responsive Design
 
 Mobile-first.
@@ -374,3 +380,4 @@ When implementing a task:
 . If several implementation approaches are reasonable, choose the simplest production-quality solution.
 . Do not overengineer.
 . Keep Markdown updates brief and necessary. Do not add progress notes, implementation summaries, or routine UI details unless requested. Keep the README focused on setup and reference information.
+. Record agreed changes to shared design choices in AGENTS.md, briefly.

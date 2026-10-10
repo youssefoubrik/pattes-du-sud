@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Lora, Noto_Sans_Arabic, Nunito_Sans } from "next/font/google";
 import { siteContent } from "@/content/site";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/header/header";
@@ -8,9 +8,22 @@ import { isLocale, routing } from "@/i18n/routing";
 import { messages } from "@/messages";
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const nunitoSans = Nunito_Sans({
+  variable: "--font-nunito-sans",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+  variable: "--font-noto-sans-arabic",
+  subsets: ["arabic", "latin"],
+  display: "swap",
 });
 
 export function generateStaticParams() {
@@ -36,7 +49,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${geistSans.variable} h-full antialiased`}
+      className={`${nunitoSans.variable} ${locale === "ar" ? notoSansArabic.variable : lora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Header locale={locale} />
