@@ -1,6 +1,7 @@
 import type { Messages } from "./en";
 
 export const ar: Messages = {
+  location: "ميرلفت، المغرب",
   about: "من نحن",
   animals: "حيواناتنا",
   volunteer: "تطوّع معنا",

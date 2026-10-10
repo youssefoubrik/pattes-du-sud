@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
+import { LocationLabel } from "@/components/location-label";
 import { footerContent } from "@/content/footer";
 import { navigation } from "@/content/navigation";
 import { LogoLink } from "@/components/logo-link";
@@ -24,10 +25,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="md:col-span-2 lg:col-span-1">
             <LogoLink locale={locale} />
             <p className="mt-4 max-w-sm text-lg leading-relaxed text-foreground">{footer.mission}</p>
-            <p className="mt-4 flex items-center gap-2 text-base text-heading">
-              <MapPin size={18} className="text-accent" aria-hidden="true" />
-              {footer.location}
-            </p>
+            <LocationLabel locale={locale} className="mt-4 text-base" />
             <p className="mt-5 text-base font-semibold text-heading">{officialName}</p>
             <p className="mt-1 text-sm leading-relaxed text-foreground">
               {footer.registration}: {registrationReference ?? footer.toConfirm}
@@ -49,7 +47,6 @@ export function Footer({ locale }: { locale: Locale }) {
 
           <div>
             <h2 className="mb-3 text-xl font-semibold text-primary-hover">{footer.contact}</h2>
-            {contact.isPlaceholder && <p className="mb-2 text-sm">{footer.sampleDetails}</p>}
             <address className="flex flex-col items-start not-italic">
               <a href={`https://wa.me/${contact.whatsappNumber}`} aria-label={`${footer.whatsapp}: ${contact.whatsappDisplay}`} className={linkClass}>
                 <MessageCircle size={20} className="text-accent" aria-hidden="true" />

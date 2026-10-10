@@ -1,4 +1,5 @@
 export const en = {
+  location: "Mirleft, Morocco",
   about: "About",
   animals: "Animals",
   volunteer: "Volunteer",

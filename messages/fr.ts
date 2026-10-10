@@ -1,6 +1,7 @@
 import type { Messages } from "./en";
 
 export const fr: Messages = {
+  location: "Mirleft, Maroc",
   about: "À propos",
   animals: "Animaux",
   volunteer: "Bénévolat",
