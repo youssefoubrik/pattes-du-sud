@@ -340,7 +340,7 @@ Prefer small, focused changes over large rewrites.
 
 Git:
 
-- use focused branches when practical
+- create a new focused branch whenever it facilitates review
 - use small logical commits
 - one logical change per commit
 - do not mix feature work with unrelated formatting/refactors
