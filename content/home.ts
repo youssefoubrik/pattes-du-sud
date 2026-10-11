@@ -13,6 +13,9 @@ type HomeContent = {
     companionship: HomeImage;
   };
   teamImage: HomeImage;
+  location: {
+    mapEmbedUrl: string;
+  };
 };
 
 export const homeContent: HomeContent = {
@@ -52,5 +55,10 @@ export const homeContent: HomeContent = {
     src: "/images/home-team-stock.jpg",
     width: 1200,
     height: 800,
+  },
+  location: {
+    // Replace this town map URL with the association's location from the CMS.
+    mapEmbedUrl:
+      "https://maps.google.com/maps?q=Mirleft%2C%20Morocco&z=15&output=embed",
   },
 };

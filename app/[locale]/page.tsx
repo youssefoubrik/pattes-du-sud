@@ -1,5 +1,6 @@
-import { Introduction } from "@/components/home/introduction";
 import { HowToHelp } from "@/components/home/how-to-help";
+import { Introduction } from "@/components/home/introduction";
+import { Location } from "@/components/home/location";
 import { MeetAnimals } from "@/components/home/meet-animals";
 import { OurTeam } from "@/components/home/our-team";
 import { Supporters } from "@/components/home/supporters";
@@ -18,6 +19,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <OurTeam locale={locale} />
       <HowToHelp locale={locale} />
       <Supporters locale={locale} />
+      <Location locale={locale} />
     </main>
   );
 }

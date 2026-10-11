@@ -37,6 +37,13 @@ type HomeMessages = {
     otherHelp: string;
     contactCta: string;
   };
+  location: {
+    place: string;
+    title: string;
+    description: string;
+    visitNote: string;
+    mapTitle: string;
+  };
   supporters: { title: string; description: string };
 };
 
@@ -86,6 +93,13 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       },
       otherHelp: "Want to bring supplies or help in another way?",
       contactCta: "Contact our team",
+    },
+    location: {
+      place: "Mirleft, Morocco",
+      title: "Find us in Mirleft",
+      description: "We care for street animals in and around Mirleft. Explore the town where our work happens.",
+      visitNote: "Please arrange a visit with our team before coming by.",
+      mapTitle: "Map of Mirleft, Morocco",
     },
     supporters: {
       title: "The organisations that support us",
@@ -137,6 +151,13 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       otherHelp: "Vous souhaitez apporter du matériel ou aider autrement ?",
       contactCta: "Contactez notre équipe",
     },
+    location: {
+      place: "Mirleft, Maroc",
+      title: "Retrouvez-nous à Mirleft",
+      description: "Nous prenons soin des animaux des rues de Mirleft et de ses environs. Découvrez la ville où nous agissons.",
+      visitNote: "Merci de convenir d’une visite avec notre équipe avant de venir.",
+      mapTitle: "Carte de Mirleft, Maroc",
+    },
     supporters: {
       title: "Les organisations qui nous soutiennent",
       description: "Chaque partenariat aide à offrir nourriture, soins et protection aux animaux des rues de Mirleft.",
@@ -187,6 +208,13 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       otherHelp: "Du möchtest Sachspenden mitbringen oder anders helfen?",
       contactCta: "Kontaktiere unser Team",
     },
+    location: {
+      place: "Mirleft, Marokko",
+      title: "Finde uns in Mirleft",
+      description: "Wir kümmern uns um Straßentiere in Mirleft und Umgebung. Entdecke den Ort, an dem wir arbeiten.",
+      visitNote: "Bitte vereinbare einen Besuch mit unserem Team, bevor du vorbeikommst.",
+      mapTitle: "Karte von Mirleft, Marokko",
+    },
     supporters: {
       title: "Organisationen, die uns unterstützen",
       description: "Jede Partnerschaft hilft, Mirlefts Straßentieren Futter, Behandlung und Schutz zu bieten.",
@@ -236,6 +264,13 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       },
       otherHelp: "هل ترغب في إحضار مستلزمات أو المساعدة بطريقة أخرى؟",
       contactCta: "تواصل مع فريقنا",
+    },
+    location: {
+      place: "ميرلفت، المغرب",
+      title: "تجدنا في ميرلفت",
+      description: "نعتني بحيوانات الشوارع في ميرلفت والمناطق المحيطة بها. تعرّف على البلدة التي نعمل فيها.",
+      visitNote: "يُرجى ترتيب الزيارة مع فريقنا قبل المجيء.",
+      mapTitle: "خريطة ميرلفت، المغرب",
     },
     supporters: {
       title: "المنظمات التي تدعمنا",
