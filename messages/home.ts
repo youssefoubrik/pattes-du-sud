@@ -29,6 +29,7 @@ type HomeMessages = {
     volunteerCta: string;
     meetTeam: string;
   };
+  supporters: { title: string; description: string };
 };
 
 export const homeMessages: Record<Locale, HomeMessages> = {
@@ -62,6 +63,10 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       volunteerCta: "Volunteer with us",
       meetTeam: "Get to know our team",
     },
+    supporters: {
+      title: "The organisations that support us",
+      description: "Every partnership helps bring food, treatment and safety to Mirleft’s street animals.",
+    },
   },
   fr: {
     title: "Des soins et de l’espoir pour les animaux de Mirleft.",
@@ -91,6 +96,10 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       quoteAttribution: "Ali · Membre de l’équipe",
       volunteerCta: "Devenir bénévole",
       meetTeam: "Découvrir notre équipe",
+    },
+    supporters: {
+      title: "Les organisations qui nous soutiennent",
+      description: "Chaque partenariat aide à offrir nourriture, soins et protection aux animaux des rues de Mirleft.",
     },
   },
   de: {
@@ -122,6 +131,10 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       volunteerCta: "Hilf ehrenamtlich mit",
       meetTeam: "Lerne unser Team kennen",
     },
+    supporters: {
+      title: "Organisationen, die uns unterstützen",
+      description: "Jede Partnerschaft hilft, Mirlefts Straßentieren Futter, Behandlung und Schutz zu bieten.",
+    },
   },
   ar: {
     title: "رعاية وأمل لحيوانات الشوارع في ميرلفت.",
@@ -151,6 +164,10 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       quoteAttribution: "علي · عضو في الفريق",
       volunteerCta: "تطوّع معنا",
       meetTeam: "تعرّف على فريقنا",
+    },
+    supporters: {
+      title: "المنظمات التي تدعمنا",
+      description: "تساعد كل شراكة على توفير الغذاء والعلاج والحماية لحيوانات الشوارع في ميرلفت.",
     },
   },
 };
