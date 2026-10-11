@@ -1,4 +1,5 @@
 import { Introduction } from "@/components/home/introduction";
+import { HowToHelp } from "@/components/home/how-to-help";
 import { MeetAnimals } from "@/components/home/meet-animals";
 import { OurTeam } from "@/components/home/our-team";
 import { Supporters } from "@/components/home/supporters";
@@ -15,6 +16,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <WhatWeDo locale={locale} />
       <MeetAnimals locale={locale} />
       <OurTeam locale={locale} />
+      <HowToHelp locale={locale} />
       <Supporters locale={locale} />
     </main>
   );

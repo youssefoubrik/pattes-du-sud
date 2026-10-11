@@ -30,8 +30,8 @@ export function Supporters({ locale }: { locale: Locale }) {
   const text = homeMessages[locale].supporters;
 
   return (
-    <Section aria-labelledby="supporters-title" className="relative">
-      <SectionDivider direction="leave" />
+    <Section aria-labelledby="supporters-title" className="relative bg-secondary">
+      <SectionDivider direction="enter" />
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2 id="supporters-title" className="text-3xl font-semibold text-heading sm:text-4xl">

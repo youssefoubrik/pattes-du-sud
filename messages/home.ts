@@ -29,6 +29,14 @@ type HomeMessages = {
     volunteerCta: string;
     meetTeam: string;
   };
+  howToHelp: {
+    title: string;
+    description: string;
+    donate: { title: string; description: string; cta: string };
+    volunteer: { title: string; description: string; cta: string };
+    otherHelp: string;
+    contactCta: string;
+  };
   supporters: { title: string; description: string };
 };
 
@@ -62,6 +70,22 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       quoteAttribution: "Ali · Team member",
       volunteerCta: "Volunteer with us",
       meetTeam: "Get to know our team",
+    },
+    howToHelp: {
+      title: "How you can help",
+      description: "A little help can mean a meal, medical care, or a safer day for an animal in Mirleft.",
+      donate: {
+        title: "Give care from anywhere",
+        description: "Your gift helps provide food, veterinary treatment, and everyday care for Mirleft’s street dogs and cats.",
+        cta: "Donate to their care",
+      },
+      volunteer: {
+        title: "Give your time in Mirleft",
+        description: "Visiting Mirleft? Arrange a visit with our team and find out how you can help in person.",
+        cta: "Explore volunteering",
+      },
+      otherHelp: "Want to bring supplies or help in another way?",
+      contactCta: "Contact our team",
     },
     supporters: {
       title: "The organisations that support us",
@@ -97,6 +121,22 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       volunteerCta: "Devenir bénévole",
       meetTeam: "Découvrir notre équipe",
     },
+    howToHelp: {
+      title: "Comment nous aider",
+      description: "Un petit geste peut offrir un repas, des soins ou une journée plus sûre à un animal de Mirleft.",
+      donate: {
+        title: "Aider, où que vous soyez",
+        description: "Votre don aide à fournir nourriture, soins vétérinaires et suivi quotidien aux chiens et chats des rues de Mirleft.",
+        cta: "Faire un don pour leurs soins",
+      },
+      volunteer: {
+        title: "Donner de son temps à Mirleft",
+        description: "De passage à Mirleft ? Organisez une visite avec notre équipe pour découvrir comment aider sur place.",
+        cta: "Découvrir le bénévolat",
+      },
+      otherHelp: "Vous souhaitez apporter du matériel ou aider autrement ?",
+      contactCta: "Contactez notre équipe",
+    },
     supporters: {
       title: "Les organisations qui nous soutiennent",
       description: "Chaque partenariat aide à offrir nourriture, soins et protection aux animaux des rues de Mirleft.",
@@ -131,6 +171,22 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       volunteerCta: "Hilf ehrenamtlich mit",
       meetTeam: "Lerne unser Team kennen",
     },
+    howToHelp: {
+      title: "So kannst du helfen",
+      description: "Schon ein kleiner Beitrag kann einem Tier in Mirleft Futter, medizinische Versorgung oder einen sichereren Tag ermöglichen.",
+      donate: {
+        title: "Von überall aus helfen",
+        description: "Deine Spende hilft, Mirlefts Straßenhunde und Straßenkatzen mit Futter, tierärztlicher Behandlung und täglicher Betreuung zu versorgen.",
+        cta: "Für ihre Versorgung spenden",
+      },
+      volunteer: {
+        title: "Zeit in Mirleft schenken",
+        description: "Du bist in Mirleft? Vereinbare einen Besuch mit unserem Team und erfahre, wie du vor Ort helfen kannst.",
+        cta: "Ehrenamt entdecken",
+      },
+      otherHelp: "Du möchtest Sachspenden mitbringen oder anders helfen?",
+      contactCta: "Kontaktiere unser Team",
+    },
     supporters: {
       title: "Organisationen, die uns unterstützen",
       description: "Jede Partnerschaft hilft, Mirlefts Straßentieren Futter, Behandlung und Schutz zu bieten.",
@@ -164,6 +220,22 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       quoteAttribution: "علي · عضو في الفريق",
       volunteerCta: "تطوّع معنا",
       meetTeam: "تعرّف على فريقنا",
+    },
+    howToHelp: {
+      title: "كيف يمكنك المساعدة؟",
+      description: "قد تساهم مساعدة بسيطة في توفير وجبة أو علاج أو يوم أكثر أمانًا لحيوان في ميرلفت.",
+      donate: {
+        title: "ساعد من أي مكان",
+        description: "يساعد تبرعك في توفير الغذاء والعلاج البيطري والرعاية اليومية لكلاب وقطط الشوارع في ميرلفت.",
+        cta: "تبرّع لرعايتها",
+      },
+      volunteer: {
+        title: "تطوّع بوقتك في ميرلفت",
+        description: "هل تزور ميرلفت؟ رتّب زيارة مع فريقنا لتعرف كيف يمكنك المساعدة على أرض الواقع.",
+        cta: "اكتشف فرص التطوّع",
+      },
+      otherHelp: "هل ترغب في إحضار مستلزمات أو المساعدة بطريقة أخرى؟",
+      contactCta: "تواصل مع فريقنا",
     },
     supporters: {
       title: "المنظمات التي تدعمنا",
