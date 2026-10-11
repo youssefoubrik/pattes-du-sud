@@ -19,7 +19,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
       <SectionDivider direction="enter" />
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <figure className="relative">
+          <figure className="relative lg:order-2">
             <span aria-hidden="true" className="pointer-events-none absolute -top-12 start-2 flex items-start gap-1 text-heading/30">
               <PawPrint size={24} fill="currentColor" className="-rotate-12 rtl:rotate-12" />
               <PawPrint size={19} fill="currentColor" className="mt-2 rotate-12 rtl:-rotate-12" />
@@ -27,7 +27,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
             <SectionImage src={image.src} alt={text.imageAlt} objectPosition="center 45%" />
             <PhotoCaption>{text.imageCaption}</PhotoCaption>
           </figure>
-          <div>
+          <div className="lg:order-1">
             <h2 id="our-team-title" className="text-3xl font-semibold text-heading sm:text-4xl">
               {text.title}
             </h2>

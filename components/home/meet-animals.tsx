@@ -31,7 +31,7 @@ export function MeetAnimals({ locale }: { locale: Locale }) {
           {animals.map((animal, index) => (
             <li
               key={animal.slug}
-              className="mb-6 break-inside-avoid lg:[&:nth-child(1)]:pt-10 lg:[&:nth-child(5)]:pt-10"
+              className={`mb-6 break-inside-avoid lg:[&:nth-child(1)]:pt-10 lg:[&:nth-child(5)]:pt-10 ${index < 3 ? "" : "hidden sm:block"}`}
             >
               <AnimalPreview
                 animal={animal}
