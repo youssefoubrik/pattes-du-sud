@@ -1,9 +1,9 @@
 import { House, Soup, Stethoscope, UsersRound } from "lucide-react";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
-import { SectionImage } from "@/components/ui/section-image";
 import { homeContent } from "@/content/home";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
@@ -17,18 +17,43 @@ const services = [
 
 export function WhatWeDo({ locale }: { locale: Locale }) {
   const text = homeMessages[locale].whatWeDo;
-  const image = homeContent.workImage;
+  const images = homeContent.workImages;
 
   return (
     <Section aria-labelledby="what-we-do-title" className="relative bg-secondary">
       <SectionDivider direction="enter" />
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <figure>
-          <SectionImage
-            src={image.src}
-            alt={text.imageAlt}
-            objectPosition="center 65%"
-          />
+          <div className="grid aspect-6/5 grid-cols-[1.1fr_1fr] grid-rows-2 gap-2 sm:gap-3">
+            <div className="relative row-span-2 overflow-hidden rounded-3xl bg-background">
+              <Image
+                src={images.feeding.src}
+                alt={text.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 300px, 55vw"
+                className="object-cover"
+                style={{ objectPosition: "center 60%" }}
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-2xl bg-background">
+              <Image
+                src={images.veterinary.src}
+                alt={text.veterinaryImageAlt}
+                fill
+                sizes="(min-width: 1024px) 260px, 45vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-2xl bg-background">
+              <Image
+                src={images.companionship.src}
+                alt={text.companionshipImageAlt}
+                fill
+                sizes="(min-width: 1024px) 260px, 45vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
           <PhotoCaption>{text.imageCaption}</PhotoCaption>
         </figure>
         <div>

@@ -11,6 +11,8 @@ type HomeMessages = {
     title: string;
     description: string;
     imageAlt: string;
+    veterinaryImageAlt: string;
+    companionshipImageAlt: string;
     imageCaption: string;
     medical: { title: string; description: string };
     foodShelter: { title: string; description: string };
@@ -40,7 +42,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "What we do",
       imageAlt: "A person feeding a dog by hand outdoors.",
-      imageCaption: "A little food. A little care. A better day.",
+      veterinaryImageAlt: "A veterinarian checking a white kitten with a stethoscope.",
+      companionshipImageAlt: "A person gently petting a tabby cat outdoors.",
+      imageCaption: "A meal. A check-up. A moment of comfort.",
       description: "From a meal to medical care, we help street animals live healthier lives.",
       medical: { title: "Health & care", description: "Treatment, vaccinations, sterilization, and follow-up." },
       foodShelter: { title: "Food & shelter", description: "Food, clean water, and a safe place." },
@@ -69,7 +73,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "Nos actions",
       imageAlt: "Une personne nourrit un chien à la main en extérieur.",
-      imageCaption: "Un peu de nourriture. Un peu de soin. Une journée plus douce.",
+      veterinaryImageAlt: "Une vétérinaire examine un chaton blanc avec un stéthoscope.",
+      companionshipImageAlt: "Une personne caresse doucement un chat tigré dehors.",
+      imageCaption: "Un repas. Un examen. Un moment de réconfort.",
       description: "De la nourriture aux soins, nous aidons les animaux des rues à vivre en meilleure santé.",
       medical: { title: "Santé et soins", description: "Traitements, vaccinations, stérilisation et suivi." },
       foodShelter: { title: "Nourriture et abri", description: "De la nourriture, de l’eau propre et un abri sûr." },
@@ -97,7 +103,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "Was wir tun",
       imageAlt: "Eine Person füttert einen Hund draußen aus der Hand.",
-      imageCaption: "Etwas Futter. Etwas Fürsorge. Ein besserer Tag.",
+      veterinaryImageAlt: "Eine Tierärztin untersucht ein weißes Kätzchen mit einem Stethoskop.",
+      companionshipImageAlt: "Eine Person streichelt draußen behutsam eine getigerte Katze.",
+      imageCaption: "Eine Mahlzeit. Eine Untersuchung. Ein Moment der Geborgenheit.",
       description: "Von Futter bis zur medizinischen Versorgung: Wir helfen Straßentieren, gesünder zu leben.",
       medical: { title: "Gesundheit & Pflege", description: "Behandlung, Impfungen, Kastration und Nachsorge." },
       foodShelter: { title: "Futter & Schutz", description: "Futter, sauberes Wasser und ein sicherer Unterschlupf." },
@@ -125,7 +133,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "ماذا نفعل؟",
       imageAlt: "شخص يطعم كلبًا من يده في الخارج.",
-      imageCaption: "قليل من الطعام. قليل من الرعاية. يوم أفضل.",
+      veterinaryImageAlt: "طبيبة بيطرية تفحص هريرة بيضاء بسماعة طبية.",
+      companionshipImageAlt: "شخص يربّت برفق على قطة مخططة في الخارج.",
+      imageCaption: "وجبة، وفحص بيطري، ولحظة حنان.",
       description: "من الغذاء إلى العلاج، نساعد حيوانات الشوارع على العيش بصحة أفضل.",
       medical: { title: "الصحة والرعاية", description: "العلاج والتطعيم والتعقيم والمتابعة." },
       foodShelter: { title: "الغذاء والمأوى", description: "غذاء وماء نظيف ومأوى آمن." },

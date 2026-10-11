@@ -7,7 +7,11 @@ type HomeImage = {
 type HomeContent = {
   introductionAnimalName: string;
   introductionImage: HomeImage;
-  workImage: HomeImage;
+  workImages: {
+    feeding: HomeImage;
+    veterinary: HomeImage;
+    companionship: HomeImage;
+  };
   teamImage: HomeImage;
 };
 
@@ -21,12 +25,26 @@ export const homeContent: HomeContent = {
     width: 1200,
     height: 800,
   },
-  workImage: {
-    // TODO: replace with a real photo of the association’s work.
-    // Photo source: https://www.pexels.com/photo/photo-of-person-feeding-dog-outside-1868860/
-    src: "/images/home-work.jpg",
-    width: 1200,
-    height: 1800,
+  workImages: {
+    // TODO: replace these stock photos with real photos of the association’s work.
+    feeding: {
+      // Photo source: https://www.pexels.com/photo/photo-of-person-feeding-dog-outside-1868860/
+      src: "/images/home-work.jpg",
+      width: 1200,
+      height: 1800,
+    },
+    veterinary: {
+      // Photo source: https://unsplash.com/photos/a-white-kitten-being-examined-by-a-veterinator-5Bi6MWlWMbw
+      src: "/images/home-work-vet.jpg",
+      width: 1000,
+      height: 667,
+    },
+    companionship: {
+      // Photo source: https://unsplash.com/photos/a-person-petting-a-cat-on-the-ground-o2zCNeTgl40
+      src: "/images/home-work-cat.jpg",
+      width: 1000,
+      height: 667,
+    },
   },
   teamImage: {
     // TODO: replace this illustrative stock photo with a real photo of the Pattes du Sud team.
