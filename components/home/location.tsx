@@ -1,6 +1,7 @@
 import { MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { homeContent } from "@/content/home";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
@@ -10,7 +11,8 @@ export function Location({ locale }: { locale: Locale }) {
   const location = homeContent.location;
 
   return (
-    <Section aria-labelledby="location-title" className="border-t border-border">
+    <Section aria-labelledby="location-title" className="relative">
+      <SectionDivider direction="leave" />
       <Container className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
         <div>
           <p className="mb-4 inline-flex items-center gap-2 text-sm font-bold text-heading">

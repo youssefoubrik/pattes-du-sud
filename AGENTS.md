@@ -88,6 +88,8 @@ Orange should attract attention, not dominate the interface.
 
 The **Donate** button should usually be the strongest colored element on the page.
 
+The footer uses soft sand with dark text and small dark-orange icon accents. Footer links show underlines on hover, and social links use the same text-link treatment as the other footer links.
+
 ### Accessibility
 
 - Maintain good text/background contrast.
