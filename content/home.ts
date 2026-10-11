@@ -8,6 +8,7 @@ type HomeContent = {
   introductionAnimalName: string;
   introductionImage: HomeImage;
   workImage: HomeImage;
+  teamImage: HomeImage;
 };
 
 export const homeContent: HomeContent = {
@@ -26,5 +27,12 @@ export const homeContent: HomeContent = {
     src: "/images/home-work.jpg",
     width: 1200,
     height: 1800,
+  },
+  teamImage: {
+    // TODO: replace this illustrative stock photo with a real photo of the Pattes du Sud team.
+    // Photo source: https://unsplash.com/photos/person-carrying-white-and-black-puppy-2h5eBF8aRhM
+    src: "/images/home-team-stock.jpg",
+    width: 1200,
+    height: 800,
   },
 };

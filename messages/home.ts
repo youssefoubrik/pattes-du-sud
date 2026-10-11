@@ -11,12 +11,21 @@ type HomeMessages = {
     title: string;
     description: string;
     imageAlt: string;
-    meetTeam: string;
     imageCaption: string;
     medical: { title: string; description: string };
     foodShelter: { title: string; description: string };
     adoption: { title: string; description: string };
     education: { title: string; description: string };
+  };
+  team: {
+    title: string;
+    description: string;
+    imageAlt: string;
+    imageCaption: string;
+    quote: string;
+    quoteAttribution: string;
+    volunteerCta: string;
+    meetTeam: string;
   };
 };
 
@@ -31,13 +40,23 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "What we do",
       imageAlt: "A person feeding a dog by hand outdoors.",
-      meetTeam: "Meet the people behind the care",
       imageCaption: "A little food. A little care. A better day.",
       description: "From a meal to medical care, we help street animals live healthier lives.",
       medical: { title: "Health & care", description: "Treatment, vaccinations, sterilization, and follow-up." },
       foodShelter: { title: "Food & shelter", description: "Food, clean water, and a safe place." },
       adoption: { title: "Adoption", description: "We help animals find caring homes." },
       education: { title: "Awareness", description: "We help people understand and protect animals." },
+    },
+    team: {
+      title: "The people behind the care",
+      description: "Meet the Mirleft team feeding street animals, arranging care and helping them find homes.",
+      imageAlt: "A person gently holding a small black-and-white puppy.",
+      imageCaption: "Care for Mirleft’s street animals starts with people who show up.",
+      // Draft wording and attribution: replace with Ali's approved words before publication.
+      quote: "I come back because they count on us.",
+      quoteAttribution: "Ali · Team member",
+      volunteerCta: "Volunteer with us",
+      meetTeam: "Get to know our team",
     },
   },
   fr: {
@@ -50,13 +69,22 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "Nos actions",
       imageAlt: "Une personne nourrit un chien à la main en extérieur.",
-      meetTeam: "Rencontrer ceux qui prennent soin d’eux",
       imageCaption: "Un peu de nourriture. Un peu de soin. Une journée plus douce.",
       description: "De la nourriture aux soins, nous aidons les animaux des rues à vivre en meilleure santé.",
       medical: { title: "Santé et soins", description: "Traitements, vaccinations, stérilisation et suivi." },
       foodShelter: { title: "Nourriture et abri", description: "De la nourriture, de l’eau propre et un abri sûr." },
       adoption: { title: "Adoption", description: "Nous aidons les animaux à trouver un foyer aimant." },
       education: { title: "Sensibilisation", description: "Nous aidons chacun à comprendre et protéger les animaux." },
+    },
+    team: {
+      title: "Celles et ceux qui prennent soin d’eux",
+      description: "Rencontrez l’équipe de Mirleft qui nourrit les animaux des rues, organise leurs soins et les aide à trouver un foyer.",
+      imageAlt: "Une personne tient doucement un petit chiot noir et blanc.",
+      imageCaption: "À Mirleft, la protection des animaux commence avec des personnes présentes sur le terrain.",
+      quote: "Je reviens parce qu’ils comptent sur nous.",
+      quoteAttribution: "Ali · Membre de l’équipe",
+      volunteerCta: "Devenir bénévole",
+      meetTeam: "Découvrir notre équipe",
     },
   },
   de: {
@@ -69,13 +97,22 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "Was wir tun",
       imageAlt: "Eine Person füttert einen Hund draußen aus der Hand.",
-      meetTeam: "Lerne die Menschen kennen, die helfen",
       imageCaption: "Etwas Futter. Etwas Fürsorge. Ein besserer Tag.",
       description: "Von Futter bis zur medizinischen Versorgung: Wir helfen Straßentieren, gesünder zu leben.",
       medical: { title: "Gesundheit & Pflege", description: "Behandlung, Impfungen, Kastration und Nachsorge." },
       foodShelter: { title: "Futter & Schutz", description: "Futter, sauberes Wasser und ein sicherer Unterschlupf." },
       adoption: { title: "Adoption", description: "Wir vermitteln Tieren ein liebevolles Zuhause." },
       education: { title: "Aufklärung", description: "Wir helfen Menschen, Tiere zu verstehen und zu schützen." },
+    },
+    team: {
+      title: "Menschen, die sich kümmern",
+      description: "Lerne das Team in Mirleft kennen, das Straßentiere füttert, ihre Versorgung organisiert und ein Zuhause für sie sucht.",
+      imageAlt: "Eine Person hält einen kleinen schwarz-weißen Welpen behutsam im Arm.",
+      imageCaption: "Fürsorge für Mirlefts Straßentiere beginnt mit Menschen, die vor Ort helfen.",
+      quote: "Ich komme wieder, weil sie auf uns zählen.",
+      quoteAttribution: "Ali · Teammitglied",
+      volunteerCta: "Hilf ehrenamtlich mit",
+      meetTeam: "Lerne unser Team kennen",
     },
   },
   ar: {
@@ -88,13 +125,22 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     whatWeDo: {
       title: "ماذا نفعل؟",
       imageAlt: "شخص يطعم كلبًا من يده في الخارج.",
-      meetTeam: "تعرّف على من يرعاهم",
       imageCaption: "قليل من الطعام. قليل من الرعاية. يوم أفضل.",
       description: "من الغذاء إلى العلاج، نساعد حيوانات الشوارع على العيش بصحة أفضل.",
       medical: { title: "الصحة والرعاية", description: "العلاج والتطعيم والتعقيم والمتابعة." },
       foodShelter: { title: "الغذاء والمأوى", description: "غذاء وماء نظيف ومأوى آمن." },
       adoption: { title: "التبنّي", description: "نساعد الحيوانات على إيجاد بيوت ترعاها." },
       education: { title: "التوعية", description: "نساعد الناس على فهم الحيوانات وحمايتها." },
+    },
+    team: {
+      title: "الفريق الذي يعتني بهم",
+      description: "تعرّف على فريق ميرلفت الذي يطعم حيوانات الشوارع، وينظّم علاجها، ويساعدها في العثور على بيت.",
+      imageAlt: "شخص يحمل برفق جرواً صغيراً باللونين الأبيض والأسود.",
+      imageCaption: "تبدأ رعاية حيوانات الشوارع في ميرلفت بأشخاص يمدّون لها يد العون.",
+      quote: "أعود لأن هذه الحيوانات تعتمد علينا.",
+      quoteAttribution: "علي · عضو في الفريق",
+      volunteerCta: "تطوّع معنا",
+      meetTeam: "تعرّف على فريقنا",
     },
   },
 };

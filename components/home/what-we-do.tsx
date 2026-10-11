@@ -1,5 +1,4 @@
 import { House, Soup, Stethoscope, UsersRound } from "lucide-react";
-import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
@@ -50,15 +49,6 @@ export function WhatWeDo({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
-          <ButtonLink
-            href={`/${locale}/about`}
-            variant="secondary"
-            arrow
-            compact
-            className="mt-8 max-w-full gap-2 bg-background py-2 text-center"
-          >
-            {text.meetTeam}
-          </ButtonLink>
         </div>
       </Container>
     </Section>
