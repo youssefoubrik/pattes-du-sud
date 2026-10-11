@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PawPrint } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
@@ -18,7 +19,11 @@ export function OurTeam({ locale }: { locale: Locale }) {
       <SectionDivider direction="enter" />
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <figure>
+          <figure className="relative">
+            <span aria-hidden="true" className="pointer-events-none absolute -top-12 start-2 flex items-start gap-1 text-heading/30">
+              <PawPrint size={24} fill="currentColor" className="-rotate-12 rtl:rotate-12" />
+              <PawPrint size={19} fill="currentColor" className="mt-2 rotate-12 rtl:-rotate-12" />
+            </span>
             <SectionImage src={image.src} alt={text.imageAlt} objectPosition="center 45%" />
             <PhotoCaption>{text.imageCaption}</PhotoCaption>
           </figure>
