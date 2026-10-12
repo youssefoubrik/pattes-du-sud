@@ -64,12 +64,17 @@ Warm, photo-led design: mostly ivory, occasional sand sections, brown headings, 
 
 **🟢 Proof that the association is real**
 
-- How and why Pattes du Sud started, in a few honest sentences with a photo
-- Your team: photos, first names and roles
-- What the association does to care for animals in Mirleft
-- Official name and registration number of the association
-- Where you work in Mirleft (small map)
-- Links to your Instagram and Facebook
+Suggested layout, with room to adapt:
+
+1. **Story at a glance:** a clear “About Pattes du Sud” heading, two or three honest sentences on why the association began, and one real photo of the team or their work in Mirleft. Text comes first on mobile. Use confirmed names and dates only; do not invent a founding story.
+2. **What care looks like:** a compact row or grid for **Health & care · Food & shelter · Adoption · Awareness**, followed by one short note on how the team checks on animals and documents their progress. Keep this briefer than the dedicated Home section and avoid implying services or response times the team cannot provide.
+3. **The people behind it:** a small set of real portraits with first names, roles, and one line each. Show only team members who agree to appear. Link to **Volunteer** instead of explaining the full volunteer process here.
+4. **The association in Mirleft:** a concise trust block with the official name, confirmed registration reference, area served, and a small map of a public location. Add **Contact**, Instagram, and Facebook links to confirmed accounts, plus a note to arrange visits in advance. Keep registration details consistent with the footer.
+5. **Closing invitation:** one short sentence and a prominent **Donate** button with a quieter **Contact** link. Leave payment and volunteering details to their dedicated pages.
+
+Keep the page compact: one main image, a few team portraits, a small map, short paragraphs, and no duplicate impact cards or long timeline. Use the same ivory, sand, brown, and restrained orange visual language as Home. On narrow screens, stack content in a simple reading order.
+
+Before publication, the team needs to provide or confirm the founding story, real photos and permissions, first names and roles, official name and registration reference, public map location, and social links. Until then, label missing information as unconfirmed in the working content rather than presenting sample details as fact.
 
 ### 🐶 Animals (gallery and adoption information)
 
