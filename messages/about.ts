@@ -9,6 +9,7 @@ type AboutMessages = {
   imageAlt: string;
   imageCaption: string;
   care: { title: string; introduction: string; followUp: string };
+  team: { title: string; introduction: string; volunteer: string; sampleNotice: string };
 };
 
 export const aboutMessages: Record<Locale, AboutMessages> = {
@@ -25,6 +26,12 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       introduction: "Our work meets different needs, from daily food and veterinary treatment to finding an animal a home.",
       followUp: "We check on the animals we help and keep track of their treatment and follow-up, so care can continue beyond one visit.",
     },
+    team: {
+      title: "The people behind the care",
+      introduction: "People in Mirleft make this work possible, from checking on street animals to arranging the care they need.",
+      volunteer: "Volunteer with us",
+      sampleNotice: "Illustrative profiles. Team details are being confirmed.",
+    },
   },
   fr: {
     title: "À propos de Pattes du Sud",
@@ -38,6 +45,12 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       title: "Des soins qui se poursuivent",
       introduction: "Nos actions répondent à différents besoins, de la nourriture aux soins vétérinaires, jusqu’à la recherche d’un foyer.",
       followUp: "Nous prenons des nouvelles des animaux aidés et suivons leurs soins et les étapes à venir, pour les accompagner au-delà d’une seule visite.",
+    },
+    team: {
+      title: "Les personnes derrière les soins",
+      introduction: "À Mirleft, des personnes veillent sur les animaux des rues et organisent les soins dont ils ont besoin.",
+      volunteer: "Devenir bénévole",
+      sampleNotice: "Profils illustratifs. Les informations sur l’équipe sont en cours de confirmation.",
     },
   },
   de: {
@@ -53,6 +66,12 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       introduction: "Unsere Arbeit reicht von täglichem Futter und tierärztlicher Behandlung bis zur Suche nach einem Zuhause.",
       followUp: "Wir sehen nach den Tieren, denen wir helfen, und halten Behandlungen und Nachsorge fest, damit ihre Versorgung nicht nach einem Besuch endet.",
     },
+    team: {
+      title: "Die Menschen hinter der Fürsorge",
+      introduction: "Menschen in Mirleft kümmern sich um Straßentiere und organisieren die Versorgung, die sie brauchen.",
+      volunteer: "Hilf ehrenamtlich mit",
+      sampleNotice: "Beispielprofile. Die Angaben zum Team werden noch bestätigt.",
+    },
   },
   ar: {
     title: "تعرّف على بات دو سود",
@@ -66,6 +85,12 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       title: "رعاية تستمر",
       introduction: "تستجيب جهودنا لاحتياجات مختلفة، من الطعام والعلاج البيطري إلى مساعدة الحيوان في العثور على بيت.",
       followUp: "نتابع أحوال الحيوانات التي نساعدها ونسجّل علاجها وما تحتاجه لاحقًا، حتى لا تتوقف رعايتها عند زيارة واحدة.",
+    },
+    team: {
+      title: "الأشخاص الذين يقدّمون الرعاية",
+      introduction: "يقف وراء هذا العمل أشخاص في ميرلفت يتابعون أحوال حيوانات الشوارع وينظّمون الرعاية التي تحتاج إليها.",
+      volunteer: "تطوّع معنا",
+      sampleNotice: "ملفات تعريفية توضيحية. تفاصيل الفريق قيد التأكيد.",
     },
   },
 };

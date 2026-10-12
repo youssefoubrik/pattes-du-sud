@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CareInPractice } from "@/components/about/care-in-practice";
+import { PeopleBehindCare } from "@/components/about/people-behind-care";
 import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
@@ -52,6 +53,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         </Container>
       </Section>
       <CareInPractice locale={locale} />
+      <PeopleBehindCare locale={locale} />
     </main>
   );
 }
