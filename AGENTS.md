@@ -306,6 +306,8 @@ Do not hard-code these image paths deep inside UI components.
 
 The current implementation may use local files, but image references must be easy to replace with CMS-managed URLs later.
 
+Public photo captions should describe the scene meaningfully and guide the choice of replacement photo. Keep asset replacement notes in content data, not in visible captions.
+
 ---
 
 ## Animation
