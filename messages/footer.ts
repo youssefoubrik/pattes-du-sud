@@ -3,7 +3,6 @@ import type { Locale } from "@/i18n/routing";
 type FooterMessages = {
   mission: string;
   registration: string;
-  toConfirm: string;
   explore: string;
   adopt: string;
   findUs: string;
@@ -19,7 +18,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
   en: {
     mission: "Care and hope for Mirleft’s street dogs and cats.",
     registration: "Registration reference",
-    toConfirm: "To confirm",
     explore: "Explore",
     adopt: "How to adopt",
     findUs: "Find us",
@@ -33,7 +31,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
   fr: {
     mission: "Des soins et de l’espoir pour les chiens et chats des rues de Mirleft.",
     registration: "Référence d’enregistrement",
-    toConfirm: "À confirmer",
     explore: "Découvrir",
     adopt: "Comment adopter",
     findUs: "Retrouvez-nous",
@@ -47,7 +44,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
   de: {
     mission: "Fürsorge und Hoffnung für Mirlefts Straßenhunde und Straßenkatzen.",
     registration: "Registrierungsnummer",
-    toConfirm: "Noch zu bestätigen",
     explore: "Entdecken",
     adopt: "So funktioniert die Adoption",
     findUs: "Folge uns",
@@ -61,7 +57,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
   ar: {
     mission: "رعاية وأمل لكلاب وقطط الشوارع في ميرلفت.",
     registration: "مرجع تسجيل الجمعية",
-    toConfirm: "في انتظار التأكيد",
     explore: "اكتشف المزيد",
     adopt: "كيف تتبنّى حيوانًا",
     findUs: "تابعنا",

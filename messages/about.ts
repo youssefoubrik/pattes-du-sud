@@ -10,6 +10,17 @@ type AboutMessages = {
   imageCaption: string;
   care: { title: string; introduction: string; followUp: string };
   team: { title: string; introduction: string; volunteer: string; sampleNotice: string };
+  association: {
+    place: string;
+    title: string;
+    officialName: string;
+    areaLabel: string;
+    area: string;
+    visitNote: string;
+    contact: string;
+    mapTitle: string;
+    mapCaption: string;
+  };
 };
 
 export const aboutMessages: Record<Locale, AboutMessages> = {
@@ -32,6 +43,17 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       volunteer: "Volunteer with us",
       sampleNotice: "Illustrative profiles. Team details are being confirmed.",
     },
+    association: {
+      place: "Mirleft, Morocco",
+      title: "The association in Mirleft",
+      officialName: "Official name",
+      areaLabel: "Area served",
+      area: "Mirleft and the surrounding area",
+      visitNote: "Please arrange a visit with our team before coming by.",
+      contact: "Contact us",
+      mapTitle: "Map of Mirleft town centre, Morocco",
+      mapCaption: "This map shows Mirleft town centre, not a visit address.",
+    },
   },
   fr: {
     title: "À propos de Pattes du Sud",
@@ -51,6 +73,17 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       introduction: "À Mirleft, des personnes veillent sur les animaux des rues et organisent les soins dont ils ont besoin.",
       volunteer: "Devenir bénévole",
       sampleNotice: "Profils illustratifs. Les informations sur l’équipe sont en cours de confirmation.",
+    },
+    association: {
+      place: "Mirleft, Maroc",
+      title: "L’association à Mirleft",
+      officialName: "Nom officiel",
+      areaLabel: "Zone d’intervention",
+      area: "Mirleft et ses environs",
+      visitNote: "Merci de convenir d’une visite avec notre équipe avant de venir.",
+      contact: "Nous contacter",
+      mapTitle: "Carte du centre de Mirleft, au Maroc",
+      mapCaption: "Cette carte montre le centre de Mirleft, et non une adresse de visite.",
     },
   },
   de: {
@@ -72,6 +105,17 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       volunteer: "Hilf ehrenamtlich mit",
       sampleNotice: "Beispielprofile. Die Angaben zum Team werden noch bestätigt.",
     },
+    association: {
+      place: "Mirleft, Marokko",
+      title: "Der Verein in Mirleft",
+      officialName: "Offizieller Name",
+      areaLabel: "Einsatzgebiet",
+      area: "Mirleft und Umgebung",
+      visitNote: "Bitte vereinbare vor deinem Besuch einen Termin mit unserem Team.",
+      contact: "Kontakt aufnehmen",
+      mapTitle: "Karte des Ortszentrums von Mirleft, Marokko",
+      mapCaption: "Die Karte zeigt das Ortszentrum von Mirleft, keine Besuchsadresse.",
+    },
   },
   ar: {
     title: "تعرّف على بات دو سود",
@@ -91,6 +135,17 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       introduction: "يقف وراء هذا العمل أشخاص في ميرلفت يتابعون أحوال حيوانات الشوارع وينظّمون الرعاية التي تحتاج إليها.",
       volunteer: "تطوّع معنا",
       sampleNotice: "ملفات تعريفية توضيحية. تفاصيل الفريق قيد التأكيد.",
+    },
+    association: {
+      place: "ميرلفت، المغرب",
+      title: "جمعيتنا في ميرلفت",
+      officialName: "الاسم الرسمي",
+      areaLabel: "نطاق العمل",
+      area: "ميرلفت والمناطق المحيطة بها",
+      visitNote: "يُرجى ترتيب الزيارة مع فريقنا قبل المجيء.",
+      contact: "تواصل معنا",
+      mapTitle: "خريطة وسط ميرلفت، المغرب",
+      mapCaption: "تُظهر الخريطة وسط ميرلفت، وليست عنوانًا للزيارة.",
     },
   },
 };

@@ -27,9 +27,11 @@ export function Footer({ locale }: { locale: Locale }) {
             <p className="mt-4 max-w-sm text-lg leading-relaxed text-foreground">{footer.mission}</p>
             <LocationLabel locale={locale} iconClassName="text-primary-hover" className="mt-4 text-base" />
             <p className="mt-5 text-base font-semibold text-heading">{officialName}</p>
-            <p className="mt-1 text-sm leading-relaxed text-foreground">
-              {footer.registration}: {registrationReference ?? footer.toConfirm}
-            </p>
+            {registrationReference && (
+              <p className="mt-1 text-sm leading-relaxed text-foreground">
+                {footer.registration}: {registrationReference}
+              </p>
+            )}
           </div>
 
           <nav aria-labelledby="footer-explore">
@@ -61,9 +63,11 @@ export function Footer({ locale }: { locale: Locale }) {
               </a>
             </address>
             <Link href={`/${locale}/contact`} className={`${linkClass} mt-2`}>{labels.contact}</Link>
-            <div className="mt-5">
-              <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footer.findUs} />
-            </div>
+            {(contact.instagram || contact.facebook) && (
+              <div className="mt-5">
+                <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footer.findUs} />
+              </div>
+            )}
           </div>
         </div>
 

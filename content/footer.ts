@@ -5,8 +5,8 @@ type FooterContent = {
     email: string;
     whatsappNumber: string;
     whatsappDisplay: string;
-    instagram: string;
-    facebook: string;
+    instagram: string | null;
+    facebook: string | null;
   };
 };
 
@@ -19,7 +19,8 @@ export const footerContent: FooterContent = {
     email: "contact@example.org",
     whatsappNumber: "212000000000",
     whatsappDisplay: "+212 000 000 000",
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
+    // Add these links only after the association confirms its accounts.
+    instagram: null,
+    facebook: null,
   },
 };
