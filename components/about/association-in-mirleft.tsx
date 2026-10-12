@@ -54,19 +54,16 @@ export function AssociationInMirleft({ locale }: { locale: Locale }) {
           )}
         </div>
 
-        <figure>
-          <div className="relative min-h-64 overflow-hidden rounded-2xl border border-border bg-background sm:min-h-80">
-            <iframe
-              src={locationContent.mapEmbedUrl}
-              title={text.mapTitle}
-              loading="lazy"
-              referrerPolicy="no-referrer"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full border-0"
-            />
-          </div>
-          <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">{text.mapCaption}</figcaption>
-        </figure>
+        <div className="relative min-h-64 overflow-hidden rounded-2xl border border-border bg-background sm:min-h-80">
+          <iframe
+            src={locationContent.mapEmbedUrl}
+            title={text.mapTitle}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0"
+          />
+        </div>
       </Container>
     </Section>
   );

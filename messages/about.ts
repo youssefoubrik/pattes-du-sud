@@ -19,7 +19,6 @@ type AboutMessages = {
     visitNote: string;
     contact: string;
     mapTitle: string;
-    mapCaption: string;
   };
   closingInvitation: string;
 };
@@ -53,7 +52,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       visitNote: "Please arrange a visit with our team before coming by.",
       contact: "Contact us",
       mapTitle: "Map of Mirleft town centre, Morocco",
-      mapCaption: "This map shows Mirleft town centre, not a visit address.",
     },
     closingInvitation: "Together, we can give more of Mirleft’s street animals the care they need.",
   },
@@ -85,7 +83,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       visitNote: "Merci de convenir d’une visite avec notre équipe avant de venir.",
       contact: "Nous contacter",
       mapTitle: "Carte du centre de Mirleft, au Maroc",
-      mapCaption: "Cette carte montre le centre de Mirleft, et non une adresse de visite.",
     },
     closingInvitation: "Ensemble, nous pouvons offrir aux animaux des rues de Mirleft les soins dont ils ont besoin.",
   },
@@ -117,7 +114,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       visitNote: "Bitte vereinbare vor deinem Besuch einen Termin mit unserem Team.",
       contact: "Kontakt aufnehmen",
       mapTitle: "Karte des Ortszentrums von Mirleft, Marokko",
-      mapCaption: "Die Karte zeigt das Ortszentrum von Mirleft, keine Besuchsadresse.",
     },
     closingInvitation: "Gemeinsam können wir mehr Straßentieren in Mirleft die Hilfe geben, die sie brauchen.",
   },
@@ -149,7 +145,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       visitNote: "يُرجى ترتيب الزيارة مع فريقنا قبل المجيء.",
       contact: "تواصل معنا",
       mapTitle: "خريطة وسط ميرلفت، المغرب",
-      mapCaption: "تُظهر الخريطة وسط ميرلفت، وليست عنوانًا للزيارة.",
     },
     closingInvitation: "معًا، يمكننا توفير الرعاية التي تحتاج إليها حيوانات الشوارع في ميرلفت.",
   },
