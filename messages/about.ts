@@ -8,6 +8,7 @@ type AboutMessages = {
   purpose: string;
   imageAlt: string;
   imageCaption: string;
+  care: { title: string; introduction: string; followUp: string };
 };
 
 export const aboutMessages: Record<Locale, AboutMessages> = {
@@ -19,6 +20,11 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     purpose: "Our work brings together food, veterinary care and sterilization, with the hope of giving more animals a safer, healthier life.",
     imageAlt: "A person gently holding a small black-and-white puppy.",
     imageCaption: "Care for animals starts with people who show up.",
+    care: {
+      title: "Care that continues",
+      introduction: "Our work meets different needs, from daily food and veterinary treatment to finding an animal a home.",
+      followUp: "We check on the animals we help and keep track of their treatment and follow-up, so care can continue beyond one visit.",
+    },
   },
   fr: {
     title: "À propos de Pattes du Sud",
@@ -28,6 +34,11 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     purpose: "Notre action réunit alimentation, soins vétérinaires et stérilisation, pour aider davantage d’animaux à vivre en meilleure santé et en sécurité.",
     imageAlt: "Une personne tient doucement un petit chiot noir et blanc.",
     imageCaption: "Prendre soin des animaux commence avec des personnes présentes sur le terrain.",
+    care: {
+      title: "Des soins qui se poursuivent",
+      introduction: "Nos actions répondent à différents besoins, de la nourriture aux soins vétérinaires, jusqu’à la recherche d’un foyer.",
+      followUp: "Nous prenons des nouvelles des animaux aidés et suivons leurs soins et les étapes à venir, pour les accompagner au-delà d’une seule visite.",
+    },
   },
   de: {
     title: "Über Pattes du Sud",
@@ -37,6 +48,11 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     purpose: "Unsere Arbeit umfasst Futter, tierärztliche Versorgung und Kastration. So möchten wir mehr Tieren ein sichereres und gesünderes Leben ermöglichen.",
     imageAlt: "Eine Person hält einen kleinen schwarz-weißen Welpen behutsam im Arm.",
     imageCaption: "Tierfürsorge beginnt mit Menschen, die vor Ort helfen.",
+    care: {
+      title: "Hilfe, die weitergeht",
+      introduction: "Unsere Arbeit reicht von täglichem Futter und tierärztlicher Behandlung bis zur Suche nach einem Zuhause.",
+      followUp: "Wir sehen nach den Tieren, denen wir helfen, und halten Behandlungen und Nachsorge fest, damit ihre Versorgung nicht nach einem Besuch endet.",
+    },
   },
   ar: {
     title: "تعرّف على بات دو سود",
@@ -46,5 +62,10 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     purpose: "يشمل عملنا توفير الطعام والرعاية البيطرية والتعقيم، حتى تحظى حيوانات أكثر بحياة أكثر أمانًا وصحة.",
     imageAlt: "شخص يحمل جرواً صغيراً أبيض وأسود برفق.",
     imageCaption: "تبدأ رعاية الحيوانات بأشخاص يمدّون لها يد العون.",
+    care: {
+      title: "رعاية تستمر",
+      introduction: "تستجيب جهودنا لاحتياجات مختلفة، من الطعام والعلاج البيطري إلى مساعدة الحيوان في العثور على بيت.",
+      followUp: "نتابع أحوال الحيوانات التي نساعدها ونسجّل علاجها وما تحتاجه لاحقًا، حتى لا تتوقف رعايتها عند زيارة واحدة.",
+    },
   },
 };
