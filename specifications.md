@@ -64,17 +64,17 @@ Warm, photo-led design: mostly ivory, occasional sand sections, brown headings, 
 
 **🟢 Proof that the association is real**
 
-Suggested layout, with room to adapt:
+Planned layout, built one section at a time:
 
-1. **Story at a glance:** a clear “About Pattes du Sud” heading, two or three honest sentences on why the association began, and one real photo of the team or their work in Mirleft. Text comes first on mobile. Use confirmed names and dates only; do not invent a founding story.
-2. **What care looks like:** a compact row or grid for **Health & care · Food & shelter · Adoption · Awareness**, followed by one short note on how the team checks on animals and documents their progress. Keep this briefer than the dedicated Home section and avoid implying services or response times the team cannot provide.
-3. **The people behind it:** a small set of real portraits with first names, roles, and one line each. Show only team members who agree to appear. Link to **Volunteer** instead of explaining the full volunteer process here.
-4. **The association in Mirleft:** a concise trust block with the official name, confirmed registration reference, area served, and a small map of a public location. Add **Contact**, Instagram, and Facebook links to confirmed accounts, plus a note to arrange visits in advance. Keep registration details consistent with the footer.
-5. **Closing invitation:** one short sentence and a prominent **Donate** button with a quieter **Contact** link. Leave payment and volunteering details to their dedicated pages.
+1. **Introduction / story:** a two-column opening with “About Pattes du Sud,” a short explanation of its work in Mirleft, and one large photo of people caring for an animal; text comes first on mobile. The caption speaks about the care shown, so a future association photo has a clear subject. Add a brief sentence on how the association began only after the team confirms it; do not invent names or dates.
+2. **What care looks like:** one compact sand section with a heading and short introduction beside a two-by-two list of **Health & care · Food & shelter · Adoption · Awareness**. Reuse the Home service names, with icons and no repeated service paragraphs. End with one brief note about checking on animals and tracking treatment and follow-up; avoid promises about response times.
+3. **The people behind it:** an ivory section with a short introduction and a simple row/grid of up to four real portraits. Each person has a first name, role, and one useful line about their work. Use approved photos and details only; no invented members or empty profile cards. Add one **Volunteer** link, leaving the full process to that page.
+4. **The association in Mirleft:** a compact sand section with a readable facts block beside a small map; stack them on mobile. Show the official name, confirmed registration reference, and area served. Add a note to arrange visits, a **Contact** link, and links to confirmed Instagram and Facebook accounts. The map points to a public location, never an unapproved private address. Registration details match the footer.
+5. **Closing invitation:** a short ivory strip with one sentence, a prominent **Donate** button, and a quieter **Contact** link. Keep payment and volunteering details on their dedicated pages.
 
-Keep the page compact: one main image, a few team portraits, a small map, short paragraphs, and no duplicate impact cards or long timeline. Use the same ivory, sand, brown, and restrained orange visual language as Home. On narrow screens, stack content in a simple reading order.
+Keep the page short: one main photo, only the available approved team portraits, one small map, and no timeline, duplicate impact cards, or extra gallery. Reuse Home’s ivory, sand, brown, and restrained orange palette. Each section should read clearly at 320px and follow the same order on mobile.
 
-Before publication, the team needs to provide or confirm the founding story, real photos and permissions, first names and roles, official name and registration reference, public map location, and social links. Until then, label missing information as unconfirmed in the working content rather than presenting sample details as fact.
+The team still needs to confirm the founding story, association photos and permissions, team names and roles, official registration details, public map location, and social accounts. Keep unknown facts out of published copy rather than filling them with sample claims.
 
 ### 🐶 Animals (gallery and adoption information)
 
