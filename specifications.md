@@ -44,7 +44,7 @@ Checked items are implemented in the site. Account details and association facts
 - [x] Association facts and recordkeeping
 - [x] Donate invitation
 
-### Animals gallery
+### Companions gallery
 
 - [x] Dogs and cats with species and status filters
 - [x] Six animals per page with centered, white numbered, previous and next controls below the cards; changing filters returns to page one

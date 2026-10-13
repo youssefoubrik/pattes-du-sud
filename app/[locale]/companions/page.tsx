@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${title} | ${siteContent.name}`,
     description,
-    ...(siteUrl ? { metadataBase: new URL(siteUrl), alternates: { canonical: `/${locale}/animals` } } : {}),
+    ...(siteUrl ? { metadataBase: new URL(siteUrl), alternates: { canonical: `/${locale}/companions` } } : {}),
     openGraph: { title, description, siteName: siteContent.name, type: "website", locale },
     twitter: { card: "summary", title, description },
   };
@@ -35,11 +35,11 @@ export default async function AnimalsPage({ params }: Props) {
 
   return (
     <main id="main-content" tabIndex={-1} className="flex-1">
-      <Section aria-labelledby="animals-title">
+      <Section aria-labelledby="companions-title">
         <Container>
           <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
             <div className="max-w-2xl">
-              <h1 id="animals-title" className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">{text.title}</h1>
+              <h1 id="companions-title" className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">{text.title}</h1>
               <p className="mt-5 text-lg leading-relaxed text-foreground">{text.description}</p>
             </div>
             <Link href={`/${locale}/adopt`} className="inline-flex min-h-11 w-fit shrink-0 items-center gap-2 font-bold text-accent underline underline-offset-4 hover:text-heading sm:mt-1">

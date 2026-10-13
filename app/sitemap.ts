@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = [
     "",
     "/about",
-    "/animals",
+    "/companions",
     "/adopt",
     "/donate",
     "/mirleft",
@@ -19,11 +19,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/privacy",
     "/legal",
   ];
-  const animals = getAnimals().map((animal) => `/animals/${animal.id}`);
+  const animals = getAnimals().map((animal) => `/companions/${animal.id}`);
   return routing.locales.flatMap((locale) =>
     [...paths, ...animals].map((path) => ({
       url: `${origin.replace(/\/$/, "")}/${locale}${path}`,
-      changeFrequency: path.startsWith("/animals")
+      changeFrequency: path.startsWith("/companions")
         ? ("weekly" as const)
         : ("monthly" as const),
     })),

@@ -21,7 +21,7 @@ function parseAnimalId(value: string) {
 
 export async function generateMetadata({
   params,
-}: PageProps<"/[locale]/animals/[id]">): Promise<Metadata> {
+}: PageProps<"/[locale]/companions/[id]">): Promise<Metadata> {
   const { locale, id: rawId } = await params;
   if (!isLocale(locale)) notFound();
   const id = parseAnimalId(rawId);
@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!animal) notFound();
   return pageMetadata(
     locale,
-    `/animals/${id}`,
+    `/companions/${id}`,
     animal.name,
     `${animal.name} · ${animalMessages[locale].status[animal.status]} · ${animalMessages[locale].species[animal.species]}`,
     animal.image.src,
@@ -39,7 +39,7 @@ export async function generateMetadata({
 
 export default async function AnimalDetail({
   params,
-}: PageProps<"/[locale]/animals/[id]">) {
+}: PageProps<"/[locale]/companions/[id]">) {
   const { locale, id: rawId } = await params;
   if (!isLocale(locale)) notFound();
   const id = parseAnimalId(rawId);
@@ -56,7 +56,7 @@ export default async function AnimalDetail({
     <main id="main-content" className="flex-1">
       <Section>
         <Container>
-          <Link href={`/${locale}/animals`} className="text-accent underline">
+          <Link href={`/${locale}/companions`} className="text-accent underline">
             ← {t.back}
           </Link>
           <div className="mt-7 grid gap-10 lg:grid-cols-2 lg:gap-16">

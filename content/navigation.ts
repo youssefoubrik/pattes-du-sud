@@ -4,7 +4,7 @@ import type { Messages } from "@/messages/en";
 export const navigation: { label: keyof Pick<Messages, "homeNav" | "about" | "animals" | "adoptNav" | "volunteer" | "contact">; href: string }[] = [
   { label: "homeNav", href: "" },
   { label: "about", href: "/about" },
-  { label: "animals", href: "/animals" },
+  { label: "animals", href: "/companions" },
   { label: "adoptNav", href: "/adopt" },
   { label: "volunteer", href: "/volunteer" },
   { label: "contact", href: "/contact" },

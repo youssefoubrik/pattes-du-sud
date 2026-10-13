@@ -36,7 +36,7 @@ export function Introduction({ locale }: { locale: Locale }) {
               {messages[locale].donate}
             </ButtonLink>
             <ButtonLink
-              href={`/${locale}/animals`}
+              href={`/${locale}/companions`}
               variant="secondary"
               arrow
               className="min-h-13 max-w-full gap-3 py-2 text-center"

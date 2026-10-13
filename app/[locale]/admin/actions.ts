@@ -158,8 +158,8 @@ export async function upsertAnimal(form: FormData) {
     sterilized: form.get("sterilized") === "on",
   });
   for (const language of routing.locales) {
-    revalidatePath(`/${language}/animals`);
-    revalidatePath(`/${language}/animals/${animalId}`);
+    revalidatePath(`/${language}/companions`);
+    revalidatePath(`/${language}/companions/${animalId}`);
     revalidatePath(`/${language}`);
   }
   redirect(`/${locale}/admin/animals?saved=1`);
@@ -171,7 +171,7 @@ export async function removeAnimal(form: FormData) {
   const id = Number(form.get("id"));
   if (Number.isSafeInteger(id) && id > 0 && getAnimal(id)) deleteAnimal(id);
   for (const language of routing.locales) {
-    revalidatePath(`/${language}/animals`);
+    revalidatePath(`/${language}/companions`);
     revalidatePath(`/${language}`);
   }
   redirect(`/${locale}/admin/animals?deleted=1`);

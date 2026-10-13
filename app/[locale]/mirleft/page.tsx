@@ -43,7 +43,7 @@ export default async function Mirleft({
             <ButtonLink href={`/${locale}/donate`} variant="donate">
               {t.donate}
             </ButtonLink>
-            <ButtonLink href={`/${locale}/animals`} variant="secondary">
+            <ButtonLink href={`/${locale}/companions`} variant="secondary">
               {t.animals}
             </ButtonLink>
             <ButtonLink href={`/${locale}/contact`} variant="secondary">

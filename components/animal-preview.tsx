@@ -42,7 +42,7 @@ export function AnimalPreview({ animal, locale, portrait = true, linked = true }
     <article>
       {linked ? (
         <Link
-          href={`/${locale}/animals/${animal.id}`}
+          href={`/${locale}/companions/${animal.id}`}
           aria-label={`${text.getToKnow} — ${animal.name}`}
           className="group block rounded-3xl"
         >

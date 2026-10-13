@@ -44,7 +44,7 @@ export function MeetAnimals({ locale }: { locale: Locale }) {
         </ul>
         <div className="mt-10 text-center">
           <ButtonLink
-            href={`/${locale}/animals`}
+            href={`/${locale}/companions`}
             variant="secondary"
             arrow
             className="max-w-full gap-3 py-2"

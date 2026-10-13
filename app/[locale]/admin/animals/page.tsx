@@ -68,7 +68,7 @@ export default async function AdminAnimals({
                   <p>{animal.status}</p>
                   <Link
                     className="text-accent underline"
-                    href={`/${locale}/animals/${animal.id}`}
+                    href={`/${locale}/companions/${animal.id}`}
                   >
                     View profile
                   </Link>

@@ -122,8 +122,8 @@ Public:
 
 - `/` — Home
 - `/about` — Association story, team, work, and registration details
-- `/animals` — Animals gallery
-- `/animals/[id]` — Animal details, using an auto-incrementing database ID
+- `/companions` — Companions gallery
+- `/companions/[id]` — Companion details, using an auto-incrementing database ID
 - `/adopt` — Adoption process, requirements, and local/international adoption guidance
 - `/donate` — Donate
 - `/donate/thank-you` — Thank-you page
@@ -146,7 +146,7 @@ alongside a language selector and a prominent Donate button.
 
 Public homepage copy should refer to dogs and cats or use warm companion language instead of the generic label used for the gallery route.
 
-The Animals page places a compact paw-print adoption link beside its introduction on wider screens and below the description on phones. Keep it short, visible, and blue underlined; the photo gallery remains the main focus.
+The Companions page places a compact paw-print adoption link beside its introduction on wider screens and below the description on phones. Keep it short, visible, and blue underlined; the photo gallery remains the main focus.
 
 The website does not have a news section or news administration routes.
 

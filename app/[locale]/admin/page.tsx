@@ -22,7 +22,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
     .all() as { kind: string; count: number }[];
   const topAnimals = db()
     .prepare(
-      "SELECT path, COUNT(*) AS count FROM events WHERE kind = 'view' AND path LIKE '%/animals/%' GROUP BY path ORDER BY count DESC LIMIT 5",
+      "SELECT path, COUNT(*) AS count FROM events WHERE kind = 'view' AND path LIKE '%/companions/%' GROUP BY path ORDER BY count DESC LIMIT 5",
     )
     .all() as { path: string; count: number }[];
   const countries = db()
