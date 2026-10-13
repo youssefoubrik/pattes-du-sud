@@ -4,7 +4,7 @@ import { AnimalGallery } from "@/components/animals/animal-gallery";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { animals } from "@/content/animals";
+import { getAnimals } from "@/lib/db";
 import { siteContent } from "@/content/site";
 import { isLocale } from "@/i18n/routing";
 import { animalGalleryMessages } from "@/messages/animal-gallery";
@@ -30,7 +30,7 @@ export default async function AnimalsPage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const text = animalGalleryMessages[locale];
-  const sortedAnimals = [...animals].sort((a, b) => b.addedAt.localeCompare(a.addedAt));
+  const sortedAnimals = getAnimals().sort((a, b) => b.addedAt.localeCompare(a.addedAt));
 
   return (
     <main id="main-content" tabIndex={-1} className="flex-1">

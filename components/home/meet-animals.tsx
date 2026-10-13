@@ -4,11 +4,12 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { getHomepageAnimals } from "@/content/animals";
+import { getAnimals } from "@/lib/db";
 import type { Locale } from "@/i18n/routing";
 import { animalMessages } from "@/messages/animals";
 
 export function MeetAnimals({ locale }: { locale: Locale }) {
-  const animals = getHomepageAnimals();
+  const animals = getHomepageAnimals(getAnimals());
   if (!animals.length) return null;
   const text = animalMessages[locale];
 
