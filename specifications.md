@@ -96,6 +96,7 @@ Checked items are implemented in the site. Account details and association facts
 - [x] SQLite database for animals, photos, messages, translated copy, settings and activity
 - [x] Password-protected editor with persistent sessions
 - [x] Add, edit and remove animals, including photo uploads
+- [x] Use auto-incrementing numeric IDs for profile URLs, so names may repeat; the CMS asks editors for a name, not a slug
 - [x] Edit Home, About and other public page text in four languages
 - [x] Replace Home and About photos
 - [x] Edit contact, map, registration, PayPal, bank and impact details

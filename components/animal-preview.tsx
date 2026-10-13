@@ -5,7 +5,7 @@ import type { Animal } from "@/content/animals";
 import type { Locale } from "@/i18n/routing";
 import { animalMessages } from "@/messages/animals";
 
-type Props = { animal: Animal; locale: Locale; portrait?: boolean; linked?: boolean };
+type Props = { animal: Animal & { id: number }; locale: Locale; portrait?: boolean; linked?: boolean };
 
 export function AnimalPreview({ animal, locale, portrait = true, linked = true }: Props) {
   const text = animalMessages[locale];
@@ -42,7 +42,7 @@ export function AnimalPreview({ animal, locale, portrait = true, linked = true }
     <article>
       {linked ? (
         <Link
-          href={`/${locale}/animals/${animal.slug}`}
+          href={`/${locale}/animals/${animal.id}`}
           aria-label={`${text.getToKnow} — ${animal.name}`}
           className="group block rounded-3xl"
         >

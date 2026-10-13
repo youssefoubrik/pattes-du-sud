@@ -123,7 +123,7 @@ Public:
 - `/` — Home
 - `/about` — Association story, team, work, and registration details
 - `/animals` — Animals gallery
-- `/animals/[slug]` — Animal details
+- `/animals/[id]` — Animal details, using an auto-incrementing database ID
 - `/adopt` — Adoption process, requirements, and local/international adoption guidance
 - `/donate` — Donate
 - `/donate/thank-you` — Thank-you page

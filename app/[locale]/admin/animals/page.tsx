@@ -40,7 +40,7 @@ export default async function AdminAnimals({
         )}
         {query.error && (
           <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
-            Check the name, slug and photo. Photos must be JPEG, PNG or WebP,
+            Check the name and photo. Photos must be JPEG, PNG or WebP,
             under 5 MB.
           </p>
         )}
@@ -50,7 +50,7 @@ export default async function AdminAnimals({
         <ul className="mt-6 grid gap-6 lg:grid-cols-2">
           {animals.map((animal) => (
             <li
-              key={animal.slug}
+              key={animal.id}
               className="rounded-3xl border border-border bg-surface p-5"
             >
               <div className="flex items-center gap-4">
@@ -68,7 +68,7 @@ export default async function AdminAnimals({
                   <p>{animal.status}</p>
                   <Link
                     className="text-accent underline"
-                    href={`/${locale}/animals/${animal.slug}`}
+                    href={`/${locale}/animals/${animal.id}`}
                   >
                     View profile
                   </Link>
@@ -82,7 +82,7 @@ export default async function AdminAnimals({
               </details>
               <form action={removeAnimal} className="mt-4">
                 <input type="hidden" name="locale" value={locale} />
-                <input type="hidden" name="slug" value={animal.slug} />
+                <input type="hidden" name="id" value={animal.id} />
                 <button
                   type="submit"
                   className="min-h-11 text-primary-hover underline"
@@ -112,24 +112,14 @@ function AnimalForm({
       className="mt-5 grid gap-4 rounded-3xl border border-border bg-surface p-5 sm:grid-cols-2"
     >
       <input type="hidden" name="locale" value={locale} />
+      {animal && <input type="hidden" name="id" value={animal.id} />}
       <label className="font-semibold">
         Name
         <input
           name="name"
           required
+          maxLength={80}
           defaultValue={animal?.name}
-          className="mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal"
-        />
-      </label>
-      <label className="font-semibold">
-        URL slug
-        <input
-          name="slug"
-          required
-          readOnly={!!animal}
-          defaultValue={animal?.slug}
-          placeholder="e.g. bella"
-          pattern="[a-z0-9]+(-[a-z0-9]+)*"
           className="mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal"
         />
       </label>

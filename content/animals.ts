@@ -1,5 +1,4 @@
 export type Animal = {
-  slug: string;
   name: string;
   species: "dog" | "cat";
   status: "available" | "inCare" | "adopted";
@@ -14,22 +13,24 @@ export type Animal = {
 // Stock photos: https://www.pexels.com/photo/{photo-id}/
 // Photo IDs in profile order: 1805164, 1170986, 1851164, 617278, 2253275, 127028.
 export const animals: Animal[] = [
-  { slug: "luna", name: "Luna", species: "dog", status: "available", ageYears: 3, personality: "gentle", image: { src: "/images/animals/luna.jpg" }, addedAt: "2026-10-06" },
-  { slug: "milo", name: "Milo", species: "cat", status: "available", ageYears: 2, personality: "curious", image: { src: "/images/animals/milo.jpg" }, addedAt: "2026-10-05" },
-  { slug: "nala", name: "Nala", species: "dog", status: "inCare", personality: "shy", image: { src: "/images/animals/nala.jpg" }, addedAt: "2026-10-04" },
-  { slug: "sami", name: "Sami", species: "cat", status: "adopted", ageYears: 4, personality: "gentle", image: { src: "/images/animals/sami.jpg" }, addedAt: "2026-10-03" },
-  { slug: "jack", name: "Jack", species: "dog", status: "adopted", ageYears: 3, personality: "playful", image: { src: "/images/animals/jack.jpg" }, addedAt: "2026-10-02" },
-  { slug: "mimi", name: "Mimi", species: "cat", status: "available", personality: "playful", image: { src: "/images/animals/mimi.jpg" }, addedAt: "2026-10-01" },
-  { slug: "biscuit", name: "Biscuit", species: "dog", status: "available", ageYears: 2, personality: "playful", image: { src: "/images/animals/jack.jpg" }, addedAt: "2026-10-12" },
-  { slug: "pepper", name: "Pepper", species: "cat", status: "available", ageYears: 1, personality: "curious", image: { src: "/images/animals/milo.jpg" }, addedAt: "2026-10-11" },
-  { slug: "rosie", name: "Rosie", species: "dog", status: "inCare", ageYears: 4, personality: "gentle", image: { src: "/images/animals/luna.jpg" }, addedAt: "2026-10-10" },
-  { slug: "olive", name: "Olive", species: "cat", status: "adopted", ageYears: 3, personality: "shy", image: { src: "/images/animals/sami.jpg" }, addedAt: "2026-10-09" },
-  { slug: "maple", name: "Maple", species: "dog", status: "adopted", ageYears: 5, personality: "gentle", image: { src: "/images/animals/nala.jpg" }, addedAt: "2026-10-08" },
-  { slug: "pistachio", name: "Pistachio", species: "cat", status: "available", ageYears: 2, personality: "playful", image: { src: "/images/animals/mimi.jpg" }, addedAt: "2026-10-07" },
+  { name: "Luna", species: "dog", status: "available", ageYears: 3, personality: "gentle", image: { src: "/images/animals/luna.jpg" }, addedAt: "2026-10-06" },
+  { name: "Milo", species: "cat", status: "available", ageYears: 2, personality: "curious", image: { src: "/images/animals/milo.jpg" }, addedAt: "2026-10-05" },
+  { name: "Nala", species: "dog", status: "inCare", personality: "shy", image: { src: "/images/animals/nala.jpg" }, addedAt: "2026-10-04" },
+  { name: "Sami", species: "cat", status: "adopted", ageYears: 4, personality: "gentle", image: { src: "/images/animals/sami.jpg" }, addedAt: "2026-10-03" },
+  { name: "Jack", species: "dog", status: "adopted", ageYears: 3, personality: "playful", image: { src: "/images/animals/jack.jpg" }, addedAt: "2026-10-02" },
+  { name: "Mimi", species: "cat", status: "available", personality: "playful", image: { src: "/images/animals/mimi.jpg" }, addedAt: "2026-10-01" },
+  { name: "Biscuit", species: "dog", status: "available", ageYears: 2, personality: "playful", image: { src: "/images/animals/jack.jpg" }, addedAt: "2026-10-12" },
+  { name: "Pepper", species: "cat", status: "available", ageYears: 1, personality: "curious", image: { src: "/images/animals/milo.jpg" }, addedAt: "2026-10-11" },
+  { name: "Rosie", species: "dog", status: "inCare", ageYears: 4, personality: "gentle", image: { src: "/images/animals/luna.jpg" }, addedAt: "2026-10-10" },
+  { name: "Olive", species: "cat", status: "adopted", ageYears: 3, personality: "shy", image: { src: "/images/animals/sami.jpg" }, addedAt: "2026-10-09" },
+  { name: "Maple", species: "dog", status: "adopted", ageYears: 5, personality: "gentle", image: { src: "/images/animals/nala.jpg" }, addedAt: "2026-10-08" },
+  { name: "Pistachio", species: "cat", status: "available", ageYears: 2, personality: "playful", image: { src: "/images/animals/mimi.jpg" }, addedAt: "2026-10-07" },
 ];
 
 export const paginationSampleAnimals = animals.slice(6);
 
+export function getHomepageAnimals<T extends Animal>(records: readonly T[]): T[];
+export function getHomepageAnimals(): Animal[];
 export function getHomepageAnimals(records: readonly Animal[] = animals): Animal[] {
   const sorted = [...records].sort((a, b) =>
     (a.featuredOrder ?? Infinity) - (b.featuredOrder ?? Infinity) || b.addedAt.localeCompare(a.addedAt)

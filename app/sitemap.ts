@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/privacy",
     "/legal",
   ];
-  const animals = getAnimals().map((animal) => `/animals/${animal.slug}`);
+  const animals = getAnimals().map((animal) => `/animals/${animal.id}`);
   return routing.locales.flatMap((locale) =>
     [...paths, ...animals].map((path) => ({
       url: `${origin.replace(/\/$/, "")}/${locale}${path}`,

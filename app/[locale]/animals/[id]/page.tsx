@@ -13,16 +13,24 @@ import { pageMetadata } from "@/lib/metadata";
 import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
 
+function parseAnimalId(value: string) {
+  if (!/^[1-9]\d*$/.test(value)) return undefined;
+  const id = Number(value);
+  return Number.isSafeInteger(id) ? id : undefined;
+}
+
 export async function generateMetadata({
   params,
-}: PageProps<"/[locale]/animals/[slug]">): Promise<Metadata> {
-  const { locale, slug } = await params;
+}: PageProps<"/[locale]/animals/[id]">): Promise<Metadata> {
+  const { locale, id: rawId } = await params;
   if (!isLocale(locale)) notFound();
-  const animal = getAnimal(slug);
+  const id = parseAnimalId(rawId);
+  if (!id) notFound();
+  const animal = getAnimal(id);
   if (!animal) notFound();
   return pageMetadata(
     locale,
-    `/animals/${slug}`,
+    `/animals/${id}`,
     animal.name,
     `${animal.name} · ${animalMessages[locale].status[animal.status]} · ${animalMessages[locale].species[animal.species]}`,
     animal.image.src,
@@ -31,10 +39,12 @@ export async function generateMetadata({
 
 export default async function AnimalDetail({
   params,
-}: PageProps<"/[locale]/animals/[slug]">) {
-  const { locale, slug } = await params;
+}: PageProps<"/[locale]/animals/[id]">) {
+  const { locale, id: rawId } = await params;
   if (!isLocale(locale)) notFound();
-  const animal = getAnimal(slug);
+  const id = parseAnimalId(rawId);
+  if (!id) notFound();
+  const animal = getAnimal(id);
   if (!animal) notFound();
   const t = getEditableCopy("pages", locale, pageMessages[locale]).animal;
   const common = animalMessages[locale];

@@ -93,12 +93,12 @@ export async function updateSettings(form: FormData) {
 export async function upsertAnimal(form: FormData) {
   const locale = localeOf(form);
   await requireAdmin(locale);
-  const slug = String(form.get("slug") || "")
-    .trim()
-    .toLowerCase();
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))
-    redirect(`/${locale}/admin/animals?error=slug`);
-  const existing = getAnimal(slug);
+  const idValue = String(form.get("id") || "").trim();
+  const id = idValue ? Number(idValue) : undefined;
+  if (idValue && (id === undefined || !Number.isSafeInteger(id) || id <= 0))
+    redirect(`/${locale}/admin/animals?error=profile`);
+  const existing = id ? getAnimal(id) : undefined;
+  if (idValue && !existing) redirect(`/${locale}/admin/animals?error=profile`);
   const name = String(form.get("name") || "")
     .trim()
     .slice(0, 80);
@@ -135,8 +135,8 @@ export async function upsertAnimal(form: FormData) {
     image = { src: `/api/media/${id}` };
   }
   if (!image) redirect(`/${locale}/admin/animals?error=photo`);
-  saveAnimal({
-    slug,
+  const animalId = saveAnimal({
+    ...(existing ? { id: existing.id } : {}),
     name,
     species,
     status,
@@ -159,7 +159,7 @@ export async function upsertAnimal(form: FormData) {
   });
   for (const language of routing.locales) {
     revalidatePath(`/${language}/animals`);
-    revalidatePath(`/${language}/animals/${slug}`);
+    revalidatePath(`/${language}/animals/${animalId}`);
     revalidatePath(`/${language}`);
   }
   redirect(`/${locale}/admin/animals?saved=1`);
@@ -168,8 +168,8 @@ export async function upsertAnimal(form: FormData) {
 export async function removeAnimal(form: FormData) {
   const locale = localeOf(form);
   await requireAdmin(locale);
-  const slug = String(form.get("slug") || "");
-  if (getAnimal(slug)) deleteAnimal(slug);
+  const id = Number(form.get("id"));
+  if (Number.isSafeInteger(id) && id > 0 && getAnimal(id)) deleteAnimal(id);
   for (const language of routing.locales) {
     revalidatePath(`/${language}/animals`);
     revalidatePath(`/${language}`);

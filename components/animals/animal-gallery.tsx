@@ -14,7 +14,7 @@ export function AnimalGallery({
   animals,
   locale,
 }: {
-  animals: Animal[];
+  animals: (Animal & { id: number })[];
   locale: Locale;
 }) {
   const [species, setSpecies] = useState<SpeciesFilter>("all");
@@ -73,7 +73,7 @@ export function AnimalGallery({
         {visible.length ? (
           <ul className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {pageAnimals.map((animal) => (
-              <li key={animal.slug}>
+              <li key={animal.id}>
                 <AnimalPreview animal={animal} locale={locale} />
               </li>
             ))}
