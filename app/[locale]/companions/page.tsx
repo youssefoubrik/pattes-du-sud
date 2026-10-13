@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PawPrint } from "lucide-react";
+import { ArrowRight, PawPrint } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AnimalGallery } from "@/components/animals/animal-gallery";
@@ -42,9 +42,22 @@ export default async function AnimalsPage({ params }: Props) {
               <h1 id="companions-title" className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">{text.title}</h1>
               <p className="mt-5 text-lg leading-relaxed text-foreground">{text.description}</p>
             </div>
-            <Link href={`/${locale}/adopt`} className="inline-flex min-h-11 w-fit shrink-0 items-center gap-2 font-bold text-accent underline underline-offset-4 hover:text-heading sm:mt-1">
-              <PawPrint size={17} className="text-primary" aria-hidden="true" />
-              {text.adoptionLink}
+            <Link
+              href={`/${locale}/adopt`}
+              className="group flex min-h-20 w-full shrink-0 items-center gap-4 self-start rounded-2xl border-2 border-dashed border-heading/40 bg-secondary px-4 py-3 transition-[box-shadow,translate] duration-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:mt-1 sm:w-fit sm:min-w-64"
+            >
+              <PawPrint
+                size={25}
+                className="shrink-0 text-primary transition-transform duration-200 motion-safe:group-hover:rotate-12 motion-safe:group-hover:scale-110 group-hover:text-primary-hover motion-reduce:transition-none"
+                aria-hidden="true"
+              />
+              <span className="flex flex-col gap-1">
+                <span className="font-bold text-heading">{text.adoptionPrompt}</span>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent underline underline-offset-4 group-hover:text-heading">
+                  {text.adoptionLink}
+                  <ArrowRight size={15} className="rtl:rotate-180" aria-hidden="true" />
+                </span>
+              </span>
             </Link>
           </div>
           <h2 className="sr-only">{text.title}</h2>
