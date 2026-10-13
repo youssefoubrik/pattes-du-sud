@@ -1,0 +1,22 @@
+import Link from "next/link";
+import { Container } from "@/components/ui/container";
+
+export default function NotFound() {
+  return (
+    <main id="main-content" className="flex-1 py-20">
+      <Container className="max-w-xl text-center">
+        <h1 className="text-4xl text-heading">Page not found</h1>
+        <p className="mt-4">
+          This page may have moved or the animal profile may no longer be
+          available.
+        </p>
+        <Link
+          href="/en"
+          className="mt-6 inline-flex min-h-11 items-center rounded-full bg-primary px-6 font-bold text-primary-foreground"
+        >
+          Go home
+        </Link>
+      </Container>
+    </main>
+  );
+}
