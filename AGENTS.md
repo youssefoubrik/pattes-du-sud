@@ -292,6 +292,8 @@ For now, store editable content in typed local data and translation files.
 
 Structure it so the source can later be replaced by a CMS without rewriting UI components.
 
+Current shared implementation choices: SQLite stores CMS edits and uploaded photos on a persistent server volume. Editors can replace sample animal records, page photos and translated copy. Donations use association-configured PayPal-hosted links and bank details; show only configured payment routes.
+
 Read `context.txt` before writing association history, care practices, donation uses, or transparency claims. It is the association's presentation for local authorities and describes its vision, activities, red-collar system, and recordkeeping. It does not give a founding date or registration reference. The presentation uses the English name “Southern Paws”; verify naming before using that name in public copy.
 
 ---

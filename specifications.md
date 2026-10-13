@@ -12,6 +12,102 @@
 
 **it** shows real proof, each animal's story, and exactly what every donation pays for, and the team can keep it up to date themselves.
 
+## Delivery tracker
+
+Checked items are implemented in the site. Account details and association facts still need to be entered before public launch.
+
+### Shared site
+
+- [x] Mobile header, navigation, language selector and Donate button
+- [x] Footer with editable contact, social and registration details
+- [x] English, French, German and right-to-left Arabic routes
+- [x] Page metadata, animal metadata, robots rules and sitemap
+- [x] Not-found and error pages
+- [ ] Mobile and keyboard accessibility review in real browsers
+
+### Home
+
+- [x] Introduction, animal photo and two calls to action
+- [x] Four-service overview
+- [x] Featured animal gallery with statuses
+- [x] Team introduction and optional verified impact figures
+- [x] Ways to help
+- [x] Supporters
+- [x] Mirleft map
+
+### About
+
+- [x] Introduction and purpose
+- [x] Care system and red-collar explanation
+- [x] Compact team profiles
+- [x] Association facts and recordkeeping
+- [x] Donate invitation
+
+### Animals gallery
+
+- [x] Dogs and cats with species and status filters
+- [x] Cards link to individual profiles
+- [x] Gallery links to adoption guidance
+
+### Animal profile
+
+- [x] Photo, name, status, age, sex and care facts
+- [x] Story, adoption contact, donation and share actions
+- [x] Unique social and search metadata
+
+### Adopt
+
+- [x] Introduction and three-step process
+- [x] Local and international guidance
+- [x] Contact action
+
+### Donate
+
+- [x] Donation purpose and editable PayPal-hosted links
+- [x] Bank details with copy buttons and recurring-transfer guidance
+- [x] Recordkeeping explanation and thank-you page
+- [ ] On-site amount selection tied to verified costs
+- [ ] Verified payment status and provider return flow
+
+### Mirleft QR page
+
+- [x] Short introduction, photo and Donate / Animals / Contact actions
+- [x] QR source tracking with `?source=location-name`
+
+### Volunteer
+
+- [x] Introduction and practical ways to help
+- [x] Visit-arrangement guidance and contact action
+
+### Contact
+
+- [x] WhatsApp and email actions
+- [x] Contact form stored in the editor inbox
+- [x] Visit guidance
+
+### Privacy and association information
+
+- [x] Privacy page and association-information page
+
+### CMS and storage
+
+- [x] SQLite database for animals, photos, messages, translated copy, settings and activity
+- [x] Password-protected editor with persistent sessions
+- [x] Add, edit and remove animals, including photo uploads
+- [x] Edit Home, About and other public page text in four languages
+- [x] Replace Home and About photos
+- [x] Edit contact, map, registration, PayPal, bank and impact details
+- [x] Visitor, country, animal-view, QR source and CTA counts
+- [x] Database backup and restore procedure
+- [ ] Association training video
+
+### Launch verification
+
+- [x] TypeScript, lint and production webpack build
+- [x] Route response checks in English and Arabic
+- [ ] End-to-end editor, donation and contact-flow testing in real browsers
+- [ ] Confirm association facts, contacts, payment accounts and imagery
+
 <aside>
 🏷️
 
