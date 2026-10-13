@@ -1,5 +1,6 @@
 import { getEditableCopy } from "@/lib/editable-copy";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -19,6 +20,8 @@ function parseAnimalId(value: string) {
   return Number.isSafeInteger(id) ? id : undefined;
 }
 
+type CompanionPageParams = Pick<PageProps<"/[locale]/companions/[id]">, "params">;
+
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/companions/[id]">): Promise<Metadata> {
@@ -37,9 +40,19 @@ export async function generateMetadata({
   );
 }
 
-export default async function AnimalDetail({
+export default function AnimalDetail({
   params,
-}: PageProps<"/[locale]/companions/[id]">) {
+}: CompanionPageParams) {
+  return (
+    <Suspense fallback={<CompanionFallback />}>
+      <AnimalDetailContent params={params} />
+    </Suspense>
+  );
+}
+
+async function AnimalDetailContent({
+  params,
+}: CompanionPageParams) {
   const { locale, id: rawId } = await params;
   if (!isLocale(locale)) notFound();
   const id = parseAnimalId(rawId);
@@ -123,6 +136,29 @@ export default async function AnimalDetail({
                   label={t.share}
                   copied={t.shareFallback}
                 />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+    </main>
+  );
+}
+
+function CompanionFallback() {
+  return (
+    <main aria-busy="true" className="flex-1">
+      <Section>
+        <Container>
+          <div aria-hidden="true" className="motion-safe:animate-pulse">
+            <div className="h-5 w-36 rounded bg-secondary" />
+            <div className="mt-7 grid gap-10 lg:grid-cols-2 lg:gap-16">
+              <div className="aspect-4/5 rounded-3xl bg-secondary" />
+              <div className="space-y-5 py-2">
+                <div className="h-5 w-32 rounded bg-secondary" />
+                <div className="h-12 w-2/3 rounded bg-secondary" />
+                <div className="h-6 w-1/3 rounded bg-secondary" />
+                <div className="mt-9 h-40 rounded-2xl bg-secondary" />
               </div>
             </div>
           </div>
