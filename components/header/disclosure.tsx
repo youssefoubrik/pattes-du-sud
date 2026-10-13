@@ -35,7 +35,7 @@ export function Disclosure({ label, closeLabel, trigger, openTrigger, children, 
         button.current?.focus();
       }
     }
-    const desktop = window.matchMedia("(min-width: 1024px)");
+    const desktop = window.matchMedia("(min-width: 1280px)");
     function resize() {
       if (mobile && desktop.matches) setOpen(false);
     }

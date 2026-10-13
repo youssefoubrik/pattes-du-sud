@@ -18,22 +18,22 @@ export function Header({ locale }: { locale: Locale }) {
       </a>
       <Container padding="compact" className="relative flex min-h-20 items-center justify-between gap-2 sm:gap-4 lg:min-h-24">
         <LogoLink locale={locale} responsive />
-        <div className="ms-auto hidden lg:block">
+        <div className="ms-auto hidden xl:block">
           <Navigation locale={locale} labels={labels} />
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <LanguageSwitcher locale={locale} label={labels.language} />
         </div>
-        <ButtonLink href={`/${locale}/donate`} variant="donate" compact className="ms-auto text-base! sm:text-[19px]! lg:ms-0">
+        <ButtonLink href={`/${locale}/donate`} variant="donate" compact className="ms-auto text-base! sm:text-[19px]! xl:ms-0">
           {labels.donate}
         </ButtonLink>
         <Disclosure
           label={labels.menu}
           closeLabel={labels.closeMenu}
           mobile
-          className="lg:hidden"
+          className="xl:hidden"
           buttonClassName="flex size-11 items-center justify-center rounded-lg text-heading transition-colors hover:bg-secondary"
-          panelClassName="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-b border-border bg-background px-4 py-4 shadow-sm sm:px-6"
+          panelClassName="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-b border-border bg-background px-4 py-4 shadow-sm sm:px-6 lg:max-h-[calc(100dvh-6rem)]"
           trigger={<Menu size={24} aria-hidden="true" />}
           openTrigger={<X size={24} aria-hidden="true" />}
         >

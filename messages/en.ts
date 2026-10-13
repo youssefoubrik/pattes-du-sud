@@ -1,5 +1,6 @@
 export const en = {
   location: "Mirleft, Morocco",
+  homeNav: "Home",
   about: "About",
   animals: "Animals",
   volunteer: "Volunteer",

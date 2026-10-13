@@ -14,7 +14,7 @@ export function Navigation({ locale, labels, mobile = false }: { locale: Locale;
       <ul className={mobile ? "flex flex-col gap-1" : "flex items-center gap-2 xl:gap-4"}>
         {navigation.map((item) => {
           const href = `/${locale}${item.href}`;
-          const current = pathname === href || pathname.startsWith(`${href}/`);
+          const current = pathname === href || (item.href === "" ? pathname === `${href}/` : pathname.startsWith(`${href}/`));
           return (
             <li key={item.href}>
               <Link href={href} aria-current={current ? "page" : undefined} className={`flex min-h-11 items-center rounded-lg px-3 text-base font-medium text-heading transition-colors hover:bg-secondary ${current ? "bg-secondary underline decoration-2 underline-offset-8" : ""}`}>

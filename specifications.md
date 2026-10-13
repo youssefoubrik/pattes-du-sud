@@ -135,7 +135,7 @@ Checked items are implemented in the site. Account details and association facts
 ### Shared header
 
 - Logo linking to the home page
-- Navigation: **About**, **Animals**, **Volunteer**, **Contact**
+- Navigation: **Home**, **About**, **Animals**, **Volunteer**, **Contact**
 - Language selector: **English, Français, Deutsch, العربية**
 - A prominent orange **Donate** button
 - On mobile: logo, Donate button and a menu button; navigation and languages inside the menu

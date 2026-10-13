@@ -141,7 +141,7 @@ Admin:
 Languages use locale prefixes:
 `/en`, `/fr`, `/de`, `/ar`
 
-The public header navigation includes About, Animals, Volunteer, and Contact,
+The public header navigation includes Home, About, Animals, Volunteer, and Contact,
 alongside a language selector and a prominent Donate button.
 
 The Animals gallery links to the dedicated Adopt page explaining how adoption works.
