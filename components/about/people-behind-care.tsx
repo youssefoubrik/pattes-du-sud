@@ -30,23 +30,24 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
         {members.length > 0 && (
           <>
             <p className="mt-10 text-sm font-semibold text-muted-foreground">{text.sampleNotice}</p>
-            <ul className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="mt-4 grid gap-4 lg:grid-cols-2 lg:gap-6">
               {members.map((member) => (
                 <li key={member.id}>
-                  <article>
-                    <div className="aspect-4/5 overflow-hidden rounded-2xl bg-secondary">
+                  <article className="grid h-full grid-cols-[96px_minmax(0,1fr)] gap-4 rounded-2xl border border-border bg-surface p-3 sm:grid-cols-[144px_minmax(0,1fr)] sm:gap-5 sm:p-4">
+                    <div className="relative min-h-32 overflow-hidden rounded-xl bg-secondary">
                       <Image
                         src={member.portrait.src}
                         alt=""
-                        width={member.portrait.width}
-                        height={member.portrait.height}
-                        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
-                        className="h-full w-full object-cover"
+                        fill
+                        sizes="(max-width: 639px) 96px, 144px"
+                        className="object-cover"
                       />
                     </div>
-                    <h3 className="mt-4 text-xl font-semibold text-heading">{member.firstName}</h3>
-                    <p className="mt-1 font-bold text-primary-hover">{member.role[locale]}</p>
-                    <p className="mt-2 leading-relaxed text-foreground">{member.work[locale]}</p>
+                    <div className="min-w-0 self-center">
+                      <h3 className="text-xl font-semibold text-heading">{member.firstName}</h3>
+                      <p className="mt-1 break-words font-bold leading-snug text-primary-hover">{member.role[locale]}</p>
+                      <p className="mt-2 break-words leading-relaxed text-foreground">{member.work[locale]}</p>
+                    </div>
                   </article>
                 </li>
               ))}

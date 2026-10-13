@@ -27,27 +27,27 @@ export function AnimalGallery({
 
   return (
     <div>
-      <div className="flex flex-col gap-5 border-b border-border pb-6 lg:flex-row lg:items-end lg:justify-between">
-          <FilterGroup
-            label={text.speciesLabel}
-            options={[
-              { value: "all", label: text.all },
-              { value: "dog", label: text.dogs },
-              { value: "cat", label: text.cats },
-            ]}
-            selected={species}
-            onSelect={setSpecies}
-          />
-          <FilterGroup
-            label={text.statusLabel}
-            options={[
-              { value: "all", label: text.all },
-              { value: "available", label: text.available },
-              { value: "adopted", label: text.adopted },
-            ]}
-            selected={status}
-            onSelect={setStatus}
-          />
+      <div className="flex flex-col gap-5 bg-surface p-4 sm:p-6 lg:flex-row lg:items-center lg:justify-between">
+        <FilterGroup
+          label={text.speciesLabel}
+          options={[
+            { value: "all", label: text.all },
+            { value: "dog", label: text.dogs },
+            { value: "cat", label: text.cats },
+          ]}
+          selected={species}
+          onSelect={setSpecies}
+        />
+        <FilterGroup
+          label={text.statusLabel}
+          options={[
+            { value: "all", label: text.all },
+            { value: "available", label: text.available },
+            { value: "adopted", label: text.adopted },
+          ]}
+          selected={status}
+          onSelect={setStatus}
+        />
       </div>
       <div className="pt-7">
         <p
@@ -98,7 +98,7 @@ function FilterGroup<T extends string>({
             type="button"
             aria-pressed={selected === option.value}
             onClick={() => onSelect(option.value)}
-            className="min-h-11 rounded-full border border-border bg-surface px-4 text-sm font-bold text-heading transition-colors hover:bg-secondary aria-pressed:border-heading aria-pressed:bg-heading aria-pressed:text-primary-foreground"
+            className="min-h-11 rounded-full border border-border px-4 text-sm font-bold text-heading transition-colors hover:bg-secondary aria-pressed:border-heading aria-pressed:bg-heading aria-pressed:text-primary-foreground"
           >
             {option.label}
           </button>

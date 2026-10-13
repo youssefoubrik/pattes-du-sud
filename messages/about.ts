@@ -8,7 +8,12 @@ type AboutMessages = {
   purpose: string;
   imageAlt: string;
   imageCaption: string;
-  care: { title: string; introduction: string; followUp: string };
+  care: {
+    title: string;
+    introduction: string;
+    steps: { title: string; description: string }[];
+    redCollar: { title: string; description: string };
+  };
   team: { title: string; introduction: string; volunteer: string; sampleNotice: string };
   association: {
     place: string;
@@ -18,7 +23,8 @@ type AboutMessages = {
     area: string;
     visitNote: string;
     contact: string;
-    mapTitle: string;
+    recordsTitle: string;
+    records: string[];
   };
   closingInvitation: string;
 };
@@ -26,20 +32,28 @@ type AboutMessages = {
 export const aboutMessages: Record<Locale, AboutMessages> = {
   en: {
     title: "About Pattes du Sud",
-    description: "Get to know Pattes du Sud, an animal-protection association caring for street dogs and cats in Mirleft, Morocco.",
+    description: "Discover why Pattes du Sud began in Mirleft, how it cares for street animals, and how the association records its work.",
     eyebrow: "Mirleft, Morocco",
-    introduction: "Pattes du Sud is an animal-protection association based in Mirleft, Morocco. We care for the dogs and cats who live on its streets.",
-    purpose: "Our work brings together food, veterinary care and sterilization, with the hope of giving more animals a safer, healthier life.",
+    introduction: "Pattes du Sud grew from a simple conviction in Mirleft: we cannot look away while street dogs and cats face hunger, injury and illness.",
+    purpose: "Our purpose is lasting protection through veterinary care, prevention and follow-up, so animals can live with dignity and greater safety.",
     imageAlt: "A person gently holding a small black-and-white puppy.",
-    imageCaption: "Care for animals starts with people who show up.",
+    imageCaption: "A quiet moment of care with a young dog.",
     care: {
-      title: "Care that continues",
-      introduction: "Our work meets different needs, from daily food and veterinary treatment to finding an animal a home.",
-      followUp: "We check on the animals we help and keep track of their treatment and follow-up, so care can continue beyond one visit.",
+      title: "How our care works",
+      introduction: "We combine immediate help with prevention and follow-up, so care continues beyond one visit.",
+      steps: [
+        { title: "Respond to immediate needs", description: "Food, water and veterinary care help animals facing hunger, injury or illness." },
+        { title: "Prevent further suffering", description: "Vaccination and sterilisation help protect animals and reduce uncontrolled litters." },
+        { title: "Identify and follow up", description: "We document care and track animals we help, checking on them again where possible." },
+      ],
+      redCollar: {
+        title: "What the red collar means",
+        description: "In our street-dog programme, a red collar marks a dog that has been identified, vaccinated and sterilised. Please leave it on so the dog can be recognised and repeat interventions avoided.",
+      },
     },
     team: {
       title: "The people behind the care",
-      introduction: "People in Mirleft make this work possible, from checking on street animals to arranging the care they need.",
+      introduction: "Care depends on different people doing different jobs. Here is what each person contributes.",
       volunteer: "Volunteer with us",
       sampleNotice: "Illustrative profiles. Team details are being confirmed.",
     },
@@ -51,26 +65,35 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "Mirleft and the surrounding area",
       visitNote: "Please arrange a visit with our team before coming by.",
       contact: "Contact us",
-      mapTitle: "Map of Mirleft town centre, Morocco",
+      recordsTitle: "What we record",
+      records: ["Income and expenses, with invoices and supporting documents", "Veterinary care and animals taken into care", "Project progress and results shared with supporters"],
     },
     closingInvitation: "Together, we can give more of Mirleft’s street animals the care they need.",
   },
   fr: {
     title: "À propos de Pattes du Sud",
-    description: "Découvrez Pattes du Sud, une association de protection animale qui prend soin des chiens et des chats des rues de Mirleft, au Maroc.",
+    description: "Découvrez pourquoi Pattes du Sud est née à Mirleft, comment elle protège les animaux des rues et comment elle documente ses actions.",
     eyebrow: "Mirleft, Maroc",
-    introduction: "Pattes du Sud est une association de protection animale basée à Mirleft, au Maroc. Nous prenons soin des chiens et des chats qui vivent dans ses rues.",
-    purpose: "Notre action réunit alimentation, soins vétérinaires et stérilisation, pour aider davantage d’animaux à vivre en meilleure santé et en sécurité.",
+    introduction: "Pattes du Sud est née à Mirleft d’une conviction simple : impossible de détourner le regard quand les chiens et chats des rues souffrent de faim, de blessures ou de maladie.",
+    purpose: "Notre objectif est de les protéger durablement grâce aux soins vétérinaires, à la prévention et au suivi, afin qu’ils vivent avec davantage de dignité et de sécurité.",
     imageAlt: "Une personne tient doucement un petit chiot noir et blanc.",
-    imageCaption: "Prendre soin des animaux commence avec des personnes présentes sur le terrain.",
+    imageCaption: "Un moment de douceur auprès d’un jeune chien.",
     care: {
-      title: "Des soins qui se poursuivent",
-      introduction: "Nos actions répondent à différents besoins, de la nourriture aux soins vétérinaires, jusqu’à la recherche d’un foyer.",
-      followUp: "Nous prenons des nouvelles des animaux aidés et suivons leurs soins et les étapes à venir, pour les accompagner au-delà d’une seule visite.",
+      title: "Comment nous agissons",
+      introduction: "Nous associons aide immédiate, prévention et suivi pour que les soins se poursuivent au-delà d’une visite.",
+      steps: [
+        { title: "Répondre aux besoins urgents", description: "Nourriture, eau et soins vétérinaires aident les animaux qui souffrent de faim, de blessures ou de maladie." },
+        { title: "Prévenir de nouvelles souffrances", description: "Vaccination et stérilisation protègent les animaux et limitent les naissances non maîtrisées." },
+        { title: "Identifier et suivre", description: "Nous documentons les soins et suivons les animaux aidés, en retournant les voir quand c’est possible." },
+      ],
+      redCollar: {
+        title: "Que signifie le collier rouge ?",
+        description: "Dans notre programme pour les chiens des rues, un collier rouge indique qu’un chien a été identifié, vacciné et stérilisé. Merci de ne pas l’enlever : il permet de le reconnaître et d’éviter des interventions répétées.",
+      },
     },
     team: {
       title: "Les personnes derrière les soins",
-      introduction: "À Mirleft, des personnes veillent sur les animaux des rues et organisent les soins dont ils ont besoin.",
+      introduction: "Prendre soin des animaux demande des rôles différents. Voici ce que chacun apporte à l’équipe.",
       volunteer: "Devenir bénévole",
       sampleNotice: "Profils illustratifs. Les informations sur l’équipe sont en cours de confirmation.",
     },
@@ -82,26 +105,35 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "Mirleft et ses environs",
       visitNote: "Merci de convenir d’une visite avec notre équipe avant de venir.",
       contact: "Nous contacter",
-      mapTitle: "Carte du centre de Mirleft, au Maroc",
+      recordsTitle: "Ce que nous documentons",
+      records: ["Recettes et dépenses, avec factures et justificatifs", "Soins vétérinaires et animaux pris en charge", "Avancement et résultats des projets communiqués aux soutiens"],
     },
     closingInvitation: "Ensemble, nous pouvons offrir aux animaux des rues de Mirleft les soins dont ils ont besoin.",
   },
   de: {
     title: "Über Pattes du Sud",
-    description: "Lerne Pattes du Sud kennen, einen Tierschutzverein für Straßenhunde und Straßenkatzen in Mirleft, Marokko.",
+    description: "Erfahre, warum Pattes du Sud in Mirleft entstand, wie der Verein Straßentieren hilft und seine Arbeit dokumentiert.",
     eyebrow: "Mirleft, Marokko",
-    introduction: "Pattes du Sud ist ein Tierschutzverein in Mirleft, Marokko. Wir kümmern uns um die Hunde und Katzen, die auf den Straßen des Ortes leben.",
-    purpose: "Unsere Arbeit umfasst Futter, tierärztliche Versorgung und Kastration. So möchten wir mehr Tieren ein sichereres und gesünderes Leben ermöglichen.",
+    introduction: "Pattes du Sud entstand in Mirleft aus einer einfachen Überzeugung: Wir dürfen nicht wegsehen, wenn Straßenhunde und Straßenkatzen hungern, verletzt oder krank sind.",
+    purpose: "Unser Ziel ist dauerhafter Schutz durch tierärztliche Versorgung, Vorbeugung und Nachsorge, damit Tiere würdiger und sicherer leben können.",
     imageAlt: "Eine Person hält einen kleinen schwarz-weißen Welpen behutsam im Arm.",
-    imageCaption: "Tierfürsorge beginnt mit Menschen, die vor Ort helfen.",
+    imageCaption: "Ein ruhiger Moment der Zuwendung mit einem jungen Hund.",
     care: {
-      title: "Hilfe, die weitergeht",
-      introduction: "Unsere Arbeit reicht von täglichem Futter und tierärztlicher Behandlung bis zur Suche nach einem Zuhause.",
-      followUp: "Wir sehen nach den Tieren, denen wir helfen, und halten Behandlungen und Nachsorge fest, damit ihre Versorgung nicht nach einem Besuch endet.",
+      title: "So funktioniert unsere Hilfe",
+      introduction: "Wir verbinden unmittelbare Hilfe mit Vorbeugung und Nachsorge, damit die Versorgung nach einem Besuch weitergeht.",
+      steps: [
+        { title: "Akute Bedürfnisse versorgen", description: "Futter, Wasser und tierärztliche Hilfe unterstützen Tiere bei Hunger, Verletzungen oder Krankheit." },
+        { title: "Weiteres Leid verhindern", description: "Impfungen und Kastrationen schützen Tiere und begrenzen unkontrollierte Würfe." },
+        { title: "Erfassen und begleiten", description: "Wir dokumentieren die Versorgung und sehen nach den Tieren, denen wir helfen, wenn es möglich ist." },
+      ],
+      redCollar: {
+        title: "Was das rote Halsband bedeutet",
+        description: "In unserem Programm für Straßenhunde kennzeichnet ein rotes Halsband einen Hund, der erfasst, geimpft und kastriert wurde. Bitte lass es am Hund, damit er erkannt und unnötige erneute Eingriffe vermieden werden können.",
+      },
     },
     team: {
       title: "Die Menschen hinter der Fürsorge",
-      introduction: "Menschen in Mirleft kümmern sich um Straßentiere und organisieren die Versorgung, die sie brauchen.",
+      introduction: "Tierfürsorge braucht Menschen mit unterschiedlichen Aufgaben. Hier siehst du, welchen Beitrag jeder im Team leistet.",
       volunteer: "Hilf ehrenamtlich mit",
       sampleNotice: "Beispielprofile. Die Angaben zum Team werden noch bestätigt.",
     },
@@ -113,26 +145,35 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "Mirleft und Umgebung",
       visitNote: "Bitte vereinbare vor deinem Besuch einen Termin mit unserem Team.",
       contact: "Kontakt aufnehmen",
-      mapTitle: "Karte des Ortszentrums von Mirleft, Marokko",
+      recordsTitle: "Was wir dokumentieren",
+      records: ["Einnahmen und Ausgaben mit Rechnungen und Belegen", "Tierärztliche Versorgung und betreute Tiere", "Projektfortschritte und Ergebnisse für unsere Unterstützer"],
     },
     closingInvitation: "Gemeinsam können wir mehr Straßentieren in Mirleft die Hilfe geben, die sie brauchen.",
   },
   ar: {
     title: "تعرّف على بات دو سود",
-    description: "تعرّف على جمعية بات دو سود لرعاية الكلاب والقطط التي تعيش في شوارع ميرلفت بالمغرب.",
+    description: "تعرّف على سبب تأسيس بات دو سود في ميرلفت، وكيف ترعى حيوانات الشوارع وتوثّق عملها.",
     eyebrow: "ميرلفت، المغرب",
-    introduction: "بات دو سود جمعية لحماية الحيوانات في ميرلفت بالمغرب. نهتم بالكلاب والقطط التي تعيش في شوارع البلدة.",
-    purpose: "يشمل عملنا توفير الطعام والرعاية البيطرية والتعقيم، حتى تحظى حيوانات أكثر بحياة أكثر أمانًا وصحة.",
+    introduction: "نشأت بات دو سود في ميرلفت من قناعة بسيطة: لا ينبغي أن نغضّ الطرف عن جوع كلاب وقطط الشوارع وإصاباتها وأمراضها.",
+    purpose: "هدفنا حمايتها على المدى الطويل عبر الرعاية البيطرية والوقاية والمتابعة، لتعيش بكرامة وأمان أكبر.",
     imageAlt: "شخص يحمل جرواً صغيراً أبيض وأسود برفق.",
-    imageCaption: "تبدأ رعاية الحيوانات بأشخاص يمدّون لها يد العون.",
+    imageCaption: "لحظة هادئة من الرعاية مع كلب صغير.",
     care: {
-      title: "رعاية تستمر",
-      introduction: "تستجيب جهودنا لاحتياجات مختلفة، من الطعام والعلاج البيطري إلى مساعدة الحيوان في العثور على بيت.",
-      followUp: "نتابع أحوال الحيوانات التي نساعدها ونسجّل علاجها وما تحتاجه لاحقًا، حتى لا تتوقف رعايتها عند زيارة واحدة.",
+      title: "كيف نقدّم الرعاية",
+      introduction: "نجمع بين المساعدة العاجلة والوقاية والمتابعة حتى تستمر الرعاية بعد الزيارة الأولى.",
+      steps: [
+        { title: "تلبية الاحتياجات العاجلة", description: "يساعد الطعام والماء والعلاج البيطري الحيوانات التي تواجه الجوع أو الإصابة أو المرض." },
+        { title: "الوقاية من المعاناة", description: "يساعد التطعيم والتعقيم على حماية الحيوانات والحد من التكاثر غير المنضبط." },
+        { title: "التعريف والمتابعة", description: "نوثّق الرعاية المقدّمة للحيوانات ونطمئن عليها مجددًا كلما أمكن." },
+      ],
+      redCollar: {
+        title: "ماذا يعني الطوق الأحمر؟",
+        description: "في برنامجنا الخاص بكلاب الشوارع، يدلّ الطوق الأحمر على أن الكلب جرى التعرف عليه وتطعيمه وتعقيمه. يُرجى عدم نزعه حتى يسهل التعرّف عليه وتجنّب تكرار التدخلات دون حاجة.",
+      },
     },
     team: {
       title: "الأشخاص الذين يقدّمون الرعاية",
-      introduction: "يقف وراء هذا العمل أشخاص في ميرلفت يتابعون أحوال حيوانات الشوارع وينظّمون الرعاية التي تحتاج إليها.",
+      introduction: "تحتاج رعاية الحيوانات إلى أشخاص يقوم كل منهم بدور مختلف. إليك ما يقدّمه كل فرد في الفريق.",
       volunteer: "تطوّع معنا",
       sampleNotice: "ملفات تعريفية توضيحية. تفاصيل الفريق قيد التأكيد.",
     },
@@ -144,7 +185,8 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "ميرلفت والمناطق المحيطة بها",
       visitNote: "يُرجى ترتيب الزيارة مع فريقنا قبل المجيء.",
       contact: "تواصل معنا",
-      mapTitle: "خريطة وسط ميرلفت، المغرب",
+      recordsTitle: "ما الذي نوثّقه؟",
+      records: ["الإيرادات والمصروفات مع الفواتير والمستندات", "العلاجات البيطرية والحيوانات التي نتكفّل بها", "تقدّم المشاريع ونتائجها التي نشاركها مع الداعمين"],
     },
     closingInvitation: "معًا، يمكننا توفير الرعاية التي تحتاج إليها حيوانات الشوارع في ميرلفت.",
   },

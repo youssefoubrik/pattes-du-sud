@@ -47,6 +47,11 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground">{text.introduction}</p>
             <p className="mt-4 max-w-lg text-lg leading-relaxed text-foreground">{text.purpose}</p>
+            {aboutContent.foundingStory && (
+              <p className="mt-4 max-w-lg text-lg leading-relaxed text-foreground">
+                {aboutContent.foundingStory[locale]}
+              </p>
+            )}
           </div>
           <figure>
             <SectionImage src={image.src} alt={text.imageAlt} preload objectPosition="center 45%" />

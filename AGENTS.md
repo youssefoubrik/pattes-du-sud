@@ -292,11 +292,15 @@ For now, store editable content in typed local data and translation files.
 
 Structure it so the source can later be replaced by a CMS without rewriting UI components.
 
+Read `context.txt` before writing association history, care practices, donation uses, or transparency claims. It is the association's presentation for local authorities and describes its vision, activities, red-collar system, and recordkeeping. It does not give a founding date or registration reference. The presentation uses the English name “Southern Paws”; verify naming before using that name in public copy.
+
 ---
 
 Homepage animal previews use a staggered photo gallery with names and clear statuses. Reuse animal records, including cats, dogs, and adopted animals; optional personality text needs no separate homepage copy.
 
 The homepage location block uses an interactive Google Map. Keep its embed URL in content data so the association's location can be supplied by the CMS.
+
+The About page should complement Home with the association's history, reason for founding, care system, people, and verifiable facts. Keep the Mirleft map and four-service overview on Home. Use compact horizontal team profiles and a Donate-only closing invitation; show Contact once in the association facts section.
 
 ## Editable Images
 
@@ -390,7 +394,9 @@ When implementing a task:
 . Mention genuine remaining limitations.
 . If several implementation approaches are reasonable, choose the simplest production-quality solution.
 . Do not overengineer.
+. Challenge the project owner's ideas constructively. Offer better options and trade-offs when you see them, and judge choices by what helps visitors complete their tasks. Favor pragmatic clarity over decorative patterns or agreement for its own sake.
 . Keep Markdown updates brief and necessary. Do not add progress notes, implementation summaries, or routine UI details unless requested. Keep the README focused on setup and reference information.
+. Temporary content is intentional and will be replaced later. Do not mention illustrative content, placeholders, or replacement reminders to the project owner in commentary or final responses.
 . Record agreed changes to shared design choices in AGENTS.md, briefly.
 
 <!-- BEGIN:nextjs-agent-feedback -->

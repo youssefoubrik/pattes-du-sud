@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -17,17 +16,9 @@ export function ClosingInvitation({ locale }: { locale: Locale }) {
         <h2 id="about-closing-title" className="max-w-2xl text-2xl font-semibold leading-snug text-heading sm:text-3xl">
           {aboutMessages[locale].closingInvitation}
         </h2>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <ButtonLink href={`/${locale}/donate`} variant="donate">
-            {labels.donate}
-          </ButtonLink>
-          <Link
-            href={`/${locale}/contact`}
-            className="inline-flex min-h-11 items-center rounded-sm font-bold text-heading underline decoration-border underline-offset-4 hover:decoration-heading"
-          >
-            {labels.contact}
-          </Link>
-        </div>
+        <ButtonLink href={`/${locale}/donate`} variant="donate">
+          {labels.donate}
+        </ButtonLink>
       </Container>
     </Section>
   );

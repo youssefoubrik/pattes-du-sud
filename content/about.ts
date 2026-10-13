@@ -12,6 +12,7 @@ type TeamMember = {
 
 type AboutContent = {
   introductionImage: { src: string; width: number; height: number };
+  foundingStory: LocalizedText | null;
   teamMembers: TeamMember[];
 };
 
@@ -22,6 +23,8 @@ export const aboutContent: AboutContent = {
     width: 1200,
     height: 800,
   },
+  // A dated account of the founding can be added here when its details are confirmed.
+  foundingStory: null,
   // Temporary example profiles. Replace every name, detail, and stock portrait with approved team information before publication.
   // Portrait sources: https://unsplash.com/photos/photo-1534528741775-53994a69daeb,
   // https://unsplash.com/photos/photo-1500648767791-00dcc994a43e,
@@ -33,10 +36,10 @@ export const aboutContent: AboutContent = {
       firstName: "Amina",
       role: { en: "Animal care", fr: "Soins aux animaux", de: "Tierbetreuung", ar: "رعاية الحيوانات" },
       work: {
-        en: "Checks on animals and helps organise their daily care.",
-        fr: "Prend des nouvelles des animaux et aide à organiser leurs soins quotidiens.",
-        de: "Sieht nach den Tieren und hilft, ihre tägliche Versorgung zu organisieren.",
-        ar: "تتابع أحوال الحيوانات وتساعد في تنظيم رعايتها اليومية.",
+        en: "Visits animals, notes changes in their condition, and plans daily care.",
+        fr: "Rend visite aux animaux, note l’évolution de leur état et organise les soins quotidiens.",
+        de: "Besucht die Tiere, beobachtet Veränderungen und plant ihre tägliche Versorgung.",
+        ar: "تزور الحيوانات وتلاحظ تغيّر حالتها وتنظّم رعايتها اليومية.",
       },
       portrait: { src: "/images/team-amina-stock.jpg", width: 600, height: 750 },
     },
@@ -45,10 +48,10 @@ export const aboutContent: AboutContent = {
       firstName: "Youssef",
       role: { en: "Veterinary liaison", fr: "Lien avec les vétérinaires", de: "Kontakt zu Tierärzten", ar: "التنسيق مع الأطباء البيطريين" },
       work: {
-        en: "Helps arrange appointments and follow-up treatment.",
-        fr: "Aide à organiser les rendez-vous et le suivi des traitements.",
-        de: "Hilft bei Terminen und der Nachsorge nach Behandlungen.",
-        ar: "يساعد في ترتيب المواعيد ومتابعة العلاج.",
+        en: "Contacts veterinary practices, arranges appointments, and follows treatment plans.",
+        fr: "Contacte les vétérinaires, organise les rendez-vous et suit les traitements.",
+        de: "Kontaktiert Tierarztpraxen, vereinbart Termine und verfolgt Behandlungspläne.",
+        ar: "يتواصل مع العيادات البيطرية ويرتّب المواعيد ويتابع خطط العلاج.",
       },
       portrait: { src: "/images/team-youssef-stock.jpg", width: 600, height: 750 },
     },
@@ -57,10 +60,10 @@ export const aboutContent: AboutContent = {
       firstName: "Salma",
       role: { en: "Adoption support", fr: "Accompagnement des adoptions", de: "Adoptionsbegleitung", ar: "متابعة التبنّي" },
       work: {
-        en: "Helps people learn about animals looking for a home.",
-        fr: "Aide les personnes à découvrir les animaux qui cherchent un foyer.",
-        de: "Hilft Menschen, Tiere kennenzulernen, die ein Zuhause suchen.",
-        ar: "تساعد المهتمين على التعرّف إلى الحيوانات التي تبحث عن بيت.",
+        en: "Introduces prospective adopters to animals and helps with their first questions.",
+        fr: "Présente les animaux aux personnes souhaitant adopter et répond à leurs premières questions.",
+        de: "Stellt Interessierten die Tiere vor und beantwortet ihre ersten Fragen zur Adoption.",
+        ar: "تعرّف الراغبين في التبنّي بالحيوانات وتجيب عن أسئلتهم الأولى.",
       },
       portrait: { src: "/images/team-salma-stock.jpg", width: 600, height: 750 },
     },
@@ -69,10 +72,10 @@ export const aboutContent: AboutContent = {
       firstName: "Karim",
       role: { en: "Volunteer coordination", fr: "Coordination des bénévoles", de: "Freiwilligenkoordination", ar: "تنسيق المتطوعين" },
       work: {
-        en: "Helps visitors find practical ways to support the work.",
-        fr: "Aide les visiteurs à trouver comment soutenir les actions sur place.",
-        de: "Zeigt Besuchern, wie sie die Arbeit vor Ort unterstützen können.",
-        ar: "يساعد الزوار على إيجاد طرق عملية لدعم العمل.",
+        en: "Welcomes volunteer enquiries and coordinates useful tasks for visitors.",
+        fr: "Accueille les demandes de bénévolat et coordonne les tâches utiles pour les visiteurs.",
+        de: "Beantwortet Anfragen von Freiwilligen und koordiniert Aufgaben für Besucher.",
+        ar: "يستقبل طلبات التطوع وينسّق المهام المناسبة للزوار.",
       },
       portrait: { src: "/images/team-karim-stock.jpg", width: 600, height: 750 },
     },
