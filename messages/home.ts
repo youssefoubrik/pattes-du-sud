@@ -34,8 +34,6 @@ type HomeMessages = {
     description: string;
     donate: { title: string; description: string; cta: string };
     volunteer: { title: string; description: string; cta: string };
-    otherHelp: string;
-    contactCta: string;
   };
   location: {
     place: string;
@@ -89,8 +87,6 @@ export const homeMessages: Record<Locale, HomeMessages> = {
         description: "Visiting Mirleft? Arrange a visit with our team and find out how you can help in person.",
         cta: "Explore volunteering",
       },
-      otherHelp: "Want to bring supplies or help in another way?",
-      contactCta: "Contact our team",
     },
     location: {
       place: "Mirleft, Morocco",
@@ -145,8 +141,6 @@ export const homeMessages: Record<Locale, HomeMessages> = {
         description: "De passage à Mirleft ? Organisez une visite avec notre équipe pour découvrir comment aider sur place.",
         cta: "Découvrir le bénévolat",
       },
-      otherHelp: "Vous souhaitez apporter du matériel ou aider autrement ?",
-      contactCta: "Contactez notre équipe",
     },
     location: {
       place: "Mirleft, Maroc",
@@ -201,8 +195,6 @@ export const homeMessages: Record<Locale, HomeMessages> = {
         description: "Du bist in Mirleft? Vereinbare einen Besuch mit unserem Team und erfahre, wie du vor Ort helfen kannst.",
         cta: "Ehrenamt entdecken",
       },
-      otherHelp: "Du möchtest Sachspenden mitbringen oder anders helfen?",
-      contactCta: "Kontaktiere unser Team",
     },
     location: {
       place: "Mirleft, Marokko",
@@ -257,8 +249,6 @@ export const homeMessages: Record<Locale, HomeMessages> = {
         description: "هل تزور ميرلفت؟ رتّب زيارة مع فريقنا لتعرف كيف يمكنك المساعدة على أرض الواقع.",
         cta: "اكتشف فرص التطوّع",
       },
-      otherHelp: "هل ترغب في إحضار مستلزمات أو المساعدة بطريقة أخرى؟",
-      contactCta: "تواصل مع فريقنا",
     },
     location: {
       place: "ميرلفت، المغرب",

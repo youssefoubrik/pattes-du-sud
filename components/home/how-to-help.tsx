@@ -1,5 +1,4 @@
 import { getEditableCopy } from "@/lib/editable-copy";
-import Link from "next/link";
 import { HandHeart, MessageCircle } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -68,15 +67,6 @@ export function HowToHelp({ locale }: { locale: Locale }) {
           </article>
         </div>
 
-        <p className="mt-8 text-center leading-relaxed text-foreground">
-          {text.otherHelp}{" "}
-          <Link
-            href={`/${locale}/contact`}
-            className="inline-flex min-h-11 items-center font-bold text-heading underline decoration-border underline-offset-4 hover:decoration-heading"
-          >
-            {text.contactCta}
-          </Link>
-        </p>
       </Container>
     </Section>
   );
