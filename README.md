@@ -15,7 +15,7 @@ Open http://localhost:3000.
 
 ## Editor and storage
 
-The editor is at `/en/admin`. Set `ADMIN_PASSWORD_HASH` in `.env.local` before signing in. Generate it with `npm run admin:hash` and provide a password of at least 16 characters on standard input. Example: `npm run admin:hash < password.txt`.
+The editor is at `/en/admin`. Set `ADMIN_PASSWORD_HASH` in `.env.local` before signing in. Run `npm run admin:hash`, type a password of at least 16 characters at the hidden prompt, and press Enter. Put the printed hash in `.env.local`, restart the server, then sign in with the original password.
 
 Animal records, uploaded photos, contact messages, translated text, settings and anonymous activity counts live in the SQLite file at `DATABASE_PATH`. The default is `data/site.sqlite`. Keep this file on a persistent disk when deploying; serverless ephemeral storage is unsuitable. The database is created and seeded on first use. Never commit it.
 
