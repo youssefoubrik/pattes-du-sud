@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle, PawPrint } from "lucide-react";
 import { LocationLabel } from "@/components/location-label";
 import { footerContent } from "@/content/footer";
 import { getSettings } from "@/lib/db";
@@ -23,7 +23,12 @@ export function Footer({ locale }: { locale: Locale }) {
   const contact = { ...settings, whatsappNumber: settings.whatsappNumber, whatsappDisplay: settings.whatsappDisplay };
 
   return (
-    <footer className="mt-auto border-t border-border bg-secondary text-foreground">
+    <footer className="relative mt-auto border-t border-border bg-secondary text-foreground">
+      <div aria-hidden="true" className="pointer-events-none absolute right-8 top-2 flex items-center gap-2 text-decoration opacity-60">
+        <PawPrint size={18} className="-rotate-12 fill-current" />
+        <PawPrint size={21} className="translate-y-1 rotate-12 fill-current" />
+        <PawPrint size={18} className="-rotate-6 fill-current" />
+      </div>
       <Container className="pt-12">
         <div className="grid gap-10 pb-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-16">
           <div className="md:col-span-2 lg:col-span-1">
