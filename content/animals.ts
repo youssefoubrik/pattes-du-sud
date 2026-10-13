@@ -20,7 +20,15 @@ export const animals: Animal[] = [
   { slug: "sami", name: "Sami", species: "cat", status: "adopted", ageYears: 4, personality: "gentle", image: { src: "/images/animals/sami.jpg" }, addedAt: "2026-10-03" },
   { slug: "jack", name: "Jack", species: "dog", status: "adopted", ageYears: 3, personality: "playful", image: { src: "/images/animals/jack.jpg" }, addedAt: "2026-10-02" },
   { slug: "mimi", name: "Mimi", species: "cat", status: "available", personality: "playful", image: { src: "/images/animals/mimi.jpg" }, addedAt: "2026-10-01" },
+  { slug: "biscuit", name: "Biscuit", species: "dog", status: "available", ageYears: 2, personality: "playful", image: { src: "/images/animals/jack.jpg" }, addedAt: "2026-10-12" },
+  { slug: "pepper", name: "Pepper", species: "cat", status: "available", ageYears: 1, personality: "curious", image: { src: "/images/animals/milo.jpg" }, addedAt: "2026-10-11" },
+  { slug: "rosie", name: "Rosie", species: "dog", status: "inCare", ageYears: 4, personality: "gentle", image: { src: "/images/animals/luna.jpg" }, addedAt: "2026-10-10" },
+  { slug: "olive", name: "Olive", species: "cat", status: "adopted", ageYears: 3, personality: "shy", image: { src: "/images/animals/sami.jpg" }, addedAt: "2026-10-09" },
+  { slug: "maple", name: "Maple", species: "dog", status: "adopted", ageYears: 5, personality: "gentle", image: { src: "/images/animals/nala.jpg" }, addedAt: "2026-10-08" },
+  { slug: "pistachio", name: "Pistachio", species: "cat", status: "available", ageYears: 2, personality: "playful", image: { src: "/images/animals/mimi.jpg" }, addedAt: "2026-10-07" },
 ];
+
+export const paginationSampleAnimals = animals.slice(6);
 
 export function getHomepageAnimals(records: readonly Animal[] = animals): Animal[] {
   const sorted = [...records].sort((a, b) =>

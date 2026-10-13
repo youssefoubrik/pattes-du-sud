@@ -37,22 +37,15 @@ export default async function AnimalsPage({ params }: Props) {
     <main id="main-content" tabIndex={-1} className="flex-1">
       <Section aria-labelledby="animals-title">
         <Container>
-          <div className="mb-10 max-w-2xl">
-            <h1 id="animals-title" className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">{text.title}</h1>
-            <p className="mt-5 text-lg leading-relaxed text-foreground">{text.description}</p>
-            <div className="mt-3 flex items-center gap-4 rounded-2xl border border-border bg-secondary px-4 py-3">
-              <span className="flex shrink-0 items-center gap-0.5 text-primary" aria-hidden="true">
-                <PawPrint size={17} className="-translate-y-1 -rotate-12" />
-                <PawPrint size={17} className="translate-y-1 rotate-12" />
-                <PawPrint size={17} className="-translate-y-1 -rotate-12" />
-              </span>
-              <div className="min-w-0">
-                <p className="text-lg font-semibold leading-snug text-heading">{text.adoptionTitle}</p>
-                <Link href={`/${locale}/adopt`} className="mt-1 inline-flex min-h-11 items-center font-bold text-accent underline underline-offset-4 hover:text-heading">
-                  {text.adoptionLink}
-                </Link>
-              </div>
+          <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+            <div className="max-w-2xl">
+              <h1 id="animals-title" className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">{text.title}</h1>
+              <p className="mt-5 text-lg leading-relaxed text-foreground">{text.description}</p>
             </div>
+            <Link href={`/${locale}/adopt`} className="inline-flex min-h-11 w-fit shrink-0 items-center gap-2 font-bold text-accent underline underline-offset-4 hover:text-heading sm:mt-1">
+              <PawPrint size={17} className="text-primary" aria-hidden="true" />
+              {text.adoptionLink}
+            </Link>
           </div>
           <h2 className="sr-only">{text.title}</h2>
           <AnimalGallery animals={sortedAnimals} locale={locale} />

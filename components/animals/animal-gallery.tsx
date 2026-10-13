@@ -8,6 +8,7 @@ import { animalGalleryMessages } from "@/messages/animal-gallery";
 
 type SpeciesFilter = "all" | Animal["species"];
 type StatusFilter = "all" | "available" | "adopted";
+const PAGE_SIZE = 6;
 
 export function AnimalGallery({
   animals,
@@ -18,12 +19,16 @@ export function AnimalGallery({
 }) {
   const [species, setSpecies] = useState<SpeciesFilter>("all");
   const [status, setStatus] = useState<StatusFilter>("all");
+  const [page, setPage] = useState(1);
   const text = animalGalleryMessages[locale];
   const visible = animals.filter(
     (animal) =>
       (species === "all" || animal.species === species) &&
       (status === "all" || animal.status === status),
   );
+  const pageCount = Math.ceil(visible.length / PAGE_SIZE);
+  const currentPage = Math.min(page, Math.max(pageCount, 1));
+  const pageAnimals = visible.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   return (
     <div>
@@ -36,7 +41,10 @@ export function AnimalGallery({
             { value: "cat", label: text.cats },
           ]}
           selected={species}
-          onSelect={setSpecies}
+          onSelect={(value) => {
+            setSpecies(value);
+            setPage(1);
+          }}
         />
         <FilterGroup
           label={text.statusLabel}
@@ -46,7 +54,10 @@ export function AnimalGallery({
             { value: "adopted", label: text.adopted },
           ]}
           selected={status}
-          onSelect={setStatus}
+          onSelect={(value) => {
+            setStatus(value);
+            setPage(1);
+          }}
         />
       </div>
       <div className="pt-7">
@@ -61,7 +72,7 @@ export function AnimalGallery({
         </p>
         {visible.length ? (
           <ul className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {visible.map((animal) => (
+            {pageAnimals.map((animal) => (
               <li key={animal.slug}>
                 <AnimalPreview animal={animal} locale={locale} />
               </li>
@@ -71,6 +82,43 @@ export function AnimalGallery({
           <p className="mt-5 rounded-3xl bg-secondary p-8 text-center text-foreground">
             {text.empty}
           </p>
+        )}
+        {pageCount > 1 && (
+          <nav aria-label={text.paginationLabel} className="mt-8 flex flex-wrap items-center justify-center gap-2">
+            <span className="w-full text-center text-sm text-muted-foreground sm:w-auto">
+              {text.pageOf
+                .replace("{page}", new Intl.NumberFormat(locale).format(currentPage))
+                .replace("{pages}", new Intl.NumberFormat(locale).format(pageCount))}
+            </span>
+            <button
+              type="button"
+              onClick={() => setPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="min-h-11 cursor-pointer rounded-full border border-border bg-surface px-4 font-semibold text-heading transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {text.previousPage}
+            </button>
+            {Array.from({ length: pageCount }, (_, index) => index + 1).map((pageNumber) => (
+              <button
+                key={pageNumber}
+                type="button"
+                onClick={() => setPage(pageNumber)}
+                aria-label={text.pageLabel.replace("{page}", new Intl.NumberFormat(locale).format(pageNumber))}
+                aria-current={currentPage === pageNumber ? "page" : undefined}
+                className="size-11 cursor-pointer rounded-full border border-border bg-surface font-bold text-heading transition-colors hover:bg-secondary aria-[current=page]:border-heading aria-[current=page]:bg-heading aria-[current=page]:text-primary-foreground"
+              >
+                {new Intl.NumberFormat(locale).format(pageNumber)}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => setPage(currentPage + 1)}
+              disabled={currentPage === pageCount}
+              className="min-h-11 cursor-pointer rounded-full border border-border bg-surface px-4 font-semibold text-heading transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {text.nextPage}
+            </button>
+          </nav>
         )}
       </div>
     </div>

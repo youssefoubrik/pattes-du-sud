@@ -2,7 +2,7 @@ import "server-only";
 import Database from "better-sqlite3";
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { animals, type Animal } from "@/content/animals";
+import { animals, paginationSampleAnimals, type Animal } from "@/content/animals";
 import { footerContent } from "@/content/footer";
 
 const path =
@@ -95,6 +95,18 @@ export function db() {
         );
       instance
         .prepare("INSERT INTO settings (key, value) VALUES ('_seeded', '1')")
+        .run();
+    })();
+  }
+  if (!instance.prepare("SELECT 1 FROM settings WHERE key = '_pagination_samples_v1'").get()) {
+    const insert = instance.prepare(
+      "INSERT OR IGNORE INTO animals (slug, data, updated_at) VALUES (?, ?, ?)",
+    );
+    instance.transaction(() => {
+      for (const animal of paginationSampleAnimals)
+        insert.run(animal.slug, JSON.stringify(animal), new Date().toISOString());
+      instance
+        .prepare("INSERT INTO settings (key, value) VALUES ('_pagination_samples_v1', '1')")
         .run();
     })();
   }
