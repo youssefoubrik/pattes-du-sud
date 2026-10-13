@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -27,7 +28,7 @@ function SupporterName({ supporter }: { supporter: Supporter }) {
 
 export function Supporters({ locale }: { locale: Locale }) {
   if (!supporters.length) return null;
-  const text = homeMessages[locale].supporters;
+  const text = getEditableCopy("home", locale, homeMessages[locale]).supporters;
 
   return (
     <Section aria-labelledby="supporters-title" className="relative bg-secondary">

@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
@@ -5,7 +6,7 @@ import type { Locale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
 
 export function CareInPractice({ locale }: { locale: Locale }) {
-  const text = aboutMessages[locale].care;
+  const text = getEditableCopy("about", locale, aboutMessages[locale]).care;
 
   return (
     <Section aria-labelledby="about-care-title" className="relative bg-secondary">

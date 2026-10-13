@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import { MapPin } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -5,14 +6,18 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { footerContent } from "@/content/footer";
+import { getSettings } from "@/lib/db";
 import type { Locale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
 import { footerMessages } from "@/messages/footer";
 
 export function AssociationInMirleft({ locale }: { locale: Locale }) {
-  const text = aboutMessages[locale].association;
+  const text = getEditableCopy("about", locale, aboutMessages[locale]).association;
   const footerText = footerMessages[locale];
-  const { officialName, registrationReference, contact } = footerContent;
+  const { officialName } = footerContent;
+  const settings = getSettings();
+  const registrationReference = settings.registrationReference;
+  const contact = settings;
 
   return (
     <Section aria-labelledby="about-association-title" className="relative bg-secondary">

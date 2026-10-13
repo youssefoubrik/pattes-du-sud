@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { LocationLabel } from "@/components/location-label";
 import { footerContent } from "@/content/footer";
+import { getSettings } from "@/lib/db";
 import { navigation } from "@/content/navigation";
 import { LogoLink } from "@/components/logo-link";
 import { SocialLinks } from "@/components/social-links";
@@ -16,7 +17,10 @@ const linkClass = "inline-flex min-h-11 items-center gap-2 rounded-sm text-headi
 export function Footer({ locale }: { locale: Locale }) {
   const labels = messages[locale];
   const footer = footerMessages[locale];
-  const { officialName, registrationReference, contact } = footerContent;
+  const settings = getSettings();
+  const { officialName } = footerContent;
+  const registrationReference = settings.registrationReference;
+  const contact = { ...settings, whatsappNumber: settings.whatsappNumber, whatsappDisplay: settings.whatsappDisplay };
 
   return (
     <footer className="mt-auto border-t border-border bg-secondary text-foreground">
@@ -50,17 +54,17 @@ export function Footer({ locale }: { locale: Locale }) {
           <div>
             <h2 className="mb-3 text-xl font-semibold text-heading">{footer.contact}</h2>
             <address className="flex flex-col items-start not-italic">
-              <a href={`https://wa.me/${contact.whatsappNumber}`} aria-label={`${footer.whatsapp}: ${contact.whatsappDisplay}`} className={linkClass}>
+              {contact.whatsappNumber && <a href={`https://wa.me/${contact.whatsappNumber}`} aria-label={`${footer.whatsapp}: ${contact.whatsappDisplay}`} className={linkClass}>
                 <MessageCircle size={20} className="text-primary-hover" aria-hidden="true" />
                 <span>
                   <span className="block font-medium">WhatsApp</span>
                   <span dir="ltr" className="block text-sm">{contact.whatsappDisplay}</span>
                 </span>
-              </a>
-              <a href={`mailto:${contact.email}`} aria-label={`${footer.email}: ${contact.email}`} className={`${linkClass} max-w-full`}>
+              </a>}
+              {contact.email && <a href={`mailto:${contact.email}`} aria-label={`${footer.email}: ${contact.email}`} className={`${linkClass} max-w-full`}>
                 <Mail size={20} className="shrink-0 text-primary-hover" aria-hidden="true" />
                 <span dir="ltr" className="break-all">{contact.email}</span>
-              </a>
+              </a>}
             </address>
             <Link href={`/${locale}/contact`} className={`${linkClass} mt-2`}>{labels.contact}</Link>
             {(contact.instagram || contact.facebook) && (

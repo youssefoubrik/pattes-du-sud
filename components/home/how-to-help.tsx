@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import Link from "next/link";
 import { HandHeart, MessageCircle } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -8,7 +9,7 @@ import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
 
 export function HowToHelp({ locale }: { locale: Locale }) {
-  const text = homeMessages[locale].howToHelp;
+  const text = getEditableCopy("home", locale, homeMessages[locale]).howToHelp;
 
   return (
     <Section aria-labelledby="how-to-help-title" className="relative">

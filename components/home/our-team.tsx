@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import Link from "next/link";
 import { PawPrint } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -7,12 +8,15 @@ import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionImage } from "@/components/ui/section-image";
 import { homeContent } from "@/content/home";
+import { getSettings } from "@/lib/db";
+import { getMediaSrc } from "@/lib/media";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
 
 export function OurTeam({ locale }: { locale: Locale }) {
-  const text = homeMessages[locale].team;
+  const text = getEditableCopy("home", locale, homeMessages[locale]).team;
   const image = homeContent.teamImage;
+  const settings = getSettings();
 
   return (
     <Section aria-labelledby="our-team-title" className="relative bg-secondary">
@@ -24,7 +28,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
               <PawPrint size={24} fill="currentColor" className="-rotate-12 rtl:rotate-12" />
               <PawPrint size={19} fill="currentColor" className="mt-2 rotate-12 rtl:-rotate-12" />
             </span>
-            <SectionImage src={image.src} alt={text.imageAlt} objectPosition="center 45%" />
+            <SectionImage src={getMediaSrc("home.team", image.src)} alt={text.imageAlt} objectPosition="center 45%" />
             <PhotoCaption>{text.imageCaption}</PhotoCaption>
           </figure>
           <div className="lg:order-1">
@@ -34,14 +38,10 @@ export function OurTeam({ locale }: { locale: Locale }) {
             <p className="mt-4 max-w-lg text-lg leading-relaxed text-foreground">
               {text.description}
             </p>
-            <blockquote className="mt-5 max-w-lg border-s-2 border-primary ps-4">
-              <p className="font-display text-lg leading-relaxed text-heading italic">
-                “{text.quote}”
-              </p>
-              <footer className="mt-2 text-sm font-semibold text-muted-foreground">
-                {text.quoteAttribution}
-              </footer>
-            </blockquote>
+            {(settings.impactAnimalsHelped || settings.impactAdoptions) && <dl className="mt-6 flex flex-wrap gap-7">
+              {settings.impactAnimalsHelped && <div><dt className="text-sm font-semibold text-heading">{text.animalsHelped}</dt><dd className="text-3xl font-bold text-primary-hover">{settings.impactAnimalsHelped}</dd></div>}
+              {settings.impactAdoptions && <div><dt className="text-sm font-semibold text-heading">{text.adoptions}</dt><dd className="text-3xl font-bold text-primary-hover">{settings.impactAdoptions}</dd></div>}
+            </dl>}
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
               <ButtonLink
                 href={`/${locale}/volunteer`}

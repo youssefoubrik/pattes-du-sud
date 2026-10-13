@@ -1,13 +1,14 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import { MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
-import { locationContent } from "@/content/location";
+import { getSettings } from "@/lib/db";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
 
 export function Location({ locale }: { locale: Locale }) {
-  const text = homeMessages[locale].location;
+  const text = getEditableCopy("home", locale, homeMessages[locale]).location;
 
   return (
     <Section aria-labelledby="location-title" className="relative">
@@ -29,7 +30,7 @@ export function Location({ locale }: { locale: Locale }) {
 
         <div className="relative min-h-72 overflow-hidden rounded-3xl border border-border bg-secondary shadow-sm shadow-heading/10 sm:min-h-88">
           <iframe
-            src={locationContent.mapEmbedUrl}
+            src={getSettings().mapEmbedUrl}
             title={text.mapTitle}
             loading="lazy"
             referrerPolicy="no-referrer"

@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CareInPractice } from "@/components/about/care-in-practice";
@@ -9,6 +10,7 @@ import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
 import { SectionImage } from "@/components/ui/section-image";
 import { aboutContent } from "@/content/about";
+import { getMediaSrc } from "@/lib/media";
 import { siteContent } from "@/content/site";
 import { isLocale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
@@ -17,7 +19,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/about">)
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const { title, description } = aboutMessages[locale];
+  const { title, description } = getEditableCopy("about", locale, aboutMessages[locale]);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   return {
@@ -33,7 +35,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const text = aboutMessages[locale];
+  const text = getEditableCopy("about", locale, aboutMessages[locale]);
   const image = aboutContent.introductionImage;
 
   return (
@@ -54,7 +56,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             )}
           </div>
           <figure>
-            <SectionImage src={image.src} alt={text.imageAlt} preload objectPosition="center 45%" />
+            <SectionImage src={getMediaSrc("about.introduction", image.src)} alt={text.imageAlt} preload objectPosition="center 45%" />
             <PhotoCaption>{text.imageCaption}</PhotoCaption>
           </figure>
         </Container>

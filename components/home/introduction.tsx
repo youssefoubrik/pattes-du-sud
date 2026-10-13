@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import { AnimalGreeting } from "@/components/animal-greeting";
 import { LocationLabel } from "@/components/location-label";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -5,12 +6,13 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionImage } from "@/components/ui/section-image";
 import { homeContent } from "@/content/home";
+import { getMediaSrc } from "@/lib/media";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { homeMessages } from "@/messages/home";
 
 export function Introduction({ locale }: { locale: Locale }) {
-  const text = homeMessages[locale];
+  const text = getEditableCopy("home", locale, homeMessages[locale]);
   const image = homeContent.introductionImage;
 
   return (
@@ -46,7 +48,7 @@ export function Introduction({ locale }: { locale: Locale }) {
 
         <figure className="relative">
           <SectionImage
-            src={image.src}
+            src={getMediaSrc("home.introduction", image.src)}
             alt={text.imageAlt}
             preload
             objectPosition="60% center"

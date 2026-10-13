@@ -1,3 +1,4 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import { House, Soup, Stethoscope, UsersRound } from "lucide-react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
@@ -5,6 +6,7 @@ import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { homeContent } from "@/content/home";
+import { getMediaSrc } from "@/lib/media";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
 
@@ -16,7 +18,7 @@ const services = [
 ] as const;
 
 export function WhatWeDo({ locale }: { locale: Locale }) {
-  const text = homeMessages[locale].whatWeDo;
+  const text = getEditableCopy("home", locale, homeMessages[locale]).whatWeDo;
   const images = homeContent.workImages;
 
   return (
@@ -27,7 +29,7 @@ export function WhatWeDo({ locale }: { locale: Locale }) {
           <div className="grid aspect-6/5 grid-cols-[1.1fr_1fr] grid-rows-2 gap-2 sm:gap-3">
             <div className="relative row-span-2 overflow-hidden rounded-3xl bg-background">
               <Image
-                src={images.feeding.src}
+                src={getMediaSrc("home.feeding", images.feeding.src)}
                 alt={text.imageAlt}
                 fill
                 sizes="(min-width: 1024px) 300px, 55vw"
@@ -37,7 +39,7 @@ export function WhatWeDo({ locale }: { locale: Locale }) {
             </div>
             <div className="relative overflow-hidden rounded-2xl bg-background">
               <Image
-                src={images.veterinary.src}
+                src={getMediaSrc("home.veterinary", images.veterinary.src)}
                 alt={text.veterinaryImageAlt}
                 fill
                 sizes="(min-width: 1024px) 260px, 45vw"
@@ -46,7 +48,7 @@ export function WhatWeDo({ locale }: { locale: Locale }) {
             </div>
             <div className="relative overflow-hidden rounded-2xl bg-background">
               <Image
-                src={images.companionship.src}
+                src={getMediaSrc("home.companionship", images.companionship.src)}
                 alt={text.companionshipImageAlt}
                 fill
                 sizes="(min-width: 1024px) 260px, 45vw"

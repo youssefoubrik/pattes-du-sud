@@ -1,4 +1,6 @@
+import { getEditableCopy } from "@/lib/editable-copy";
 import Image from "next/image";
+import { getMediaSrc } from "@/lib/media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -7,7 +9,7 @@ import type { Locale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
 
 export function PeopleBehindCare({ locale }: { locale: Locale }) {
-  const text = aboutMessages[locale].team;
+  const text = getEditableCopy("about", locale, aboutMessages[locale]).team;
   const members = aboutContent.teamMembers.slice(0, 4);
 
   return (
@@ -36,7 +38,7 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
                   <article className="grid h-full grid-cols-[96px_minmax(0,1fr)] gap-4 rounded-2xl border border-border bg-surface p-3 sm:grid-cols-[144px_minmax(0,1fr)] sm:gap-5 sm:p-4">
                     <div className="relative min-h-32 overflow-hidden rounded-xl bg-secondary">
                       <Image
-                        src={member.portrait.src}
+                        src={getMediaSrc(`about.team.${member.id}`, member.portrait.src)}
                         alt=""
                         fill
                         sizes="(max-width: 639px) 96px, 144px"

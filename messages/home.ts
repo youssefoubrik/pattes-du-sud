@@ -24,10 +24,10 @@ type HomeMessages = {
     description: string;
     imageAlt: string;
     imageCaption: string;
-    quote: string;
-    quoteAttribution: string;
     volunteerCta: string;
     meetTeam: string;
+    animalsHelped: string;
+    adoptions: string;
   };
   howToHelp: {
     title: string;
@@ -72,11 +72,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       description: "Meet the Mirleft team feeding street animals, arranging care and helping them find homes.",
       imageAlt: "A person gently holding a small black-and-white puppy.",
       imageCaption: "Care for Mirleft’s street animals starts with people who show up.",
-      // Draft wording and attribution: replace with Ali's approved words before publication.
-      quote: "I come back because they count on us.",
-      quoteAttribution: "Ali · Team member",
       volunteerCta: "Volunteer with us",
       meetTeam: "Get to know our team",
+      animalsHelped: "Animals helped", adoptions: "Adoptions",
     },
     howToHelp: {
       title: "How you can help",
@@ -130,10 +128,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       description: "Rencontrez l’équipe de Mirleft qui nourrit les animaux des rues, organise leurs soins et les aide à trouver un foyer.",
       imageAlt: "Une personne tient doucement un petit chiot noir et blanc.",
       imageCaption: "À Mirleft, la protection des animaux commence avec des personnes présentes sur le terrain.",
-      quote: "Je reviens parce qu’ils comptent sur nous.",
-      quoteAttribution: "Ali · Membre de l’équipe",
       volunteerCta: "Devenir bénévole",
       meetTeam: "Découvrir notre équipe",
+      animalsHelped: "Animaux aidés", adoptions: "Adoptions",
     },
     howToHelp: {
       title: "Comment nous aider",
@@ -187,10 +184,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       description: "Lerne das Team in Mirleft kennen, das Straßentiere füttert, ihre Versorgung organisiert und ein Zuhause für sie sucht.",
       imageAlt: "Eine Person hält einen kleinen schwarz-weißen Welpen behutsam im Arm.",
       imageCaption: "Fürsorge für Mirlefts Straßentiere beginnt mit Menschen, die vor Ort helfen.",
-      quote: "Ich komme wieder, weil sie auf uns zählen.",
-      quoteAttribution: "Ali · Teammitglied",
       volunteerCta: "Hilf ehrenamtlich mit",
       meetTeam: "Lerne unser Team kennen",
+      animalsHelped: "Tiere unterstützt", adoptions: "Adoptionen",
     },
     howToHelp: {
       title: "So kannst du helfen",
@@ -244,10 +240,9 @@ export const homeMessages: Record<Locale, HomeMessages> = {
       description: "تعرّف على فريق ميرلفت الذي يطعم حيوانات الشوارع، وينظّم علاجها، ويساعدها في العثور على بيت.",
       imageAlt: "شخص يحمل برفق جرواً صغيراً باللونين الأبيض والأسود.",
       imageCaption: "تبدأ رعاية حيوانات الشوارع في ميرلفت بأشخاص يمدّون لها يد العون.",
-      quote: "أعود لأن هذه الحيوانات تعتمد علينا.",
-      quoteAttribution: "علي · عضو في الفريق",
       volunteerCta: "تطوّع معنا",
       meetTeam: "تعرّف على فريقنا",
+      animalsHelped: "حيوانات ساعدناها", adoptions: "حالات تبنٍّ",
     },
     howToHelp: {
       title: "كيف يمكنك المساعدة؟",
