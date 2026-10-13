@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { PawPrint } from "lucide-react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AnimalGallery } from "@/components/animals/animal-gallery";
-import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { getAnimals } from "@/lib/db";
@@ -39,18 +40,22 @@ export default async function AnimalsPage({ params }: Props) {
           <div className="mb-10 max-w-2xl">
             <h1 id="animals-title" className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">{text.title}</h1>
             <p className="mt-5 text-lg leading-relaxed text-foreground">{text.description}</p>
+            <div className="mt-3 flex items-center gap-4 rounded-2xl border border-border bg-secondary px-4 py-3">
+              <span className="flex shrink-0 items-center gap-0.5 text-primary" aria-hidden="true">
+                <PawPrint size={17} className="-translate-y-1 -rotate-12" />
+                <PawPrint size={17} className="translate-y-1 rotate-12" />
+                <PawPrint size={17} className="-translate-y-1 -rotate-12" />
+              </span>
+              <div className="min-w-0">
+                <p className="text-lg font-semibold leading-snug text-heading">{text.adoptionTitle}</p>
+                <Link href={`/${locale}/adopt`} className="mt-1 inline-flex min-h-11 items-center font-bold text-accent underline underline-offset-4 hover:text-heading">
+                  {text.adoptionLink}
+                </Link>
+              </div>
+            </div>
           </div>
           <h2 className="sr-only">{text.title}</h2>
           <AnimalGallery animals={sortedAnimals} locale={locale} />
-        </Container>
-      </Section>
-      <Section className="bg-secondary" aria-labelledby="adoption-title">
-        <Container className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h2 id="adoption-title" className="text-3xl font-semibold text-heading">{text.adoptionTitle}</h2>
-            <p className="mt-3 text-lg text-foreground">{text.adoptionDescription}</p>
-          </div>
-          <ButtonLink href={`/${locale}/adopt`} variant="secondary" arrow>{text.adoptionLink}</ButtonLink>
         </Container>
       </Section>
     </main>

@@ -144,7 +144,7 @@ Languages use locale prefixes:
 The public header navigation includes Home, About, Animals, Volunteer, and Contact,
 alongside a language selector and a prominent Donate button.
 
-The Animals gallery links to the dedicated Adopt page explaining how adoption works.
+The Animals gallery uses a compact paw-print callout on a soft sand background within its introduction to link to the dedicated Adopt page, without a separate adoption section. Keep the question text dark and clear, the paw motif orange, and the adoption link blue and underlined.
 
 The website does not have a news section or news administration routes.
 

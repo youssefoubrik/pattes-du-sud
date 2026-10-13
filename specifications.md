@@ -182,7 +182,7 @@ The team still needs to confirm the founding story, association photos and permi
 
 **🟢 How to adopt**
 
-- Link from the Animals gallery to the dedicated **Adopt** page at `/adopt`
+- A compact paw-print callout on a soft sand background within the gallery introduction uses clear dark text and links to the dedicated **Adopt** page at `/adopt`; no separate adoption section
 
 ### 🐾 Adopt
 
