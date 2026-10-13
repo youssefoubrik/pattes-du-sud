@@ -4,7 +4,8 @@ export const fr: Messages = {
   location: "Mirleft, Maroc",
   homeNav: "Accueil",
   about: "À propos",
-  animals: "Animaux",
+  animals: "Nos compagnons",
+  adoptNav: "Adopter",
   volunteer: "Bénévolat",
   contact: "Contact",
   donate: "Faire un don",
@@ -14,5 +15,5 @@ export const fr: Messages = {
   language: "Langue",
   home: "Accueil de Pattes du Sud",
   skip: "Aller au contenu",
-  description: "Une association de protection animale qui prend soin des chiens et des chats des rues de Mirleft, au Maroc.",
+  description: "Une association qui prend soin des chiens et des chats des rues de Mirleft, au Maroc.",
 };

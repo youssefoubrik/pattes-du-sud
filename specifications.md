@@ -34,6 +34,7 @@ Checked items are implemented in the site. Account details and association facts
 - [x] Ways to help
 - [x] Supporters
 - [x] Mirleft map
+- [x] Homepage copy names dogs and cats or uses warm companion language; the gallery header link uses a warm, localized **Companions** label
 
 ### About
 
@@ -46,6 +47,7 @@ Checked items are implemented in the site. Account details and association facts
 ### Animals gallery
 
 - [x] Dogs and cats with species and status filters
+- [x] Six animals per page with centered, white numbered, previous and next controls below the cards; changing filters returns to page one
 - [x] Cards link to individual profiles
 - [x] Gallery links to adoption guidance
 
@@ -135,7 +137,7 @@ Checked items are implemented in the site. Account details and association facts
 ### Shared header
 
 - Logo linking to the home page
-- Navigation: **Home**, **About**, **Animals**, **Volunteer**, **Contact**
+- Navigation: **Home**, **About**, **Companions**, **Adopt**, **Volunteer**, **Contact** (localized)
 - Language selector: **English, Français, Deutsch, العربية**
 - A prominent orange **Donate** button
 - On mobile: logo, Donate button and a menu button; navigation and languages inside the menu
@@ -182,7 +184,7 @@ The team still needs to confirm the founding story, association photos and permi
 
 **🟢 How to adopt**
 
-- A compact paw-print callout on a soft sand background within the gallery introduction uses clear dark text and links to the dedicated **Adopt** page at `/adopt`; no separate adoption section
+- A compact paw-print adoption link beside the introduction on wider screens and below the description on phones links to the dedicated **Adopt** page at `/adopt`
 
 ### 🐾 Adopt
 

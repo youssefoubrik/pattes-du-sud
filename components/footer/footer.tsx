@@ -41,7 +41,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <nav aria-labelledby="footer-explore">
             <h2 id="footer-explore" className="mb-3 text-xl font-semibold text-heading">{footer.explore}</h2>
             <ul>
-              {navigation.filter((item) => item.label !== "contact").map((item) => (
+              {navigation.filter((item) => item.label !== "contact" && item.label !== "adoptNav").map((item) => (
                 <li key={item.href}>
                   <Link href={`/${locale}${item.href}`} className={linkClass}>{labels[item.label]}</Link>
                 </li>

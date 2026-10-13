@@ -58,7 +58,7 @@ export const footerMessages: Record<Locale, FooterMessages> = {
     mission: "رعاية وأمل لكلاب وقطط الشوارع في ميرلفت.",
     registration: "مرجع تسجيل الجمعية",
     explore: "اكتشف المزيد",
-    adopt: "كيف تتبنّى حيوانًا",
+    adopt: "كيف تتبنّى كلبًا أو قطة؟",
     findUs: "تابعنا",
     contact: "ابقَ على تواصل",
     whatsapp: "تواصل معنا عبر واتساب",

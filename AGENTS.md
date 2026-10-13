@@ -141,10 +141,12 @@ Admin:
 Languages use locale prefixes:
 `/en`, `/fr`, `/de`, `/ar`
 
-The public header navigation includes Home, About, Animals, Volunteer, and Contact,
+The public header navigation includes Home, About, Companions, Adopt, Volunteer, and Contact,
 alongside a language selector and a prominent Donate button.
 
-The Animals gallery uses a compact paw-print callout on a soft sand background within its introduction to link to the dedicated Adopt page, without a separate adoption section. Keep the question text dark and clear, the paw motif orange, and the adoption link blue and underlined.
+Public homepage copy should refer to dogs and cats or use warm companion language instead of the generic label used for the gallery route.
+
+The Animals page places a compact paw-print adoption link beside its introduction on wider screens and below the description on phones. Keep it short, visible, and blue underlined; the photo gallery remains the main focus.
 
 The website does not have a news section or news administration routes.
 

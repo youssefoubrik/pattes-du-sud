@@ -4,7 +4,8 @@ export const ar: Messages = {
   location: "ميرلفت، المغرب",
   homeNav: "الرئيسية",
   about: "من نحن",
-  animals: "حيواناتنا",
+  animals: "رفاقنا",
+  adoptNav: "التبنّي",
   volunteer: "تطوّع معنا",
   contact: "تواصل معنا",
   donate: "تبرّع",
@@ -14,5 +15,5 @@ export const ar: Messages = {
   language: "اللغة",
   home: "الصفحة الرئيسية لجمعية بات دو سود",
   skip: "انتقل إلى المحتوى",
-  description: "جمعية لحماية الحيوانات تعتني بكلاب وقطط الشوارع في ميرلفت بالمغرب.",
+  description: "جمعية ترعى كلاب وقطط الشوارع في ميرلفت بالمغرب.",
 };
