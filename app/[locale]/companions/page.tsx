@@ -48,7 +48,7 @@ export default async function AnimalsPage({ params }: Props) {
             >
               <PawPrint
                 size={25}
-                className="shrink-0 text-primary transition-transform duration-200 motion-safe:group-hover:rotate-12 motion-safe:group-hover:scale-110 group-hover:text-primary-hover motion-reduce:transition-none"
+                className="shrink-0 text-primary transition-transform duration-200 motion-safe:group-hover:scale-110 group-hover:text-primary-hover motion-reduce:transition-none"
                 aria-hidden="true"
               />
               <span className="flex flex-col gap-1">
