@@ -32,7 +32,7 @@ export function AnimalGallery({
 
   return (
     <div>
-      <div className="flex flex-col gap-5 bg-surface p-4 sm:p-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
         <FilterGroup
           label={text.speciesLabel}
           options={[
@@ -138,7 +138,7 @@ function FilterGroup<T extends string>({
 }) {
   return (
     <div role="group" aria-label={label} className="min-w-0">
-      <p className="mb-2 text-sm font-bold text-heading">{label}</p>
+      <p className="mb-2 text-base font-bold text-heading">{label}</p>
       <div className="flex flex-wrap gap-2">
         {options.map((option) => (
           <button
@@ -146,7 +146,7 @@ function FilterGroup<T extends string>({
             type="button"
             aria-pressed={selected === option.value}
             onClick={() => onSelect(option.value)}
-            className="min-h-11 rounded-full border border-border px-4 text-sm font-bold text-heading transition-colors hover:bg-secondary aria-pressed:border-heading aria-pressed:bg-heading aria-pressed:text-primary-foreground"
+            className="min-h-11 cursor-pointer rounded-full border border-border bg-surface px-4 text-base font-bold text-heading transition-colors hover:border-primary-hover hover:text-primary-hover aria-pressed:border-heading aria-pressed:bg-heading aria-pressed:text-primary-foreground aria-pressed:hover:border-heading aria-pressed:hover:bg-heading aria-pressed:hover:text-primary-foreground"
           >
             {option.label}
           </button>
