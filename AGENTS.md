@@ -297,6 +297,8 @@ Structure it so the source can later be replaced by a CMS without rewriting UI c
 
 Current shared implementation choices: SQLite stores CMS edits and uploaded photos on a persistent server volume. Editors can replace sample animal records, page photos and translated copy. Donations use association-configured PayPal-hosted links and bank details; show only configured payment routes.
 
+Donation page choices: feature monthly support with a clear explanation of how regular gifts help with ongoing planning, while keeping one-time giving visible. Explain verified care categories and recordkeeping; do not tie donation amounts to specific outcomes until real costs are confirmed. Use PayPal-hosted checkout links and a PayPal mark, with bank transfer details below the donation options.
+
 Read `context.txt` before writing association history, care practices, donation uses, or transparency claims. It is the association's presentation for local authorities and describes its vision, activities, red-collar system, and recordkeeping. It does not give a founding date or registration reference. The presentation uses the English name “Southern Paws”; verify naming before using that name in public copy.
 
 ---

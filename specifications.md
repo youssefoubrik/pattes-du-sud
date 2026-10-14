@@ -10,7 +10,7 @@
 
 **Unlike** a Facebook page or a flyer,
 
-**it** shows real proof, each animal's story, and exactly what every donation pays for, and the team can keep it up to date themselves.
+**it** shows real proof, each animal's story, and the kinds of care donations support, and the team can keep it up to date themselves.
 
 ## Delivery tracker
 
@@ -231,12 +231,16 @@ The team still needs to confirm the founding story, association photos and permi
 - A **Donate** button visible on every page
 - A thank-you page after donating, with an invitation to share
 - A choice between **One-time** and **Monthly**
+- Monthly giving is highlighted with an ongoing-care explanation; one-time giving remains available
+- PayPal payment mark and an explanation that the amount is chosen on PayPal
 - A simple note explaining how make bank transfer, and to set up a monthly transfer
 - Bank details (RIB, IBAN, SWIFT) with a **Copy** button, easy on a phone
+- Verified examples of daily care, veterinary care, prevention and follow-up
+- Recordkeeping and transparency explanation
 
-**🟢 What each amount pays for**
+**⚪ Later: link amounts to specific costs**
 
-- Each amount linked to something concrete, for example: €10 food, €25 vaccination, €60 sterilization, €120 emergency care _(with your real costs)_
+- Show suggested amounts only after the association confirms real costs for each example
 
 ### 📍 Mirleft page (QR code)
 

@@ -41,11 +41,21 @@ type Copy = {
     once: string;
     monthly: string;
     give: string;
+    recommended: string;
+    monthlyNote: string;
+    onceNote: string;
+    paypalTrust: string;
     transfer: string;
     transferNote: string;
     unavailable: string;
     impact: string;
     impactText: string;
+    dailyCare: string;
+    dailyCareText: string;
+    veterinaryCare: string;
+    veterinaryCareText: string;
+    prevention: string;
+    preventionText: string;
     copy: string;
     copied: string;
   };
@@ -149,6 +159,10 @@ export const pageMessages: Record<Locale, Copy> = {
       once: "One-time",
       monthly: "Monthly",
       give: "Continue to PayPal",
+      recommended: "Recommended for ongoing care",
+      monthlyNote: "Regular gifts help us plan food, veterinary follow-up and prevention over time.",
+      onceNote: "A one-time gift helps with the needs that arise today.",
+      paypalTrust: "Your payment is handled by PayPal. Choose the amount on PayPal.",
       transfer: "Bank transfer",
       transferNote:
         "You can also set up a recurring transfer with your bank. Include “Donation” as the reference.",
@@ -156,6 +170,12 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "Where your support goes",
       impactText:
         "The association records income and expenses, keeps supporting documents and tracks veterinary care and the animals it helps.",
+      dailyCare: "Daily care",
+      dailyCareText: "Food, clean water and care for animals who need a safe place.",
+      veterinaryCare: "Veterinary care",
+      veterinaryCareText: "Consultations, vaccinations, treatment and medicine for sick or injured animals.",
+      prevention: "Prevention and follow-up",
+      preventionText: "Sterilisation, identification, monitoring and records that help prevent repeated suffering.",
       copy: "Copy",
       copied: "Copied",
     },
@@ -268,6 +288,10 @@ export const pageMessages: Record<Locale, Copy> = {
       once: "Une fois",
       monthly: "Chaque mois",
       give: "Continuer sur PayPal",
+      recommended: "Conseillé pour des soins réguliers",
+      monthlyNote: "Un soutien régulier aide à planifier la nourriture, le suivi vétérinaire et la prévention dans la durée.",
+      onceNote: "Un don ponctuel aide à répondre aux besoins du moment.",
+      paypalTrust: "Votre paiement est traité par PayPal. Vous pourrez choisir le montant sur PayPal.",
       transfer: "Virement bancaire",
       transferNote:
         "Vous pouvez aussi programmer un virement régulier auprès de votre banque. Indiquez « Don » en référence.",
@@ -276,6 +300,12 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "À quoi sert votre don",
       impactText:
         "L’association enregistre ses recettes et ses dépenses, conserve les justificatifs et suit les soins vétérinaires et les animaux aidés.",
+      dailyCare: "Les soins du quotidien",
+      dailyCareText: "De la nourriture, de l’eau propre et des soins pour les animaux qui ont besoin d’un lieu sûr.",
+      veterinaryCare: "Les soins vétérinaires",
+      veterinaryCareText: "Consultations, vaccins, traitements et médicaments pour les animaux malades ou blessés.",
+      prevention: "Prévention et suivi",
+      preventionText: "Stérilisation, identification, suivi et dossiers pour prévenir de nouvelles souffrances.",
       copy: "Copier",
       copied: "Copié",
     },
@@ -388,6 +418,10 @@ export const pageMessages: Record<Locale, Copy> = {
       once: "Einmalig",
       monthly: "Monatlich",
       give: "Weiter zu PayPal",
+      recommended: "Empfohlen für laufende Versorgung",
+      monthlyNote: "Regelmäßige Spenden helfen uns, Futter, tierärztliche Betreuung und Vorsorge langfristig zu planen.",
+      onceNote: "Eine einmalige Spende hilft bei dem, was gerade gebraucht wird.",
+      paypalTrust: "Deine Zahlung wird von PayPal abgewickelt. Den Betrag wählst du bei PayPal.",
       transfer: "Banküberweisung",
       transferNote:
         "Du kannst bei deiner Bank auch eine regelmäßige Überweisung einrichten. Gib „Spende“ als Verwendungszweck an.",
@@ -395,6 +429,12 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "Wofür deine Hilfe eingesetzt wird",
       impactText:
         "Der Verein dokumentiert Einnahmen und Ausgaben, bewahrt Belege auf und hält Tierarztbehandlungen und betreute Tiere fest.",
+      dailyCare: "Versorgung im Alltag",
+      dailyCareText: "Futter, sauberes Wasser und Betreuung für Tiere, die einen sicheren Ort brauchen.",
+      veterinaryCare: "Tierärztliche Versorgung",
+      veterinaryCareText: "Untersuchungen, Impfungen, Behandlungen und Medikamente für kranke oder verletzte Tiere.",
+      prevention: "Vorsorge und Betreuung",
+      preventionText: "Kastration, Kennzeichnung, Beobachtung und Dokumentation helfen, weiteres Leid zu verhindern.",
       copy: "Kopieren",
       copied: "Kopiert",
     },
@@ -501,6 +541,10 @@ export const pageMessages: Record<Locale, Copy> = {
       once: "مرة واحدة",
       monthly: "شهريًا",
       give: "المتابعة عبر باي بال",
+      recommended: "موصى به للرعاية المستمرة",
+      monthlyNote: "تساعد المساهمات المنتظمة على التخطيط للغذاء والمتابعة البيطرية والوقاية على المدى الطويل.",
+      onceNote: "تساعد المساهمة لمرة واحدة على تلبية الاحتياجات الحالية.",
+      paypalTrust: "تُعالج باي بال عملية الدفع. يمكنك اختيار المبلغ على باي بال.",
       transfer: "تحويل بنكي",
       transferNote:
         "يمكنك ترتيب تحويل دوري لدى بنكك. اكتب «تبرع» في خانة المرجع.",
@@ -508,6 +552,12 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "كيف تُستخدم مساهمتك",
       impactText:
         "توثّق الجمعية مداخيلها ومصاريفها، وتحتفظ بالمستندات، وتسجّل الرعاية البيطرية والحيوانات التي تساعدها.",
+      dailyCare: "الرعاية اليومية",
+      dailyCareText: "الغذاء والماء النظيف ورعاية الحيوانات التي تحتاج إلى مكان آمن.",
+      veterinaryCare: "الرعاية البيطرية",
+      veterinaryCareText: "الفحوصات والتلقيح والعلاج والأدوية للحيوانات المريضة أو المصابة.",
+      prevention: "الوقاية والمتابعة",
+      preventionText: "يساعد التعقيم والتعريف بالحيوان ومتابعته وتوثيق حالته على الحد من المعاناة المتكررة.",
       copy: "نسخ",
       copied: "نُسخ",
     },
