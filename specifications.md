@@ -30,6 +30,7 @@ Checked items are implemented in the site. Account details and association facts
 - [x] Introduction, animal photo and two calls to action
 - [x] Four-service overview
 - [x] Featured animal gallery with statuses
+- [x] Care photos open in one full-screen viewer with swipe, arrow buttons and keyboard navigation; the original image file loads only when opened
 - [x] Team introduction and optional verified impact figures
 - [x] Ways to help
 - [x] Supporters
@@ -55,7 +56,7 @@ Checked items are implemented in the site. Account details and association facts
 
 - [x] Name, visible status, age, sex and care facts
 - [x] Facts distinguish muted labels from bold values at a glance
-- [x] Multiple CMS-managed photos with a visible thumbnail strip, full-screen viewing, side arrow controls, and left/right keyboard navigation
+- [x] Multiple CMS-managed photos with a visible thumbnail strip, original-file full-screen viewing, side arrow controls, and left/right keyboard navigation
 - [x] Species and status grouped beneath the name; adoption contact uses the upbeat sand callout while Donate retains the orange primary style
 - [x] Story spans below the photo and profile details columns
 - [x] Simple return link with an orange arrow; adoption callout has rounded ends and the facts panel has square corners

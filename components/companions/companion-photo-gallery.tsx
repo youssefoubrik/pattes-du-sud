@@ -130,6 +130,7 @@ export function CompanionPhotoGallery({
                 alt={selectedPhoto.alt || `${speciesLabel} — ${name}`}
                 fill
                 sizes="100vw"
+                unoptimized
                 className="object-contain"
                 style={{ objectPosition: selectedPhoto.objectPosition ?? "center" }}
               />
