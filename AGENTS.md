@@ -302,6 +302,8 @@ Read `context.txt` before writing association history, care practices, donation 
 
 Homepage animal previews use a staggered photo gallery with names and clear statuses. Reuse animal records, including cats, dogs, and adopted animals; optional personality text needs no separate homepage copy.
 
+Companion profiles support up to five CMS-managed photos. Keep the first photo as the gallery card image and provide accessible thumbnail controls on the profile. On available profiles, place the adoption action near the name and status, ahead of the facts; keep donation available as a secondary action.
+
 The homepage location block uses an interactive Google Map. Keep its embed URL in content data so the association's location can be supplied by the CMS.
 
 The About page should complement Home with the association's history, reason for founding, care system, people, and verifiable facts. Keep the Mirleft map and four-service overview on Home. Use compact horizontal team profiles and a Donate-only closing invitation; show Contact once in the association facts section.

@@ -2,7 +2,7 @@ import "server-only";
 import Database from "better-sqlite3";
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { animals, paginationSampleAnimals, type Animal } from "@/content/animals";
+import { animals, paginationSampleAnimals, type Animal, type AnimalPhoto } from "@/content/animals";
 import { footerContent } from "@/content/footer";
 
 const path =
@@ -16,6 +16,20 @@ export type EditableAnimal = Animal & {
   vaccinated?: boolean;
   sterilized?: boolean;
 };
+
+type StoredAnimal = Omit<EditableAnimal, "photos" | "id"> & {
+  image?: AnimalPhoto;
+  photos?: AnimalPhoto[];
+};
+
+function parseAnimalData(data: string): Omit<EditableAnimal, "id"> {
+  const record = JSON.parse(data) as StoredAnimal;
+  const { image, ...animal } = record;
+  return {
+    ...animal,
+    photos: record.photos?.length ? record.photos : image ? [image] : [],
+  };
+}
 
 export type Settings = {
   email: string;
@@ -124,6 +138,30 @@ export function db() {
         .run();
     })();
   }
+  if (!instance.prepare("SELECT 1 FROM settings WHERE key = '_profile_photos_v1'").get()) {
+    const addSamplePhotos = instance.transaction(() => {
+      const rows = instance.prepare("SELECT id, data FROM animals").all() as {
+        id: number;
+        data: string;
+      }[];
+      const update = instance.prepare("UPDATE animals SET data = ? WHERE id = ?");
+      for (const row of rows) {
+        const current = parseAnimalData(row.data);
+        if (current.photos.length !== 1) continue;
+        const sample = animals.find(
+          (candidate) =>
+            candidate.name === current.name &&
+            candidate.photos[0]?.src === current.photos[0]?.src,
+        );
+        if (sample && sample.photos.length > 1)
+          update.run(JSON.stringify({ ...current, photos: sample.photos }), row.id);
+      }
+      instance
+        .prepare("INSERT INTO settings (key, value) VALUES ('_profile_photos_v1', '1')")
+        .run();
+    });
+    addSamplePhotos();
+  }
   database = instance;
   return instance;
 }
@@ -134,14 +172,14 @@ export function getAnimals(): EditableAnimal[] {
       id: number;
       data: string;
     }[]
-  ).map(({ id, data }) => ({ ...JSON.parse(data), id }));
+  ).map(({ id, data }) => ({ ...parseAnimalData(data), id }));
 }
 
 export function getAnimal(id: number): EditableAnimal | undefined {
   const row = db()
     .prepare("SELECT id, data FROM animals WHERE id = ?")
     .get(id) as { id: number; data: string } | undefined;
-  return row ? { ...JSON.parse(row.data), id: row.id } : undefined;
+  return row ? { ...parseAnimalData(row.data), id: row.id } : undefined;
 }
 
 export function saveAnimal(animal: Omit<EditableAnimal, "id"> & { id?: number }): number {
@@ -167,8 +205,16 @@ export function deleteAnimal(id: number) {
 }
 
 export function pruneMedia() {
-  db().exec(`DELETE FROM media WHERE id NOT IN (SELECT media_id FROM media_slots)
-    AND '/api/media/' || id NOT IN (SELECT json_extract(data, '$.image.src') FROM animals)`);
+  db().exec(`DELETE FROM media
+    WHERE NOT EXISTS (SELECT 1 FROM media_slots WHERE media_slots.media_id = media.id)
+    AND NOT EXISTS (
+      SELECT 1 FROM animals
+      WHERE json_extract(animals.data, '$.image.src') = '/api/media/' || media.id
+    )
+    AND NOT EXISTS (
+      SELECT 1 FROM animals, json_each(animals.data, '$.photos') AS photo
+      WHERE json_extract(photo.value, '$.src') = '/api/media/' || media.id
+    )`);
 }
 
 export function getSettings(): Settings {

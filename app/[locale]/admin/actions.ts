@@ -108,9 +108,36 @@ export async function upsertAnimal(form: FormData) {
   const status: EditableAnimal["status"] =
     value === "available" || value === "adopted" ? value : "inCare";
   const age = Number(form.get("ageYears"));
-  const photo = form.get("photo");
-  let image = existing?.image;
-  if (photo instanceof File && photo.size > 0) {
+  const removedPhotos = new Set(
+    form
+      .getAll("removePhoto")
+      .map(Number)
+      .filter((index) => Number.isInteger(index) && index >= 0),
+  );
+  const retainedPhotoEntries = (existing?.photos || []).flatMap((photo, index) => {
+    if (removedPhotos.has(index)) return [];
+    const alt = String(form.get(`photoAlt:${index}`) || "")
+      .trim()
+      .slice(0, 200);
+    return [{ index, photo: { ...photo, alt: alt || undefined } }];
+  });
+  const mainPhotoIndex = Number(form.get("mainPhoto"));
+  retainedPhotoEntries.sort((a, b) =>
+    a.index === mainPhotoIndex ? -1 : b.index === mainPhotoIndex ? 1 : a.index - b.index,
+  );
+  const photos: EditableAnimal["photos"] = retainedPhotoEntries.map(
+    ({ photo }) => photo,
+  );
+  const photoFiles = form
+    .getAll("photos")
+    .filter((file): file is File => file instanceof File && file.size > 0);
+  if (photos.length + photoFiles.length > 5)
+    redirect(`/${locale}/admin/animals?error=photo-count`);
+  if (!photos.length && !photoFiles.length)
+    redirect(`/${locale}/admin/animals?error=photo`);
+
+  const uploads: { mime: string; bytes: Buffer }[] = [];
+  for (const photo of photoFiles) {
     if (photo.size > 5_000_000) redirect(`/${locale}/admin/animals?error=size`);
     const bytes = Buffer.from(await photo.arrayBuffer());
     const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
@@ -128,19 +155,22 @@ export async function upsertAnimal(form: FormData) {
           ? "image/webp"
           : null;
     if (!mime) redirect(`/${locale}/admin/animals?error=photo`);
-    const id = randomUUID();
-    db()
-      .prepare("INSERT INTO media (id, mime, bytes) VALUES (?, ?, ?)")
-      .run(id, mime, bytes);
-    image = { src: `/api/media/${id}` };
+    uploads.push({ mime, bytes });
   }
-  if (!image) redirect(`/${locale}/admin/animals?error=photo`);
+  const insertPhoto = db().prepare(
+    "INSERT INTO media (id, mime, bytes) VALUES (?, ?, ?)",
+  );
+  for (const upload of uploads) {
+    const photoId = randomUUID();
+    insertPhoto.run(photoId, upload.mime, upload.bytes);
+    photos.push({ src: `/api/media/${photoId}` });
+  }
   const animalId = saveAnimal({
     ...(existing ? { id: existing.id } : {}),
     name,
     species,
     status,
-    image,
+    photos,
     ageYears: Number.isFinite(age) && age > 0 && age < 40 ? age : undefined,
     addedAt: existing?.addedAt || new Date().toISOString().slice(0, 10),
     featuredOrder: existing?.featuredOrder,

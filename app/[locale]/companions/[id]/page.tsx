@@ -1,9 +1,9 @@
 import { getEditableCopy } from "@/lib/editable-copy";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CompanionPhotoGallery } from "@/components/companions/companion-photo-gallery";
 import { ShareButton } from "@/components/animals/share-button";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -31,12 +31,14 @@ export async function generateMetadata({
   if (!id) notFound();
   const animal = getAnimal(id);
   if (!animal) notFound();
+  const primaryPhoto = animal.photos[0];
+  if (!primaryPhoto) notFound();
   return pageMetadata(
     locale,
     `/companions/${id}`,
     animal.name,
     `${animal.name} · ${animalMessages[locale].status[animal.status]} · ${animalMessages[locale].species[animal.species]}`,
-    animal.image.src,
+    primaryPhoto.src,
   );
 }
 
@@ -59,6 +61,7 @@ async function AnimalDetailContent({
   if (!id) notFound();
   const animal = getAnimal(id);
   if (!animal) notFound();
+  if (!animal.photos.length) notFound();
   const t = getEditableCopy("pages", locale, pageMessages[locale]).animal;
   const common = animalMessages[locale];
   const settings = getSettings();
@@ -73,22 +76,27 @@ async function AnimalDetailContent({
             ← {t.back}
           </Link>
           <div className="mt-7 grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="relative aspect-4/5 overflow-hidden rounded-3xl bg-secondary">
-              <Image
-                src={animal.image.src}
-                alt={`${common.species[animal.species]} ${animal.name}`}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-                preload
-              />
-            </div>
+            <CompanionPhotoGallery
+              name={animal.name}
+              speciesLabel={common.species[animal.species]}
+              photos={animal.photos}
+              locale={locale}
+            />
             <div>
-              <p className="font-bold text-primary-hover">
+              <p className="inline-flex rounded-full border border-border bg-secondary px-3 py-1 text-sm font-bold text-heading">
                 {common.status[animal.status]}
               </p>
               <h1 className="mt-2 text-5xl text-heading">{animal.name}</h1>
-              <p className="mt-3 text-lg">{common.species[animal.species]}</p>
+              <p className="mt-2 text-lg text-muted-foreground">
+                {common.species[animal.species]}
+              </p>
+              {animal.status === "available" && (
+                <div className="mt-6">
+                  <ButtonLink href={whatsapp} arrow>
+                    {t.adopt}
+                  </ButtonLink>
+                </div>
+              )}
               <h2 className="mt-9 text-2xl text-heading">{t.facts}</h2>
               <dl className="mt-3 divide-y divide-border rounded-2xl border border-border bg-surface px-5">
                 {animal.ageYears && (
@@ -117,18 +125,26 @@ async function AnimalDetailContent({
               {(animal.story || animal.personality) && (
                 <>
                   <h2 className="mt-9 text-2xl text-heading">{t.story}</h2>
-                  <p className="mt-3 whitespace-pre-line text-lg leading-relaxed">
-                    {animal.story ||
+                  <div className="mt-3 max-w-[58ch] space-y-4 text-lg leading-8">
+                    {(animal.story ||
                       (animal.personality &&
-                        common.personality[animal.personality])}
-                  </p>
+                        common.personality[animal.personality]) ||
+                      "")
+                      .split(/\n\s*\n/)
+                      .filter(Boolean)
+                      .map((paragraph, index) => (
+                        <p key={index} className="whitespace-pre-line">
+                          {paragraph}
+                        </p>
+                      ))}
+                  </div>
                 </>
               )}
               <div className="mt-9 flex flex-wrap gap-3">
-                {animal.status === "available" && (
-                  <ButtonLink href={whatsapp}>{t.adopt}</ButtonLink>
-                )}
-                <ButtonLink href={`/${locale}/donate`} variant="donate">
+                <ButtonLink
+                  href={`/${locale}/donate`}
+                  variant={animal.status === "available" ? "secondary" : "donate"}
+                >
                   {t.help}
                 </ButtonLink>
                 <ShareButton

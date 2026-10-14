@@ -40,8 +40,9 @@ export default async function AdminAnimals({
         )}
         {query.error && (
           <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
-            Check the name and photo. Photos must be JPEG, PNG or WebP,
-            under 5 MB.
+            {query.error === "photo-count"
+              ? "A profile needs at least one photo and can have up to five."
+              : "Check the name and photos. Use JPEG, PNG or WebP images under 5 MB each."}
           </p>
         )}
         <h2 className="mt-10 text-2xl text-heading">Add an animal</h2>
@@ -54,15 +55,17 @@ export default async function AdminAnimals({
               className="rounded-3xl border border-border bg-surface p-5"
             >
               <div className="flex items-center gap-4">
-                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl">
-                  <Image
-                    src={animal.image.src}
-                    alt=""
-                    fill
-                    sizes="80px"
-                    className="object-cover"
-                  />
-                </div>
+                {animal.photos[0] && (
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl">
+                    <Image
+                      src={animal.photos[0].src}
+                      alt=""
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
                 <div>
                   <h3 className="text-xl text-heading">{animal.name}</h3>
                   <p>{animal.status}</p>
@@ -171,15 +174,55 @@ function AnimalForm({
         </select>
       </label>
       <label className="font-semibold sm:col-span-2">
-        Photo
+        Photos
         <input
-          name="photo"
+          name="photos"
           type="file"
+          multiple
           accept="image/jpeg,image/png,image/webp"
-          required={!animal}
+          required={!animal || animal.photos.length === 0}
           className="mt-2 block w-full rounded-xl border border-border p-3 font-normal"
         />
+        <span className="mt-2 block text-sm font-normal text-muted-foreground">
+          Up to five photos per profile, 5 MB each. Choose which appears on cards.
+        </span>
       </label>
+      {animal && animal.photos.length > 0 && (
+        <fieldset className="grid gap-3 sm:col-span-2 sm:grid-cols-2">
+          <legend className="mb-2 font-semibold">Current photos</legend>
+          {animal.photos.map((photo, index) => (
+            <div key={`${photo.src}-${index}`} className="flex gap-3 rounded-2xl border border-border p-3">
+              <div className="relative size-20 shrink-0 overflow-hidden rounded-xl bg-secondary">
+                <Image src={photo.src} alt="" fill sizes="80px" className="object-cover" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <label className="block text-sm font-semibold">
+                  Photo description
+                  <input
+                    name={`photoAlt:${index}`}
+                    maxLength={200}
+                    defaultValue={photo.alt || ""}
+                    className="mt-1 min-h-10 w-full rounded-lg border border-border px-2 font-normal"
+                  />
+                </label>
+                <label className="mt-2 flex items-center gap-2 text-sm">
+                  <input type="checkbox" name="removePhoto" value={index} />
+                  Remove photo
+                </label>
+                <label className="mt-2 flex items-center gap-2 text-sm">
+                  <input
+                    type="radio"
+                    name="mainPhoto"
+                    value={index}
+                    defaultChecked={index === 0}
+                  />
+                  Show on cards
+                </label>
+              </div>
+            </div>
+          ))}
+        </fieldset>
+      )}
       <label className="font-semibold sm:col-span-2">
         Story
         <textarea
