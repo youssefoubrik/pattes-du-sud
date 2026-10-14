@@ -142,7 +142,7 @@ Admin:
 Languages use locale prefixes:
 `/en`, `/fr`, `/de`, `/ar`
 
-The public header navigation includes Home, About, Companions, Adopt, Volunteer, and Contact,
+The public header navigation orders Home, Companions, About, Adopt, Volunteer, and Contact,
 alongside a language selector and a prominent Donate button.
 
 Public homepage copy should refer to dogs and cats or use warm companion language instead of the generic label used for the gallery route.
