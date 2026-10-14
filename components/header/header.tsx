@@ -12,7 +12,7 @@ export function Header({ locale }: { locale: Locale }) {
   const labels = messages[locale];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background">
+    <header className="relative z-40 border-b border-border bg-secondary">
       <a href="#main-content" className="absolute start-4 top-2 z-50 -translate-y-24 rounded-lg bg-heading px-4 py-3 text-primary-foreground focus:translate-y-0">
         {labels.skip}
       </a>
@@ -33,7 +33,7 @@ export function Header({ locale }: { locale: Locale }) {
           mobile
           className="xl:hidden"
           buttonClassName="flex size-11 items-center justify-center rounded-lg text-heading transition-colors hover:bg-secondary"
-          panelClassName="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-b border-border bg-background px-4 py-4 shadow-sm sm:px-6 lg:max-h-[calc(100dvh-6rem)]"
+          panelClassName="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-b border-border bg-secondary px-4 py-4 shadow-sm sm:px-6 lg:max-h-[calc(100dvh-6rem)]"
           trigger={<Menu size={24} aria-hidden="true" />}
           openTrigger={<X size={24} aria-hidden="true" />}
         >

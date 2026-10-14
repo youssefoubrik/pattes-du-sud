@@ -145,7 +145,8 @@ Checked items are implemented in the site. Account details and association facts
 - Language selector: **English, Français, Deutsch, العربية**
 - A prominent orange **Donate** button
 - On mobile: logo, Donate button and a menu button; navigation and languages inside the menu
-- Ivory background, dark brown navigation text and a subtle bottom border
+- Header scrolls with the page instead of staying fixed at the top
+- Soft sand background, dark brown navigation text and a subtle bottom border
 - No news section
 
 ### 🏠 Home page

@@ -61,6 +61,7 @@ Use the website color palette consistently. Do not introduce new colors unless t
 
 - Use `#FFF9F3` as the default page background.
 - Use `#F6E5D2` for occasional alternate sections to create separation.
+- Use the soft sand section color for the header to distinguish navigation from the page background; the header scrolls with the page.
 - Use `#2C1810` for normal body text.
 - Use `#5A1F08` for headings, strong labels, and important dark UI elements.
 - Use `#E75015` for the main CTA, especially **Donate**.
