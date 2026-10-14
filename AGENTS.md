@@ -303,7 +303,7 @@ Read `context.txt` before writing association history, care practices, donation 
 
 Homepage animal previews use a staggered photo gallery with names and clear statuses. Reuse animal records, including cats, dogs, and adopted animals; optional personality text needs no separate homepage copy.
 
-Companion profiles support up to five CMS-managed photos. Keep the first photo as the gallery card image and provide accessible thumbnail controls on the profile. On available profiles, place the adoption action near the name and status, ahead of the facts; keep donation available as a secondary action.
+Companion profiles support up to five CMS-managed photos. Keep the first photo as the gallery card image and provide accessible thumbnail controls on the profile. Group species and status beneath the name, using the blue paw accent for species and orange for status; give the facts a square-cornered soft sand background with muted labels and bold values. Vaccination and sterilization each use Yes / No states. Keep profile decoration restrained and place the story below the photo and profile details columns. Use a simple return link with an orange arrow. On available profiles, place a dashed sand adoption callout with rounded ends near the name and status, ahead of the facts; keep Donate in its orange primary style.
 
 The homepage location block uses an interactive Google Map. Keep its embed URL in content data so the association's location can be supplied by the CMS.
 

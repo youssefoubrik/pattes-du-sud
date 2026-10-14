@@ -184,8 +184,14 @@ export async function upsertAnimal(form: FormData) {
         : form.get("sex") === "female"
           ? "female"
           : undefined,
-    vaccinated: form.get("vaccinated") === "on",
-    sterilized: form.get("sterilized") === "on",
+    vaccinated:
+      form.get("vaccinated") === "yes" || form.get("vaccinated") === "no"
+        ? (form.get("vaccinated") as "yes" | "no")
+        : "no",
+    sterilized:
+      form.get("sterilized") === "yes" || form.get("sterilized") === "no"
+        ? (form.get("sterilized") as "yes" | "no")
+        : "no",
   });
   for (const language of routing.locales) {
     revalidatePath(`/${language}/companions`);

@@ -81,7 +81,7 @@ type Copy = {
     vaccinated: string;
     sterilized: string;
     yes: string;
-    unknown: string;
+    no: string;
     adopt: string;
     help: string;
     share: string;
@@ -201,7 +201,7 @@ export const pageMessages: Record<Locale, Copy> = {
       vaccinated: "Vaccinated",
       sterilized: "Sterilized",
       yes: "Yes",
-      unknown: "Ask us",
+      no: "No",
       adopt: "Ask about adoption",
       help: "Help companions like me",
       share: "Share",
@@ -321,7 +321,7 @@ export const pageMessages: Record<Locale, Copy> = {
       vaccinated: "Vacciné",
       sterilized: "Stérilisé",
       yes: "Oui",
-      unknown: "Demandez-nous",
+      no: "Non",
       adopt: "Parler d’une adoption",
       help: "Aider les compagnons comme moi",
       share: "Partager",
@@ -439,7 +439,7 @@ export const pageMessages: Record<Locale, Copy> = {
       vaccinated: "Geimpft",
       sterilized: "Kastriert",
       yes: "Ja",
-      unknown: "Bitte nachfragen",
+      no: "Nein",
       adopt: "Adoption anfragen",
       help: "Begleitern wie mir helfen",
       share: "Teilen",
@@ -551,7 +551,7 @@ export const pageMessages: Record<Locale, Copy> = {
       vaccinated: "ملقّح",
       sterilized: "معقّم",
       yes: "نعم",
-      unknown: "اسألنا",
+      no: "لا",
       adopt: "اسأل عن التبنّي",
       help: "ساعد رفاقًا مثلي",
       share: "شارك",

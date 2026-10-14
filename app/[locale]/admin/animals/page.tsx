@@ -232,21 +232,27 @@ function AnimalForm({
           className="mt-2 w-full rounded-xl border border-border p-3 font-normal"
         />
       </label>
-      <label className="flex items-center gap-2">
-        <input
+      <label className="font-semibold">
+        Vaccination status
+        <select
           name="vaccinated"
-          type="checkbox"
-          defaultChecked={animal?.vaccinated}
-        />{" "}
-        Vaccinated
+          defaultValue={animal?.vaccinated || "no"}
+          className="mt-2 block min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal"
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
       </label>
-      <label className="flex items-center gap-2">
-        <input
+      <label className="font-semibold">
+        Sterilization status
+        <select
           name="sterilized"
-          type="checkbox"
-          defaultChecked={animal?.sterilized}
-        />{" "}
-        Sterilized
+          defaultValue={animal?.sterilized || "no"}
+          className="mt-2 block min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal"
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
       </label>
       <button
         type="submit"

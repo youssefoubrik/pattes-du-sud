@@ -54,8 +54,12 @@ Checked items are implemented in the site. Account details and association facts
 ### Animal profile
 
 - [x] Name, visible status, age, sex and care facts
+- [x] Facts distinguish muted labels from bold values at a glance
 - [x] Multiple CMS-managed photos with a visible thumbnail strip, full-screen viewing, side arrow controls, and left/right keyboard navigation
-- [x] Adoption action above the facts; donation secondary when adoption is available
+- [x] Species and status grouped beneath the name; adoption contact uses the upbeat sand callout while Donate retains the orange primary style
+- [x] Story spans below the photo and profile details columns
+- [x] Simple return link with an orange arrow; adoption callout has rounded ends and the facts panel has square corners
+- [x] Status and species clearly separated from the name and facts
 - [x] Story, donation and share actions
 - [x] Unique social and search metadata
 
@@ -99,6 +103,7 @@ Checked items are implemented in the site. Account details and association facts
 - [x] Password-protected editor with persistent sessions
 - [x] Add, edit and remove animals, including photo uploads
 - [x] Manage up to five profile photos, choose the card photo, edit image descriptions and remove photos
+- [x] Store vaccination and sterilization as Yes / No in the CMS and display localized values
 - [x] Use auto-incrementing numeric IDs for profile URLs, so names may repeat; the CMS asks editors for a name, not a slug
 - [x] Edit Home, About and other public page text in four languages
 - [x] Replace Home and About photos

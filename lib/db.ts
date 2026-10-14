@@ -13,14 +13,21 @@ export type EditableAnimal = Animal & {
   id: number;
   story?: string;
   sex?: "female" | "male";
-  vaccinated?: boolean;
-  sterilized?: boolean;
+  vaccinated?: "yes" | "no";
+  sterilized?: "yes" | "no";
 };
 
-type StoredAnimal = Omit<EditableAnimal, "photos" | "id"> & {
+type StoredAnimal = Omit<EditableAnimal, "photos" | "id" | "vaccinated" | "sterilized"> & {
   image?: AnimalPhoto;
   photos?: AnimalPhoto[];
+  vaccinated?: EditableAnimal["vaccinated"] | boolean;
+  sterilized?: EditableAnimal["sterilized"] | boolean;
 };
+
+function parseHealthStatus(value: StoredAnimal["vaccinated"]): NonNullable<EditableAnimal["vaccinated"]> {
+  if (value === "yes" || value === "no") return value;
+  return value === true ? "yes" : "no";
+}
 
 function parseAnimalData(data: string): Omit<EditableAnimal, "id"> {
   const record = JSON.parse(data) as StoredAnimal;
@@ -28,6 +35,8 @@ function parseAnimalData(data: string): Omit<EditableAnimal, "id"> {
   return {
     ...animal,
     photos: record.photos?.length ? record.photos : image ? [image] : [],
+    vaccinated: parseHealthStatus(record.vaccinated),
+    sterilized: parseHealthStatus(record.sterilized),
   };
 }
 

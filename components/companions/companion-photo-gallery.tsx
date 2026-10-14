@@ -48,7 +48,7 @@ export function CompanionPhotoGallery({
         type="button"
         aria-label={text.viewPhoto.replace("{photo}", photoLabel(selectedIndex))}
         onClick={() => setViewerOpen(true)}
-        className="relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-3xl bg-secondary outline-offset-4 focus-visible:outline-2 focus-visible:outline-heading"
+        className="relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-2xl bg-secondary outline-offset-4 focus-visible:outline-2 focus-visible:outline-heading"
       >
         <Image
           src={selectedPhoto.src}
@@ -76,7 +76,7 @@ export function CompanionPhotoGallery({
               aria-label={photoLabel(index)}
               aria-pressed={selectedIndex === index}
               onClick={() => setSelectedIndex(index)}
-              className="relative aspect-square w-16 shrink-0 cursor-pointer overflow-hidden rounded-xl border-2 border-border bg-secondary outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary aria-pressed:border-primary aria-pressed:ring-2 aria-pressed:ring-primary/25 sm:w-20"
+              className="relative aspect-square w-16 shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 border-border bg-secondary outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary aria-pressed:border-primary aria-pressed:ring-2 aria-pressed:ring-primary/25 sm:w-20"
             >
               <Image
                 src={photo.src}
