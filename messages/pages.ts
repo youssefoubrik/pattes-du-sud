@@ -91,8 +91,10 @@ type Copy = {
     male: string;
     vaccinated: string;
     sterilized: string;
-    yes: string;
-    no: string;
+    vaccinatedYes: string;
+    vaccinatedNo: string;
+    sterilizedYes: string;
+    sterilizedNo: string;
     adopt: string;
     help: string;
     share: string;
@@ -222,8 +224,10 @@ export const pageMessages: Record<Locale, Copy> = {
       male: "Male",
       vaccinated: "Vaccinated",
       sterilized: "Sterilized",
-      yes: "Yes",
-      no: "No",
+      vaccinatedYes: "Vaccinated",
+      vaccinatedNo: "Not yet vaccinated",
+      sterilizedYes: "Sterilized",
+      sterilizedNo: "Not yet sterilized",
       adopt: "Ask about adoption",
       help: "Help companions like me",
       share: "Share",
@@ -353,8 +357,10 @@ export const pageMessages: Record<Locale, Copy> = {
       male: "Mâle",
       vaccinated: "Vacciné",
       sterilized: "Stérilisé",
-      yes: "Oui",
-      no: "Non",
+      vaccinatedYes: "Vacciné",
+      vaccinatedNo: "Vaccination à prévoir",
+      sterilizedYes: "Stérilisé",
+      sterilizedNo: "Stérilisation à prévoir",
       adopt: "Parler d’une adoption",
       help: "Aider les compagnons comme moi",
       share: "Partager",
@@ -482,8 +488,10 @@ export const pageMessages: Record<Locale, Copy> = {
       male: "Männlich",
       vaccinated: "Geimpft",
       sterilized: "Kastriert",
-      yes: "Ja",
-      no: "Nein",
+      vaccinatedYes: "Geimpft",
+      vaccinatedNo: "Impfung steht noch aus",
+      sterilizedYes: "Kastriert",
+      sterilizedNo: "Kastration steht noch aus",
       adopt: "Adoption anfragen",
       help: "Begleitern wie mir helfen",
       share: "Teilen",
@@ -605,8 +613,10 @@ export const pageMessages: Record<Locale, Copy> = {
       male: "ذكر",
       vaccinated: "ملقّح",
       sterilized: "معقّم",
-      yes: "نعم",
-      no: "لا",
+      vaccinatedYes: "تم التطعيم",
+      vaccinatedNo: "لم يتم التطعيم بعد",
+      sterilizedYes: "تم التعقيم",
+      sterilizedNo: "لم يتم التعقيم بعد",
       adopt: "اسأل عن التبنّي",
       help: "ساعد رفاقًا مثلي",
       share: "شارك",

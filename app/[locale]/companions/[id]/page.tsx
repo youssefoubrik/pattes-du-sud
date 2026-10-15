@@ -84,14 +84,16 @@ async function AnimalDetailContent({
             />
             {t.back}
           </Link>
-          <div className="mt-7 grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <CompanionPhotoGallery
-              name={animal.name}
-              speciesLabel={common.species[animal.species]}
-              photos={animal.photos}
-              locale={locale}
-            />
-            <div>
+          <div className="mt-7">
+            <div className="mx-auto max-w-4xl">
+              <CompanionPhotoGallery
+                name={animal.name}
+                speciesLabel={common.species[animal.species]}
+                photos={animal.photos}
+                locale={locale}
+              />
+            </div>
+            <div className="mx-auto mt-8 max-w-4xl">
               <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-3">
                 <div className="min-w-0">
                   <h1 className="text-5xl text-heading">{animal.name}</h1>
@@ -126,66 +128,63 @@ async function AnimalDetailContent({
                 )}
               </div>
               <h2 className="mt-9 text-2xl text-heading">{t.facts}</h2>
-              <dl className="mt-3 divide-y divide-border border-y border-border bg-secondary px-4">
+              <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
                 {animal.ageYears && (
-                  <div className="flex justify-between gap-5 py-3">
+                  <div>
                     <dt className="text-sm font-semibold text-muted-foreground">{t.age}</dt>
-                    <dd className="text-end font-bold text-heading">
+                    <dd className="mt-1 font-bold text-heading">
                       {common.age.replace("{age}", String(animal.ageYears))}
                     </dd>
                   </div>
                 )}
                 {animal.sex && (
-                  <div className="flex justify-between gap-5 py-3">
+                  <div>
                     <dt className="text-sm font-semibold text-muted-foreground">{t.sex}</dt>
-                    <dd className="text-end font-bold text-heading">{t[animal.sex]}</dd>
+                    <dd className="mt-1 font-bold text-heading">{t[animal.sex]}</dd>
                   </div>
                 )}
-                <div className="flex justify-between gap-5 py-3">
+                <div>
                   <dt className="text-sm font-semibold text-muted-foreground">{t.vaccinated}</dt>
-                  <dd className="text-end font-bold text-heading">
-                    {animal.vaccinated === "yes" ? t.yes : t.no}
+                  <dd className="mt-1 font-bold leading-snug text-heading">
+                    {animal.vaccinated === "yes" ? t.vaccinatedYes : t.vaccinatedNo}
                   </dd>
                 </div>
-                <div className="flex justify-between gap-5 py-3">
+                <div>
                   <dt className="text-sm font-semibold text-muted-foreground">{t.sterilized}</dt>
-                  <dd className="text-end font-bold text-heading">
-                    {animal.sterilized === "yes" ? t.yes : t.no}
+                  <dd className="mt-1 font-bold leading-snug text-heading">
+                    {animal.sterilized === "yes" ? t.sterilizedYes : t.sterilizedNo}
                   </dd>
                 </div>
               </dl>
-            </div>
-          </div>
-          {(animal.story || animal.personality) && (
-            <section className="mt-12 border-t border-border pt-9">
-              <h2 className="text-3xl text-heading">{t.story}</h2>
-              <div className="mt-4 max-w-3xl space-y-5 text-xl leading-9">
-                {(animal.story ||
-                  (animal.personality &&
-                    common.personality[animal.personality]) ||
-                  "")
-                  .split(/\n\s*\n/)
-                  .filter(Boolean)
-                  .map((paragraph, index) => (
-                    <p key={index} className="whitespace-pre-line">
-                      {paragraph}
-                    </p>
-                  ))}
+              {(animal.story || animal.personality) && (
+                <section className="mt-9 border-t border-border pt-7">
+                  <h2 className="text-2xl text-heading">{t.story}</h2>
+                  <div className="mt-3 max-w-2xl space-y-4 text-lg leading-relaxed text-foreground">
+                    {(animal.story ||
+                      (animal.personality &&
+                        common.personality[animal.personality]) ||
+                      "")
+                      .split(/\n\s*\n/)
+                      .filter(Boolean)
+                      .map((paragraph, index) => (
+                        <p key={index} className="whitespace-pre-line">
+                          {paragraph}
+                        </p>
+                      ))}
+                  </div>
+                </section>
+              )}
+              <div className="mt-8 flex flex-wrap gap-3">
+                <ButtonLink href={`/${locale}/donate`} variant="donate">
+                  {t.help}
+                </ButtonLink>
+                <ShareButton
+                  title={animal.name}
+                  label={t.share}
+                  copied={t.shareFallback}
+                />
               </div>
-            </section>
-          )}
-          <div className="mt-9 flex flex-wrap gap-3">
-            <ButtonLink
-              href={`/${locale}/donate`}
-              variant="donate"
-            >
-              {t.help}
-            </ButtonLink>
-            <ShareButton
-              title={animal.name}
-              label={t.share}
-              copied={t.shareFallback}
-            />
+            </div>
           </div>
         </Container>
       </Section>
@@ -200,9 +199,9 @@ function CompanionFallback() {
         <Container>
           <div aria-hidden="true" className="motion-safe:animate-pulse">
             <div className="h-5 w-36 rounded bg-secondary" />
-            <div className="mt-7 grid gap-10 lg:grid-cols-2 lg:gap-16">
-              <div className="aspect-4/5 rounded-3xl bg-secondary" />
-              <div className="space-y-5 py-2">
+            <div className="mx-auto mt-7 max-w-4xl">
+              <div className="aspect-[4/3] rounded-2xl bg-secondary" />
+              <div className="mt-8 space-y-5 py-2">
                 <div className="h-5 w-32 rounded bg-secondary" />
                 <div className="h-12 w-2/3 rounded bg-secondary" />
                 <div className="h-6 w-1/3 rounded bg-secondary" />
