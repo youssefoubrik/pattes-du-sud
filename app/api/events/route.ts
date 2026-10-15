@@ -2,24 +2,8 @@ import { db } from "@/lib/db";
 
 export async function POST(request: Request) {
   const origin = request.headers.get("origin");
-  if (origin) {
-    const requestUrl = new URL(request.url);
-    const host =
-      request.headers.get("x-forwarded-host")?.split(",", 1)[0].trim() ||
-      request.headers.get("host") ||
-      requestUrl.host;
-    const protocol =
-      request.headers.get("x-forwarded-proto")?.split(",", 1)[0].trim() ||
-      requestUrl.protocol.slice(0, -1);
-
-    try {
-      const originUrl = new URL(origin);
-      if (originUrl.host !== host || originUrl.protocol !== `${protocol}:`)
-        return new Response(null, { status: 403 });
-    } catch {
-      return new Response(null, { status: 403 });
-    }
-  }
+  if (origin && origin !== new URL(request.url).origin)
+    return new Response(null, { status: 403 });
   if (Number(request.headers.get("content-length") || "0") > 1000)
     return new Response(null, { status: 413 });
   let payload: { kind?: unknown; path?: unknown; source?: unknown };
