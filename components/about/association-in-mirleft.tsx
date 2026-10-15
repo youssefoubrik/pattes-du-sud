@@ -32,7 +32,7 @@ export function AssociationInMirleft({ locale }: { locale: Locale }) {
             {text.title}
           </h2>
           <p className="mt-5 leading-relaxed text-foreground">{text.visitNote}</p>
-          <ButtonLink href={`/${locale}/contact`} variant="secondary" arrow className="mt-5 w-fit max-w-full bg-background">
+          <ButtonLink href={`/${locale}/contact`} variant="secondary" arrow className="mt-5 w-fit max-w-full">
             {text.contact}
           </ButtonLink>
           {(contact.instagram || contact.facebook) && (

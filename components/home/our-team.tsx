@@ -50,7 +50,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
                 variant="secondary"
                 arrow
                 compact
-                className="max-w-full gap-2 bg-background py-2 text-center"
+                className="max-w-full gap-2 py-2 text-center"
               >
                 {text.volunteerCta}
               </ButtonLink>
