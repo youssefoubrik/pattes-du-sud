@@ -70,14 +70,14 @@ export async function updateSettings(form: FormData) {
   ] as const) {
     const value = settings[key];
     if (value && !/^https:\/\//.test(value))
-      redirect(`/${locale}/admin/settings?error=url`);
+      redirect(`/${locale}/admin/settings?error=url&field=${key}`);
   }
   for (const key of ["paypalDonateUrl", "paypalMonthlyUrl"] as const) {
     if (
       settings[key] &&
       !/^https:\/\/(www\.)?paypal\.com\//.test(settings[key])
     )
-      redirect(`/${locale}/admin/settings?error=url`);
+      redirect(`/${locale}/admin/settings?error=paypal&field=${key}`);
   }
   for (const key of ["impactAnimalsHelped", "impactAdoptions"] as const) {
     if (settings[key] && !/^\d{1,8}$/.test(settings[key]))

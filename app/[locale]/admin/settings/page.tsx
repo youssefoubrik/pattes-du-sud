@@ -37,6 +37,10 @@ export default async function SettingsPage({
   await requireAdmin(locale);
   const settings = getSettings();
   const query = await searchParams;
+  const errorField =
+    typeof query.field === "string" && query.field in labels
+      ? labels[query.field as keyof Settings]
+      : "URL field";
   return (
     <main className="flex-1 py-12">
       <Container className="max-w-3xl">
@@ -49,9 +53,19 @@ export default async function SettingsPage({
             Changes saved.
           </p>
         )}
-        {query.error && (
+        {query.error === "url" && (
           <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
-            Please check the URL or PayPal email.
+            {`Enter a valid HTTPS URL for ${errorField}.`}
+          </p>
+        )}
+        {query.error === "paypal" && (
+          <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
+            {`The ${errorField} must be a PayPal checkout URL beginning with https://www.paypal.com/.`}
+          </p>
+        )}
+        {query.error === "number" && (
+          <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
+            Confirmed animals helped and adoptions must be whole numbers.
           </p>
         )}
         <form
