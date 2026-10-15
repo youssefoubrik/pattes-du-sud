@@ -23,16 +23,16 @@ type Copy = {
     intro: string;
     whatsapp: string;
     whatsappText: string;
+    whatsappOpens: string;
     email: string;
+    emailOpens: string;
     arrange: string;
     unavailable: string;
-    form: string;
-    name: string;
-    emailField: string;
-    message: string;
-    send: string;
-    sent: string;
-    error: string;
+    responseTime: string;
+    hoursTitle: string;
+    openingHours: string;
+    closingHours: string;
+    mapTitle: string;
   };
   donate: {
     title: string;
@@ -138,21 +138,20 @@ export const pageMessages: Record<Locale, Copy> = {
     contact: {
       title: "Get in touch",
       intro:
-        "Questions about an animal, a visit or a donation? Send the team a message.",
-      whatsapp: "Message us on WhatsApp",
+        "Questions about an animal, a visit or a donation? Contact the team directly.",
+      whatsapp: "Chat on WhatsApp",
       whatsappText: "I want to help Pattes du Sud.",
-      email: "Email us",
+      whatsappOpens: "Opens WhatsApp",
+      email: "Send an email",
+      emailOpens: "Opens your email app",
       arrange: "Please arrange visits in advance. We work in Mirleft, Morocco.",
       unavailable:
         "Contact details are being prepared. Please check back soon.",
-      form: "Send a message",
-      name: "Your name",
-      emailField: "Your email",
-      message: "Your message",
-      send: "Send message",
-      sent: "Your message was saved for the team. Thank you.",
-      error:
-        "Please check your name, email and message (at least 10 characters).",
+      responseTime: "We usually reply within {hours} hours.",
+      hoursTitle: "Contact hours",
+      openingHours: "Opening",
+      closingHours: "Closing",
+      mapTitle: "Find us in Mirleft",
     },
     donate: {
       title: "Help care continue",
@@ -269,21 +268,20 @@ export const pageMessages: Record<Locale, Copy> = {
     contact: {
       title: "Nous contacter",
       intro:
-        "Une question sur un animal, une visite ou un don ? Écrivez à l’équipe.",
-      whatsapp: "Écrire sur WhatsApp",
+        "Une question sur un animal, une visite ou un don ? Contactez directement l’équipe.",
+      whatsapp: "Discuter sur WhatsApp",
       whatsappText: "Je souhaite aider Pattes du Sud.",
-      email: "Nous envoyer un e-mail",
+      whatsappOpens: "Ouvre WhatsApp",
+      email: "Envoyer un e-mail",
+      emailOpens: "Ouvre votre application e-mail",
       arrange:
         "Merci d’organiser les visites à l’avance. Nous agissons à Mirleft, au Maroc.",
       unavailable: "Les coordonnées seront bientôt disponibles.",
-      form: "Envoyer un message",
-      name: "Votre nom",
-      emailField: "Votre e-mail",
-      message: "Votre message",
-      send: "Envoyer",
-      sent: "Votre message a été enregistré pour l’équipe. Merci.",
-      error:
-        "Vérifiez votre nom, votre e-mail et votre message (10 caractères minimum).",
+      responseTime: "Nous répondons généralement sous {hours} heures.",
+      hoursTitle: "Heures de contact",
+      openingHours: "Ouverture",
+      closingHours: "Fermeture",
+      mapTitle: "Nous trouver à Mirleft",
     },
     donate: {
       title: "Aider les soins à continuer",
@@ -402,21 +400,21 @@ export const pageMessages: Record<Locale, Copy> = {
     contact: {
       title: "Kontakt",
       intro:
-        "Fragen zu einem Tier, einem Besuch oder einer Spende? Schreib unserem Team.",
-      whatsapp: "Auf WhatsApp schreiben",
+        "Fragen zu einem Tier, einem Besuch oder einer Spende? Kontaktiere das Team direkt.",
+      whatsapp: "Auf WhatsApp chatten",
       whatsappText: "Ich möchte Pattes du Sud helfen.",
-      email: "E-Mail senden",
+      whatsappOpens: "Öffnet WhatsApp",
+      email: "E-Mail schreiben",
+      emailOpens: "Öffnet dein E-Mail-Programm",
       arrange:
         "Bitte vereinbare Besuche im Voraus. Wir arbeiten in Mirleft, Marokko.",
       unavailable:
         "Die Kontaktdaten werden vorbereitet. Bitte schau bald wieder vorbei.",
-      form: "Nachricht senden",
-      name: "Dein Name",
-      emailField: "Deine E-Mail",
-      message: "Deine Nachricht",
-      send: "Absenden",
-      sent: "Deine Nachricht wurde für das Team gespeichert. Danke.",
-      error: "Bitte prüfe Name, E-Mail und Nachricht (mindestens 10 Zeichen).",
+      responseTime: "Wir antworten normalerweise innerhalb von {hours} Stunden.",
+      hoursTitle: "Kontaktzeiten",
+      openingHours: "Öffnung",
+      closingHours: "Schließung",
+      mapTitle: "So findest du uns in Mirleft",
     },
     donate: {
       title: "Hilf mit deiner Spende",
@@ -531,19 +529,19 @@ export const pageMessages: Record<Locale, Copy> = {
     },
     contact: {
       title: "تواصل معنا",
-      intro: "هل لديك سؤال عن حيوان أو زيارة أو تبرع؟ أرسل رسالة إلى الفريق.",
-      whatsapp: "راسلنا عبر واتساب",
+      intro: "هل لديك سؤال عن حيوان أو زيارة أو تبرع؟ تواصل مباشرة مع الفريق.",
+      whatsapp: "ابدأ محادثة عبر واتساب",
       whatsappText: "أريد مساعدة جمعية بات دو سود.",
-      email: "راسلنا بالبريد الإلكتروني",
+      whatsappOpens: "يفتح واتساب",
+      email: "أرسل رسالة بالبريد الإلكتروني",
+      emailOpens: "يفتح تطبيق البريد الإلكتروني",
       arrange: "يرجى ترتيب الزيارات مسبقًا. نعمل في ميرلفت بالمغرب.",
       unavailable: "نعمل على توفير بيانات التواصل قريبًا.",
-      form: "أرسل رسالة",
-      name: "اسمك",
-      emailField: "بريدك الإلكتروني",
-      message: "رسالتك",
-      send: "إرسال",
-      sent: "حُفظت رسالتك ليطّلع عليها الفريق. شكرًا لك.",
-      error: "تحقق من الاسم والبريد والرسالة (10 أحرف على الأقل).",
+      responseTime: "نرد عادةً خلال {hours} ساعة.",
+      hoursTitle: "أوقات التواصل",
+      openingHours: "وقت الافتتاح",
+      closingHours: "وقت الإغلاق",
+      mapTitle: "موقعنا في ميرلفت",
     },
     donate: {
       title: "ساعدنا على مواصلة الرعاية",

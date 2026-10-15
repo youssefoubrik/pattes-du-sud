@@ -14,6 +14,9 @@ const labels: Record<keyof Settings, string> = {
   email: "Public email",
   whatsappNumber: "WhatsApp number (digits only)",
   whatsappDisplay: "WhatsApp display number",
+  responseTimeHours: "Typical response time (hours)",
+  openingHours: "Opening hours (optional)",
+  closingHours: "Closing hours (optional)",
   instagram: "Instagram URL",
   facebook: "Facebook URL",
   registrationReference: "Registration reference",
@@ -68,6 +71,11 @@ export default async function SettingsPage({
             Confirmed animals helped and adoptions must be whole numbers.
           </p>
         )}
+        {query.error === "response-time" && (
+          <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
+            Typical response time must be between 1 and 720 hours.
+          </p>
+        )}
         <form
           action={updateSettings}
           className="mt-8 grid gap-5 sm:grid-cols-2"
@@ -85,15 +93,19 @@ export default async function SettingsPage({
                 type={
                   key === "email"
                     ? "email"
-                    : key === "instagram" ||
-                        key === "facebook" ||
-                        key === "mapEmbedUrl" ||
-                        key === "paypalDonateUrl" ||
-                        key === "paypalMonthlyUrl"
-                      ? "url"
-                      : "text"
+                    : key === "responseTimeHours"
+                      ? "number"
+                      : key === "instagram" ||
+                          key === "facebook" ||
+                          key === "mapEmbedUrl" ||
+                          key === "paypalDonateUrl" ||
+                          key === "paypalMonthlyUrl"
+                        ? "url"
+                        : "text"
                 }
                 className="mt-2 min-h-12 w-full rounded-xl border border-border bg-surface px-4 font-normal"
+                min={key === "responseTimeHours" ? 1 : undefined}
+                max={key === "responseTimeHours" ? 720 : undefined}
               />
             </label>
           ))}

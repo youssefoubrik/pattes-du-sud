@@ -35,11 +35,6 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
       "SELECT source, COUNT(*) AS count FROM events WHERE source IS NOT NULL GROUP BY source ORDER BY count DESC LIMIT 10",
     )
     .all() as { source: string; count: number }[];
-  const inbox = (
-    db().prepare("SELECT COUNT(*) AS count FROM contact_messages").get() as {
-      count: number;
-    }
-  ).count;
   return (
     <main className="flex-1 py-12">
       <Container>
@@ -77,13 +72,6 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
                 : "Payment details needed"}{" "}
               · Contact and bank details
             </p>
-          </Link>
-          <Link
-            href={`/${locale}/admin/messages`}
-            className="rounded-3xl border border-border bg-surface p-6 hover:border-primary"
-          >
-            <h2 className="text-2xl text-heading">Contact messages</h2>
-            <p className="mt-2">{inbox} messages · Read and reply by email</p>
           </Link>
           <Link
             href={`/${locale}/admin/content`}

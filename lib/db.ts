@@ -44,6 +44,9 @@ export type Settings = {
   email: string;
   whatsappNumber: string;
   whatsappDisplay: string;
+  responseTimeHours: string;
+  openingHours: string;
+  closingHours: string;
   instagram: string;
   facebook: string;
   registrationReference: string;
@@ -71,6 +74,9 @@ const defaults: Settings = {
     footerContent.contact.whatsappDisplay === "+212 000 000 000"
       ? ""
       : footerContent.contact.whatsappDisplay,
+  responseTimeHours: "24",
+  openingHours: "",
+  closingHours: "",
   instagram: "",
   facebook: "",
   registrationReference: "",
@@ -98,9 +104,9 @@ export function db() {
     CREATE TABLE IF NOT EXISTS media_slots (key TEXT PRIMARY KEY, media_id TEXT NOT NULL REFERENCES media(id));
     CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, expires_at INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY, kind TEXT NOT NULL, path TEXT NOT NULL, country TEXT, source TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
-    CREATE TABLE IF NOT EXISTS contact_messages (id INTEGER PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL, message TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
     CREATE TABLE IF NOT EXISTS copy (namespace TEXT NOT NULL, locale TEXT NOT NULL, data TEXT NOT NULL, PRIMARY KEY(namespace, locale));
   `);
+  instance.exec("DROP TABLE IF EXISTS contact_messages");
   const animalColumns = instance.pragma("table_info(animals)") as { name: string }[];
   if (!animalColumns.some((column) => column.name === "id")) {
     const migrateAnimals = instance.transaction(() => {

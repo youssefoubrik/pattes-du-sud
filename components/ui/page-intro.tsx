@@ -5,13 +5,15 @@ export function PageIntro({
   title,
   intro,
   children,
+  className = "",
 }: {
   title: string;
   intro: string;
   children?: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <Section>
+    <Section className={className}>
       <Container>
         <div className="max-w-3xl">
           <h1 className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">

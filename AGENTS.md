@@ -299,6 +299,8 @@ Current shared implementation choices: SQLite stores CMS edits and uploaded phot
 
 Donation page direction: present frequency, amount, PayPal/card and bank transfer as one clear donation experience. Keep monthly giving visible without preselecting it. Place verified care uses and transparency information near the giving choices. Help international supporters understand local impact with clearly approximate MAD equivalents and cost-based impact examples; keep exchange rates updateable and never promise an exact outcome from a gift. Avoid multiple sharp cards and excessive wave dividers; use section color and decoration only when they clarify the flow. Do not tie donation amounts to specific outcomes until real costs are confirmed or advertise fee-cover amounts until the association's actual processing fees are verified.
 
+The Contact page uses configured WhatsApp and email links instead of a message form. The editor controls the typical response estimate (default 24 hours) and optional opening and closing hours; hide the hours section when neither is set. Keep the interactive Mirleft map on Home and Contact, using the same CMS-managed map URL.
+
 Read `context.txt` before writing association history, care practices, donation uses, or transparency claims. It is the association's presentation for local authorities and describes its vision, activities, red-collar system, and recordkeeping. It does not give a founding date or registration reference. The presentation uses the English name “Southern Paws”; verify naming before using that name in public copy.
 
 ---
@@ -390,6 +392,8 @@ When preparing a PR:
 ---
 
 ## Autonomous Agent Behavior
+
+Do not write or modify application code unless the user explicitly asks you to code. Reviews, analysis, and recommendations are welcome without that request.
 
 When implementing a task:
 

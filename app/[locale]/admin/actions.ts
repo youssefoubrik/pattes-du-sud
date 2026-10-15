@@ -83,6 +83,12 @@ export async function updateSettings(form: FormData) {
     if (settings[key] && !/^\d{1,8}$/.test(settings[key]))
       redirect(`/${locale}/admin/settings?error=number`);
   }
+  if (
+    !/^\d{1,3}$/.test(settings.responseTimeHours) ||
+    Number(settings.responseTimeHours) < 1 ||
+    Number(settings.responseTimeHours) > 720
+  )
+    redirect(`/${locale}/admin/settings?error=response-time`);
   saveSettings(settings);
   for (const language of routing.locales) {
     revalidatePath(`/${language}`, "layout");
@@ -211,15 +217,6 @@ export async function removeAnimal(form: FormData) {
     revalidatePath(`/${language}`);
   }
   redirect(`/${locale}/admin/animals?deleted=1`);
-}
-
-export async function removeMessage(form: FormData) {
-  const locale = localeOf(form);
-  await requireAdmin(locale);
-  const id = Number(form.get("id"));
-  if (Number.isInteger(id) && id > 0)
-    db().prepare("DELETE FROM contact_messages WHERE id = ?").run(id);
-  redirect(`/${locale}/admin/messages`);
 }
 
 export async function updateContent(form: FormData) {

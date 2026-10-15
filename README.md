@@ -17,7 +17,7 @@ Open http://localhost:3000.
 
 The editor is at `/en/admin`. Set `ADMIN_PASSWORD_HASH` in `.env.local` before signing in. Run `npm run admin:hash`, type a password of at least 16 characters at the hidden prompt, and press Enter. Put the printed hash in `.env.local`, restart the server, then sign in with the original password.
 
-Animal records, uploaded photos, contact messages, translated text, settings and anonymous activity counts live in the SQLite file at `DATABASE_PATH`. The default is `data/site.sqlite`. Keep this file on a persistent disk when deploying; serverless ephemeral storage is unsuitable. The database is created and seeded on first use. Never commit it.
+Animal records, uploaded photos, translated text, settings and anonymous activity counts live in the SQLite file at `DATABASE_PATH`. The default is `data/site.sqlite`. Keep this file on a persistent disk when deploying; serverless ephemeral storage is unsuitable. The database is created and seeded on first use. Never commit it.
 
 Run `npm run db:backup` to create a consistent backup in `data/backups/`. To restore, stop the server, replace `data/site.sqlite` with the backup, then start the server. Back up the database before deployments and on a regular schedule.
 
