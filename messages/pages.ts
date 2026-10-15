@@ -50,6 +50,7 @@ type Copy = {
     unavailable: string;
     impact: string;
     impactText: string;
+    transparencyTitle: string;
     dailyCare: string;
     dailyCareText: string;
     veterinaryCare: string;
@@ -170,6 +171,7 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "Where your support goes",
       impactText:
         "The association records income and expenses, keeps supporting documents and tracks veterinary care and the animals it helps.",
+      transparencyTitle: "Our commitment to transparency",
       dailyCare: "Daily care",
       dailyCareText: "Food, clean water and care for animals who need a safe place.",
       veterinaryCare: "Veterinary care",
@@ -300,6 +302,7 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "À quoi sert votre don",
       impactText:
         "L’association enregistre ses recettes et ses dépenses, conserve les justificatifs et suit les soins vétérinaires et les animaux aidés.",
+      transparencyTitle: "Notre engagement pour la transparence",
       dailyCare: "Les soins du quotidien",
       dailyCareText: "De la nourriture, de l’eau propre et des soins pour les animaux qui ont besoin d’un lieu sûr.",
       veterinaryCare: "Les soins vétérinaires",
@@ -429,6 +432,7 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "Wofür deine Hilfe eingesetzt wird",
       impactText:
         "Der Verein dokumentiert Einnahmen und Ausgaben, bewahrt Belege auf und hält Tierarztbehandlungen und betreute Tiere fest.",
+      transparencyTitle: "Unser Engagement für Transparenz",
       dailyCare: "Versorgung im Alltag",
       dailyCareText: "Futter, sauberes Wasser und Betreuung für Tiere, die einen sicheren Ort brauchen.",
       veterinaryCare: "Tierärztliche Versorgung",
@@ -552,6 +556,7 @@ export const pageMessages: Record<Locale, Copy> = {
       impact: "كيف تُستخدم مساهمتك",
       impactText:
         "توثّق الجمعية مداخيلها ومصاريفها، وتحتفظ بالمستندات، وتسجّل الرعاية البيطرية والحيوانات التي تساعدها.",
+      transparencyTitle: "التزامنا بالشفافية",
       dailyCare: "الرعاية اليومية",
       dailyCareText: "الغذاء والماء النظيف ورعاية الحيوانات التي تحتاج إلى مكان آمن.",
       veterinaryCare: "الرعاية البيطرية",

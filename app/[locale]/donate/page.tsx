@@ -7,6 +7,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { PageIntro } from "@/components/ui/page-intro";
 import { Section } from "@/components/ui/section";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { isLocale } from "@/i18n/routing";
 import { getSettings } from "@/lib/db";
 import { pageMetadata } from "@/lib/metadata";
@@ -30,6 +31,16 @@ export default async function Donate({
   const s = getSettings();
   const bankDetails = (["bankName", "iban", "rib", "swift"] as const).filter(
     (key) => s[key],
+  );
+  const transparency = (
+    <div className="max-w-3xl">
+      <h2 className="text-2xl font-semibold text-heading">
+        {t.transparencyTitle}
+      </h2>
+      <p className="mt-3 leading-relaxed text-muted-foreground">
+        {t.impactText}
+      </p>
+    </div>
   );
 
   return (
@@ -102,13 +113,11 @@ export default async function Donate({
         </Container>
       </Section>
 
-      <Section>
+      <Section className="relative bg-background">
+        <SectionDivider direction="leave" />
         <Container>
           <div className="max-w-2xl">
             <h2 className="text-3xl text-heading">{t.impact}</h2>
-            <p className="mt-3 leading-relaxed text-muted-foreground">
-              {t.impactText}
-            </p>
           </div>
           <div className="mt-8 grid gap-8 border-t border-border pt-6 md:grid-cols-3 md:gap-10">
             {[
@@ -122,40 +131,51 @@ export default async function Donate({
               </article>
             ))}
           </div>
+          {bankDetails.length === 0 && (
+            <div className="mt-10 border-t border-border pt-6">
+              {transparency}
+            </div>
+          )}
         </Container>
       </Section>
 
       {bankDetails.length > 0 && (
-        <Section className="bg-secondary">
-          <Container className="grid gap-10 md:grid-cols-2">
-            <div>
-              <h2 className="text-3xl text-heading">{t.transfer}</h2>
-              <p className="mt-3 leading-relaxed">{t.transferNote}</p>
-            </div>
-            <div className="bg-background px-5">
-              {bankDetails.map((key) => (
-                <div
-                  key={key}
-                  className="flex flex-wrap items-center justify-between gap-3 border-b border-border py-4 last:border-b-0"
-                >
-                  <div>
-                    <p className="text-sm font-bold uppercase text-muted-foreground">
-                      {key}
-                    </p>
-                    <p className="break-all" dir="ltr">
-                      {s[key]}
-                    </p>
+        <>
+          <Section className="bg-secondary">
+            <Container className="grid gap-10 md:grid-cols-2">
+              <div>
+                <h2 className="text-3xl text-heading">{t.transfer}</h2>
+                <p className="mt-3 leading-relaxed">{t.transferNote}</p>
+              </div>
+              <div className="border border-border bg-surface px-5">
+                {bankDetails.map((key) => (
+                  <div
+                    key={key}
+                    className="flex flex-wrap items-center justify-between gap-3 border-b border-border py-4 last:border-b-0"
+                  >
+                    <div>
+                      <p className="text-sm font-bold uppercase text-muted-foreground">
+                        {key}
+                      </p>
+                      <p className="break-all" dir="ltr">
+                        {s[key]}
+                      </p>
+                    </div>
+                    <CopyValue
+                      value={s[key]}
+                      label={t.copy}
+                      copiedLabel={t.copied}
+                    />
                   </div>
-                  <CopyValue
-                    value={s[key]}
-                    label={t.copy}
-                    copiedLabel={t.copied}
-                  />
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
+                ))}
+              </div>
+            </Container>
+          </Section>
+          <Section className="relative bg-background">
+            <SectionDivider direction="leave" />
+            <Container>{transparency}</Container>
+          </Section>
+        </>
       )}
     </main>
   );

@@ -75,7 +75,11 @@ Checked items are implemented in the site. Account details and association facts
 - [x] Donation purpose and editable PayPal-hosted links
 - [x] Bank details with copy buttons and recurring-transfer guidance
 - [x] Recordkeeping explanation and thank-you page
-- [ ] On-site amount selection tied to verified costs
+- [x] PayPal mark and verified care categories
+- [ ] Redesign as one donation experience with PayPal and bank transfer together (see [donation page continuation brief](docs/donation-page-next-steps.md))
+- [ ] Carry the selected frequency and amount into PayPal checkout after the integration approach is confirmed
+- [ ] Show an approximate MAD equivalent and possible local-care impact for selected amounts, using an updateable exchange rate and association-confirmed costs
+- [ ] Optional processing-fee contribution, calculated from verified account fees
 - [ ] Verified payment status and provider return flow
 
 ### Mirleft QR page
@@ -232,7 +236,7 @@ The team still needs to confirm the founding story, association photos and permi
 - A thank-you page after donating, with an invitation to share
 - A choice between **One-time** and **Monthly**
 - Monthly giving is highlighted with an ongoing-care explanation; one-time giving remains available
-- PayPal payment mark and an explanation that the amount is chosen on PayPal
+- PayPal payment mark
 - A simple note explaining how make bank transfer, and to set up a monthly transfer
 - Bank details (RIB, IBAN, SWIFT) with a **Copy** button, easy on a phone
 - Verified examples of daily care, veterinary care, prevention and follow-up
@@ -240,7 +244,7 @@ The team still needs to confirm the founding story, association photos and permi
 
 **⚪ Later: link amounts to specific costs**
 
-- Show suggested amounts only after the association confirms real costs for each example
+- Show what an amount may help support in Mirleft only after local costs are confirmed; label the impact and EUR-to-MAD conversion as approximate
 
 ### 📍 Mirleft page (QR code)
 
