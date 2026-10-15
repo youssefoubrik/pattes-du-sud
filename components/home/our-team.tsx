@@ -1,6 +1,6 @@
 import { getEditableCopy } from "@/lib/editable-copy";
 import Link from "next/link";
-import { PawPrint } from "lucide-react";
+import { ArrowRight, PawPrint } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
@@ -30,7 +30,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <figure className="lg:order-2">
-            <SectionImage src={getMediaSrc("home.team", image.src)} alt={text.imageAlt} objectPosition="center 45%" />
+            <SectionImage src={getMediaSrc("home.team", image.src)} alt={text.imageAlt} aspect="landscape" />
             <PhotoCaption>{text.imageCaption}</PhotoCaption>
           </figure>
           <div className="lg:order-1">
@@ -46,19 +46,20 @@ export function OurTeam({ locale }: { locale: Locale }) {
             </dl>}
             <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
               <ButtonLink
-                href={`/${locale}/volunteer`}
+                href={`/${locale}/about`}
                 variant="secondary"
                 arrow
                 compact
                 className="max-w-full gap-2 py-2 text-center"
               >
-                {text.volunteerCta}
+                {text.meetTeam}
               </ButtonLink>
               <Link
-                href={`/${locale}/about`}
-                className="inline-flex min-h-11 items-center font-bold text-heading underline decoration-border underline-offset-4 hover:decoration-heading"
+                href={`/${locale}/volunteer`}
+                className="inline-flex min-h-11 items-center gap-2 font-bold text-heading underline decoration-heading underline-offset-4 transition-opacity duration-200 hover:opacity-80"
               >
-                {text.meetTeam}
+                {text.volunteerCta}
+                <ArrowRight size={20} className="shrink-0 rtl:rotate-180" aria-hidden="true" />
               </Link>
             </div>
           </div>

@@ -47,9 +47,9 @@ export const homeContent: HomeContent = {
     },
   },
   teamImage: {
-    // Photo source: https://unsplash.com/photos/a-person-petting-a-cat-on-the-ground-o2zCNeTgl40
-    src: "/images/home-work-cat.jpg",
-    width: 1000,
-    height: 667,
+    // Group photo supplied for the home team section.
+    src: "/images/home-team.jpg",
+    width: 6000,
+    height: 4000,
   },
 };

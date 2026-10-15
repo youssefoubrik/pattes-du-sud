@@ -5,11 +5,21 @@ type Props = {
   alt: string;
   preload?: boolean;
   objectPosition?: string;
+  aspect?: "section" | "landscape";
 };
 
-export function SectionImage({ src, alt, preload = false, objectPosition = "center" }: Props) {
+export function SectionImage({
+  src,
+  alt,
+  preload = false,
+  objectPosition = "center",
+  aspect = "section",
+}: Props) {
+  const aspectClass =
+    aspect === "landscape" ? "aspect-3/2" : "aspect-4/3 lg:aspect-5/4";
+
   return (
-    <div className="relative aspect-4/3 w-full overflow-hidden rounded-3xl bg-secondary lg:aspect-5/4">
+    <div className={`relative ${aspectClass} w-full overflow-hidden rounded-3xl bg-secondary`}>
       <Image
         src={src}
         alt={alt}

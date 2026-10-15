@@ -68,7 +68,7 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     team: {
       title: "The people behind the care",
       description: "Meet the Mirleft team feeding street dogs and cats, arranging care and helping them find homes.",
-      imageAlt: "A person gently petting a tabby cat outdoors.",
+      imageAlt: "A group of people putting their hands together in a team huddle.",
       imageCaption: "Care for Mirleft’s street dogs and cats starts with people who show up.",
       volunteerCta: "Volunteer with us",
       meetTeam: "Get to know our team",
@@ -122,7 +122,7 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     team: {
       title: "Celles et ceux qui prennent soin d’eux",
       description: "Rencontrez l’équipe de Mirleft qui nourrit les chiens et chats des rues, organise leurs soins et les aide à trouver un foyer.",
-      imageAlt: "Une personne caresse doucement un chat tigré en plein air.",
+      imageAlt: "Des membres d’équipe réunis autour d’une table, les mains rassemblées.",
       imageCaption: "À Mirleft, les soins aux chiens et chats des rues commencent avec les personnes qui agissent sur le terrain.",
       volunteerCta: "Devenir bénévole",
       meetTeam: "Découvrir notre équipe",
@@ -176,7 +176,7 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     team: {
       title: "Menschen, die sich kümmern",
       description: "Lerne das Team in Mirleft kennen, das Straßenhunde und Straßenkatzen füttert, ihre Versorgung organisiert und ein Zuhause für sie sucht.",
-      imageAlt: "Eine Person streichelt draußen sanft eine getigerte Katze.",
+      imageAlt: "Ein Team legt die Hände in der Mitte eines Tisches übereinander.",
       imageCaption: "Fürsorge für Mirlefts Straßenhunde und Straßenkatzen beginnt mit Menschen, die vor Ort helfen.",
       volunteerCta: "Hilf ehrenamtlich mit",
       meetTeam: "Lerne unser Team kennen",
@@ -230,7 +230,7 @@ export const homeMessages: Record<Locale, HomeMessages> = {
     team: {
       title: "الفريق الذي يعتني بهم",
       description: "تعرّف على فريق ميرلفت الذي يطعم كلاب وقطط الشوارع، وينظّم علاجها، ويساعدها في العثور على بيت.",
-      imageAlt: "شخص يربت برفق على قطة مخططة في الهواء الطلق.",
+      imageAlt: "أعضاء فريق يجمعون أيديهم فوق الطاولة في اجتماع جماعي.",
       imageCaption: "تبدأ رعاية كلاب وقطط الشوارع في ميرلفت بأشخاص يمدّون لها يد العون.",
       volunteerCta: "تطوّع معنا",
       meetTeam: "تعرّف على فريقنا",
