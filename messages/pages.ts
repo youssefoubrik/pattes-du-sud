@@ -15,6 +15,7 @@ type Copy = {
     title: string;
     intro: string;
     ways: [string, string, string];
+    wayTitles: [string, string, string];
     visit: string;
     arrangeVisit: string;
   };
@@ -130,6 +131,11 @@ export const pageMessages: Record<Locale, Copy> = {
         "Help with feeding and daily care when arranged with the team.",
         "Support transport, supplies or veterinary visits if you can.",
         "Share the animals’ stories and help them find caring homes.",
+      ],
+      wayTitles: [
+        "Feeding & daily care",
+        "Transport, supplies & veterinary visits",
+        "Share their stories",
       ],
       visit:
         "Please contact us before visiting so we can suggest a useful task and arrange a suitable time.",
@@ -260,6 +266,11 @@ export const pageMessages: Record<Locale, Copy> = {
         "Aider à nourrir les animaux et à leur apporter des soins, avec l’équipe.",
         "Aider au transport, aux fournitures ou aux visites vétérinaires.",
         "Partager les histoires des animaux pour leur trouver un foyer.",
+      ],
+      wayTitles: [
+        "Nourrir et prendre soin",
+        "Transport, fournitures et visites vétérinaires",
+        "Faire connaître les animaux",
       ],
       visit:
         "Contactez-nous avant de venir pour convenir d’une tâche utile et d’un horaire adapté.",
@@ -393,6 +404,11 @@ export const pageMessages: Record<Locale, Copy> = {
         "Unterstütze Fahrten, Material oder Tierarztbesuche, wenn du kannst.",
         "Teile die Geschichten der Tiere und hilf ihnen, ein Zuhause zu finden.",
       ],
+      wayTitles: [
+        "Füttern und tägliche Versorgung",
+        "Fahrten, Material und Tierarztbesuche",
+        "Geschichten teilen",
+      ],
       visit:
         "Bitte melde dich vor einem Besuch, damit wir eine passende Aufgabe und Zeit vereinbaren können.",
       arrangeVisit: "Besuch zum Helfen vereinbaren",
@@ -523,6 +539,11 @@ export const pageMessages: Record<Locale, Copy> = {
         "ساعد في إطعام الحيوانات ورعايتها بالتنسيق مع الفريق.",
         "ساهم في النقل أو المستلزمات أو الزيارات البيطرية إن استطعت.",
         "شارك قصص الحيوانات وساعدها في العثور على بيوت ترعاها.",
+      ],
+      wayTitles: [
+        "الإطعام والرعاية اليومية",
+        "النقل والمستلزمات والزيارات البيطرية",
+        "التعريف بقصص الحيوانات",
       ],
       visit: "تواصل معنا قبل الزيارة لنرتب وقتًا مناسبًا ومهمة مفيدة.",
       arrangeVisit: "رتّب زيارة للتطوع",

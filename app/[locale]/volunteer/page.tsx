@@ -38,12 +38,15 @@ export default async function Volunteer({
       <Section className="bg-secondary">
         <Container>
           <ul className="grid gap-5 md:grid-cols-3">
-            {t.ways.map((way) => (
+            {t.ways.map((way, index) => (
               <li
-                key={way}
-                className="rounded-3xl bg-background p-6 text-lg leading-relaxed"
+                key={t.wayTitles[index]}
+                className="rounded-3xl bg-background p-6"
               >
-                {way}
+                <h2 className="text-xl font-semibold text-heading">
+                  {t.wayTitles[index]}
+                </h2>
+                <p className="mt-3 leading-relaxed">{way}</p>
               </li>
             ))}
           </ul>
