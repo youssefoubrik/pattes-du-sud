@@ -76,9 +76,9 @@ export default async function Contact({
       <PageIntro
         title={t.title}
         intro={t.intro}
-        className="pb-4 sm:pb-6 lg:pb-8"
+        className="!pb-4"
       />
-      <Section className="pt-0">
+      <Section className="!pt-0">
         <Container>
           <div className="grid gap-5 md:grid-cols-2">
             {s.whatsappNumber && (
