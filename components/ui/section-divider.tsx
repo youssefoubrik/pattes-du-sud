@@ -24,7 +24,7 @@ export function SectionDivider({ direction, paws = false }: Props) {
       </svg>
       {paws && (
         <>
-          <PawPrint size={26} fill="currentColor" className="absolute end-[12%] top-2 -rotate-12 text-heading/30 rtl:rotate-12" />
+          <PawPrint size={26} fill="currentColor" className="absolute end-[25%] top-2 -rotate-12 text-heading/30 sm:end-[12%] rtl:rotate-12" />
           <PawPrint size={22} fill="currentColor" className="absolute end-[8%] top-4 rotate-12 text-heading/30 rtl:-rotate-12" />
         </>
       )}

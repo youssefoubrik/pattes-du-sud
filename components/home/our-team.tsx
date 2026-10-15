@@ -20,7 +20,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
   return (
     <Section aria-labelledby="our-team-title" className="relative bg-secondary">
       <SectionDivider direction="enter" />
-      <span aria-hidden="true" className="pointer-events-none absolute start-[12%] top-2 text-heading/30">
+      <span aria-hidden="true" className="pointer-events-none absolute start-[25%] top-2 text-heading/30 sm:start-[12%]">
         <PawPrint size={26} fill="currentColor" className="-rotate-12 rtl:rotate-12" />
       </span>
       <span aria-hidden="true" className="pointer-events-none absolute start-[8%] top-4 text-heading/30">
