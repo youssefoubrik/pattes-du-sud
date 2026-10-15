@@ -111,17 +111,12 @@ async function AnimalDetailContent({
                 {animal.status === "available" && (
                   <Link
                     href={whatsapp}
-                    className="group flex min-h-12 w-full max-w-md items-center gap-3 rounded-full border-2 border-dashed border-heading/40 bg-secondary px-3 py-2 transition-[box-shadow,translate] duration-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-fit"
+                    className="flex min-h-12 w-full max-w-md items-center justify-between gap-4 rounded-full border border-border bg-secondary px-5 py-2 text-heading transition-colors duration-150 hover:bg-secondary/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-fit"
                   >
-                    <PawPrint
-                      size={25}
-                      className="shrink-0 text-primary transition-transform duration-200 motion-safe:group-hover:scale-110 group-hover:text-primary-hover motion-reduce:transition-none"
-                      aria-hidden="true"
-                    />
                     <span className="font-bold text-heading">{t.adopt}</span>
                     <ArrowRight
                       size={18}
-                      className="text-primary rtl:rotate-180"
+                      className="shrink-0 rtl:rotate-180"
                       aria-hidden="true"
                     />
                   </Link>
