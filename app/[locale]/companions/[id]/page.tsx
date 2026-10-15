@@ -127,39 +127,41 @@ async function AnimalDetailContent({
                   </Link>
                 )}
               </div>
-              <h2 className="mt-9 text-2xl text-heading">{t.facts}</h2>
-              <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
-                {animal.ageYears && (
+              <section className="rounded-sm mt-6 border-b border-border bg-secondary px-4 py-5 sm:px-6">
+                <h2 className="text-2xl text-heading">{t.facts}</h2>
+                <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
+                  {animal.ageYears && (
+                    <div>
+                      <dt className="text-sm font-semibold text-muted-foreground">{t.age}</dt>
+                      <dd className="mt-1 font-bold text-heading">
+                        {common.age.replace("{age}", String(animal.ageYears))}
+                      </dd>
+                    </div>
+                  )}
+                  {animal.sex && (
+                    <div>
+                      <dt className="text-sm font-semibold text-muted-foreground">{t.sex}</dt>
+                      <dd className="mt-1 font-bold text-heading">{t[animal.sex]}</dd>
+                    </div>
+                  )}
                   <div>
-                    <dt className="text-sm font-semibold text-muted-foreground">{t.age}</dt>
-                    <dd className="mt-1 font-bold text-heading">
-                      {common.age.replace("{age}", String(animal.ageYears))}
+                    <dt className="text-sm font-semibold text-muted-foreground">{t.vaccinated}</dt>
+                    <dd className="mt-1 font-bold leading-snug text-heading">
+                      {animal.vaccinated === "yes" ? t.vaccinatedYes : t.vaccinatedNo}
                     </dd>
                   </div>
-                )}
-                {animal.sex && (
                   <div>
-                    <dt className="text-sm font-semibold text-muted-foreground">{t.sex}</dt>
-                    <dd className="mt-1 font-bold text-heading">{t[animal.sex]}</dd>
+                    <dt className="text-sm font-semibold text-muted-foreground">{t.sterilized}</dt>
+                    <dd className="mt-1 font-bold leading-snug text-heading">
+                      {animal.sterilized === "yes" ? t.sterilizedYes : t.sterilizedNo}
+                    </dd>
                   </div>
-                )}
-                <div>
-                  <dt className="text-sm font-semibold text-muted-foreground">{t.vaccinated}</dt>
-                  <dd className="mt-1 font-bold leading-snug text-heading">
-                    {animal.vaccinated === "yes" ? t.vaccinatedYes : t.vaccinatedNo}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-semibold text-muted-foreground">{t.sterilized}</dt>
-                  <dd className="mt-1 font-bold leading-snug text-heading">
-                    {animal.sterilized === "yes" ? t.sterilizedYes : t.sterilizedNo}
-                  </dd>
-                </div>
-              </dl>
+                </dl>
+              </section>
               {(animal.story || animal.personality) && (
-                <section className="mt-9 border-t border-border pt-7">
+                <section className="mt-7">
                   <h2 className="text-2xl text-heading">{t.story}</h2>
-                  <div className="mt-3 max-w-2xl space-y-4 text-lg leading-relaxed text-foreground">
+                  <div className="mt-3 max-w-3xl space-y-4 text-lg leading-relaxed text-foreground">
                     {(animal.story ||
                       (animal.personality &&
                         common.personality[animal.personality]) ||
@@ -174,7 +176,7 @@ async function AnimalDetailContent({
                   </div>
                 </section>
               )}
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
                 <ButtonLink href={`/${locale}/donate`} variant="donate">
                   {t.help}
                 </ButtonLink>
