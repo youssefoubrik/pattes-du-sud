@@ -16,7 +16,7 @@ type Copy = {
     intro: string;
     ways: [string, string, string];
     visit: string;
-    contact: string;
+    arrangeVisit: string;
   };
   contact: {
     title: string;
@@ -133,7 +133,7 @@ export const pageMessages: Record<Locale, Copy> = {
       ],
       visit:
         "Please contact us before visiting so we can suggest a useful task and arrange a suitable time.",
-      contact: "Get in touch",
+      arrangeVisit: "Arrange a volunteer visit",
     },
     contact: {
       title: "Get in touch",
@@ -263,7 +263,7 @@ export const pageMessages: Record<Locale, Copy> = {
       ],
       visit:
         "Contactez-nous avant de venir pour convenir d’une tâche utile et d’un horaire adapté.",
-      contact: "Nous contacter",
+      arrangeVisit: "Organiser une visite bénévole",
     },
     contact: {
       title: "Nous contacter",
@@ -395,7 +395,7 @@ export const pageMessages: Record<Locale, Copy> = {
       ],
       visit:
         "Bitte melde dich vor einem Besuch, damit wir eine passende Aufgabe und Zeit vereinbaren können.",
-      contact: "Kontakt aufnehmen",
+      arrangeVisit: "Besuch zum Helfen vereinbaren",
     },
     contact: {
       title: "Kontakt",
@@ -525,7 +525,7 @@ export const pageMessages: Record<Locale, Copy> = {
         "شارك قصص الحيوانات وساعدها في العثور على بيوت ترعاها.",
       ],
       visit: "تواصل معنا قبل الزيارة لنرتب وقتًا مناسبًا ومهمة مفيدة.",
-      contact: "تواصل معنا",
+      arrangeVisit: "رتّب زيارة للتطوع",
     },
     contact: {
       title: "تواصل معنا",

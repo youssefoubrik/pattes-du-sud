@@ -25,7 +25,16 @@ export default async function Volunteer({
   const t = getEditableCopy("pages", locale, pageMessages[locale]).volunteer;
   return (
     <main id="main-content" className="flex-1">
-      <PageIntro title={t.title} intro={t.intro} />
+      <PageIntro title={t.title} intro={t.intro}>
+        <ButtonLink
+          href={`/${locale}/contact`}
+          variant="secondary"
+          arrow
+          className="mt-6"
+        >
+          {t.arrangeVisit}
+        </ButtonLink>
+      </PageIntro>
       <Section className="bg-secondary">
         <Container>
           <ul className="grid gap-5 md:grid-cols-3">
@@ -43,9 +52,6 @@ export default async function Volunteer({
       <Section>
         <Container>
           <p className="max-w-2xl text-lg leading-relaxed">{t.visit}</p>
-          <ButtonLink href={`/${locale}/contact`} className="mt-6">
-            {t.contact}
-          </ButtonLink>
         </Container>
       </Section>
     </main>
