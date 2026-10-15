@@ -94,7 +94,7 @@ export function AnimalGallery({
               type="button"
               onClick={() => setPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className="min-h-11 cursor-pointer rounded-full border border-border bg-surface px-4 font-semibold text-heading transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+              className="min-h-11 cursor-pointer rounded-full border border-border bg-secondary/70 px-4 font-semibold text-heading transition-colors hover:bg-secondary/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {text.previousPage}
             </button>
@@ -105,7 +105,7 @@ export function AnimalGallery({
                 onClick={() => setPage(pageNumber)}
                 aria-label={text.pageLabel.replace("{page}", new Intl.NumberFormat(locale).format(pageNumber))}
                 aria-current={currentPage === pageNumber ? "page" : undefined}
-                className="size-11 cursor-pointer rounded-full border border-border bg-surface font-bold text-heading transition-colors hover:bg-secondary aria-[current=page]:border-heading aria-[current=page]:bg-heading aria-[current=page]:text-primary-foreground"
+                className="size-11 cursor-pointer rounded-full border border-border bg-secondary/70 font-bold text-heading transition-colors hover:bg-secondary/80 aria-[current=page]:border-heading aria-[current=page]:bg-heading aria-[current=page]:text-primary-foreground"
               >
                 {new Intl.NumberFormat(locale).format(pageNumber)}
               </button>
@@ -114,7 +114,7 @@ export function AnimalGallery({
               type="button"
               onClick={() => setPage(currentPage + 1)}
               disabled={currentPage === pageCount}
-              className="min-h-11 cursor-pointer rounded-full border border-border bg-surface px-4 font-semibold text-heading transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+              className="min-h-11 cursor-pointer rounded-full border border-border bg-secondary/70 px-4 font-semibold text-heading transition-colors hover:bg-secondary/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {text.nextPage}
             </button>
@@ -146,7 +146,7 @@ function FilterGroup<T extends string>({
             type="button"
             aria-pressed={selected === option.value}
             onClick={() => onSelect(option.value)}
-            className="min-h-11 cursor-pointer rounded-full border border-border bg-surface px-4 text-base font-bold text-heading transition-colors hover:border-primary-hover hover:text-primary-hover aria-pressed:border-heading aria-pressed:bg-heading aria-pressed:text-primary-foreground aria-pressed:hover:border-heading aria-pressed:hover:bg-heading aria-pressed:hover:text-primary-foreground"
+            className="min-h-11 cursor-pointer rounded-full border border-border bg-secondary/70 px-4 text-base font-bold text-heading transition-colors hover:bg-secondary/80 aria-pressed:border-heading aria-pressed:bg-heading aria-pressed:text-primary-foreground aria-pressed:hover:border-heading aria-pressed:hover:bg-heading aria-pressed:hover:text-primary-foreground"
           >
             {option.label}
           </button>
