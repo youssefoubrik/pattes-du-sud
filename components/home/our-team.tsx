@@ -1,6 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
-import Link from "next/link";
-import { ArrowRight, PawPrint } from "lucide-react";
+import { PawPrint } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
@@ -54,13 +53,12 @@ export function OurTeam({ locale }: { locale: Locale }) {
               >
                 {text.meetTeam}
               </ButtonLink>
-              <Link
+              <ButtonLink
                 href={`/${locale}/volunteer`}
-                className="inline-flex min-h-11 items-center gap-2 font-bold text-heading underline decoration-heading underline-offset-4 transition-opacity duration-200 hover:opacity-80"
+                variant="link"
               >
                 {text.volunteerCta}
-                <ArrowRight size={20} className="shrink-0 rtl:rotate-180" aria-hidden="true" />
-              </Link>
+              </ButtonLink>
             </div>
           </div>
         </div>
