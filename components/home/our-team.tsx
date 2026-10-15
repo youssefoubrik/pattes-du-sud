@@ -21,13 +21,15 @@ export function OurTeam({ locale }: { locale: Locale }) {
   return (
     <Section aria-labelledby="our-team-title" className="relative bg-secondary">
       <SectionDivider direction="enter" />
+      <span aria-hidden="true" className="pointer-events-none absolute start-[12%] top-2 text-heading/30">
+        <PawPrint size={26} fill="currentColor" className="-rotate-12 rtl:rotate-12" />
+      </span>
+      <span aria-hidden="true" className="pointer-events-none absolute start-[8%] top-4 text-heading/30">
+        <PawPrint size={22} fill="currentColor" className="rotate-12 rtl:-rotate-12" />
+      </span>
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <figure className="relative lg:order-2">
-            <span aria-hidden="true" className="pointer-events-none absolute -top-12 start-2 flex items-start gap-1 text-heading/30">
-              <PawPrint size={24} fill="currentColor" className="-rotate-12 rtl:rotate-12" />
-              <PawPrint size={19} fill="currentColor" className="mt-2 rotate-12 rtl:-rotate-12" />
-            </span>
+          <figure className="lg:order-2">
             <SectionImage src={getMediaSrc("home.team", image.src)} alt={text.imageAlt} objectPosition="center 45%" />
             <PhotoCaption>{text.imageCaption}</PhotoCaption>
           </figure>
@@ -42,7 +44,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
               {settings.impactAnimalsHelped && <div><dt className="text-sm font-semibold text-heading">{text.animalsHelped}</dt><dd className="text-3xl font-bold text-primary-hover">{settings.impactAnimalsHelped}</dd></div>}
               {settings.impactAdoptions && <div><dt className="text-sm font-semibold text-heading">{text.adoptions}</dt><dd className="text-3xl font-bold text-primary-hover">{settings.impactAdoptions}</dd></div>}
             </dl>}
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
               <ButtonLink
                 href={`/${locale}/volunteer`}
                 variant="secondary"

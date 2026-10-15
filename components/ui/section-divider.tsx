@@ -10,17 +10,17 @@ export function SectionDivider({ direction, paws = false }: Props) {
         focusable="false"
         viewBox="0 0 1440 64"
         preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-x-0 bottom-full -mb-px h-8 w-full fill-secondary sm:h-12 lg:h-16"
+        className="pointer-events-none absolute inset-x-0 bottom-full -mb-px h-6 w-full fill-secondary sm:h-8 lg:h-10"
       >
-        <path d="M0 40C240 72 400 8 680 24S1120 72 1440 24V64H0Z" />
+        <path d="M0 38C240 60 400 18 680 30S1120 56 1440 22V64H0Z" />
       </svg>
     );
   }
 
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-8 sm:h-12">
+    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-6 sm:h-8 lg:h-10">
       <svg viewBox="0 0 1440 48" preserveAspectRatio="none" className="h-full w-full fill-secondary">
-        <path d="M0 0H1440V14C1180 48 1010 8 740 22S270 48 0 18Z" />
+        <path d="M0 0H1440V12C1180 36 1010 12 740 24S270 38 0 18Z" />
       </svg>
       {paws && (
         <>

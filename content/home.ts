@@ -47,10 +47,9 @@ export const homeContent: HomeContent = {
     },
   },
   teamImage: {
-    // TODO: replace this illustrative stock photo with a real photo of the Pattes du Sud team.
-    // Photo source: https://unsplash.com/photos/person-carrying-white-and-black-puppy-2h5eBF8aRhM
-    src: "/images/home-team-stock.jpg",
-    width: 1200,
-    height: 800,
+    // Photo source: https://unsplash.com/photos/a-person-petting-a-cat-on-the-ground-o2zCNeTgl40
+    src: "/images/home-work-cat.jpg",
+    width: 1000,
+    height: 667,
   },
 };
