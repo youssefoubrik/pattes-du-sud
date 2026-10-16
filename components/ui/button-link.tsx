@@ -31,7 +31,11 @@ export function ButtonLink({ compact = false, arrow = false, variant = "primary"
       {arrow && (
         <ArrowRight
           size={20}
-          className="shrink-0 rtl:rotate-180"
+          className={`shrink-0 rtl:rotate-180 ${
+            variant === "secondary"
+              ? "motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1 rtl:motion-safe:group-hover:-translate-x-1 rtl:motion-safe:group-focus-visible:-translate-x-1"
+              : ""
+          }`}
           aria-hidden="true"
         />
       )}
