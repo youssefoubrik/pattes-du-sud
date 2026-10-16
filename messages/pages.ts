@@ -16,7 +16,12 @@ type Copy = {
     intro: string;
     ways: [string, string, string];
     wayTitles: [string, string, string];
+    actionImagesTitle: string;
+    actionImageCaptions: [string, string, string];
+    actionImageAlts: [string, string, string];
+    visitTitle: string;
     visit: string;
+    visitSteps: [string, string];
     arrangeVisit: string;
   };
   contact: {
@@ -126,19 +131,35 @@ export const pageMessages: Record<Locale, Copy> = {
     volunteer: {
       title: "Volunteer in Mirleft",
       intro:
-        "A little time and practical help can make a real difference for street animals.",
+        "A little time and practical help can make a real difference for dogs and cats living on the streets.",
       ways: [
-        "Help with feeding and daily care when arranged with the team.",
-        "Support transport, supplies or veterinary visits if you can.",
-        "Share the animals’ stories and help them find caring homes.",
+        "Regular food, clean water and calm attention support the health and comfort of dogs and cats living on the streets. Volunteers can help with feeding and daily care after arranging a visit. The team will suggest a useful task based on what is needed that day, such as preparing food or refreshing water.",
+        "Timely veterinary care helps sick or injured dogs and cats get the treatment they need. Volunteers can support this work by helping with transport, supplies or a planned veterinary visit. The team will coordinate the task in advance and explain what practical help is useful.",
+        "When more people understand a dog or cat’s story, they have more ways to offer support or consider adoption. Volunteers can help by sharing clear updates about each companion’s needs and personality. This helps supporters see how they can get involved.",
       ],
       wayTitles: [
         "Feeding & daily care",
         "Transport, supplies & veterinary visits",
         "Share their stories",
       ],
+      actionImagesTitle: "Care in action",
+      actionImageCaptions: [
+        "Feeding a dog outdoors",
+        "A kitten receiving a veterinary check-up",
+        "Offering a calm moment with a cat",
+      ],
+      actionImageAlts: [
+        "A hand offering food to a dog",
+        "A veterinarian examining a white kitten",
+        "A person gently petting a tabby cat",
+      ],
+      visitTitle: "Before your visit",
       visit:
-        "Please contact us before visiting so we can suggest a useful task and arrange a suitable time.",
+        "Volunteer tasks depend on what dogs and cats need and what the team can arrange that day.",
+      visitSteps: [
+        "Message the team before coming.",
+        "Agree on a suitable time and a useful task together.",
+      ],
       arrangeVisit: "Arrange a volunteer visit",
     },
     contact: {
@@ -261,19 +282,35 @@ export const pageMessages: Record<Locale, Copy> = {
     volunteer: {
       title: "Bénévolat à Mirleft",
       intro:
-        "Un peu de temps et une aide concrète comptent beaucoup pour les animaux des rues.",
+        "Un peu de temps et une aide concrète comptent beaucoup pour les chiens et les chats des rues.",
       ways: [
-        "Aider à nourrir les animaux et à leur apporter des soins, avec l’équipe.",
-        "Aider au transport, aux fournitures ou aux visites vétérinaires.",
-        "Partager les histoires des animaux pour leur trouver un foyer.",
+        "Une alimentation régulière, de l’eau propre et une attention calme contribuent au bien-être des chiens et des chats des rues. Après avoir convenu d’une visite, vous pouvez participer au nourrissage et aux soins quotidiens. L’équipe vous proposera une tâche utile selon les besoins du jour, comme préparer la nourriture ou remplir les gamelles d’eau.",
+        "Des soins vétérinaires à temps aident les chiens et les chats malades ou blessés à recevoir le traitement nécessaire. Vous pouvez soutenir ces soins en aidant au transport, aux fournitures ou lors d’une visite vétérinaire organisée. L’équipe conviendra de la tâche à l’avance et vous indiquera l’aide pratique nécessaire.",
+        "Quand davantage de personnes connaissent l’histoire d’un chien ou d’un chat, elles peuvent plus facilement proposer leur soutien ou envisager une adoption. Vous pouvez aider en partageant des informations claires sur les besoins et la personnalité de chaque compagnon. Cela montre aussi aux personnes intéressées comment s’engager.",
       ],
       wayTitles: [
         "Nourrir et prendre soin",
         "Transport, fournitures et visites vétérinaires",
-        "Faire connaître les animaux",
+        "Faire connaître leurs histoires",
       ],
+      actionImagesTitle: "Les soins en action",
+      actionImageCaptions: [
+        "Nourrir un chien en plein air",
+        "Un chaton reçoit un examen vétérinaire",
+        "Offrir un moment calme à un chat",
+      ],
+      actionImageAlts: [
+        "Une main offre de la nourriture à un chien",
+        "Une vétérinaire examine un chaton blanc",
+        "Une personne caresse doucement un chat tigré",
+      ],
+      visitTitle: "Avant votre visite",
       visit:
-        "Contactez-nous avant de venir pour convenir d’une tâche utile et d’un horaire adapté.",
+        "Les tâches dépendent des besoins des chiens et des chats et de ce que l’équipe peut organiser ce jour-là.",
+      visitSteps: [
+        "Écrivez à l’équipe avant de venir.",
+        "Convenez ensemble d’un horaire et d’une tâche utile.",
+      ],
       arrangeVisit: "Organiser une visite bénévole",
     },
     contact: {
@@ -398,19 +435,35 @@ export const pageMessages: Record<Locale, Copy> = {
     volunteer: {
       title: "In Mirleft mithelfen",
       intro:
-        "Schon etwas Zeit und praktische Hilfe können Straßentieren viel bedeuten.",
+        "Schon etwas Zeit und praktische Hilfe können Hunden und Katzen auf der Straße viel bedeuten.",
       ways: [
-        "Hilf nach Absprache beim Füttern und bei der täglichen Versorgung.",
-        "Unterstütze Fahrten, Material oder Tierarztbesuche, wenn du kannst.",
-        "Teile die Geschichten der Tiere und hilf ihnen, ein Zuhause zu finden.",
+        "Regelmäßiges Futter, sauberes Wasser und ruhige Zuwendung fördern das Wohlbefinden von Hunden und Katzen auf der Straße. Nach Absprache kannst du beim Füttern und bei der täglichen Versorgung helfen. Das Team schlägt eine passende Aufgabe vor, zum Beispiel Futter vorzubereiten oder Wassernäpfe aufzufüllen.",
+        "Rechtzeitige tierärztliche Versorgung hilft kranken oder verletzten Hunden und Katzen, die nötige Behandlung zu bekommen. Du kannst dabei mit Fahrten, Material oder einem geplanten Tierarztbesuch unterstützen. Das Team stimmt die Aufgabe vorher mit dir ab und erklärt, welche praktische Hilfe gebraucht wird.",
+        "Wenn mehr Menschen die Geschichte eines Hundes oder einer Katze kennen, können sie leichter Unterstützung anbieten oder über eine Adoption nachdenken. Du kannst klare Informationen über die Bedürfnisse und den Charakter des jeweiligen Tieres teilen. So erfahren Interessierte auch, wie sie sich einbringen können.",
       ],
       wayTitles: [
         "Füttern und tägliche Versorgung",
         "Fahrten, Material und Tierarztbesuche",
         "Geschichten teilen",
       ],
+      actionImagesTitle: "Pflege im Alltag",
+      actionImageCaptions: [
+        "Einen Hund im Freien füttern",
+        "Ein Kätzchen wird tierärztlich untersucht",
+        "Einer Katze einen ruhigen Moment schenken",
+      ],
+      actionImageAlts: [
+        "Eine Hand bietet einem Hund Futter an",
+        "Eine Tierärztin untersucht ein weißes Kätzchen",
+        "Eine Person streichelt sanft eine getigerte Katze",
+      ],
+      visitTitle: "Vor deinem Besuch",
       visit:
-        "Bitte melde dich vor einem Besuch, damit wir eine passende Aufgabe und Zeit vereinbaren können.",
+        "Die Aufgaben richten sich nach dem Bedarf der Hunde und Katzen und danach, was das Team an diesem Tag organisieren kann.",
+      visitSteps: [
+        "Melde dich vor deinem Besuch beim Team.",
+        "Vereinbart gemeinsam eine passende Zeit und eine sinnvolle Aufgabe.",
+      ],
       arrangeVisit: "Besuch zum Helfen vereinbaren",
     },
     contact: {
@@ -534,18 +587,35 @@ export const pageMessages: Record<Locale, Copy> = {
     volunteer: {
       title: "تطوّع في ميرلفت",
       intro:
-        "يمكن لقليل من الوقت والمساعدة العملية أن يصنعا فرقًا للحيوانات في الشوارع.",
+        "يمكن لقليل من الوقت والمساعدة العملية أن يصنعا فرقًا لكلاب وقطط الشوارع.",
       ways: [
-        "ساعد في إطعام الحيوانات ورعايتها بالتنسيق مع الفريق.",
-        "ساهم في النقل أو المستلزمات أو الزيارات البيطرية إن استطعت.",
-        "شارك قصص الحيوانات وساعدها في العثور على بيوت ترعاها.",
+        "يساعد الطعام المنتظم والماء النظيف والاهتمام الهادئ في دعم صحة كلاب وقطط الشوارع وراحتها. بعد ترتيب الزيارة، يمكنك المساعدة في الإطعام والرعاية اليومية. وسيقترح الفريق مهمة مناسبة لاحتياجات ذلك اليوم، مثل تحضير الطعام أو ملء أوعية الماء.",
+        "تساعد الرعاية البيطرية في الوقت المناسب الكلاب والقطط المريضة أو المصابة على الحصول على العلاج اللازم. يمكنك مساندة هذا العمل بالمساعدة في النقل أو المستلزمات أو زيارة بيطرية مرتبة مسبقًا. سينسق الفريق المهمة معك ويشرح نوع المساعدة المطلوبة.",
+        "عندما يعرف مزيد من الناس قصة كلب أو قطة، يصبح من الأسهل أن يقدموا الدعم أو يفكروا في التبنّي. يمكنك المساعدة بمشاركة معلومات واضحة عن احتياجات كل رفيق وشخصيته. وهذا يوضح للمهتمين كيف يمكنهم المشاركة في دعمه.",
       ],
       wayTitles: [
         "الإطعام والرعاية اليومية",
         "النقل والمستلزمات والزيارات البيطرية",
-        "التعريف بقصص الحيوانات",
+        "مشاركة قصصهم",
       ],
-      visit: "تواصل معنا قبل الزيارة لنرتب وقتًا مناسبًا ومهمة مفيدة.",
+      actionImagesTitle: "الرعاية على أرض الواقع",
+      actionImageCaptions: [
+        "إطعام كلب في الخارج",
+        "فحص بيطري لقط صغير",
+        "لحظة هادئة مع قطة",
+      ],
+      actionImageAlts: [
+        "يد تقدم الطعام لكلب",
+        "طبيبة بيطرية تفحص قطة بيضاء صغيرة",
+        "شخص يربت برفق على قطة مخططة",
+      ],
+      visitTitle: "قبل زيارتك",
+      visit:
+        "تعتمد المهام على احتياجات الكلاب والقطط وما يستطيع الفريق ترتيبه في ذلك اليوم.",
+      visitSteps: [
+        "راسل الفريق قبل الحضور.",
+        "اتفقوا معًا على وقت مناسب ومهمة مفيدة.",
+      ],
       arrangeVisit: "رتّب زيارة للتطوع",
     },
     contact: {

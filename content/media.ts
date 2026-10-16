@@ -1,5 +1,6 @@
 import { homeContent } from "./home";
 import { aboutContent } from "./about";
+import { volunteerContent } from "./volunteer";
 
 export const mediaSlots = [
   {
@@ -33,4 +34,19 @@ export const mediaSlots = [
     label: `About ${member.firstName}`,
     fallback: member.portrait.src,
   })),
+  {
+    key: volunteerContent.actionImages[0].key,
+    label: "Volunteer feeding",
+    fallback: volunteerContent.actionImages[0].src,
+  },
+  {
+    key: volunteerContent.actionImages[1].key,
+    label: "Volunteer veterinary care",
+    fallback: volunteerContent.actionImages[1].src,
+  },
+  {
+    key: volunteerContent.actionImages[2].key,
+    label: "Volunteer companionship",
+    fallback: volunteerContent.actionImages[2].src,
+  },
 ];
