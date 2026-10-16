@@ -11,10 +11,18 @@ import { getSettings } from "@/lib/db";
 import { getMediaSrc } from "@/lib/media";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
+import { PhotoGalleryLightbox } from "@/components/media/photo-gallery-lightbox";
+import { animalMessages } from "@/messages/animals";
 
 export function OurTeam({ locale }: { locale: Locale }) {
   const text = getEditableCopy("home", locale, homeMessages[locale]).team;
   const image = homeContent.teamImage;
+  const photoSrc = getMediaSrc("home.team", image.src);
+  const photoText = animalMessages[locale];
+  const numberFormat = new Intl.NumberFormat(locale);
+  const photoLabel = photoText.photoLabel
+    .replace("{number}", numberFormat.format(1))
+    .replace("{total}", numberFormat.format(1));
   const settings = getSettings();
 
   return (
@@ -28,10 +36,28 @@ export function OurTeam({ locale }: { locale: Locale }) {
       </span>
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <figure className="lg:order-2">
-            <SectionImage src={getMediaSrc("home.team", image.src)} alt={text.imageAlt} aspect="landscape" />
-            <PhotoCaption>{text.imageCaption}</PhotoCaption>
-          </figure>
+          <PhotoGalleryLightbox
+            photos={[{ src: photoSrc, alt: text.imageAlt }]}
+            className="lg:order-2"
+            locale={locale}
+            label={text.imageCaption}
+            closeLabel={photoText.closePhotoViewer}
+            previousLabel={photoText.previousPhoto}
+            nextLabel={photoText.nextPhoto}
+            photoLabel={photoText.photoLabel}
+          >
+            <figure>
+              <button
+                type="button"
+                data-photo-view-index={0}
+                aria-label={photoText.viewPhoto.replace("{photo}", photoLabel)}
+                className="group block w-full cursor-zoom-in rounded-3xl text-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <SectionImage src={photoSrc} alt={text.imageAlt} aspect="landscape" />
+              </button>
+              <PhotoCaption>{text.imageCaption}</PhotoCaption>
+            </figure>
+          </PhotoGalleryLightbox>
           <div className="lg:order-1">
             <h2 id="our-team-title" className="text-3xl font-semibold text-heading sm:text-4xl">
               {text.title}

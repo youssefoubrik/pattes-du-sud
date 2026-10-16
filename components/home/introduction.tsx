@@ -10,10 +10,18 @@ import { getMediaSrc } from "@/lib/media";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { homeMessages } from "@/messages/home";
+import { PhotoGalleryLightbox } from "@/components/media/photo-gallery-lightbox";
+import { animalMessages } from "@/messages/animals";
 
 export function Introduction({ locale }: { locale: Locale }) {
   const text = getEditableCopy("home", locale, homeMessages[locale]);
   const image = homeContent.introductionImage;
+  const photoSrc = getMediaSrc("home.introduction", image.src);
+  const photoText = animalMessages[locale];
+  const numberFormat = new Intl.NumberFormat(locale);
+  const photoLabel = photoText.photoLabel
+    .replace("{number}", numberFormat.format(1))
+    .replace("{total}", numberFormat.format(1));
 
   return (
     <Section
@@ -46,18 +54,35 @@ export function Introduction({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <figure className="relative">
-          <SectionImage
-            src={getMediaSrc("home.introduction", image.src)}
-            alt={text.imageAlt}
-            preload
-            objectPosition="60% center"
-          />
-          <AnimalGreeting
-            greeting={text.animalGreeting.replace("{name}", homeContent.introductionAnimalName)}
-            message={text.animalWelcome}
-          />
-        </figure>
+        <PhotoGalleryLightbox
+          photos={[{ src: photoSrc, alt: text.imageAlt }]}
+          locale={locale}
+          label={text.imageAlt}
+          closeLabel={photoText.closePhotoViewer}
+          previousLabel={photoText.previousPhoto}
+          nextLabel={photoText.nextPhoto}
+          photoLabel={photoText.photoLabel}
+        >
+          <figure className="relative">
+            <button
+              type="button"
+              data-photo-view-index={0}
+              aria-label={photoText.viewPhoto.replace("{photo}", photoLabel)}
+              className="group block w-full cursor-zoom-in rounded-3xl text-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <SectionImage
+                src={photoSrc}
+                alt={text.imageAlt}
+                preload
+                objectPosition="60% center"
+              />
+            </button>
+            <AnimalGreeting
+              greeting={text.animalGreeting.replace("{name}", homeContent.introductionAnimalName)}
+              message={text.animalWelcome}
+            />
+          </figure>
+        </PhotoGalleryLightbox>
       </Container>
     </Section>
   );

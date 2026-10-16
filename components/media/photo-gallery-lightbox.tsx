@@ -20,6 +20,7 @@ type Props = {
   nextLabel: string;
   photoLabel: string;
   children: ReactNode;
+  className?: string;
 };
 
 export function PhotoGalleryLightbox({
@@ -31,6 +32,7 @@ export function PhotoGalleryLightbox({
   nextLabel,
   photoLabel,
   children,
+  className,
 }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [open, setOpen] = useState(false);
@@ -74,7 +76,7 @@ export function PhotoGalleryLightbox({
   if (!selectedPhoto) return children;
 
   return (
-    <div onClick={handleTrigger}>
+    <div onClick={handleTrigger} className={className}>
       {children}
       <dialog
         ref={dialogRef}
