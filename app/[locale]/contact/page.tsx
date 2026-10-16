@@ -40,7 +40,11 @@ function ContactMethod({
       <Icon aria-hidden="true" className="text-primary-hover" />
       <h2 className="mt-3 flex items-center gap-2 text-xl font-semibold text-heading">
         <span className="group-hover:underline">{title}</span>
-        <ArrowUpRight size={18} aria-hidden="true" />
+        <ArrowUpRight
+          size={18}
+          aria-hidden="true"
+          className="shrink-0 motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-focus-visible:translate-x-0.5 motion-safe:group-focus-visible:-translate-y-0.5"
+        />
       </h2>
       <p className={`mt-2 ${detailClassName}`} dir="ltr">
         {detail}
