@@ -3,6 +3,7 @@ import {
   ArrowLeft,
   BadgeCheck,
   Building2,
+  ChevronDown,
   FileText,
   Handshake,
   Heart,
@@ -228,15 +229,22 @@ export default async function ContentPage({
                   {groups.map(([title, groupFields]) => {
                     const GroupIcon = pageGroupIcons[title] ?? FileText;
                     return (
-                      <fieldset
+                      <details
                         key={title}
-                        className="min-w-0 rounded-2xl border border-border bg-surface p-5"
+                        className="group min-w-0 rounded-2xl border border-border bg-surface"
                       >
-                        <legend className="inline-flex items-center gap-2 px-1 text-xl font-semibold text-heading">
-                          <GroupIcon size={19} aria-hidden="true" />
-                          {title}
-                        </legend>
-                        <div className="grid gap-5">
+                        <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-5 py-3 text-xl font-semibold text-heading marker:hidden [&::-webkit-details-marker]:hidden">
+                          <span className="inline-flex items-center gap-2">
+                            <GroupIcon size={19} aria-hidden="true" />
+                            {title}
+                          </span>
+                          <ChevronDown
+                            size={19}
+                            aria-hidden="true"
+                            className="shrink-0 transition-transform group-open:rotate-180 motion-reduce:transition-none"
+                          />
+                        </summary>
+                        <div className="grid gap-5 px-5 pb-5 pt-1">
                           {groupFields.map(({ path, label, values }) => (
                             <fieldset
                               key={path}
@@ -265,10 +273,14 @@ export default async function ContentPage({
                             </fieldset>
                           ))}
                         </div>
-                      </fieldset>
+                      </details>
                     );
                   })}
-                  <ActionButton type="submit" className="justify-self-start">
+                  <ActionButton
+                    type="submit"
+                    variant="secondary"
+                    className="justify-self-start"
+                  >
                     Save text
                   </ActionButton>
                 </form>
