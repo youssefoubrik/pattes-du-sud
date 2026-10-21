@@ -4,6 +4,7 @@ import { getMediaSrc } from "@/lib/media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { aboutContent } from "@/content/about";
 import type { Locale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
@@ -13,7 +14,8 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
   const members = aboutContent.teamMembers.slice(0, 4);
 
   return (
-    <Section aria-labelledby="about-team-title" className="bg-background">
+    <Section aria-labelledby="about-team-title" className="relative bg-background">
+      <SectionDivider direction="leave" />
       <Container>
         <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-10">
           <div>
