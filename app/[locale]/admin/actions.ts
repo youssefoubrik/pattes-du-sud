@@ -257,32 +257,30 @@ export async function removeAnimal(form: FormData) {
 export async function updateContent(form: FormData) {
   const locale = localeOf(form);
   await requireAdmin(locale);
-  const languageValue = String(form.get("language") || "en");
-  const language = isLocale(languageValue) ? languageValue : "en";
   const sectionValue = String(form.get("section") || "home");
   const section: CopyNamespace =
     sectionValue === "about" || sectionValue === "pages"
       ? sectionValue
       : "home";
-  const base =
-    section === "home"
-      ? homeMessages[language]
-      : section === "about"
-        ? aboutMessages[language]
-        : pageMessages[language];
-  const output = structuredClone(
-    getEditableCopy(section, language, base),
-  ) as object;
-  for (const field of copyFields(base)) {
-    const key = `field:${field.path}`;
-    if (form.has(key))
-      setCopyField(output, field.path, String(form.get(key)).slice(0, 10000));
+  for (const language of routing.locales) {
+    const base =
+      section === "home"
+        ? homeMessages[language]
+        : section === "about"
+          ? aboutMessages[language]
+          : pageMessages[language];
+    const output = structuredClone(
+      getEditableCopy(section, language, base),
+    ) as object;
+    for (const field of copyFields(base)) {
+      const key = `field:${field.path}:${language}`;
+      if (form.has(key))
+        setCopyField(output, field.path, String(form.get(key)).slice(0, 10000));
+    }
+    saveEditableCopy(section, language, output);
+    revalidatePath(`/${language}`, "layout");
   }
-  saveEditableCopy(section, language, output);
-  revalidatePath(`/${language}`, "layout");
-  redirect(
-    `/${locale}/admin/content?language=${language}&saved=1`,
-  );
+  redirect(`/${locale}/admin/content?saved=1`);
 }
 
 export async function updateMedia(form: FormData) {

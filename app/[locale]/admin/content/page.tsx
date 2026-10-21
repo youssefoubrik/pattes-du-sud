@@ -19,7 +19,7 @@ import {
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
-import { isLocale, routing } from "@/i18n/routing";
+import { isLocale, routing, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import {
   copyFields,
@@ -47,6 +47,23 @@ const sectionIcons: Record<CopyNamespace, LucideIcon> = {
   home: House,
   about: Users,
   pages: FileText,
+};
+const languageNames: Record<Locale, string> = {
+  en: "English",
+  fr: "French",
+  de: "German",
+  ar: "Arabic",
+};
+const fieldLabelNames: Record<string, string> = {
+  animalGreeting: "Companion greeting",
+  animalWelcome: "Companion welcome",
+  animalsHelped: "Companions helped",
+};
+type EditableField = {
+  path: string;
+  value: string;
+  label: string;
+  values: Record<Locale, string>;
 };
 
 const pageGroupNames: Record<string, string> = {
@@ -85,6 +102,18 @@ function fieldGroupTitle(namespace: CopyNamespace, path: string) {
   );
 }
 
+function fieldLabel(path: string) {
+  const parts = path.split(".");
+  const words = (parts.length > 1 ? parts.slice(1) : parts).map((part) => {
+    if (fieldLabelNames[part]) return fieldLabelNames[part];
+    if (/^\d+$/.test(part)) return `item ${Number(part) + 1}`;
+    return part.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
+  });
+  return words
+    .join(" ")
+    .replace(/^./, (character) => character.toUpperCase());
+}
+
 const pageGroupIcons: Record<string, LucideIcon> = {
   "Home introduction": House,
   "What we do": HeartPulse,
@@ -118,22 +147,42 @@ export default async function ContentPage({
   if (!isLocale(locale)) notFound();
   await requireAdmin(locale);
   const query = await searchParams;
-  const language =
-    typeof query.language === "string" && isLocale(query.language)
-      ? query.language
-      : locale;
   const contentSections = namespaces.map((section) => {
+    const localizedFields = {} as Record<Locale, Map<string, string>>;
+    for (const language of routing.locales) {
+      const base =
+        section === "home"
+          ? homeMessages[language]
+          : section === "about"
+            ? aboutMessages[language]
+            : pageMessages[language];
+      localizedFields[language] = new Map(
+        copyFields(getEditableCopy(section, language, base)).map((field) => [
+          field.path,
+          field.value,
+        ]),
+      );
+    }
     const base =
       section === "home"
-        ? homeMessages[language]
+        ? homeMessages.en
         : section === "about"
-          ? aboutMessages[language]
-          : pageMessages[language];
-    const fields = copyFields(getEditableCopy(section, language, base));
-    const groups = new Map<string, typeof fields>();
+          ? aboutMessages.en
+          : pageMessages.en;
+    const fields = copyFields(getEditableCopy(section, "en", base));
+    const groups = new Map<string, EditableField[]>();
     for (const field of fields) {
       const title = fieldGroupTitle(section, field.path);
-      groups.set(title, [...(groups.get(title) ?? []), field]);
+      const values = Object.fromEntries(
+        routing.locales.map((language) => [
+          language,
+          localizedFields[language].get(field.path) ?? "",
+        ]),
+      ) as Record<Locale, string>;
+      groups.set(title, [
+        ...(groups.get(title) ?? []),
+        { ...field, label: fieldLabel(field.path), values },
+      ]);
     }
     return { section, groups: [...groups] };
   });
@@ -152,26 +201,6 @@ export default async function ContentPage({
           Editor
         </Link>
         <h1 className="mt-5 text-4xl text-heading">Edit page text</h1>
-        <div className="mt-6" role="group" aria-labelledby="content-language-label">
-          <p
-            id="content-language-label"
-            className="mb-2 text-base font-bold text-heading"
-          >
-            Language
-          </p>
-          <nav aria-label="Language" className="flex flex-wrap gap-2">
-            {routing.locales.map((item) => (
-              <Link
-                key={item}
-                href={`/${locale}/admin/content?language=${item}`}
-                aria-current={item === language ? "page" : undefined}
-                className="inline-flex min-h-11 items-center rounded-full border border-border bg-secondary/70 px-4 font-bold text-heading transition-colors hover:bg-secondary/80 aria-[current=page]:border-heading aria-[current=page]:bg-heading aria-[current=page]:text-primary-foreground"
-              >
-                {item.toUpperCase()}
-              </Link>
-            ))}
-          </nav>
-        </div>
         {query.saved && (
           <p role="status" className="mt-5 rounded-xl bg-secondary p-4">
             Text saved.
@@ -190,12 +219,11 @@ export default async function ContentPage({
                   {sectionNames[section]}
                 </h2>
                 <form
-                  key={`${section}-${language}`}
+                  key={section}
                   action={updateContent}
                   className="mt-5 grid gap-6"
                 >
                   <input type="hidden" name="locale" value={locale} />
-                  <input type="hidden" name="language" value={language} />
                   <input type="hidden" name="section" value={section} />
                   {groups.map(([title, groupFields]) => {
                     const GroupIcon = pageGroupIcons[title] ?? FileText;
@@ -209,19 +237,32 @@ export default async function ContentPage({
                           {title}
                         </legend>
                         <div className="grid gap-5">
-                          {groupFields.map(({ path, value }) => (
-                            <label key={path} className="block font-semibold">
-                              <span className="break-all text-heading">
-                                {path}
-                              </span>
-                              <textarea
-                                name={`field:${path}`}
-                                defaultValue={value}
-                                rows={value.length > 180 ? 4 : 2}
-                                className="mt-2 block w-full rounded-xl border border-border bg-surface p-3 font-normal"
-                                dir={language === "ar" ? "rtl" : "ltr"}
-                              />
-                            </label>
+                          {groupFields.map(({ path, label, values }) => (
+                            <fieldset
+                              key={path}
+                              className="min-w-0 rounded-xl border border-border bg-background p-4"
+                            >
+                              <legend className="px-1 font-semibold text-heading">
+                                {label}
+                              </legend>
+                              <div className="grid gap-4 lg:grid-cols-2">
+                                {routing.locales.map((language) => (
+                                  <label
+                                    key={language}
+                                    className="block text-sm font-semibold"
+                                  >
+                                    {languageNames[language]}
+                                    <textarea
+                                      name={`field:${path}:${language}`}
+                                      defaultValue={values[language]}
+                                      rows={values[language].length > 180 ? 4 : 2}
+                                      className="mt-2 block w-full rounded-xl border border-border bg-surface p-3 text-base font-normal"
+                                      dir={language === "ar" ? "rtl" : "ltr"}
+                                    />
+                                  </label>
+                                ))}
+                              </div>
+                            </fieldset>
                           ))}
                         </div>
                       </fieldset>
