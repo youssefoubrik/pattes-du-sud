@@ -35,20 +35,20 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
           <ul className="mt-10 grid gap-4 lg:grid-cols-2 lg:gap-6">
             {members.map((member) => (
               <li key={member.id}>
-                <article className="grid h-full grid-cols-[96px_minmax(0,1fr)] gap-4 rounded-2xl border border-border bg-surface p-3 sm:grid-cols-[144px_minmax(0,1fr)] sm:gap-5 sm:p-4">
-                  <div className="relative min-h-32 overflow-hidden rounded-xl bg-secondary">
+                <article className="grid h-full grid-cols-[96px_minmax(0,1fr)] items-stretch overflow-hidden rounded-2xl border border-border bg-surface sm:grid-cols-[150px_minmax(0,1fr)] xl:grid-cols-[180px_minmax(0,1fr)]">
+                  <div className="relative min-h-36 bg-secondary sm:min-h-48">
                     <Image
                       src={getMediaSrc(`about.team.${member.id}`, member.portrait.src)}
                       alt=""
                       fill
-                      sizes="(max-width: 639px) 96px, 144px"
+                      sizes="(max-width: 639px) 96px, (max-width: 1279px) 150px, 180px"
                       className="object-cover"
                     />
                   </div>
-                  <div className="min-w-0 self-center">
+                  <div className="min-w-0 self-center p-4 sm:p-5">
                     <h3 className="text-xl font-semibold text-heading">{member.firstName}</h3>
                     <p className="mt-1 break-words font-bold leading-snug text-primary-hover">{member.role[locale]}</p>
-                    <p className="mt-2 break-words leading-relaxed text-foreground">{member.work[locale]}</p>
+                    <p className="mt-3 break-words leading-relaxed text-foreground">{member.work[locale]}</p>
                   </div>
                 </article>
               </li>
