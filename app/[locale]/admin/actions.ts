@@ -45,6 +45,11 @@ function localeOf(form: FormData) {
   return isLocale(value) ? value : "en";
 }
 
+function companionError(locale: string, error: string): never {
+  const notice = randomUUID();
+  redirect(`/${locale}/admin/companions?error=${error}&notice=${notice}`);
+}
+
 export async function login(form: FormData) {
   const locale = localeOf(form);
   const password = String(form.get("password") || "");
@@ -109,13 +114,13 @@ export async function upsertAnimal(form: FormData) {
   const idValue = String(form.get("id") || "").trim();
   const id = idValue ? Number(idValue) : undefined;
   if (idValue && (id === undefined || !Number.isSafeInteger(id) || id <= 0))
-    redirect(`/${locale}/admin/companions?error=profile`);
+    companionError(locale, "profile");
   const existing = id ? getAnimal(id) : undefined;
-  if (idValue && !existing) redirect(`/${locale}/admin/companions?error=profile`);
+  if (idValue && !existing) companionError(locale, "profile");
   const name = String(form.get("name") || "")
     .trim()
     .slice(0, ANIMAL_NAME_MAX_LENGTH);
-  if (!name) redirect(`/${locale}/admin/companions?error=name`);
+  if (!name) companionError(locale, "name");
   const species = form.get("species") === "cat" ? "cat" : "dog";
   const value = String(form.get("status") || "inCare");
   const status: EditableAnimal["status"] =
@@ -145,14 +150,14 @@ export async function upsertAnimal(form: FormData) {
     .getAll("photos")
     .filter((file): file is File => file instanceof File && file.size > 0);
   if (photos.length + photoFiles.length > ANIMAL_PHOTO_MAX_COUNT)
-    redirect(`/${locale}/admin/companions?error=photo-count`);
+    companionError(locale, "photo-count");
   if (!photos.length && !photoFiles.length)
-    redirect(`/${locale}/admin/companions?error=photo`);
+    companionError(locale, "photo");
 
   const uploads: { mime: string; bytes: Buffer }[] = [];
   for (const photo of photoFiles) {
     if (photo.size > PHOTO_MAX_UPLOAD_SIZE_BYTES)
-      redirect(`/${locale}/admin/companions?error=size`);
+      companionError(locale, "size");
     const bytes = Buffer.from(await photo.arrayBuffer());
     const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
     const png = bytes
@@ -168,7 +173,7 @@ export async function upsertAnimal(form: FormData) {
         : webp
           ? "image/webp"
           : null;
-    if (!mime) redirect(`/${locale}/admin/companions?error=photo`);
+    if (!mime) companionError(locale, "photo");
     uploads.push({ mime, bytes });
   }
   const insertPhoto = db().prepare(
@@ -222,7 +227,9 @@ export async function upsertAnimal(form: FormData) {
     revalidatePath(`/${language}/companions/${animalId}`);
     revalidatePath(`/${language}`);
   }
-  redirect(`/${locale}/admin/companions?saved=1`);
+  const outcome = existing ? "updated" : "added";
+  const notice = randomUUID();
+  redirect(`/${locale}/admin/companions?success=${outcome}&notice=${notice}`);
 }
 
 export async function removeAnimal(form: FormData) {
@@ -234,7 +241,8 @@ export async function removeAnimal(form: FormData) {
     revalidatePath(`/${language}/companions`);
     revalidatePath(`/${language}`);
   }
-  redirect(`/${locale}/admin/companions?deleted=1`);
+  const notice = randomUUID();
+  redirect(`/${locale}/admin/companions?success=removed&notice=${notice}`);
 }
 
 export async function updateContent(form: FormData) {

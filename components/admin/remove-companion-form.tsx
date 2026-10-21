@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Trash2 } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { removeAnimal } from "@/app/[locale]/admin/actions";
+import { PendingActionButton } from "@/components/admin/pending-action-button";
 
 export function RemoveCompanionForm({
   locale,
@@ -52,7 +53,16 @@ export function RemoveCompanionForm({
       <p className="mt-2 text-muted-foreground">
         This will remove the companion from the website.
       </p>
-      <form action={removeAnimal} className="mt-6 flex flex-wrap justify-end gap-3">
+      <form
+        action={removeAnimal}
+        onSubmit={() => {
+          window.sessionStorage.setItem(
+            "admin-companions-scroll-y",
+            String(window.scrollY),
+          );
+        }}
+        className="mt-6 flex flex-wrap justify-end gap-3"
+      >
         <input type="hidden" name="locale" value={locale} />
         <input type="hidden" name="id" value={id} />
         <button
@@ -63,12 +73,14 @@ export function RemoveCompanionForm({
         >
           No, keep companion
         </button>
-        <button
-          type="submit"
-          className="min-h-11 rounded-full bg-secondary-button px-5 font-bold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
+        <PendingActionButton
+          size="small"
+          variant="secondary"
+          pendingLabel="Removing..."
+          className="focus-visible:outline-heading"
         >
           Yes, remove
-        </button>
+        </PendingActionButton>
       </form>
     </dialog>
   );

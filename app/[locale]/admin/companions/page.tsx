@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
-import { ActionButton } from "@/components/ui/action-button";
 import {
   CompanionListPagination,
   CompanionListSearch,
@@ -27,8 +26,9 @@ import {
 import { CharacterCountField } from "@/components/admin/character-count-field";
 import { PersonalityField } from "@/components/admin/personality-field";
 import { PhotoUploadManager } from "@/components/admin/photo-upload-manager";
+import { PendingActionButton } from "@/components/admin/pending-action-button";
 import { RemoveCompanionForm } from "@/components/admin/remove-companion-form";
-import { SaveNotice } from "@/components/admin/save-notice";
+import { ActionNotice } from "@/components/admin/action-notice";
 import { isLocale, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals, getAnimalsPage } from "@/lib/db";
@@ -83,20 +83,35 @@ export default async function AdminAnimals({
           Editor
         </Link>
         <h1 className="mt-5 text-4xl text-heading">Companions</h1>
-        {query.saved && <SaveNotice message="Companion saved." />}
-        {query.deleted && (
-          <p role="status" className="mt-4 rounded-xl bg-secondary p-4">
-            Companion removed.
-          </p>
+        {typeof query.success === "string" && (
+          <ActionNotice
+            key={String(query.notice ?? query.success)}
+            message={
+              query.success === "added"
+                ? "Companion added."
+                : query.success === "updated"
+                  ? "Companion updated."
+                  : "Companion removed."
+            }
+            queryParam="success"
+            restoreScroll={query.success === "removed"}
+          />
         )}
         {query.error && (
-          <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
-            {query.error === "photo-count"
-              ? `A profile needs at least one photo and can have up to ${ANIMAL_PHOTO_MAX_COUNT}.`
-              : query.error === "size"
-                ? `Each photo must be under ${PHOTO_MAX_UPLOAD_SIZE_BYTES / 1_000_000} MB.`
-                : "Check the name and photos. Use JPEG, PNG or WebP images."}
-          </p>
+          <>
+            <ActionNotice
+              key={String(query.notice ?? query.error)}
+              message="Could not save the companion."
+              queryParam="error"
+            />
+            <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
+              {query.error === "photo-count"
+                ? `A profile needs at least one photo and can have up to ${ANIMAL_PHOTO_MAX_COUNT}.`
+                : query.error === "size"
+                  ? `Each photo must be under ${PHOTO_MAX_UPLOAD_SIZE_BYTES / 1_000_000} MB.`
+                  : "Check the name and photos. Use JPEG, PNG or WebP images."}
+            </p>
+          </>
         )}
         <h2 className="mt-10 text-2xl text-heading">Add a companion</h2>
         <AnimalForm locale={locale} />
@@ -286,13 +301,14 @@ function AnimalForm({
           { value: "no", label: "No", icon: CircleHelp },
         ]}
       />
-      <ActionButton
+      <PendingActionButton
         type="submit"
         variant="secondary"
         className="sm:justify-self-start"
+        pendingLabel={animal ? "Saving changes..." : "Adding companion..."}
       >
         Save companion
-      </ActionButton>
+      </PendingActionButton>
     </form>
   );
 }
