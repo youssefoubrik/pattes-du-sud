@@ -27,7 +27,6 @@ export function MediaPhotoForm({
   return (
     <form
       action={action}
-      encType="multipart/form-data"
       className="mt-4 space-y-3"
     >
       <input type="hidden" name="locale" value={locale} />
