@@ -8,7 +8,7 @@ import { getAnimals } from "@/lib/db";
 import { removeAnimal, upsertAnimal } from "../actions";
 
 export const metadata = {
-  title: "Edit animals",
+  title: "Edit companions",
   robots: { index: false, follow: false },
 };
 
@@ -27,15 +27,15 @@ export default async function AdminAnimals({
         <Link href={`/${locale}/admin`} className="text-accent underline">
           ← Editor
         </Link>
-        <h1 className="mt-5 text-4xl text-heading">Animals</h1>
+        <h1 className="mt-5 text-4xl text-heading">Companions</h1>
         {query.saved && (
           <p role="status" className="mt-4 rounded-xl bg-secondary p-4">
-            Animal saved.
+            Companion saved.
           </p>
         )}
         {query.deleted && (
           <p role="status" className="mt-4 rounded-xl bg-secondary p-4">
-            Animal removed.
+            Companion removed.
           </p>
         )}
         {query.error && (
@@ -45,7 +45,7 @@ export default async function AdminAnimals({
               : "Check the name and photos. Use JPEG, PNG or WebP images under 5 MB each."}
           </p>
         )}
-        <h2 className="mt-10 text-2xl text-heading">Add an animal</h2>
+        <h2 className="mt-10 text-2xl text-heading">Add a companion</h2>
         <AnimalForm locale={locale} />
         <h2 className="mt-14 text-2xl text-heading">Published profiles</h2>
         <ul className="mt-6 grid gap-6 lg:grid-cols-2">
@@ -127,7 +127,7 @@ function AnimalForm({
         />
       </label>
       <label className="font-semibold">
-        Animal
+        Species
         <select
           name="species"
           defaultValue={animal?.species}
@@ -258,7 +258,7 @@ function AnimalForm({
         type="submit"
         className="min-h-12 rounded-full bg-primary px-7 font-bold text-primary-foreground hover:bg-primary-hover sm:justify-self-start"
       >
-        Save animal
+        Save companion
       </button>
     </form>
   );

@@ -27,7 +27,7 @@ const labels: Record<keyof Settings, string> = {
   swift: "SWIFT / BIC",
   bankName: "Bank name",
   mapEmbedUrl: "Google Maps embed URL",
-  impactAnimalsHelped: "Confirmed animals helped",
+  impactAnimalsHelped: "Companions helped",
   impactAdoptions: "Confirmed adoptions",
 };
 
@@ -68,7 +68,7 @@ export default async function SettingsPage({
         )}
         {query.error === "number" && (
           <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
-            Confirmed animals helped and adoptions must be whole numbers.
+            Enter whole numbers for companions helped and adoptions.
           </p>
         )}
         {query.error === "response-time" && (

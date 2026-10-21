@@ -48,7 +48,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
           </form>
         </div>
         <p className="mt-4 max-w-2xl">
-          Update animals and the contact, donation and location details shown
+          Update companion profiles and the contact, donation and location details shown
           across the site.
         </p>
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -56,7 +56,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
             href={`/${locale}/admin/animals`}
             className="rounded-3xl border border-border bg-surface p-6 hover:border-primary"
           >
-            <h2 className="text-2xl text-heading">Animals</h2>
+            <h2 className="text-2xl text-heading">Companions</h2>
             <p className="mt-2">
               {animals.length} profiles · Add, update and remove profiles
             </p>
@@ -100,7 +100,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
         </ul>
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
           <div>
-            <h3 className="text-xl text-heading">Most viewed animals</h3>
+            <h3 className="text-xl text-heading">Most viewed companions</h3>
             <ul className="mt-3 space-y-2">
               {topAnimals.map((row) => (
                 <li key={row.path}>
