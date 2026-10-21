@@ -44,7 +44,7 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     },
     team: {
       title: "The people behind the care",
-      introduction: "Care depends on different people doing different jobs. Here is what each person contributes.",
+      introduction: "Meet some of the people helping dogs and cats in Mirleft.",
       volunteer: "Volunteer with us",
     },
     association: {
@@ -76,7 +76,7 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     },
     team: {
       title: "Les personnes derrière les soins",
-      introduction: "Prendre soin des animaux demande des rôles différents. Voici ce que chacun apporte à l’équipe.",
+      introduction: "Découvrez quelques-unes des personnes qui aident les chiens et les chats de Mirleft.",
       volunteer: "Devenir bénévole",
     },
     association: {
@@ -108,7 +108,7 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     },
     team: {
       title: "Die Menschen hinter der Fürsorge",
-      introduction: "Tierfürsorge braucht Menschen mit unterschiedlichen Aufgaben. Hier siehst du, welchen Beitrag jeder im Team leistet.",
+      introduction: "Lerne einige der Menschen kennen, die Hunden und Katzen in Mirleft helfen.",
       volunteer: "Hilf ehrenamtlich mit",
     },
     association: {
@@ -140,7 +140,7 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     },
     team: {
       title: "الأشخاص الذين يقدّمون الرعاية",
-      introduction: "تحتاج رعاية الحيوانات إلى أشخاص يقوم كل منهم بدور مختلف. إليك ما يقدّمه كل فرد في الفريق.",
+      introduction: "تعرّف على بعض الأشخاص الذين يساهمون في رعاية الكلاب والقطط في ميرلفت.",
       volunteer: "تطوّع معنا",
     },
     association: {
