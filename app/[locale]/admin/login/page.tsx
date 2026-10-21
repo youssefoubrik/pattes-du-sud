@@ -38,7 +38,7 @@ export default async function Login({
             autoComplete="current-password"
             className="min-h-12 w-full rounded-xl border border-border bg-surface px-4"
           />
-          <ActionButton type="submit">
+          <ActionButton type="submit" variant="secondary">
             Sign in
           </ActionButton>
         </form>

@@ -25,7 +25,7 @@ export const metadata = {
 export const instant = false;
 
 const cardClass =
-  "group rounded-3xl bg-secondary p-6 transition-colors hover:bg-secondary/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
+  "group rounded-3xl border border-border bg-secondary p-6 transition-[opacity,box-shadow] duration-200 hover:opacity-90 hover:shadow-sm hover:shadow-heading/10 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 const eventLabels: Record<string, string> = {
   view: "Page views",
@@ -143,10 +143,10 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
           </Link>
         </div>
         <h2 className="mt-12 text-2xl text-heading">Activity</h2>
-        <div className="mt-4 grid gap-6">
+        <div className="mt-4 grid gap-5 rounded-2xl border border-border bg-surface p-5">
           <section
             aria-label="Activity totals"
-            className="min-w-0 border-t border-border pt-4"
+            className="min-w-0"
           >
             <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
               <Activity
@@ -165,7 +165,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               ))}
             </ul>
           </section>
-          <section className="min-w-0 border-t border-border pt-4">
+          <section className="min-w-0 border-t border-border pt-5">
             <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
               <PawPrint
                 size={22}
@@ -188,7 +188,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               ))}
             </ul>
           </section>
-          <section className="min-w-0 border-t border-border pt-4">
+          <section className="min-w-0 border-t border-border pt-5">
             <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
               <Globe2
                 size={22}
@@ -211,7 +211,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               ))}
             </ul>
           </section>
-          <section className="min-w-0 border-t border-border pt-4">
+          <section className="min-w-0 border-t border-border pt-5">
             <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
               <MapPin
                 size={22}
