@@ -33,9 +33,13 @@ export function AnimalPreview({ animal, locale, portrait = true, linked = true }
         <h3 className="text-3xl font-semibold">{animal.name}</h3>
         <p className="mt-2 text-sm">
           {text.species[animal.species]}
-          {animal.ageYears !== undefined && ` · ${text.age.replace("{age}", new Intl.NumberFormat(locale).format(animal.ageYears))}`}
+          {` · ${animal.ageYears !== undefined ? text.age.replace("{age}", new Intl.NumberFormat(locale).format(animal.ageYears)) : text.ageUnknown}`}
         </p>
-        {animal.personality && <p className="mt-2 text-sm leading-relaxed">{text.personality[animal.personality]}</p>}
+        {(animal.personalityCustom || animal.personality) && (
+          <p className="mt-2 text-sm leading-relaxed">
+            {animal.personalityCustom || text.personality[animal.personality!]}
+          </p>
+        )}
       </figcaption>
     </figure>
   );

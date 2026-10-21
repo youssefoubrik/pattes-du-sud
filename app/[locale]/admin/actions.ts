@@ -23,6 +23,7 @@ import {
 import { isLocale, routing } from "@/i18n/routing";
 import {
   ANIMAL_NAME_MAX_LENGTH,
+  ANIMAL_PERSONALITY_MAX_LENGTH,
   ANIMAL_PHOTO_MAX_COUNT,
   ANIMAL_STORY_MAX_LENGTH,
   PHOTO_MAX_UPLOAD_SIZE_BYTES,
@@ -187,7 +188,17 @@ export async function upsertAnimal(form: FormData) {
     ageYears: Number.isFinite(age) && age > 0 && age < 40 ? age : undefined,
     addedAt: existing?.addedAt || new Date().toISOString().slice(0, 10),
     featuredOrder: existing?.featuredOrder,
-    personality: existing?.personality,
+    personality: ["gentle", "playful", "curious", "shy"].includes(
+      String(form.get("personalityChoice")),
+    )
+      ? (String(form.get("personalityChoice")) as NonNullable<EditableAnimal["personality"]>)
+      : undefined,
+    personalityCustom:
+      form.get("personalityChoice") === "custom"
+        ? String(form.get("personalityCustom") || "")
+            .trim()
+            .slice(0, ANIMAL_PERSONALITY_MAX_LENGTH) || undefined
+        : undefined,
     story: String(form.get("story") || "")
       .trim()
       .slice(0, ANIMAL_STORY_MAX_LENGTH),

@@ -15,6 +15,8 @@
   --decoration: #f5a25d;
   --border: #e9d7c7;
   --surface: #ffffff;
+  --success: #2e7d32;
+  --required: #b42318;
   --font-body: var(--font-nunito-sans);
   --font-heading: var(--font-lora);
 }
@@ -39,6 +41,8 @@
   --color-decoration: var(--decoration);
   --color-border: var(--border);
   --color-surface: var(--surface);
+  --color-success: var(--success);
+  --color-required: var(--required);
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);
 }

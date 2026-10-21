@@ -4,11 +4,13 @@ import { useState, type ChangeEvent } from "react";
 
 type Props = {
   name: string;
+  id?: string;
   maxLength: number;
   defaultValue?: string;
   className: string;
   hint: string;
   required?: boolean;
+  onValueChange?: (value: string) => void;
 } & (
   | { multiline?: false }
   | { multiline: true; rows: number }
@@ -19,12 +21,15 @@ export function CharacterCountField(props: Props) {
   const remaining = Math.max(props.maxLength - length, 0);
   const fieldProps = {
     name: props.name,
+    id: props.id,
     maxLength: props.maxLength,
     defaultValue: props.defaultValue,
     className: props.className,
     required: props.required,
-    onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-      setLength(event.currentTarget.value.length),
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setLength(event.currentTarget.value.length);
+      props.onValueChange?.(event.currentTarget.value);
+    },
   };
 
   return (

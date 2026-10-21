@@ -139,7 +139,8 @@ export function PhotoUploadManager({
   return (
     <div className="sm:col-span-2">
       <label className="block font-semibold" htmlFor={uploadId}>
-        Photos
+        Photos <span aria-hidden="true" className="text-required">*</span>
+        <span className="sr-only"> required</span>
       </label>
       <div
         className="animal-upload mt-2 flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-border bg-surface px-5 py-6 text-center transition-colors sm:flex-row sm:text-start"

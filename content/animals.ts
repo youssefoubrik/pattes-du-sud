@@ -10,6 +10,7 @@ export type Animal = {
   status: "available" | "inCare" | "adopted";
   ageYears?: number;
   personality?: "gentle" | "playful" | "curious" | "shy";
+  personalityCustom?: string;
   photos: AnimalPhoto[];
   addedAt: string;
   featuredOrder?: number;

@@ -19,8 +19,10 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
 import { CharacterCountField } from "@/components/admin/character-count-field";
+import { PersonalityField } from "@/components/admin/personality-field";
 import { PhotoUploadManager } from "@/components/admin/photo-upload-manager";
-import { isLocale } from "@/i18n/routing";
+import { SaveNotice } from "@/components/admin/save-notice";
+import { isLocale, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals } from "@/lib/db";
 import {
@@ -60,11 +62,7 @@ export default async function AdminAnimals({
           Editor
         </Link>
         <h1 className="mt-5 text-4xl text-heading">Companions</h1>
-        {query.saved && (
-          <p role="status" className="mt-4 rounded-xl bg-secondary p-4">
-            Companion saved.
-          </p>
-        )}
+        {query.saved && <SaveNotice message="Companion saved." />}
         {query.deleted && (
           <p role="status" className="mt-4 rounded-xl bg-secondary p-4">
             Companion removed.
@@ -139,7 +137,7 @@ function AnimalForm({
   locale,
   animal,
 }: {
-  locale: string;
+  locale: Locale;
   animal?: ReturnType<typeof getAnimals>[number];
 }) {
   const focusClass = "focus-visible:outline-none focus-visible:border-heading";
@@ -153,7 +151,8 @@ function AnimalForm({
       <input type="hidden" name="locale" value={locale} />
       {animal && <input type="hidden" name="id" value={animal.id} />}
       <label className="font-semibold">
-        Name
+        Name <span aria-hidden="true" className="text-required">*</span>
+        <span className="sr-only"> required</span>
         <CharacterCountField
           name="name"
           required
@@ -203,6 +202,11 @@ function AnimalForm({
           { value: "female", label: "Female", icon: Venus },
           { value: "male", label: "Male", icon: Mars },
         ]}
+      />
+      <PersonalityField
+        locale={locale}
+        personality={animal?.personality}
+        customText={animal?.personalityCustom}
       />
       <PhotoUploadManager
         photos={animal?.photos ?? []}

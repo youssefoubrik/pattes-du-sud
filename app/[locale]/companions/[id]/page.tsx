@@ -125,14 +125,14 @@ async function AnimalDetailContent({
               <section className="rounded-sm mt-6 border-b border-border bg-secondary px-4 py-5 sm:px-6">
                 <h2 className="text-2xl text-heading">{t.facts}</h2>
                 <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
-                  {animal.ageYears && (
-                    <div>
-                      <dt className="text-sm font-semibold text-muted-foreground">{t.age}</dt>
-                      <dd className="mt-1 font-bold text-heading">
-                        {common.age.replace("{age}", String(animal.ageYears))}
-                      </dd>
-                    </div>
-                  )}
+                  <div>
+                    <dt className="text-sm font-semibold text-muted-foreground">{t.age}</dt>
+                    <dd className="mt-1 font-bold text-heading">
+                      {animal.ageYears !== undefined
+                        ? common.age.replace("{age}", String(animal.ageYears))
+                        : common.ageUnknown}
+                    </dd>
+                  </div>
                   {animal.sex && (
                     <div>
                       <dt className="text-sm font-semibold text-muted-foreground">{t.sex}</dt>
@@ -153,11 +153,12 @@ async function AnimalDetailContent({
                   </div>
                 </dl>
               </section>
-              {(animal.story || animal.personality) && (
+              {(animal.story || animal.personalityCustom || animal.personality) && (
                 <section className="mt-7">
                   <h2 className="text-2xl text-heading">{t.story}</h2>
                   <div className="mt-3 max-w-3xl space-y-4 text-lg leading-relaxed text-foreground">
                     {(animal.story ||
+                      animal.personalityCustom ||
                       (animal.personality &&
                         common.personality[animal.personality]) ||
                       "")
