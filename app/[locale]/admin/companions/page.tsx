@@ -119,7 +119,7 @@ export default async function AdminAnimals({
           </ActionButton>
         </form>
         {matchingAnimals.length > 0 ? (
-          <ul className="mt-6 grid gap-6 lg:grid-cols-2">
+          <ul className="mt-6 grid items-start gap-6 lg:grid-cols-2">
             {matchingAnimals.map((animal) => (
               <li
                 key={animal.id}
