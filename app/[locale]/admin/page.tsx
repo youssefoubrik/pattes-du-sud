@@ -50,10 +50,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
             </ActionButton>
           </form>
         </div>
-        <p className="mt-4 max-w-2xl">
-          Update companion profiles and the contact, donation and location details shown
-          across the site.
-        </p>
+        <p className="mt-4 max-w-2xl">Manage companion profiles and site details.</p>
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           <Link
             href={`/${locale}/admin/animals`}
