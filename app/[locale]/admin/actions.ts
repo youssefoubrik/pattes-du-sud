@@ -281,7 +281,7 @@ export async function updateContent(form: FormData) {
   saveEditableCopy(section, language, output);
   revalidatePath(`/${language}`, "layout");
   redirect(
-    `/${locale}/admin/content?section=${section}&language=${language}&saved=1`,
+    `/${locale}/admin/content?language=${language}&saved=1`,
   );
 }
 
