@@ -134,10 +134,10 @@ export default async function AdminAnimals({
                     <p>{animalMessages[locale].status[animal.status]}</p>
                   </div>
                   <Link
-                    className="ms-auto inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full border border-border px-3 text-sm font-bold text-heading transition-colors hover:border-accent hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
+                    className="ms-auto inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full border border-heading px-3 text-sm font-bold text-heading transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
                     href={`/${locale}/companions/${animal.id}`}
                   >
-                    <Eye size={16} className="text-accent" aria-hidden="true" />
+                    <Eye size={16} aria-hidden="true" />
                     View
                   </Link>
                 </div>
