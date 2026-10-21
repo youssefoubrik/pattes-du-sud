@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { PageIntro } from "@/components/ui/page-intro";
 import { Section } from "@/components/ui/section";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { isLocale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 import { pageMessages } from "@/messages/pages";
@@ -24,7 +25,8 @@ export default async function Adopt({ params }: PageProps<"/[locale]/adopt">) {
   return (
     <main id="main-content" className="flex-1">
       <PageIntro title={t.title} intro={t.intro} />
-      <Section className="bg-secondary">
+      <Section className="relative bg-secondary">
+        <SectionDivider direction="enter" />
         <Container>
           <h2 className="text-3xl text-heading">{t.title}</h2>
           <ol className="mt-8 grid gap-5 md:grid-cols-3">
@@ -39,7 +41,8 @@ export default async function Adopt({ params }: PageProps<"/[locale]/adopt">) {
           </ol>
         </Container>
       </Section>
-      <Section>
+      <Section className="relative">
+        <SectionDivider direction="leave" />
         <Container className="grid gap-8 md:grid-cols-2">
           <div>
             <h2 className="text-2xl text-heading">{t.localTitle}</h2>
