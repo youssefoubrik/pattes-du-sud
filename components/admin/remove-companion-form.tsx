@@ -65,7 +65,7 @@ export function RemoveCompanionForm({
         </button>
         <button
           type="submit"
-          className="min-h-11 rounded-full bg-primary px-5 font-bold text-primary-foreground hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
+          className="min-h-11 rounded-full bg-secondary-button px-5 font-bold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
         >
           Yes, remove
         </button>
