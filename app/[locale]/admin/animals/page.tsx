@@ -1,6 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import {
+  ArrowLeft,
+  BadgeCheck,
+  Cat,
+  CircleHelp,
+  Dog,
+  HeartPulse,
+  House,
+  HousePlus,
+  Mars,
+  Shield,
+  ShieldCheck,
+  Syringe,
+  Venus,
+  type LucideIcon,
+} from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
@@ -118,11 +133,13 @@ function AnimalForm({
   locale: string;
   animal?: ReturnType<typeof getAnimals>[number];
 }) {
+  const focusClass = "focus-visible:outline-none focus-visible:border-heading";
+
   return (
     <form
       action={upsertAnimal}
       encType="multipart/form-data"
-      className="mt-5 grid gap-4 rounded-3xl border border-border bg-surface p-5 sm:grid-cols-2"
+      className="animal-form mt-5 grid gap-4 rounded-3xl border border-border bg-surface p-5 sm:grid-cols-2"
     >
       <input type="hidden" name="locale" value={locale} />
       {animal && <input type="hidden" name="id" value={animal.id} />}
@@ -133,32 +150,28 @@ function AnimalForm({
           required
           maxLength={80}
           defaultValue={animal?.name}
-          className="mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal"
+          className={`mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal ${focusClass}`}
         />
       </label>
-      <label className="font-semibold">
-        Species
-        <select
-          name="species"
-          defaultValue={animal?.species}
-          className="mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal"
-        >
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-        </select>
-      </label>
-      <label className="font-semibold">
-        Status
-        <select
-          name="status"
-          defaultValue={animal?.status}
-          className="mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal"
-        >
-          <option value="inCare">In care</option>
-          <option value="available">Available</option>
-          <option value="adopted">Adopted</option>
-        </select>
-      </label>
+      <ChoiceGroup
+        label="Species"
+        name="species"
+        defaultValue={animal?.species ?? "dog"}
+        options={[
+          { value: "dog", label: "Dog", icon: Dog },
+          { value: "cat", label: "Cat", icon: Cat },
+        ]}
+      />
+      <ChoiceGroup
+        label="Status"
+        name="status"
+        defaultValue={animal?.status ?? "inCare"}
+        options={[
+          { value: "inCare", label: "In care", icon: HeartPulse },
+          { value: "available", label: "Available", icon: HousePlus },
+          { value: "adopted", label: "Adopted", icon: House },
+        ]}
+      />
       <label className="font-semibold">
         Age in years
         <input
@@ -168,21 +181,19 @@ function AnimalForm({
           max="39"
           step="0.5"
           defaultValue={animal?.ageYears}
-          className="mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal"
+          className={`mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal ${focusClass}`}
         />
       </label>
-      <label className="font-semibold">
-        Sex
-        <select
-          name="sex"
-          defaultValue={animal?.sex || ""}
-          className="mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal"
-        >
-          <option value="">Unknown</option>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
-        </select>
-      </label>
+      <ChoiceGroup
+        label="Sex"
+        name="sex"
+        defaultValue={animal?.sex || "unknown"}
+        options={[
+          { value: "unknown", label: "Unknown", icon: CircleHelp },
+          { value: "female", label: "Female", icon: Venus },
+          { value: "male", label: "Male", icon: Mars },
+        ]}
+      />
       <label className="font-semibold sm:col-span-2">
         Photos
         <input
@@ -191,7 +202,7 @@ function AnimalForm({
           multiple
           accept="image/jpeg,image/png,image/webp"
           required={!animal || animal.photos.length === 0}
-          className="mt-2 block w-full rounded-xl border border-border p-3 font-normal"
+          className={`mt-2 block w-full rounded-xl border border-border p-3 font-normal ${focusClass}`}
         />
         <span className="mt-2 block text-sm font-normal text-muted-foreground">
           Up to five photos per profile, 5 MB each. Choose which appears on cards.
@@ -212,11 +223,16 @@ function AnimalForm({
                     name={`photoAlt:${index}`}
                     maxLength={200}
                     defaultValue={photo.alt || ""}
-                    className="mt-1 min-h-10 w-full rounded-lg border border-border px-2 font-normal"
+                    className={`mt-1 min-h-10 w-full rounded-lg border border-border px-2 font-normal ${focusClass}`}
                   />
                 </label>
                 <label className="mt-2 flex items-center gap-2 text-sm">
-                  <input type="checkbox" name="removePhoto" value={index} />
+                  <input
+                    type="checkbox"
+                    name="removePhoto"
+                    value={index}
+                    className={focusClass}
+                  />
                   Remove photo
                 </label>
                 <label className="mt-2 flex items-center gap-2 text-sm">
@@ -225,6 +241,7 @@ function AnimalForm({
                     name="mainPhoto"
                     value={index}
                     defaultChecked={index === 0}
+                    className={focusClass}
                   />
                   Show on cards
                 </label>
@@ -239,34 +256,70 @@ function AnimalForm({
           name="story"
           rows={4}
           defaultValue={animal?.story}
-          className="mt-2 w-full rounded-xl border border-border p-3 font-normal"
+          className={`mt-2 w-full rounded-xl border border-border p-3 font-normal ${focusClass}`}
         />
       </label>
-      <label className="font-semibold">
-        Vaccination status
-        <select
-          name="vaccinated"
-          defaultValue={animal?.vaccinated || "no"}
-          className="mt-2 block min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal"
-        >
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </label>
-      <label className="font-semibold">
-        Sterilization status
-        <select
-          name="sterilized"
-          defaultValue={animal?.sterilized || "no"}
-          className="mt-2 block min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal"
-        >
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </label>
-      <ActionButton type="submit" className="sm:justify-self-start">
+      <ChoiceGroup
+        label="Vaccination status"
+        name="vaccinated"
+        defaultValue={animal?.vaccinated || "no"}
+        options={[
+          { value: "yes", label: "Yes", icon: Syringe },
+          { value: "no", label: "No", icon: Shield },
+        ]}
+      />
+      <ChoiceGroup
+        label="Sterilization status"
+        name="sterilized"
+        defaultValue={animal?.sterilized || "no"}
+        options={[
+          { value: "yes", label: "Yes", icon: BadgeCheck },
+          { value: "no", label: "No", icon: CircleHelp },
+        ]}
+      />
+      <ActionButton
+        type="submit"
+        variant="secondary"
+        className="sm:justify-self-start"
+      >
         Save companion
       </ActionButton>
     </form>
+  );
+}
+
+function ChoiceGroup({
+  label,
+  name,
+  defaultValue,
+  options,
+}: {
+  label: string;
+  name: string;
+  defaultValue: string;
+  options: { value: string; label: string; icon: LucideIcon }[];
+}) {
+  return (
+    <fieldset className="min-w-0">
+      <legend className="mb-2 font-semibold">{label}</legend>
+      <div className="flex flex-wrap gap-2">
+        {options.map(({ value, label: optionLabel, icon: Icon }) => (
+          <label
+            key={value}
+            className="animal-choice inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl border border-border bg-surface px-3 py-2 text-sm transition-colors hover:border-heading/60"
+          >
+            <input
+              type="radio"
+              name={name}
+              value={value}
+              defaultChecked={defaultValue === value}
+              className="sr-only"
+            />
+            <Icon size={17} className="text-heading" aria-hidden="true" />
+            <span>{optionLabel}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
   );
 }
