@@ -31,8 +31,8 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     description: "Discover why Pattes du Sud began in Mirleft and how it cares for street animals.",
     introduction: "Pattes du Sud grew from a simple conviction in Mirleft: we cannot look away while street dogs and cats face hunger, injury and illness.",
     purpose: "Our purpose is lasting protection through veterinary care, prevention and follow-up, so animals can live with dignity and greater safety.",
-    imageAlt: "A person gently holding a small black-and-white puppy.",
-    imageCaption: "A quiet moment of care with a young dog.",
+    imageAlt: "A street dog eating food offered by hand outdoors.",
+    imageCaption: "Everyday care begins with food, water and a gentle approach.",
     care: {
       title: "How our care works",
       introduction: "We combine immediate help with prevention and follow-up, so care continues beyond one visit.",
@@ -63,8 +63,8 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     description: "Découvrez pourquoi Pattes du Sud est née à Mirleft et comment elle protège les animaux des rues.",
     introduction: "Pattes du Sud est née à Mirleft d’une conviction simple : impossible de détourner le regard quand les chiens et chats des rues souffrent de faim, de blessures ou de maladie.",
     purpose: "Notre objectif est de les protéger durablement grâce aux soins vétérinaires, à la prévention et au suivi, afin qu’ils vivent avec davantage de dignité et de sécurité.",
-    imageAlt: "Une personne tient doucement un petit chiot noir et blanc.",
-    imageCaption: "Un moment de douceur auprès d’un jeune chien.",
+    imageAlt: "Un chien des rues mange la nourriture qu’on lui offre à la main en extérieur.",
+    imageCaption: "Les soins quotidiens commencent par de la nourriture, de l’eau et une approche douce.",
     care: {
       title: "Comment nous agissons",
       introduction: "Nous associons aide immédiate, prévention et suivi pour que les soins se poursuivent au-delà d’une visite.",
@@ -95,8 +95,8 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     description: "Erfahre, warum Pattes du Sud in Mirleft entstand und wie der Verein Straßentieren hilft.",
     introduction: "Pattes du Sud entstand in Mirleft aus einer einfachen Überzeugung: Wir dürfen nicht wegsehen, wenn Straßenhunde und Straßenkatzen hungern, verletzt oder krank sind.",
     purpose: "Unser Ziel ist dauerhafter Schutz durch tierärztliche Versorgung, Vorbeugung und Nachsorge, damit Tiere würdiger und sicherer leben können.",
-    imageAlt: "Eine Person hält einen kleinen schwarz-weißen Welpen behutsam im Arm.",
-    imageCaption: "Ein ruhiger Moment der Zuwendung mit einem jungen Hund.",
+    imageAlt: "Ein Straßenhund frisst draußen Futter aus einer Hand.",
+    imageCaption: "Zur täglichen Versorgung gehören Futter, Wasser und ein behutsamer Umgang.",
     care: {
       title: "So funktioniert unsere Hilfe",
       introduction: "Wir verbinden unmittelbare Hilfe mit Vorbeugung und Nachsorge, damit die Versorgung nach einem Besuch weitergeht.",
@@ -127,8 +127,8 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
     description: "تعرّف على سبب تأسيس بات دو سود في ميرلفت وكيف ترعى حيوانات الشوارع.",
     introduction: "نشأت بات دو سود في ميرلفت من قناعة بسيطة: لا ينبغي أن نغضّ الطرف عن جوع كلاب وقطط الشوارع وإصاباتها وأمراضها.",
     purpose: "هدفنا حمايتها على المدى الطويل عبر الرعاية البيطرية والوقاية والمتابعة، لتعيش بكرامة وأمان أكبر.",
-    imageAlt: "شخص يحمل جرواً صغيراً أبيض وأسود برفق.",
-    imageCaption: "لحظة هادئة من الرعاية مع كلب صغير.",
+    imageAlt: "كلب من كلاب الشوارع يأكل طعامًا يقدّمه له شخص بيده في الخارج.",
+    imageCaption: "تبدأ الرعاية اليومية بالطعام والماء والتعامل برفق.",
     care: {
       title: "كيف نقدّم الرعاية",
       introduction: "نجمع بين المساعدة العاجلة والوقاية والمتابعة حتى تستمر الرعاية بعد الزيارة الأولى.",

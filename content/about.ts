@@ -17,11 +17,11 @@ type AboutContent = {
 };
 
 export const aboutContent: AboutContent = {
-  // Use an association photo showing the team caring for animals in Mirleft.
+  // Show a street dog receiving food as an example of everyday care.
   introductionImage: {
-    src: "/images/home-team-stock.jpg",
+    src: "/images/home-work.jpg",
     width: 1200,
-    height: 800,
+    height: 1800,
   },
   // A dated account of the founding can be added here when its details are confirmed.
   foundingStory: null,

@@ -9,11 +9,13 @@ import { Container } from "@/components/ui/container";
 import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
 import { SectionImage } from "@/components/ui/section-image";
+import { PhotoGalleryLightbox } from "@/components/media/photo-gallery-lightbox";
 import { aboutContent } from "@/content/about";
 import { getMediaSrc } from "@/lib/media";
 import { siteContent } from "@/content/site";
 import { isLocale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
+import { animalMessages } from "@/messages/animals";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -37,6 +39,12 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
 
   const text = getEditableCopy("about", locale, aboutMessages[locale]);
   const image = aboutContent.introductionImage;
+  const photoSrc = getMediaSrc("about.introduction", image.src);
+  const photoText = animalMessages[locale];
+  const numberFormat = new Intl.NumberFormat(locale);
+  const photoLabel = photoText.photoLabel
+    .replace("{number}", numberFormat.format(1))
+    .replace("{total}", numberFormat.format(1));
 
   return (
     <main id="main-content" tabIndex={-1} className="flex-1">
@@ -54,10 +62,27 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
               </p>
             )}
           </div>
-          <figure>
-            <SectionImage src={getMediaSrc("about.introduction", image.src)} alt={text.imageAlt} preload objectPosition="center 45%" />
-            <PhotoCaption>{text.imageCaption}</PhotoCaption>
-          </figure>
+          <PhotoGalleryLightbox
+            photos={[{ src: photoSrc, alt: text.imageAlt }]}
+            locale={locale}
+            label={text.imageAlt}
+            closeLabel={photoText.closePhotoViewer}
+            previousLabel={photoText.previousPhoto}
+            nextLabel={photoText.nextPhoto}
+            photoLabel={photoText.photoLabel}
+          >
+            <figure>
+              <button
+                type="button"
+                data-photo-view-index={0}
+                aria-label={photoText.viewPhoto.replace("{photo}", photoLabel)}
+                className="group block w-full cursor-zoom-in rounded-3xl text-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <SectionImage src={photoSrc} alt={text.imageAlt} preload objectPosition="center 45%" />
+              </button>
+              <PhotoCaption>{text.imageCaption}</PhotoCaption>
+            </figure>
+          </PhotoGalleryLightbox>
         </Container>
       </Section>
       <CareInPractice locale={locale} />
