@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
@@ -50,8 +51,16 @@ export default async function SettingsPage({
   return (
     <main className="flex-1 py-12">
       <Container className="max-w-3xl">
-        <Link href={`/${locale}/admin`} className="text-accent underline">
-          ← Editor
+        <Link
+          href={`/${locale}/admin`}
+          className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
+        >
+          <ArrowLeft
+            size={18}
+            className="text-primary rtl:rotate-180"
+            aria-hidden="true"
+          />
+          Editor
         </Link>
         <h1 className="mt-5 text-4xl text-heading">Settings</h1>
         {query.saved && (
@@ -106,7 +115,7 @@ export default async function SettingsPage({
                         ? "url"
                         : "text"
                 }
-                className="mt-2 min-h-12 w-full rounded-xl border border-border bg-surface px-4 font-normal"
+                className="mt-2 min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
                 min={key === "responseTimeHours" ? 1 : undefined}
                 max={key === "responseTimeHours" ? 720 : undefined}
               />

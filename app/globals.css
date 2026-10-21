@@ -66,10 +66,14 @@ h1, h2, h3, h4, h5, h6 {
   outline-offset: 4px;
 }
 
-form.animal-form :is(input, select, textarea):focus-visible {
-  outline: none !important;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 0 !important;
+  outline-style: none !important;
   outline-offset: 0 !important;
   box-shadow: none !important;
+  border-color: var(--heading) !important;
 }
 
 .animal-choice:has(input:checked) {
