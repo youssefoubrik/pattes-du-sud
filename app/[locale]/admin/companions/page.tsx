@@ -13,7 +13,6 @@ import {
   PencilLine,
   Shield,
   Syringe,
-  Trash2,
   Venus,
   type LucideIcon,
 } from "lucide-react";
@@ -27,6 +26,7 @@ import {
 import { CharacterCountField } from "@/components/admin/character-count-field";
 import { PersonalityField } from "@/components/admin/personality-field";
 import { PhotoUploadManager } from "@/components/admin/photo-upload-manager";
+import { RemoveCompanionForm } from "@/components/admin/remove-companion-form";
 import { SaveNotice } from "@/components/admin/save-notice";
 import { isLocale, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
@@ -38,7 +38,7 @@ import {
   ANIMAL_STORY_MAX_LENGTH,
   PHOTO_MAX_UPLOAD_SIZE_BYTES,
 } from "@/lib/animal-limits";
-import { removeAnimal, upsertAnimal } from "../actions";
+import { upsertAnimal } from "../actions";
 
 const COMPANION_PAGE_SIZE = 6;
 
@@ -147,17 +147,7 @@ export default async function AdminAnimals({
                     </summary>
                     <AnimalForm locale={locale} animal={animal} />
                   </details>
-                  <form action={removeAnimal}>
-                    <input type="hidden" name="locale" value={locale} />
-                    <input type="hidden" name="id" value={animal.id} />
-                    <button
-                      type="submit"
-                      className="inline-flex min-h-11 items-center gap-2 font-bold text-heading underline decoration-transparent underline-offset-4 transition-[color,text-decoration-color] duration-200 hover:text-primary-hover hover:decoration-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
-                    >
-                      <Trash2 size={16} aria-hidden="true" />
-                      Remove companion
-                    </button>
-                  </form>
+                  <RemoveCompanionForm locale={locale} id={animal.id} />
                 </div>
               </li>
             ))}
