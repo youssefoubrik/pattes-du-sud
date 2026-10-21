@@ -28,6 +28,7 @@ import { SaveNotice } from "@/components/admin/save-notice";
 import { isLocale, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals } from "@/lib/db";
+import { animalMessages } from "@/messages/animals";
 import {
   ANIMAL_NAME_MAX_LENGTH,
   ANIMAL_PHOTO_MAX_COUNT,
@@ -119,7 +120,7 @@ export default async function AdminAnimals({
           </ActionButton>
         </form>
         {matchingAnimals.length > 0 ? (
-          <ul className="mt-6 grid items-start gap-6 lg:grid-cols-2">
+          <ul className="mt-6 grid max-w-4xl items-start gap-5">
             {matchingAnimals.map((animal) => (
               <li
                 key={animal.id}
@@ -139,7 +140,7 @@ export default async function AdminAnimals({
                   )}
                   <div>
                     <h3 className="text-xl text-heading">{animal.name}</h3>
-                    <p>{animal.status}</p>
+                    <p>{animalMessages[locale].status[animal.status]}</p>
                     <Link
                       className="text-accent underline"
                       href={`/${locale}/companions/${animal.id}`}
@@ -198,7 +199,6 @@ function AnimalForm({
   return (
     <form
       action={upsertAnimal}
-      encType="multipart/form-data"
       className="animal-form mt-5 grid gap-4 rounded-3xl border border-border bg-surface p-5 sm:grid-cols-2"
     >
       <input type="hidden" name="locale" value={locale} />
