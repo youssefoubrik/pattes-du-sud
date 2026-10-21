@@ -165,7 +165,7 @@ export const pageMessages: Record<Locale, Copy> = {
     contact: {
       title: "Get in touch",
       intro:
-        "Questions about an animal, a visit or a donation? Contact the team directly.",
+        "Questions about a companion, a visit or a donation? Contact the team.",
       whatsapp: "Chat on WhatsApp",
       whatsappText: "I want to help Pattes du Sud.",
       whatsappOpens: "Opens WhatsApp",
@@ -316,7 +316,7 @@ export const pageMessages: Record<Locale, Copy> = {
     contact: {
       title: "Nous contacter",
       intro:
-        "Une question sur un animal, une visite ou un don ? Contactez directement l’équipe.",
+        "Une question sur nos compagnons, une visite ou un don ? Contactez l’équipe.",
       whatsapp: "Discuter sur WhatsApp",
       whatsappText: "Je souhaite aider Pattes du Sud.",
       whatsappOpens: "Ouvre WhatsApp",
@@ -469,7 +469,7 @@ export const pageMessages: Record<Locale, Copy> = {
     contact: {
       title: "Kontakt",
       intro:
-        "Fragen zu einem Tier, einem Besuch oder einer Spende? Kontaktiere das Team direkt.",
+        "Fragen zu unseren Schützlingen, einem Besuch oder einer Spende? Kontaktiere das Team.",
       whatsapp: "Auf WhatsApp chatten",
       whatsappText: "Ich möchte Pattes du Sud helfen.",
       whatsappOpens: "Öffnet WhatsApp",
@@ -620,7 +620,7 @@ export const pageMessages: Record<Locale, Copy> = {
     },
     contact: {
       title: "تواصل معنا",
-      intro: "هل لديك سؤال عن حيوان أو زيارة أو تبرع؟ تواصل مباشرة مع الفريق.",
+      intro: "أسئلة عن رفاقنا أو زيارة أو تبرع؟ تواصل مع الفريق.",
       whatsapp: "ابدأ محادثة عبر واتساب",
       whatsappText: "أريد مساعدة جمعية بات دو سود.",
       whatsappOpens: "يفتح واتساب",
