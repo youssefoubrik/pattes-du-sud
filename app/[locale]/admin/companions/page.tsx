@@ -11,7 +11,6 @@ import {
   HousePlus,
   Mars,
   PencilLine,
-  Search,
   Shield,
   Syringe,
   Trash2,
@@ -21,13 +20,17 @@ import {
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
+import {
+  CompanionListPagination,
+  CompanionListSearch,
+} from "@/components/admin/companion-list-controls";
 import { CharacterCountField } from "@/components/admin/character-count-field";
 import { PersonalityField } from "@/components/admin/personality-field";
 import { PhotoUploadManager } from "@/components/admin/photo-upload-manager";
 import { SaveNotice } from "@/components/admin/save-notice";
 import { isLocale, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
-import { getAnimals } from "@/lib/db";
+import { getAnimals, getAnimalsPage } from "@/lib/db";
 import { animalMessages } from "@/messages/animals";
 import {
   ANIMAL_NAME_MAX_LENGTH,
@@ -36,6 +39,8 @@ import {
   PHOTO_MAX_UPLOAD_SIZE_BYTES,
 } from "@/lib/animal-limits";
 import { removeAnimal, upsertAnimal } from "../actions";
+
+const COMPANION_PAGE_SIZE = 6;
 
 export const metadata = {
   title: "Edit companions",
@@ -50,15 +55,18 @@ export default async function AdminAnimals({
   if (!isLocale(locale)) notFound();
   await requireAdmin(locale);
   const query = await searchParams;
-  const animals = getAnimals();
-  const search = typeof query.q === "string" ? query.q.trim() : "";
-  const matchingAnimals = search
-    ? animals.filter((animal) =>
-        animal.name
-          .toLocaleLowerCase(locale)
-          .includes(search.toLocaleLowerCase(locale)),
-      )
-    : animals;
+  const search =
+    typeof query.q === "string"
+      ? query.q.trim().slice(0, ANIMAL_NAME_MAX_LENGTH)
+      : "";
+  const requestedPage = typeof query.page === "string" ? Number(query.page) : 1;
+  const { animals, total, page, pageCount } = getAnimalsPage(
+    search,
+    COMPANION_PAGE_SIZE,
+    Number.isSafeInteger(requestedPage) && requestedPage > 0
+      ? requestedPage
+      : 1,
+  );
   return (
     <main className="flex-1 py-12">
       <Container>
@@ -92,36 +100,18 @@ export default async function AdminAnimals({
         <h2 className="mt-10 text-2xl text-heading">Add a companion</h2>
         <AnimalForm locale={locale} />
         <h2 className="mt-14 text-2xl text-heading">Our companions</h2>
-        <form
-          method="get"
-          role="search"
-          className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center"
+        <CompanionListSearch search={search} />
+        <p
+          aria-live="polite"
+          className="mt-4 text-sm font-semibold text-muted-foreground"
         >
-          <label className="sr-only" htmlFor="companion-search">
-            Search companions by name
-          </label>
-          <div className="relative w-full sm:max-w-md">
-            <Search
-              size={18}
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <input
-              id="companion-search"
-              type="search"
-              name="q"
-              defaultValue={search}
-              placeholder="Search companions by name"
-              className="min-h-11 w-full rounded-xl border border-border bg-surface pl-11 pr-4 focus-visible:border-heading focus-visible:outline-none"
-            />
-          </div>
-          <ActionButton type="submit" variant="secondary" size="small">
-            Search
-          </ActionButton>
-        </form>
-        {matchingAnimals.length > 0 ? (
+          {total === 1
+            ? "1 companion"
+            : `${new Intl.NumberFormat(locale).format(total)} companions`}
+        </p>
+        {animals.length ? (
           <ul className="mt-6 grid max-w-4xl items-start gap-5">
-            {matchingAnimals.map((animal) => (
+            {animals.map((animal) => (
               <li
                 key={animal.id}
                 className="rounded-3xl border border-border bg-surface p-5"
@@ -175,13 +165,19 @@ export default async function AdminAnimals({
         ) : (
           <p
             role="status"
-            className="mt-6 rounded-2xl bg-secondary p-5 text-muted-foreground"
+            className="mt-6 max-w-4xl rounded-2xl bg-secondary p-5 text-muted-foreground"
           >
-            {search
-              ? `No companions match “${search}”.`
+            {search.trim()
+              ? `No companions match “${search.trim()}”.`
               : "No companions to show yet."}
           </p>
         )}
+        <CompanionListPagination
+          locale={locale}
+          search={search}
+          page={page}
+          pageCount={pageCount}
+        />
       </Container>
     </main>
   );

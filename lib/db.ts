@@ -4,6 +4,7 @@ import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { animals, paginationSampleAnimals, type Animal, type AnimalPhoto } from "@/content/animals";
 import { footerContent } from "@/content/footer";
+import { ANIMAL_NAME_MAX_LENGTH } from "@/lib/animal-limits";
 
 const path =
   process.env.DATABASE_PATH || join(process.cwd(), "data", "site.sqlite");
@@ -188,6 +189,89 @@ export function getAnimals(): EditableAnimal[] {
       data: string;
     }[]
   ).map(({ id, data }) => ({ ...parseAnimalData(data), id }));
+}
+
+export function getAnimalsPage(
+  search: string,
+  pageSize: number,
+  requestedPage: number,
+): {
+  animals: EditableAnimal[];
+  total: number;
+  page: number;
+  pageCount: number;
+} {
+  const database = db();
+  const term = search.trim().slice(0, ANIMAL_NAME_MAX_LENGTH);
+  const countRow = database
+    .prepare(
+      "SELECT COUNT(*) AS count FROM animals WHERE instr(lower(json_extract(data, '$.name')), lower(?)) > 0",
+    )
+    .get(term) as { count: number };
+  const total = countRow.count;
+  const pageCount = Math.ceil(total / pageSize);
+  const page = Math.min(Math.max(requestedPage, 1), Math.max(pageCount, 1));
+  const rows = database
+    .prepare(
+      "SELECT id, data FROM animals WHERE instr(lower(json_extract(data, '$.name')), lower(?)) > 0 ORDER BY updated_at DESC LIMIT ? OFFSET ?",
+    )
+    .all(term, pageSize, (page - 1) * pageSize) as {
+      id: number;
+      data: string;
+    }[];
+  return {
+    animals: rows.map(({ id, data }) => ({ ...parseAnimalData(data), id })),
+    total,
+    page,
+    pageCount,
+  };
+}
+
+export function getPublicAnimalsPage(
+  search: string,
+  species: Animal["species"] | "all",
+  status: Animal["status"] | "all",
+  pageSize: number,
+  requestedPage: number,
+): {
+  animals: EditableAnimal[];
+  total: number;
+  page: number;
+  pageCount: number;
+} {
+  const database = db();
+  const conditions = [
+    "instr(lower(json_extract(data, '$.name')), lower(?)) > 0",
+  ];
+  const values: (string | number)[] = [search.trim().slice(0, ANIMAL_NAME_MAX_LENGTH)];
+  if (species !== "all") {
+    conditions.push("json_extract(data, '$.species') = ?");
+    values.push(species);
+  }
+  if (status !== "all") {
+    conditions.push("json_extract(data, '$.status') = ?");
+    values.push(status);
+  }
+  const where = conditions.join(" AND ");
+  const total = (database
+    .prepare(`SELECT COUNT(*) AS count FROM animals WHERE ${where}`)
+    .get(...values) as { count: number }).count;
+  const pageCount = Math.ceil(total / pageSize);
+  const page = Math.min(Math.max(requestedPage, 1), Math.max(pageCount, 1));
+  const rows = database
+    .prepare(
+      `SELECT id, data FROM animals WHERE ${where} ORDER BY json_extract(data, '$.addedAt') DESC, id DESC LIMIT ? OFFSET ?`,
+    )
+    .all(...values, pageSize, (page - 1) * pageSize) as {
+      id: number;
+      data: string;
+    }[];
+  return {
+    animals: rows.map(({ id, data }) => ({ ...parseAnimalData(data), id })),
+    total,
+    page,
+    pageCount,
+  };
 }
 
 export function getAnimal(id: number): EditableAnimal | undefined {

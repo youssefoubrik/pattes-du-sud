@@ -5,13 +5,14 @@ import { notFound } from "next/navigation";
 import { AnimalGallery } from "@/components/animals/animal-gallery";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { getAnimals } from "@/lib/db";
+import { getPublicAnimalsPage } from "@/lib/db";
+import { ANIMAL_NAME_MAX_LENGTH } from "@/lib/animal-limits";
 import { siteContent } from "@/content/site";
 import { isLocale } from "@/i18n/routing";
 import { animalGalleryMessages } from "@/messages/animal-gallery";
 import type { Locale } from "@/i18n/routing";
 
-type Props = { params: Promise<{ locale: Locale }> };
+type Props = PageProps<"/[locale]/companions">;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -27,11 +28,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function AnimalsPage({ params }: Props) {
+const PAGE_SIZE = 6;
+
+export default async function AnimalsPage({ params, searchParams }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  const query = await searchParams;
+  const search = typeof query.q === "string" ? query.q.trim().slice(0, ANIMAL_NAME_MAX_LENGTH) : "";
+  const species = query.species === "dog" || query.species === "cat" ? query.species : "all";
+  const status = query.status === "available" || query.status === "adopted" ? query.status : "all";
+  const requestedPage = typeof query.page === "string" ? Number(query.page) : 1;
+  const { animals, total, page, pageCount } = getPublicAnimalsPage(
+    search,
+    species,
+    status,
+    PAGE_SIZE,
+    Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
+  );
   const text = animalGalleryMessages[locale];
-  const sortedAnimals = getAnimals().sort((a, b) => b.addedAt.localeCompare(a.addedAt));
 
   return (
     <main id="main-content" tabIndex={-1} className="flex-1">
@@ -61,7 +75,16 @@ export default async function AnimalsPage({ params }: Props) {
             </Link>
           </div>
           <h2 className="sr-only">{text.title}</h2>
-          <AnimalGallery animals={sortedAnimals} locale={locale} />
+          <AnimalGallery
+            animals={animals}
+            locale={locale}
+            search={search}
+            species={species}
+            status={status}
+            total={total}
+            page={page}
+            pageCount={pageCount}
+          />
         </Container>
       </Section>
     </main>
