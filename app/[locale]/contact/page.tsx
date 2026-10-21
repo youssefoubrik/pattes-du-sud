@@ -21,7 +21,6 @@ function ContactMethod({
   title,
   detail,
   hint,
-  className = "",
   detailClassName = "",
 }: {
   href: string;
@@ -29,13 +28,12 @@ function ContactMethod({
   title: string;
   detail: string;
   hint: string;
-  className?: string;
   detailClassName?: string;
 }) {
   return (
     <a
       href={href}
-      className={`group rounded-3xl bg-secondary p-6 ${className}`}
+      className="group rounded-3xl bg-secondary p-6 transition-opacity duration-200 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading"
     >
       <Icon aria-hidden="true" className="text-primary-hover" />
       <h2 className="mt-3 flex items-center gap-2 text-xl font-semibold text-heading">
@@ -91,7 +89,6 @@ export default async function Contact({
                 icon={MessageCircle}
                 title={t.whatsapp}
                 hint={t.whatsappOpens}
-                className="transition-shadow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading"
                 detail={s.whatsappDisplay || s.whatsappNumber}
               />
             )}
@@ -101,7 +98,6 @@ export default async function Contact({
                 icon={Mail}
                 title={t.email}
                 hint={t.emailOpens}
-                className="transition-shadow hover:opacity-95 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading"
                 detail={s.email}
                 detailClassName="break-all"
               />
