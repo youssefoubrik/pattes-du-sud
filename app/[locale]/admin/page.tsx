@@ -86,7 +86,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
         </div>
         <p className="mt-4 max-w-2xl">Manage companion profiles and site details.</p>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <Link href={`/${locale}/admin/animals`} className={cardClass}>
+          <Link href={`/${locale}/admin/companions`} className={cardClass}>
             <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
               <PawPrint
                 size={22}

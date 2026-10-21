@@ -136,7 +136,7 @@ Public:
 Admin:
 
 - `/admin`
-- `/admin/animals`
+- `/admin/companions`
 - `/admin/settings`
 
 Languages use locale prefixes:

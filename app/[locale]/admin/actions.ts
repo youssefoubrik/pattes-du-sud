@@ -109,13 +109,13 @@ export async function upsertAnimal(form: FormData) {
   const idValue = String(form.get("id") || "").trim();
   const id = idValue ? Number(idValue) : undefined;
   if (idValue && (id === undefined || !Number.isSafeInteger(id) || id <= 0))
-    redirect(`/${locale}/admin/animals?error=profile`);
+    redirect(`/${locale}/admin/companions?error=profile`);
   const existing = id ? getAnimal(id) : undefined;
-  if (idValue && !existing) redirect(`/${locale}/admin/animals?error=profile`);
+  if (idValue && !existing) redirect(`/${locale}/admin/companions?error=profile`);
   const name = String(form.get("name") || "")
     .trim()
     .slice(0, ANIMAL_NAME_MAX_LENGTH);
-  if (!name) redirect(`/${locale}/admin/animals?error=name`);
+  if (!name) redirect(`/${locale}/admin/companions?error=name`);
   const species = form.get("species") === "cat" ? "cat" : "dog";
   const value = String(form.get("status") || "inCare");
   const status: EditableAnimal["status"] =
@@ -145,14 +145,14 @@ export async function upsertAnimal(form: FormData) {
     .getAll("photos")
     .filter((file): file is File => file instanceof File && file.size > 0);
   if (photos.length + photoFiles.length > ANIMAL_PHOTO_MAX_COUNT)
-    redirect(`/${locale}/admin/animals?error=photo-count`);
+    redirect(`/${locale}/admin/companions?error=photo-count`);
   if (!photos.length && !photoFiles.length)
-    redirect(`/${locale}/admin/animals?error=photo`);
+    redirect(`/${locale}/admin/companions?error=photo`);
 
   const uploads: { mime: string; bytes: Buffer }[] = [];
   for (const photo of photoFiles) {
     if (photo.size > PHOTO_MAX_UPLOAD_SIZE_BYTES)
-      redirect(`/${locale}/admin/animals?error=size`);
+      redirect(`/${locale}/admin/companions?error=size`);
     const bytes = Buffer.from(await photo.arrayBuffer());
     const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
     const png = bytes
@@ -168,7 +168,7 @@ export async function upsertAnimal(form: FormData) {
         : webp
           ? "image/webp"
           : null;
-    if (!mime) redirect(`/${locale}/admin/animals?error=photo`);
+    if (!mime) redirect(`/${locale}/admin/companions?error=photo`);
     uploads.push({ mime, bytes });
   }
   const insertPhoto = db().prepare(
@@ -222,7 +222,7 @@ export async function upsertAnimal(form: FormData) {
     revalidatePath(`/${language}/companions/${animalId}`);
     revalidatePath(`/${language}`);
   }
-  redirect(`/${locale}/admin/animals?saved=1`);
+  redirect(`/${locale}/admin/companions?saved=1`);
 }
 
 export async function removeAnimal(form: FormData) {
@@ -234,7 +234,7 @@ export async function removeAnimal(form: FormData) {
     revalidatePath(`/${language}/companions`);
     revalidatePath(`/${language}`);
   }
-  redirect(`/${locale}/admin/animals?deleted=1`);
+  redirect(`/${locale}/admin/companions?deleted=1`);
 }
 
 export async function updateContent(form: FormData) {
