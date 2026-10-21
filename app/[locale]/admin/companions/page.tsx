@@ -6,6 +6,7 @@ import {
   Cat,
   CircleHelp,
   Dog,
+  Eye,
   HeartPulse,
   House,
   HousePlus,
@@ -116,7 +117,7 @@ export default async function AdminAnimals({
                 key={animal.id}
                 className="rounded-3xl border border-border bg-surface p-5"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   {animal.photos[0] && (
                     <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl">
                       <Image
@@ -131,13 +132,14 @@ export default async function AdminAnimals({
                   <div>
                     <h3 className="text-xl text-heading">{animal.name}</h3>
                     <p>{animalMessages[locale].status[animal.status]}</p>
-                    <Link
-                      className="text-accent underline"
-                      href={`/${locale}/companions/${animal.id}`}
-                    >
-                      View profile
-                    </Link>
                   </div>
+                  <Link
+                    className="ms-auto inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full border border-border px-3 text-sm font-bold text-heading transition-colors hover:border-accent hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
+                    href={`/${locale}/companions/${animal.id}`}
+                  >
+                    <Eye size={16} className="text-accent" aria-hidden="true" />
+                    View
+                  </Link>
                 </div>
                 <div className="mt-5 flex flex-wrap items-start gap-x-4 gap-y-2">
                   <details>
