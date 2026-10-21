@@ -57,7 +57,9 @@ export function AnimalGallery({
           </ul>
         ) : (
           <p className="mt-5 rounded-3xl bg-secondary p-8 text-center text-foreground">
-            {text.empty}
+            {search || species !== "all" || status !== "all"
+              ? text.empty
+              : text.emptyCollection}
           </p>
         )}
         {pageCount > 1 && (

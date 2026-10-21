@@ -14,6 +14,7 @@ type GalleryMessages = {
   adopted: string;
   count: string;
   empty: string;
+  emptyCollection: string;
   adoptionPrompt: string;
   adoptionLink: string;
   paginationLabel: string;
@@ -29,6 +30,7 @@ export const animalGalleryMessages: Record<Locale, GalleryMessages> = {
     searchLabel: "Search companions by name", searchPlaceholder: "Search by name",
     speciesLabel: "Companion type", statusLabel: "Status", all: "All", dogs: "Dogs", cats: "Cats", available: "Looking for a home", adopted: "Adopted",
     count: "{count} companions", empty: "No companions match your search and filters. Try another selection.",
+    emptyCollection: "No companions are listed at the moment.",
     adoptionPrompt: "Want to adopt?",
     adoptionLink: "See how it works",
     paginationLabel: "Companion gallery pages", pageOf: "Page {page} of {pages}", pageLabel: "Go to page {page}", previousPage: "Previous", nextPage: "Next",
@@ -38,6 +40,7 @@ export const animalGalleryMessages: Record<Locale, GalleryMessages> = {
     searchLabel: "Rechercher un compagnon par nom", searchPlaceholder: "Rechercher par nom",
     speciesLabel: "Type", statusLabel: "Situation", all: "Tous", dogs: "Chiens", cats: "Chats", available: "Cherche un foyer", adopted: "Adoptés",
     count: "{count} compagnons", empty: "Aucun compagnon ne correspond à votre recherche et à ces filtres. Essayez une autre sélection.",
+    emptyCollection: "Aucun compagnon n’est actuellement présenté.",
     adoptionPrompt: "Envie d’adopter ?",
     adoptionLink: "Voir comment ça marche",
     paginationLabel: "Pages de la galerie des compagnons", pageOf: "Page {page} sur {pages}", pageLabel: "Aller à la page {page}", previousPage: "Précédent", nextPage: "Suivant",
@@ -47,6 +50,7 @@ export const animalGalleryMessages: Record<Locale, GalleryMessages> = {
     searchLabel: "Begleiter nach Namen suchen", searchPlaceholder: "Nach Namen suchen",
     speciesLabel: "Art", statusLabel: "Status", all: "Alle", dogs: "Hunde", cats: "Katzen", available: "Sucht ein Zuhause", adopted: "Adoptiert",
     count: "{count} Begleiter", empty: "Für diese Suche und Filter gibt es keine Begleiter. Wähle eine andere Kombination.",
+    emptyCollection: "Zurzeit sind keine Begleiter gelistet.",
     adoptionPrompt: "Möchtest du adoptieren?",
     adoptionLink: "So geht’s",
     paginationLabel: "Seiten der Begleitergalerie", pageOf: "Seite {page} von {pages}", pageLabel: "Zu Seite {page}", previousPage: "Zurück", nextPage: "Weiter",
@@ -56,6 +60,7 @@ export const animalGalleryMessages: Record<Locale, GalleryMessages> = {
     searchLabel: "ابحث عن رفيق بالاسم", searchPlaceholder: "ابحث بالاسم",
     speciesLabel: "النوع", statusLabel: "الحالة", all: "الكل", dogs: "الكلاب", cats: "القطط", available: "يبحث عن بيت", adopted: "تم تبنّيها",
     count: "عدد الرفاق: {count}", empty: "لا يوجد رفاق يطابقون بحثك والفلاتر المحددة. جرّب تغييرها.",
+    emptyCollection: "لا يوجد رفاق معروضون حاليًا.",
     adoptionPrompt: "هل ترغب في التبنّي؟",
     adoptionLink: "تعرّف على الطريقة",
     paginationLabel: "صفحات معرض الرفاق", pageOf: "الصفحة {page} من {pages}", pageLabel: "انتقل إلى الصفحة {page}", previousPage: "السابق", nextPage: "التالي",
