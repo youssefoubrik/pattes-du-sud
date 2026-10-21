@@ -1,5 +1,15 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import {
+  ArrowLeft,
+  Building2,
+  ChartColumn,
+  Heart,
+  Landmark,
+  MapPin,
+  Phone,
+  Share2,
+  type LucideIcon,
+} from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
@@ -34,6 +44,46 @@ const labels: Record<keyof Settings, string> = {
   impactAnimalsHelped: "Companions helped",
   impactAdoptions: "Confirmed adoptions",
 };
+const fieldGroups: {
+  title: string;
+  icon: LucideIcon;
+  fields: (keyof Settings)[];
+}[] = [
+  {
+    title: "Contact and availability",
+    icon: Phone,
+    fields: [
+      "email",
+      "whatsappNumber",
+      "whatsappDisplay",
+      "responseTimeHours",
+      "openingHours",
+      "closingHours",
+    ],
+  },
+  { title: "Social links", icon: Share2, fields: ["instagram", "facebook"] },
+  {
+    title: "Association details",
+    icon: Building2,
+    fields: ["registrationReference"],
+  },
+  {
+    title: "Donation links",
+    icon: Heart,
+    fields: ["paypalDonateUrl", "paypalMonthlyUrl"],
+  },
+  {
+    title: "Bank transfer details",
+    icon: Landmark,
+    fields: ["bankName", "iban", "rib", "swift"],
+  },
+  { title: "Location", icon: MapPin, fields: ["mapEmbedUrl"] },
+  {
+    title: "Impact figures",
+    icon: ChartColumn,
+    fields: ["impactAnimalsHelped", "impactAdoptions"],
+  },
+];
 
 export default async function SettingsPage({
   params,
@@ -90,38 +140,51 @@ export default async function SettingsPage({
         )}
         <form
           action={updateSettings}
-          className="mt-8 grid gap-5 sm:grid-cols-2"
+          className="mt-8 grid gap-6"
         >
           <input type="hidden" name="locale" value={locale} />
-          {(Object.keys(labels) as (keyof Settings)[]).map((key) => (
-            <label
-              key={key}
-              className={`block font-semibold ${key === "mapEmbedUrl" ? "sm:col-span-2" : ""}`}
+          {fieldGroups.map((group) => (
+            <fieldset
+              key={group.title}
+              className="min-w-0 rounded-2xl border border-border bg-surface p-5"
             >
-              {labels[key]}
-              <input
-                name={key}
-                defaultValue={settings[key]}
-                type={
-                  key === "email"
-                    ? "email"
-                    : key === "responseTimeHours"
-                      ? "number"
-                      : key === "instagram" ||
-                          key === "facebook" ||
-                          key === "mapEmbedUrl" ||
-                          key === "paypalDonateUrl" ||
-                          key === "paypalMonthlyUrl"
-                        ? "url"
-                        : "text"
-                }
-                className="mt-2 min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
-                min={key === "responseTimeHours" ? 1 : undefined}
-                max={key === "responseTimeHours" ? 720 : undefined}
-              />
-            </label>
+              <legend className="inline-flex items-center gap-2 px-1 text-xl font-semibold text-heading">
+                <group.icon size={19} aria-hidden="true" />
+                {group.title}
+              </legend>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {group.fields.map((key) => (
+                  <label
+                    key={key}
+                    className={`block font-semibold ${key === "mapEmbedUrl" ? "sm:col-span-2" : ""}`}
+                  >
+                    {labels[key]}
+                    <input
+                      name={key}
+                      defaultValue={settings[key]}
+                      type={
+                        key === "email"
+                          ? "email"
+                          : key === "responseTimeHours"
+                            ? "number"
+                            : key === "instagram" ||
+                                key === "facebook" ||
+                                key === "mapEmbedUrl" ||
+                                key === "paypalDonateUrl" ||
+                                key === "paypalMonthlyUrl"
+                              ? "url"
+                              : "text"
+                      }
+                      className="mt-2 min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
+                      min={key === "responseTimeHours" ? 1 : undefined}
+                      max={key === "responseTimeHours" ? 720 : undefined}
+                    />
+                  </label>
+                ))}
+              </div>
+            </fieldset>
           ))}
-          <ActionButton type="submit" className="sm:col-span-2 sm:justify-self-start">
+          <ActionButton type="submit" className="justify-self-start">
             Save settings
           </ActionButton>
         </form>
