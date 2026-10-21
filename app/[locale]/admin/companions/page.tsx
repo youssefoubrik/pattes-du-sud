@@ -48,6 +48,8 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
+export const instant = false;
+
 export default async function AdminAnimals({
   params,
   searchParams,

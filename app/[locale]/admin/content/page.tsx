@@ -18,6 +18,8 @@ export const metadata = {
   title: "Edit text",
   robots: { index: false, follow: false },
 };
+
+export const instant = false;
 const namespaces: CopyNamespace[] = ["home", "about", "pages"];
 
 export default async function ContentPage({

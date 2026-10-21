@@ -22,6 +22,8 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
+export const instant = false;
+
 const cardClass =
   "group rounded-3xl bg-secondary p-6 transition-colors hover:bg-secondary/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 

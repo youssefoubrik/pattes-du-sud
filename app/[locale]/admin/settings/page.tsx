@@ -11,6 +11,8 @@ export const metadata = {
   title: "Editor settings",
   robots: { index: false, follow: false },
 };
+
+export const instant = false;
 const labels: Record<keyof Settings, string> = {
   email: "Public email",
   whatsappNumber: "WhatsApp number (digits only)",
