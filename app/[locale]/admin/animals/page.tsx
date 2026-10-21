@@ -11,7 +11,6 @@ import {
   HousePlus,
   Mars,
   Shield,
-  ShieldCheck,
   Syringe,
   Venus,
   type LucideIcon,
@@ -19,9 +18,17 @@ import {
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
+import { CharacterCountField } from "@/components/admin/character-count-field";
+import { PhotoUploadManager } from "@/components/admin/photo-upload-manager";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals } from "@/lib/db";
+import {
+  ANIMAL_NAME_MAX_LENGTH,
+  ANIMAL_PHOTO_MAX_COUNT,
+  ANIMAL_STORY_MAX_LENGTH,
+  PHOTO_MAX_UPLOAD_SIZE_BYTES,
+} from "@/lib/animal-limits";
 import { removeAnimal, upsertAnimal } from "../actions";
 
 export const metadata = {
@@ -66,8 +73,10 @@ export default async function AdminAnimals({
         {query.error && (
           <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
             {query.error === "photo-count"
-              ? "A profile needs at least one photo and can have up to five."
-              : "Check the name and photos. Use JPEG, PNG or WebP images under 5 MB each."}
+              ? `A profile needs at least one photo and can have up to ${ANIMAL_PHOTO_MAX_COUNT}.`
+              : query.error === "size"
+                ? `Each photo must be under ${PHOTO_MAX_UPLOAD_SIZE_BYTES / 1_000_000} MB.`
+                : "Check the name and photos. Use JPEG, PNG or WebP images."}
           </p>
         )}
         <h2 className="mt-10 text-2xl text-heading">Add a companion</h2>
@@ -145,12 +154,13 @@ function AnimalForm({
       {animal && <input type="hidden" name="id" value={animal.id} />}
       <label className="font-semibold">
         Name
-        <input
+        <CharacterCountField
           name="name"
           required
-          maxLength={80}
+          maxLength={ANIMAL_NAME_MAX_LENGTH}
           defaultValue={animal?.name}
-          className={`mt-2 min-h-11 w-full rounded-xl border border-border px-3 font-normal ${focusClass}`}
+          hint="Any text is allowed, including accents and punctuation."
+          className={`min-h-11 w-full rounded-xl border border-border px-3 font-normal ${focusClass}`}
         />
       </label>
       <ChoiceGroup
@@ -194,69 +204,23 @@ function AnimalForm({
           { value: "male", label: "Male", icon: Mars },
         ]}
       />
-      <label className="font-semibold sm:col-span-2">
-        Photos
-        <input
-          name="photos"
-          type="file"
-          multiple
-          accept="image/jpeg,image/png,image/webp"
-          required={!animal || animal.photos.length === 0}
-          className={`mt-2 block w-full rounded-xl border border-border p-3 font-normal ${focusClass}`}
-        />
-        <span className="mt-2 block text-sm font-normal text-muted-foreground">
-          Up to five photos per profile, 5 MB each. Choose which appears on cards.
-        </span>
-      </label>
-      {animal && animal.photos.length > 0 && (
-        <fieldset className="grid gap-3 sm:col-span-2 sm:grid-cols-2">
-          <legend className="mb-2 font-semibold">Current photos</legend>
-          {animal.photos.map((photo, index) => (
-            <div key={`${photo.src}-${index}`} className="flex gap-3 rounded-2xl border border-border p-3">
-              <div className="relative size-20 shrink-0 overflow-hidden rounded-xl bg-secondary">
-                <Image src={photo.src} alt="" fill sizes="80px" className="object-cover" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <label className="block text-sm font-semibold">
-                  Photo description
-                  <input
-                    name={`photoAlt:${index}`}
-                    maxLength={200}
-                    defaultValue={photo.alt || ""}
-                    className={`mt-1 min-h-10 w-full rounded-lg border border-border px-2 font-normal ${focusClass}`}
-                  />
-                </label>
-                <label className="mt-2 flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    name="removePhoto"
-                    value={index}
-                    className={focusClass}
-                  />
-                  Remove photo
-                </label>
-                <label className="mt-2 flex items-center gap-2 text-sm">
-                  <input
-                    type="radio"
-                    name="mainPhoto"
-                    value={index}
-                    defaultChecked={index === 0}
-                    className={focusClass}
-                  />
-                  Show on cards
-                </label>
-              </div>
-            </div>
-          ))}
-        </fieldset>
-      )}
+      <PhotoUploadManager
+        photos={animal?.photos ?? []}
+        maxPhotos={ANIMAL_PHOTO_MAX_COUNT}
+        maxFileSize={PHOTO_MAX_UPLOAD_SIZE_BYTES}
+        focusClass={focusClass}
+        uploadId={`companion-photos-${animal?.id ?? "new"}`}
+      />
       <label className="font-semibold sm:col-span-2">
         Story
-        <textarea
+        <CharacterCountField
+          multiline
           name="story"
           rows={4}
+          maxLength={ANIMAL_STORY_MAX_LENGTH}
           defaultValue={animal?.story}
-          className={`mt-2 w-full rounded-xl border border-border p-3 font-normal ${focusClass}`}
+          hint="Any text and line breaks are allowed."
+          className={`w-full rounded-xl border border-border p-3 font-normal ${focusClass}`}
         />
       </label>
       <ChoiceGroup

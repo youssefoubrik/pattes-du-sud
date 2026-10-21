@@ -22,6 +22,12 @@ import {
 } from "@/lib/auth";
 import { isLocale, routing } from "@/i18n/routing";
 import {
+  ANIMAL_NAME_MAX_LENGTH,
+  ANIMAL_PHOTO_MAX_COUNT,
+  ANIMAL_STORY_MAX_LENGTH,
+  PHOTO_MAX_UPLOAD_SIZE_BYTES,
+} from "@/lib/animal-limits";
+import {
   copyFields,
   getEditableCopy,
   saveEditableCopy,
@@ -107,7 +113,7 @@ export async function upsertAnimal(form: FormData) {
   if (idValue && !existing) redirect(`/${locale}/admin/animals?error=profile`);
   const name = String(form.get("name") || "")
     .trim()
-    .slice(0, 80);
+    .slice(0, ANIMAL_NAME_MAX_LENGTH);
   if (!name) redirect(`/${locale}/admin/animals?error=name`);
   const species = form.get("species") === "cat" ? "cat" : "dog";
   const value = String(form.get("status") || "inCare");
@@ -137,14 +143,15 @@ export async function upsertAnimal(form: FormData) {
   const photoFiles = form
     .getAll("photos")
     .filter((file): file is File => file instanceof File && file.size > 0);
-  if (photos.length + photoFiles.length > 5)
+  if (photos.length + photoFiles.length > ANIMAL_PHOTO_MAX_COUNT)
     redirect(`/${locale}/admin/animals?error=photo-count`);
   if (!photos.length && !photoFiles.length)
     redirect(`/${locale}/admin/animals?error=photo`);
 
   const uploads: { mime: string; bytes: Buffer }[] = [];
   for (const photo of photoFiles) {
-    if (photo.size > 5_000_000) redirect(`/${locale}/admin/animals?error=size`);
+    if (photo.size > PHOTO_MAX_UPLOAD_SIZE_BYTES)
+      redirect(`/${locale}/admin/animals?error=size`);
     const bytes = Buffer.from(await photo.arrayBuffer());
     const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
     const png = bytes
@@ -183,7 +190,7 @@ export async function upsertAnimal(form: FormData) {
     personality: existing?.personality,
     story: String(form.get("story") || "")
       .trim()
-      .slice(0, 5000),
+      .slice(0, ANIMAL_STORY_MAX_LENGTH),
     sex:
       form.get("sex") === "male"
         ? "male"
@@ -257,7 +264,7 @@ export async function updateMedia(form: FormData) {
   if (!mediaSlots.some((item) => item.key === slot))
     redirect(`/${locale}/admin/media?error=1`);
   const file = form.get("photo");
-  if (!(file instanceof File) || file.size < 1 || file.size > 5_000_000)
+  if (!(file instanceof File) || file.size < 1 || file.size > PHOTO_MAX_UPLOAD_SIZE_BYTES)
     redirect(`/${locale}/admin/media?error=1`);
   const bytes = Buffer.from(await file.arrayBuffer());
   const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;

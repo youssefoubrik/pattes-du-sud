@@ -73,6 +73,10 @@ form.animal-form :is(input, select, textarea):focus-visible {
   border-color: var(--heading);
 }
 
+.animal-upload:has(input:focus-visible) {
+  border-color: var(--heading);
+}
+
 #main-content {
   scroll-margin-top: 7rem;
 }

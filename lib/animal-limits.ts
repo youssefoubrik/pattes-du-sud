@@ -1,0 +1,4 @@
+export const ANIMAL_NAME_MAX_LENGTH = 80;
+export const ANIMAL_STORY_MAX_LENGTH = 5000;
+export const ANIMAL_PHOTO_MAX_COUNT = 5;
+export const PHOTO_MAX_UPLOAD_SIZE_BYTES = 5_000_000;
