@@ -43,7 +43,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <Section aria-labelledby="about-title">
         <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <p className="mb-5 text-sm font-bold text-heading">{text.eyebrow}</p>
             <h1 id="about-title" className="max-w-xl text-4xl leading-[1.12] font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">
               {text.title}
             </h1>

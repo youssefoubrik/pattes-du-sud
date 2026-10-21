@@ -3,7 +3,6 @@ import type { Locale } from "@/i18n/routing";
 type AboutMessages = {
   title: string;
   description: string;
-  eyebrow: string;
   introduction: string;
   purpose: string;
   imageAlt: string;
@@ -31,7 +30,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
   en: {
     title: "About Pattes du Sud",
     description: "Discover why Pattes du Sud began in Mirleft and how it cares for street animals.",
-    eyebrow: "Mirleft, Morocco",
     introduction: "Pattes du Sud grew from a simple conviction in Mirleft: we cannot look away while street dogs and cats face hunger, injury and illness.",
     purpose: "Our purpose is lasting protection through veterinary care, prevention and follow-up, so animals can live with dignity and greater safety.",
     imageAlt: "A person gently holding a small black-and-white puppy.",
@@ -68,7 +66,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
   fr: {
     title: "À propos de Pattes du Sud",
     description: "Découvrez pourquoi Pattes du Sud est née à Mirleft et comment elle protège les animaux des rues.",
-    eyebrow: "Mirleft, Maroc",
     introduction: "Pattes du Sud est née à Mirleft d’une conviction simple : impossible de détourner le regard quand les chiens et chats des rues souffrent de faim, de blessures ou de maladie.",
     purpose: "Notre objectif est de les protéger durablement grâce aux soins vétérinaires, à la prévention et au suivi, afin qu’ils vivent avec davantage de dignité et de sécurité.",
     imageAlt: "Une personne tient doucement un petit chiot noir et blanc.",
@@ -105,7 +102,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
   de: {
     title: "Über Pattes du Sud",
     description: "Erfahre, warum Pattes du Sud in Mirleft entstand und wie der Verein Straßentieren hilft.",
-    eyebrow: "Mirleft, Marokko",
     introduction: "Pattes du Sud entstand in Mirleft aus einer einfachen Überzeugung: Wir dürfen nicht wegsehen, wenn Straßenhunde und Straßenkatzen hungern, verletzt oder krank sind.",
     purpose: "Unser Ziel ist dauerhafter Schutz durch tierärztliche Versorgung, Vorbeugung und Nachsorge, damit Tiere würdiger und sicherer leben können.",
     imageAlt: "Eine Person hält einen kleinen schwarz-weißen Welpen behutsam im Arm.",
@@ -142,7 +138,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
   ar: {
     title: "تعرّف على بات دو سود",
     description: "تعرّف على سبب تأسيس بات دو سود في ميرلفت وكيف ترعى حيوانات الشوارع.",
-    eyebrow: "ميرلفت، المغرب",
     introduction: "نشأت بات دو سود في ميرلفت من قناعة بسيطة: لا ينبغي أن نغضّ الطرف عن جوع كلاب وقطط الشوارع وإصاباتها وأمراضها.",
     purpose: "هدفنا حمايتها على المدى الطويل عبر الرعاية البيطرية والوقاية والمتابعة، لتعيش بكرامة وأمان أكبر.",
     imageAlt: "شخص يحمل جرواً صغيراً أبيض وأسود برفق.",
