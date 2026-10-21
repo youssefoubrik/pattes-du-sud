@@ -32,10 +32,6 @@ export function CareInPractice({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ol>
-          <aside className="mt-7 border-s-2 border-primary ps-4">
-            <h3 className="font-bold text-heading">{text.redCollar.title}</h3>
-            <p className="mt-1 leading-relaxed text-foreground">{text.redCollar.description}</p>
-          </aside>
         </div>
       </Container>
     </Section>

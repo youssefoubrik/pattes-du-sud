@@ -11,7 +11,6 @@ type AboutMessages = {
     title: string;
     introduction: string;
     steps: { title: string; description: string }[];
-    redCollar: { title: string; description: string };
   };
   team: { title: string; introduction: string; volunteer: string };
   association: {
@@ -42,10 +41,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
         { title: "Prevent further suffering", description: "Vaccination and sterilisation help protect animals and reduce uncontrolled litters." },
         { title: "Identify and follow up", description: "We document care and track animals we help, checking on them again where possible." },
       ],
-      redCollar: {
-        title: "What the red collar means",
-        description: "In our street-dog programme, a red collar marks a dog that has been identified, vaccinated and sterilised. Please leave it on so the dog can be recognised and repeat interventions avoided.",
-      },
     },
     team: {
       title: "The people behind the care",
@@ -78,10 +73,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
         { title: "Prévenir de nouvelles souffrances", description: "Vaccination et stérilisation protègent les animaux et limitent les naissances non maîtrisées." },
         { title: "Identifier et suivre", description: "Nous documentons les soins et suivons les animaux aidés, en retournant les voir quand c’est possible." },
       ],
-      redCollar: {
-        title: "Que signifie le collier rouge ?",
-        description: "Dans notre programme pour les chiens des rues, un collier rouge indique qu’un chien a été identifié, vacciné et stérilisé. Merci de ne pas l’enlever : il permet de le reconnaître et d’éviter des interventions répétées.",
-      },
     },
     team: {
       title: "Les personnes derrière les soins",
@@ -114,10 +105,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
         { title: "Weiteres Leid verhindern", description: "Impfungen und Kastrationen schützen Tiere und begrenzen unkontrollierte Würfe." },
         { title: "Erfassen und begleiten", description: "Wir dokumentieren die Versorgung und sehen nach den Tieren, denen wir helfen, wenn es möglich ist." },
       ],
-      redCollar: {
-        title: "Was das rote Halsband bedeutet",
-        description: "In unserem Programm für Straßenhunde kennzeichnet ein rotes Halsband einen Hund, der erfasst, geimpft und kastriert wurde. Bitte lass es am Hund, damit er erkannt und unnötige erneute Eingriffe vermieden werden können.",
-      },
     },
     team: {
       title: "Die Menschen hinter der Fürsorge",
@@ -150,10 +137,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
         { title: "الوقاية من المعاناة", description: "يساعد التطعيم والتعقيم على حماية الحيوانات والحد من التكاثر غير المنضبط." },
         { title: "التعريف والمتابعة", description: "نوثّق الرعاية المقدّمة للحيوانات ونطمئن عليها مجددًا كلما أمكن." },
       ],
-      redCollar: {
-        title: "ماذا يعني الطوق الأحمر؟",
-        description: "في برنامجنا الخاص بكلاب الشوارع، يدلّ الطوق الأحمر على أن الكلب جرى التعرف عليه وتطعيمه وتعقيمه. يُرجى عدم نزعه حتى يسهل التعرّف عليه وتجنّب تكرار التدخلات دون حاجة.",
-      },
     },
     team: {
       title: "الأشخاص الذين يقدّمون الرعاية",
