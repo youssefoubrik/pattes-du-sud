@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
-import { ActionButton } from "@/components/ui/action-button";
+import { ActionNotice } from "@/components/admin/action-notice";
+import { MediaPhotoForm } from "@/components/admin/media-photo-form";
 import { mediaSlots } from "@/content/media";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
@@ -30,14 +32,24 @@ export default async function MediaPage({
   return (
     <main className="flex-1 py-12">
       <Container>
-        <Link href={`/${locale}/admin`} className="text-accent underline">
-          ← Editor
+        <Link
+          href={`/${locale}/admin`}
+          className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
+        >
+          <ArrowLeft
+            size={18}
+            className="text-primary rtl:rotate-180"
+            aria-hidden="true"
+          />
+          Editor
         </Link>
         <h1 className="mt-5 text-4xl text-heading">Page photos</h1>
         {query.saved && (
-          <p role="status" className="mt-5 rounded-xl bg-secondary p-4">
-            Photo saved.
-          </p>
+          <ActionNotice
+            key={String(query.notice ?? "saved")}
+            message="Photo saved."
+            queryParam="saved"
+          />
         )}
         {query.error && (
           <p role="alert" className="mt-5 rounded-xl bg-secondary p-4">
@@ -60,27 +72,11 @@ export default async function MediaPage({
                 />
               </div>
               <h2 className="mt-4 text-xl text-heading">{slot.label}</h2>
-              <form
+              <MediaPhotoForm
+                locale={locale}
+                slot={slot.key}
                 action={updateMedia}
-                encType="multipart/form-data"
-                className="mt-4 space-y-3"
-              >
-                <input type="hidden" name="locale" value={locale} />
-                <input type="hidden" name="slot" value={slot.key} />
-                <label className="block text-sm font-semibold">
-                  New photo
-                  <input
-                    name="photo"
-                    type="file"
-                    accept="image/jpeg,image/png,image/webp"
-                    required
-                    className="mt-2 block w-full text-sm"
-                  />
-                </label>
-                <ActionButton type="submit" size="small">
-                  Save photo
-                </ActionButton>
-              </form>
+              />
             </li>
           ))}
         </ul>

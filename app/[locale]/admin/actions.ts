@@ -324,5 +324,6 @@ export async function updateMedia(form: FormData) {
   pruneMedia();
   for (const language of routing.locales)
     revalidatePath(`/${language}`, "layout");
-  redirect(`/${locale}/admin/media?saved=1`);
+  const notice = randomUUID();
+  redirect(`/${locale}/admin/media?saved=1&notice=${notice}`);
 }
