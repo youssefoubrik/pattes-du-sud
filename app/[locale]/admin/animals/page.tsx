@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
@@ -25,8 +26,16 @@ export default async function AdminAnimals({
   return (
     <main className="flex-1 py-12">
       <Container>
-        <Link href={`/${locale}/admin`} className="text-accent underline">
-          ← Editor
+        <Link
+          href={`/${locale}/admin`}
+          className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
+        >
+          <ArrowLeft
+            size={18}
+            className="text-primary rtl:rotate-180"
+            aria-hidden="true"
+          />
+          Editor
         </Link>
         <h1 className="mt-5 text-4xl text-heading">Companions</h1>
         {query.saved && (
