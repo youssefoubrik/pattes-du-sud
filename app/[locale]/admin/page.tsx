@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogOut } from "lucide-react";
+import { Images, Languages, LogOut, PawPrint, Settings } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
@@ -12,6 +12,9 @@ export const metadata = {
   title: "Editor",
   robots: { index: false, follow: false },
 };
+
+const cardClass =
+  "group rounded-3xl bg-secondary p-6 transition-colors hover:bg-secondary/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
   const { locale } = await params;
@@ -51,21 +54,29 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
           </form>
         </div>
         <p className="mt-4 max-w-2xl">Manage companion profiles and site details.</p>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          <Link
-            href={`/${locale}/admin/animals`}
-            className="rounded-3xl border border-border bg-surface p-6 hover:border-primary"
-          >
-            <h2 className="text-2xl text-heading">Companions</h2>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Link href={`/${locale}/admin/animals`} className={cardClass}>
+            <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
+              <PawPrint
+                size={22}
+                className="shrink-0 text-primary-hover"
+                aria-hidden="true"
+              />
+              Companions
+            </h2>
             <p className="mt-2">
               {animals.length} profiles · Add, update and remove profiles
             </p>
           </Link>
-          <Link
-            href={`/${locale}/admin/settings`}
-            className="rounded-3xl border border-border bg-surface p-6 hover:border-primary"
-          >
-            <h2 className="text-2xl text-heading">Settings</h2>
+          <Link href={`/${locale}/admin/settings`} className={cardClass}>
+            <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
+              <Settings
+                size={22}
+                className="shrink-0 text-primary-hover"
+                aria-hidden="true"
+              />
+              Settings
+            </h2>
             <p className="mt-2">
               {settings.paypalDonateUrl
                 ? "PayPal link configured"
@@ -73,20 +84,28 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               · Contact and bank details
             </p>
           </Link>
-          <Link
-            href={`/${locale}/admin/content`}
-            className="rounded-3xl border border-border bg-surface p-6 hover:border-primary"
-          >
-            <h2 className="text-2xl text-heading">Page text</h2>
+          <Link href={`/${locale}/admin/content`} className={cardClass}>
+            <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
+              <Languages
+                size={22}
+                className="shrink-0 text-primary-hover"
+                aria-hidden="true"
+              />
+              Page text
+            </h2>
             <p className="mt-2">
               Edit Home, About and other public pages in four languages
             </p>
           </Link>
-          <Link
-            href={`/${locale}/admin/media`}
-            className="rounded-3xl border border-border bg-surface p-6 hover:border-primary"
-          >
-            <h2 className="text-2xl text-heading">Page photos</h2>
+          <Link href={`/${locale}/admin/media`} className={cardClass}>
+            <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
+              <Images
+                size={22}
+                className="shrink-0 text-primary-hover"
+                aria-hidden="true"
+              />
+              Page photos
+            </h2>
             <p className="mt-2">Update Home and About photography</p>
           </Link>
         </div>
