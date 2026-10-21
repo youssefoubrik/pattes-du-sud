@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
+import { ActionButton } from "@/components/ui/action-button";
 import { isLocale } from "@/i18n/routing";
 import { login } from "../actions";
 
@@ -37,12 +38,9 @@ export default async function Login({
             autoComplete="current-password"
             className="min-h-12 w-full rounded-xl border border-border bg-surface px-4"
           />
-          <button
-            type="submit"
-            className="min-h-12 rounded-full bg-primary px-7 font-bold text-primary-foreground hover:bg-primary-hover"
-          >
+          <ActionButton type="submit">
             Sign in
-          </button>
+          </ActionButton>
         </form>
       </Container>
     </main>

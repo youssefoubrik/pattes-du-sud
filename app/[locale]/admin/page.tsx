@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { LogOut } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
+import { ActionButton } from "@/components/ui/action-button";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals, getSettings, db } from "@/lib/db";
@@ -42,9 +44,10 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
           <h1 className="text-4xl text-heading">Website editor</h1>
           <form action={logout}>
             <input type="hidden" name="locale" value={locale} />
-            <button className="underline" type="submit">
+            <ActionButton type="submit" variant="secondary" size="small">
+              <LogOut size={17} aria-hidden="true" />
               Sign out
-            </button>
+            </ActionButton>
           </form>
         </div>
         <p className="mt-4 max-w-2xl">

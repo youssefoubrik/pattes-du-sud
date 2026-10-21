@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
+import { ActionButton } from "@/components/ui/action-button";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals } from "@/lib/db";
@@ -254,12 +255,9 @@ function AnimalForm({
           <option value="no">No</option>
         </select>
       </label>
-      <button
-        type="submit"
-        className="min-h-12 rounded-full bg-primary px-7 font-bold text-primary-foreground hover:bg-primary-hover sm:justify-self-start"
-      >
+      <ActionButton type="submit" className="sm:justify-self-start">
         Save companion
-      </button>
+      </ActionButton>
     </form>
   );
 }

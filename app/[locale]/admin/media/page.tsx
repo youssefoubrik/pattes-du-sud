@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
+import { ActionButton } from "@/components/ui/action-button";
 import { mediaSlots } from "@/content/media";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
@@ -74,12 +75,9 @@ export default async function MediaPage({
                     className="mt-2 block w-full text-sm"
                   />
                 </label>
-                <button
-                  type="submit"
-                  className="min-h-11 rounded-full bg-primary px-5 font-bold text-primary-foreground"
-                >
+                <ActionButton type="submit" size="small">
                   Save photo
-                </button>
+                </ActionButton>
               </form>
             </li>
           ))}

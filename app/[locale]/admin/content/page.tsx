@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
+import { ActionButton } from "@/components/ui/action-button";
 import { isLocale, routing } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import {
@@ -98,12 +99,9 @@ export default async function ContentPage({
               />
             </label>
           ))}
-          <button
-            type="submit"
-            className="min-h-12 rounded-full bg-primary px-7 font-bold text-primary-foreground hover:bg-primary-hover"
-          >
+          <ActionButton type="submit">
             Save text
-          </button>
+          </ActionButton>
         </form>
       </Container>
     </main>
