@@ -23,8 +23,6 @@ type AboutMessages = {
     area: string;
     visitNote: string;
     contact: string;
-    recordsTitle: string;
-    records: string[];
   };
   closingInvitation: string;
 };
@@ -32,7 +30,7 @@ type AboutMessages = {
 export const aboutMessages: Record<Locale, AboutMessages> = {
   en: {
     title: "About Pattes du Sud",
-    description: "Discover why Pattes du Sud began in Mirleft, how it cares for street animals, and how the association records its work.",
+    description: "Discover why Pattes du Sud began in Mirleft and how it cares for street animals.",
     eyebrow: "Mirleft, Morocco",
     introduction: "Pattes du Sud grew from a simple conviction in Mirleft: we cannot look away while street dogs and cats face hunger, injury and illness.",
     purpose: "Our purpose is lasting protection through veterinary care, prevention and follow-up, so animals can live with dignity and greater safety.",
@@ -64,14 +62,12 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "Mirleft and the surrounding area",
       visitNote: "Please arrange a visit with our team before coming by.",
       contact: "Contact us",
-      recordsTitle: "What we record",
-      records: ["Income and expenses, with invoices and supporting documents", "Veterinary care and animals taken into care", "Project progress and results shared with supporters"],
     },
     closingInvitation: "Together, we can give more of Mirleft’s street animals the care they need.",
   },
   fr: {
     title: "À propos de Pattes du Sud",
-    description: "Découvrez pourquoi Pattes du Sud est née à Mirleft, comment elle protège les animaux des rues et comment elle documente ses actions.",
+    description: "Découvrez pourquoi Pattes du Sud est née à Mirleft et comment elle protège les animaux des rues.",
     eyebrow: "Mirleft, Maroc",
     introduction: "Pattes du Sud est née à Mirleft d’une conviction simple : impossible de détourner le regard quand les chiens et chats des rues souffrent de faim, de blessures ou de maladie.",
     purpose: "Notre objectif est de les protéger durablement grâce aux soins vétérinaires, à la prévention et au suivi, afin qu’ils vivent avec davantage de dignité et de sécurité.",
@@ -103,14 +99,12 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "Mirleft et ses environs",
       visitNote: "Merci de convenir d’une visite avec notre équipe avant de venir.",
       contact: "Nous contacter",
-      recordsTitle: "Ce que nous documentons",
-      records: ["Recettes et dépenses, avec factures et justificatifs", "Soins vétérinaires et animaux pris en charge", "Avancement et résultats des projets communiqués aux soutiens"],
     },
     closingInvitation: "Ensemble, nous pouvons offrir aux animaux des rues de Mirleft les soins dont ils ont besoin.",
   },
   de: {
     title: "Über Pattes du Sud",
-    description: "Erfahre, warum Pattes du Sud in Mirleft entstand, wie der Verein Straßentieren hilft und seine Arbeit dokumentiert.",
+    description: "Erfahre, warum Pattes du Sud in Mirleft entstand und wie der Verein Straßentieren hilft.",
     eyebrow: "Mirleft, Marokko",
     introduction: "Pattes du Sud entstand in Mirleft aus einer einfachen Überzeugung: Wir dürfen nicht wegsehen, wenn Straßenhunde und Straßenkatzen hungern, verletzt oder krank sind.",
     purpose: "Unser Ziel ist dauerhafter Schutz durch tierärztliche Versorgung, Vorbeugung und Nachsorge, damit Tiere würdiger und sicherer leben können.",
@@ -142,14 +136,12 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "Mirleft und Umgebung",
       visitNote: "Bitte vereinbare vor deinem Besuch einen Termin mit unserem Team.",
       contact: "Kontakt aufnehmen",
-      recordsTitle: "Was wir dokumentieren",
-      records: ["Einnahmen und Ausgaben mit Rechnungen und Belegen", "Tierärztliche Versorgung und betreute Tiere", "Projektfortschritte und Ergebnisse für unsere Unterstützer"],
     },
     closingInvitation: "Gemeinsam können wir mehr Straßentieren in Mirleft die Hilfe geben, die sie brauchen.",
   },
   ar: {
     title: "تعرّف على بات دو سود",
-    description: "تعرّف على سبب تأسيس بات دو سود في ميرلفت، وكيف ترعى حيوانات الشوارع وتوثّق عملها.",
+    description: "تعرّف على سبب تأسيس بات دو سود في ميرلفت وكيف ترعى حيوانات الشوارع.",
     eyebrow: "ميرلفت، المغرب",
     introduction: "نشأت بات دو سود في ميرلفت من قناعة بسيطة: لا ينبغي أن نغضّ الطرف عن جوع كلاب وقطط الشوارع وإصاباتها وأمراضها.",
     purpose: "هدفنا حمايتها على المدى الطويل عبر الرعاية البيطرية والوقاية والمتابعة، لتعيش بكرامة وأمان أكبر.",
@@ -181,8 +173,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       area: "ميرلفت والمناطق المحيطة بها",
       visitNote: "يُرجى ترتيب الزيارة مع فريقنا قبل المجيء.",
       contact: "تواصل معنا",
-      recordsTitle: "ما الذي نوثّقه؟",
-      records: ["الإيرادات والمصروفات مع الفواتير والمستندات", "العلاجات البيطرية والحيوانات التي نتكفّل بها", "تقدّم المشاريع ونتائجها التي نشاركها مع الداعمين"],
     },
     closingInvitation: "معًا، يمكننا توفير الرعاية التي تحتاج إليها حيوانات الشوارع في ميرلفت.",
   },

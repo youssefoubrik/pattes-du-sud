@@ -37,7 +37,7 @@ export function AssociationInMirleft({ locale }: { locale: Locale }) {
           </ButtonLink>
           {(contact.instagram || contact.facebook) && (
             <div className="mt-6">
-              <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footerText.findUs} />
+              <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footerText.findUs} layout="row" />
             </div>
           )}
         </div>
@@ -59,12 +59,6 @@ export function AssociationInMirleft({ locale }: { locale: Locale }) {
               <dd className="mt-1 text-lg font-semibold text-heading">{text.area}</dd>
             </div>
           </dl>
-          <div className="mt-4 rounded-2xl border border-border bg-background px-5 py-5 sm:px-6">
-            <h3 className="text-lg font-semibold text-heading">{text.recordsTitle}</h3>
-            <ul className="mt-3 list-disc space-y-2 ps-5 leading-relaxed text-foreground marker:text-primary-hover">
-              {text.records.map((record) => <li key={record}>{record}</li>)}
-            </ul>
-          </div>
         </div>
       </Container>
     </Section>

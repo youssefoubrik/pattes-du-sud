@@ -1,16 +1,24 @@
 import { FaFacebookF, FaInstagram } from "react-icons/fa6";
 
-type Props = { instagram: string | null; facebook: string | null; label: string };
+type Props = {
+  instagram: string | null;
+  facebook: string | null;
+  label: string;
+  layout?: "row" | "column";
+};
 
 const linkClass = "inline-flex min-h-11 items-center gap-2 rounded-sm font-semibold text-heading transition-colors hover:text-primary-hover hover:underline hover:underline-offset-4";
 
-export function SocialLinks({ instagram, facebook, label }: Props) {
+export function SocialLinks({ instagram, facebook, label, layout = "column" }: Props) {
   if (!instagram && !facebook) return null;
 
   return (
     <div>
       <p className="text-base font-semibold text-heading">{label}</p>
-      <ul className="mt-2 flex flex-col items-start" aria-label={label}>
+      <ul
+        className={`mt-2 flex items-start ${layout === "row" ? "flex-row flex-wrap gap-x-7 gap-y-1" : "flex-col"}`}
+        aria-label={label}
+      >
         {instagram && (
           <li>
             <a href={instagram} className={linkClass}>
