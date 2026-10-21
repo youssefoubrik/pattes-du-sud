@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ArrowRight, PawPrint } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -33,18 +34,7 @@ const PAGE_SIZE = 6;
 export default async function AnimalsPage({ params, searchParams }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const query = await searchParams;
-  const search = typeof query.q === "string" ? query.q.trim().slice(0, ANIMAL_NAME_MAX_LENGTH) : "";
-  const species = query.species === "dog" || query.species === "cat" ? query.species : "all";
-  const status = query.status === "available" || query.status === "adopted" ? query.status : "all";
-  const requestedPage = typeof query.page === "string" ? Number(query.page) : 1;
-  const { animals, total, page, pageCount } = getPublicAnimalsPage(
-    search,
-    species,
-    status,
-    PAGE_SIZE,
-    Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
-  );
+
   const text = animalGalleryMessages[locale];
 
   return (
@@ -75,18 +65,44 @@ export default async function AnimalsPage({ params, searchParams }: Props) {
             </Link>
           </div>
           <h2 className="sr-only">{text.title}</h2>
-          <AnimalGallery
-            animals={animals}
-            locale={locale}
-            search={search}
-            species={species}
-            status={status}
-            total={total}
-            page={page}
-            pageCount={pageCount}
-          />
+          <Suspense fallback={<p className="pt-7 text-sm font-semibold text-muted-foreground" role="status">{text.loading}</p>}>
+            <CompanionResults locale={locale} searchParams={searchParams} />
+          </Suspense>
         </Container>
       </Section>
     </main>
+  );
+}
+
+async function CompanionResults({
+  locale,
+  searchParams,
+}: {
+  locale: Locale;
+  searchParams: Props["searchParams"];
+}) {
+  const query = await searchParams;
+  const search = typeof query.q === "string" ? query.q.trim().slice(0, ANIMAL_NAME_MAX_LENGTH) : "";
+  const species = query.species === "dog" || query.species === "cat" ? query.species : "all";
+  const status = query.status === "available" || query.status === "adopted" ? query.status : "all";
+  const requestedPage = typeof query.page === "string" ? Number(query.page) : 1;
+  const { animals, total, page, pageCount } = getPublicAnimalsPage(
+    search,
+    species,
+    status,
+    PAGE_SIZE,
+    Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
+  );
+  return (
+    <AnimalGallery
+      animals={animals}
+      locale={locale}
+      search={search}
+      species={species}
+      status={status}
+      total={total}
+      page={page}
+      pageCount={pageCount}
+    />
   );
 }
