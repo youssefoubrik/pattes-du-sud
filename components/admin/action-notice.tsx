@@ -9,7 +9,7 @@ export function ActionNotice({
   restoreScroll = false,
 }: {
   message: string;
-  queryParam: "success" | "error";
+  queryParam: "success" | "error" | "saved";
   restoreScroll?: boolean;
 }) {
   const [visible, setVisible] = useState(true);

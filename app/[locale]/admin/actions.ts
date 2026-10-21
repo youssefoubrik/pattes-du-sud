@@ -73,6 +73,14 @@ export async function updateSettings(form: FormData) {
       .trim()
       .slice(0, 500);
   }
+  settings.whatsappDisplay = String(form.get("whatsappNumber") || "")
+    .trim()
+    .slice(0, 500);
+  settings.whatsappNumber = settings.whatsappDisplay.replace(/\D/g, "");
+  for (const key of Object.keys(settings) as (keyof Settings)[]) {
+    if (!settings[key])
+      redirect(`/${locale}/admin/settings?error=required&field=${key}`);
+  }
   for (const key of [
     "instagram",
     "facebook",
@@ -105,7 +113,8 @@ export async function updateSettings(form: FormData) {
   for (const language of routing.locales) {
     revalidatePath(`/${language}`, "layout");
   }
-  redirect(`/${locale}/admin/settings?saved=1`);
+  const notice = randomUUID();
+  redirect(`/${locale}/admin/settings?saved=1&notice=${notice}`);
 }
 
 export async function upsertAnimal(form: FormData) {

@@ -13,6 +13,7 @@ import {
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
+import { ActionNotice } from "@/components/admin/action-notice";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getSettings, type Settings } from "@/lib/db";
@@ -26,11 +27,11 @@ export const metadata = {
 export const instant = false;
 const labels: Record<keyof Settings, string> = {
   email: "Public email",
-  whatsappNumber: "WhatsApp number (digits only)",
-  whatsappDisplay: "WhatsApp display number",
+  whatsappNumber: "WhatsApp number",
+  whatsappDisplay: "WhatsApp number",
   responseTimeHours: "Typical response time (hours)",
-  openingHours: "Opening hours (optional)",
-  closingHours: "Closing hours (optional)",
+  openingHours: "Opening hours",
+  closingHours: "Closing hours",
   instagram: "Instagram URL",
   facebook: "Facebook URL",
   registrationReference: "Registration reference",
@@ -44,6 +45,26 @@ const labels: Record<keyof Settings, string> = {
   impactAnimalsHelped: "Companions helped",
   impactAdoptions: "Confirmed adoptions",
 };
+const fieldHints: Record<keyof Settings, string> = {
+  email: "Public contact address, for example contact@example.org.",
+  whatsappNumber: "Enter the full number, including the country code, e.g. +212 612 345 678.",
+  whatsappDisplay: "Include the country code, e.g. +212 612 345 678.",
+  responseTimeHours: "Whole number from 1 to 720.",
+  openingHours: "Use local time, e.g. 09:00.",
+  closingHours: "Use local time, e.g. 18:00.",
+  instagram: "Full HTTPS link to the association’s Instagram profile.",
+  facebook: "Full HTTPS link to the association’s Facebook page.",
+  registrationReference: "Copy the reference as shown on official documents.",
+  paypalDonateUrl: "PayPal checkout link beginning with https://www.paypal.com/.",
+  paypalMonthlyUrl: "PayPal monthly checkout link beginning with https://www.paypal.com/.",
+  iban: "Enter the IBAN exactly as provided by the bank.",
+  rib: "Enter the RIB exactly as provided by the bank.",
+  swift: "Enter the SWIFT/BIC exactly as provided by the bank.",
+  bankName: "Name of the bank holding the association’s account.",
+  mapEmbedUrl: "Paste the Google Maps embed URL, not a regular map share link.",
+  impactAnimalsHelped: "Enter a whole number.",
+  impactAdoptions: "Enter a whole number.",
+};
 const fieldGroups: {
   title: string;
   icon: LucideIcon;
@@ -55,7 +76,6 @@ const fieldGroups: {
     fields: [
       "email",
       "whatsappNumber",
-      "whatsappDisplay",
       "responseTimeHours",
       "openingHours",
       "closingHours",
@@ -114,9 +134,11 @@ export default async function SettingsPage({
         </Link>
         <h1 className="mt-5 text-4xl text-heading">Settings</h1>
         {query.saved && (
-          <p role="status" className="mt-4 rounded-xl bg-secondary p-4">
-            Changes saved.
-          </p>
+          <ActionNotice
+            key={String(query.notice ?? "saved")}
+            message="Settings saved."
+            queryParam="saved"
+          />
         )}
         {query.error === "url" && (
           <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
@@ -138,6 +160,11 @@ export default async function SettingsPage({
             Typical response time must be between 1 and 720 hours.
           </p>
         )}
+        {query.error === "required" && (
+          <p role="alert" className="mt-4 rounded-xl bg-secondary p-4">
+            {`Enter a value for ${errorField}.`}
+          </p>
+        )}
         <form
           action={updateSettings}
           className="mt-8 grid gap-6"
@@ -153,34 +180,58 @@ export default async function SettingsPage({
                 {group.title}
               </legend>
               <div className="grid gap-5 sm:grid-cols-2">
-                {group.fields.map((key) => (
-                  <label
-                    key={key}
-                    className={`block font-semibold ${key === "mapEmbedUrl" ? "sm:col-span-2" : ""}`}
-                  >
-                    {labels[key]}
-                    <input
-                      name={key}
-                      defaultValue={settings[key]}
-                      type={
-                        key === "email"
-                          ? "email"
-                          : key === "responseTimeHours"
-                            ? "number"
-                            : key === "instagram" ||
-                                key === "facebook" ||
-                                key === "mapEmbedUrl" ||
-                                key === "paypalDonateUrl" ||
-                                key === "paypalMonthlyUrl"
-                              ? "url"
-                              : "text"
-                      }
-                      className="mt-2 min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
-                      min={key === "responseTimeHours" ? 1 : undefined}
-                      max={key === "responseTimeHours" ? 720 : undefined}
-                    />
-                  </label>
-                ))}
+                {group.fields.map((key) => {
+                  return (
+                    <label
+                      key={key}
+                      className={`block font-semibold ${key === "mapEmbedUrl" ? "sm:col-span-2" : ""}`}
+                    >
+                      {labels[key]}
+                      {" "}
+                      <span aria-hidden="true" className="text-required">
+                        *
+                      </span>
+                      <span className="sr-only"> required</span>
+                      {key === "whatsappNumber" ? (
+                        <input
+                          name={key}
+                          type="tel"
+                          inputMode="tel"
+                          autoComplete="tel"
+                          required
+                          defaultValue={settings.whatsappDisplay || settings.whatsappNumber}
+                          placeholder="+212 612 345 678"
+                          className="mt-2 min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
+                        />
+                      ) : (
+                        <input
+                          name={key}
+                          required
+                          defaultValue={settings[key]}
+                          type={
+                            key === "email"
+                              ? "email"
+                              : key === "responseTimeHours"
+                                ? "number"
+                                : key === "instagram" ||
+                                    key === "facebook" ||
+                                    key === "mapEmbedUrl" ||
+                                    key === "paypalDonateUrl" ||
+                                    key === "paypalMonthlyUrl"
+                                  ? "url"
+                                  : "text"
+                          }
+                          className="mt-2 min-h-11 w-full rounded-xl border border-border bg-surface px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
+                          min={key === "responseTimeHours" ? 1 : undefined}
+                          max={key === "responseTimeHours" ? 720 : undefined}
+                        />
+                      )}
+                      <span className="mt-1 block text-sm font-normal text-muted-foreground">
+                        {fieldHints[key]}
+                      </span>
+                    </label>
+                  );
+                })}
               </div>
             </fieldset>
           ))}
