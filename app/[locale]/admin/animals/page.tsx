@@ -182,7 +182,7 @@ function AnimalForm({
         ]}
       />
       <label className="font-semibold">
-        Age in years
+        Age in years <span className="font-normal text-muted-foreground">(optional)</span>
         <input
           name="ageYears"
           type="number"

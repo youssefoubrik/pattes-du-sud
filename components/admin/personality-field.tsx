@@ -29,7 +29,16 @@ export function PersonalityField({
   const initialChoice = customText ? "custom" : personality || "none";
   const [choice, setChoice] = useState(initialChoice);
   const [customValue, setCustomValue] = useState(customText || "");
-  const preview = choice === "custom" ? customValue : choice === "none" ? "" : animalMessages[locale].personality[choice as NonNullable<Animal["personality"]>];
+  const selectedOption = options.find((option) => option.value === choice);
+  const PreviewIcon = selectedOption?.icon ?? Heart;
+  const preview =
+    choice === "custom"
+      ? customValue
+      : choice === "none"
+        ? ""
+        : animalMessages[locale].personality[
+            choice as NonNullable<Animal["personality"]>
+          ];
 
   return (
     <fieldset className="min-w-0">
@@ -54,22 +63,29 @@ export function PersonalityField({
         ))}
       </div>
       <div className={choice === "custom" ? "mt-3" : "hidden"}>
-          <label className="font-semibold" htmlFor="personality-custom">
-            Custom card text
-          </label>
-          <CharacterCountField
-            name="personalityCustom"
-            id="personality-custom"
-            maxLength={ANIMAL_PERSONALITY_MAX_LENGTH}
-            defaultValue={customText}
-            onValueChange={setCustomValue}
-            hint="Shown as entered on companion cards in every language."
-            className="min-h-11 w-full rounded-xl border border-border px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
-          />
+        <label className="font-semibold" htmlFor="personality-custom">
+          Custom card text
+        </label>
+        <CharacterCountField
+          name="personalityCustom"
+          id="personality-custom"
+          maxLength={ANIMAL_PERSONALITY_MAX_LENGTH}
+          defaultValue={customText}
+          onValueChange={setCustomValue}
+          hint="Shown as entered on companion cards in every language."
+          className="min-h-11 w-full rounded-xl border border-border px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
+        />
       </div>
       {preview && (
-        <p aria-live="polite" className="mt-3 flex items-start gap-2 rounded-xl border border-border bg-secondary px-3 py-2 text-sm leading-relaxed text-foreground">
-          <Heart size={16} className="mt-0.5 shrink-0 fill-current text-heading" aria-hidden="true" />
+        <p
+          aria-live="polite"
+          className="mt-3 flex items-start gap-2 rounded-xl border border-border bg-secondary px-3 py-2 text-sm leading-relaxed text-foreground"
+        >
+          <PreviewIcon
+            size={16}
+            className="mt-0.5 shrink-0 text-heading"
+            aria-hidden="true"
+          />
           <span>{preview}</span>
         </p>
       )}
