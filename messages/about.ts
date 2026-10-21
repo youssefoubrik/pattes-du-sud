@@ -14,7 +14,7 @@ type AboutMessages = {
     steps: { title: string; description: string }[];
     redCollar: { title: string; description: string };
   };
-  team: { title: string; introduction: string; volunteer: string; sampleNotice: string };
+  team: { title: string; introduction: string; volunteer: string };
   association: {
     place: string;
     title: string;
@@ -55,7 +55,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       title: "The people behind the care",
       introduction: "Care depends on different people doing different jobs. Here is what each person contributes.",
       volunteer: "Volunteer with us",
-      sampleNotice: "Illustrative profiles. Team details are being confirmed.",
     },
     association: {
       place: "Mirleft, Morocco",
@@ -95,7 +94,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       title: "Les personnes derrière les soins",
       introduction: "Prendre soin des animaux demande des rôles différents. Voici ce que chacun apporte à l’équipe.",
       volunteer: "Devenir bénévole",
-      sampleNotice: "Profils illustratifs. Les informations sur l’équipe sont en cours de confirmation.",
     },
     association: {
       place: "Mirleft, Maroc",
@@ -135,7 +133,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       title: "Die Menschen hinter der Fürsorge",
       introduction: "Tierfürsorge braucht Menschen mit unterschiedlichen Aufgaben. Hier siehst du, welchen Beitrag jeder im Team leistet.",
       volunteer: "Hilf ehrenamtlich mit",
-      sampleNotice: "Beispielprofile. Die Angaben zum Team werden noch bestätigt.",
     },
     association: {
       place: "Mirleft, Marokko",
@@ -175,7 +172,6 @@ export const aboutMessages: Record<Locale, AboutMessages> = {
       title: "الأشخاص الذين يقدّمون الرعاية",
       introduction: "تحتاج رعاية الحيوانات إلى أشخاص يقوم كل منهم بدور مختلف. إليك ما يقدّمه كل فرد في الفريق.",
       volunteer: "تطوّع معنا",
-      sampleNotice: "ملفات تعريفية توضيحية. تفاصيل الفريق قيد التأكيد.",
     },
     association: {
       place: "ميرلفت، المغرب",
