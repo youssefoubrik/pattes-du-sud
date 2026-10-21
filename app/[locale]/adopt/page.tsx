@@ -51,7 +51,9 @@ export default async function Adopt({ params }: PageProps<"/[locale]/adopt">) {
           </div>
           <ButtonLink
             href={`/${locale}/contact`}
-            className="w-fit md:col-span-2"
+            variant="secondary"
+            arrow
+            className="w-fit max-w-full md:col-span-2"
           >
             {t.contact}
           </ButtonLink>
