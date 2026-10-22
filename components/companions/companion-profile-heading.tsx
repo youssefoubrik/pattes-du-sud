@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { ArrowRight, Heart, PawPrint } from "lucide-react";
+import { Heart, PawPrint } from "lucide-react";
+import { ButtonLink } from "@/components/ui/button-link";
 
 type Props = {
   name: string;
@@ -32,13 +32,14 @@ export function CompanionProfileHeading({
         </div>
       </div>
       {adoptionHref && (
-        <Link
+        <ButtonLink
           href={adoptionHref}
-          className="flex min-h-12 w-full max-w-md items-center justify-between gap-4 rounded-full border border-border bg-secondary px-5 py-2 text-heading transition-colors duration-150 hover:bg-secondary/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-fit"
+          variant="secondary"
+          arrow
+          className="w-full max-w-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-fit"
         >
-          <span className="font-bold text-heading">{adoptLabel}</span>
-          <ArrowRight size={18} className="shrink-0 rtl:rotate-180" aria-hidden="true" />
-        </Link>
+          {adoptLabel}
+        </ButtonLink>
       )}
     </div>
   );
