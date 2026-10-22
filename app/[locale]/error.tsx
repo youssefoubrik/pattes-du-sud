@@ -1,5 +1,7 @@
 "use client";
 
+import { ActionButton } from "@/components/ui/action-button";
+
 export default function Error({
   reset,
 }: {
@@ -15,13 +17,9 @@ export default function Error({
       <p className="mt-4">
         Please try again. If the problem continues, contact the association.
       </p>
-      <button
-        type="button"
-        onClick={reset}
-        className="mt-6 min-h-11 rounded-full bg-primary px-6 font-bold text-primary-foreground"
-      >
+      <ActionButton variant="secondary" onClick={reset} className="mt-6 px-6">
         Try again
-      </button>
+      </ActionButton>
     </main>
   );
 }

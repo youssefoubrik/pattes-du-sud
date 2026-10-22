@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ButtonLink } from "@/components/ui/button-link";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import { Container } from "@/components/ui/container";
 
@@ -11,12 +11,13 @@ export default function NotFound() {
           This page may have moved or the animal profile may no longer be
           available.
         </p>
-        <Link
+        <ButtonLink
           href={localizedRoute("en", routePaths.home)}
-          className="mt-6 inline-flex min-h-11 items-center rounded-full bg-primary px-6 font-bold text-primary-foreground"
+          variant="secondary"
+          className="mt-6"
         >
           Go home
-        </Link>
+        </ButtonLink>
       </Container>
     </main>
   );
