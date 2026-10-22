@@ -18,7 +18,7 @@ type AboutContent = {
 
 export const aboutContent: AboutContent = {
   introductionImage: {
-    src: "/images/home-work.jpg",
+    src: "/images/care/feeding.jpg",
     width: 1200,
     height: 1800,
   },
@@ -34,7 +34,7 @@ export const aboutContent: AboutContent = {
         de: "Besucht die Tiere, beobachtet Veränderungen und plant ihre tägliche Versorgung.",
         ar: "تزور الحيوانات وتلاحظ تغيّر حالتها وتنظّم رعايتها اليومية.",
       },
-      portrait: { src: "/images/team-amina-stock.jpg", width: 600, height: 750 },
+      portrait: { src: "/images/team/amina-stock.jpg", width: 600, height: 750 },
     },
     {
       id: "youssef",
@@ -46,7 +46,7 @@ export const aboutContent: AboutContent = {
         de: "Kontaktiert Tierarztpraxen, vereinbart Termine und verfolgt Behandlungspläne.",
         ar: "يتواصل مع العيادات البيطرية ويرتّب المواعيد ويتابع خطط العلاج.",
       },
-      portrait: { src: "/images/team-youssef-stock.jpg", width: 600, height: 750 },
+      portrait: { src: "/images/team/youssef-stock.jpg", width: 600, height: 750 },
     },
     {
       id: "salma",
@@ -58,7 +58,7 @@ export const aboutContent: AboutContent = {
         de: "Stellt Interessierten die Tiere vor und beantwortet ihre ersten Fragen zur Adoption.",
         ar: "تعرّف الراغبين في التبنّي بالحيوانات وتجيب عن أسئلتهم الأولى.",
       },
-      portrait: { src: "/images/team-salma-stock.jpg", width: 600, height: 750 },
+      portrait: { src: "/images/team/salma-stock.jpg", width: 600, height: 750 },
     },
     {
       id: "karim",
@@ -70,7 +70,7 @@ export const aboutContent: AboutContent = {
         de: "Beantwortet Anfragen von Freiwilligen und koordiniert Aufgaben für Besucher.",
         ar: "يستقبل طلبات التطوع وينسّق المهام المناسبة للزوار.",
       },
-      portrait: { src: "/images/team-karim-stock.jpg", width: 600, height: 750 },
+      portrait: { src: "/images/team/karim-stock.jpg", width: 600, height: 750 },
     },
   ],
 };

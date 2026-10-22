@@ -2,19 +2,19 @@ export const volunteerContent = {
   actionImages: [
     {
       key: "volunteer.feeding",
-      src: "/images/home-work.jpg",
+      src: "/images/care/feeding.jpg",
       width: 1200,
       height: 1800,
     },
     {
       key: "volunteer.veterinary",
-      src: "/images/home-work-vet.jpg",
+      src: "/images/care/veterinary.jpg",
       width: 1000,
       height: 667,
     },
     {
       key: "volunteer.companionship",
-      src: "/images/home-work-cat.jpg",
+      src: "/images/care/companionship.jpg",
       width: 1000,
       height: 667,
     },
