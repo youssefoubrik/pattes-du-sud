@@ -18,6 +18,7 @@ import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
 import { animalCopyForLocale } from "@/lib/animal-copy";
 import { getCompanionProfileFacts } from "@/lib/companion-profile";
+import { splitParagraphs } from "@/lib/text";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 function parseAnimalId(value: string) {
@@ -75,7 +76,7 @@ async function AnimalDetailContent({
     common.adoptionMessage.replace("{name}", animal.name),
   );
   const storyText = story || (animal.personality && common.personality[animal.personality]) || "";
-  const paragraphs = storyText.split(/\n\s*\n/).filter(Boolean);
+  const paragraphs = splitParagraphs(storyText);
   const facts = getCompanionProfileFacts(animal, common, t);
   return (
     <main id="main-content" className="flex-1">
