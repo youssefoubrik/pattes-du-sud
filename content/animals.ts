@@ -1,9 +1,6 @@
 import type { Animal } from "@/domain/animal";
 export type { Animal, AnimalPhoto, LocalizedAnimalText } from "@/domain/animal";
 
-// TODO: replace these sample profiles and stock photos with confirmed association records.
-// Stock photos: https://www.pexels.com/photo/{photo-id}/
-// Photo IDs in profile order: 1805164, 1170986, 1851164, 617278, 2253275, 127028.
 export const animals: Animal[] = [
   {
     name: "Luna", species: "dog", status: "available", ageYears: 3, personality: "gentle",

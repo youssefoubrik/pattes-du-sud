@@ -5,7 +5,6 @@ export type Supporter = {
   logo?: { src: string; width: number; height: number };
 };
 
-// Fictional entries for the demo. Replace with confirmed supporters before publication.
 export const supporters: Supporter[] = [
   {
     id: "coastal-care",

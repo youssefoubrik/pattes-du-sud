@@ -17,19 +17,12 @@ type AboutContent = {
 };
 
 export const aboutContent: AboutContent = {
-  // Show a street dog receiving food as an example of everyday care.
   introductionImage: {
     src: "/images/home-work.jpg",
     width: 1200,
     height: 1800,
   },
-  // A dated account of the founding can be added here when its details are confirmed.
   foundingStory: null,
-  // Temporary example profiles. Replace every name, detail, and stock portrait with approved team information before publication.
-  // Portrait sources: https://unsplash.com/photos/photo-1534528741775-53994a69daeb,
-  // https://unsplash.com/photos/photo-1500648767791-00dcc994a43e,
-  // https://unsplash.com/photos/photo-1517841905240-472988babdf9,
-  // https://unsplash.com/photos/photo-1507003211169-0a1dd7228f2d.
   teamMembers: [
     {
       id: "amina",
