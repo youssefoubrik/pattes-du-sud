@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Lora, Noto_Sans_Arabic, Nunito_Sans } from "next/font/google";
 import { siteContent } from "@/content/site";
 import { notFound } from "next/navigation";
-import { connection } from "next/server";
 import { Header } from "@/components/header/header";
 import { Analytics } from "@/components/analytics";
 import { Footer } from "@/components/footer/footer";
@@ -10,9 +9,6 @@ import { isLocale, routing } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { pageMetadata } from "@/lib/metadata";
 import "../globals.css";
-
-// Contact details and animal records are edited live in the local CMS.
-export const instant = false;
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -43,7 +39,6 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
 }
 
 export default async function RootLayout({ children, params }: LayoutProps<"/[locale]">) {
-  await connection();
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const fontVariables = locale === "ar"

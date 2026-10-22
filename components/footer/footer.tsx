@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { connection } from "next/server";
 import Link from "next/link";
 import { Mail, MessageCircle, PawPrint } from "lucide-react";
 import { LocationLabel } from "@/components/location-label";
@@ -19,10 +21,7 @@ const linkClass = "inline-flex min-h-11 items-center gap-2 rounded-sm text-headi
 export function Footer({ locale }: { locale: Locale }) {
   const labels = messages[locale];
   const footer = footerMessages[locale];
-  const settings = getSettings();
   const { officialName } = footerContent;
-  const registrationReference = settings.registrationReference;
-  const contact = { ...settings, whatsappNumber: settings.whatsappNumber, whatsappDisplay: settings.whatsappDisplay };
 
   return (
     <footer className="relative mt-auto border-t border-border bg-secondary text-foreground">
@@ -38,11 +37,9 @@ export function Footer({ locale }: { locale: Locale }) {
             <p className="mt-4 max-w-sm text-lg leading-relaxed text-foreground">{footer.mission}</p>
             <LocationLabel locale={locale} iconClassName="text-primary-hover" className="mt-4 text-base" />
             <p className="mt-5 text-base font-semibold text-heading">{officialName}</p>
-            {registrationReference && (
-              <p className="mt-1 text-sm leading-relaxed text-foreground">
-                {footer.registration}: {registrationReference}
-              </p>
-            )}
+            <Suspense fallback={<div aria-hidden="true" className="mt-1 h-5 w-40 rounded-sm bg-border" />}>
+              <FooterRegistration locale={locale} />
+            </Suspense>
           </div>
 
           <nav aria-labelledby="footer-explore">
@@ -60,25 +57,15 @@ export function Footer({ locale }: { locale: Locale }) {
 
           <div>
             <h2 className="mb-3 text-xl font-semibold text-heading">{footer.contact}</h2>
-            <address className="flex flex-col items-start not-italic">
-              <a href={whatsappUrl(contact.whatsappNumber)} aria-label={`${footer.whatsapp}: ${contact.whatsappDisplay}`} className={linkClass}>
-                <MessageCircle size={20} className="text-primary-hover" aria-hidden="true" />
-                <span>
-                  <span className="block font-medium">WhatsApp</span>
-                  <span dir="ltr" className="block text-sm">{contact.whatsappDisplay}</span>
-                </span>
-              </a>
-              {contact.email && <a href={`mailto:${contact.email}`} aria-label={`${footer.email}: ${contact.email}`} className={`${linkClass} max-w-full`}>
-                <Mail size={20} className="shrink-0 text-primary-hover" aria-hidden="true" />
-                <span dir="ltr" className="break-all">{contact.email}</span>
-              </a>}
-            </address>
             <Link href={localizedRoute(locale, routePaths.contact)} className={`${linkClass} mt-2`}>{labels.contact}</Link>
-            {(contact.instagram || contact.facebook) && (
-              <div className="mt-5">
-                <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footer.findUs} />
+            <Suspense fallback={
+              <div aria-hidden="true" className="mt-2 min-h-28 space-y-3">
+                <div className="h-11 w-44 rounded-sm bg-border" />
+                <div className="h-11 w-40 rounded-sm bg-border" />
               </div>
-            )}
+            }>
+              <FooterContactDetails locale={locale} />
+            </Suspense>
           </div>
         </div>
 
@@ -92,5 +79,52 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
       </Container>
     </footer>
+  );
+}
+
+async function FooterRegistration({ locale }: { locale: Locale }) {
+  await connection();
+  const registrationReference = getSettings().registrationReference;
+  if (!registrationReference) return null;
+  return (
+    <p className="mt-1 text-sm leading-relaxed text-foreground">
+      {footerMessages[locale].registration}: {registrationReference}
+    </p>
+  );
+}
+
+async function FooterContactDetails({ locale }: { locale: Locale }) {
+  await connection();
+  const settings = getSettings();
+  const footer = footerMessages[locale];
+  const contact = {
+    whatsappNumber: settings.whatsappNumber,
+    whatsappDisplay: settings.whatsappDisplay,
+    email: settings.email,
+    instagram: settings.instagram,
+    facebook: settings.facebook,
+  };
+
+  return (
+    <>
+      <address className="flex flex-col items-start not-italic">
+        <a href={whatsappUrl(contact.whatsappNumber)} aria-label={`${footer.whatsapp}: ${contact.whatsappDisplay}`} className={linkClass}>
+          <MessageCircle size={20} className="text-primary-hover" aria-hidden="true" />
+          <span>
+            <span className="block font-medium">WhatsApp</span>
+            <span dir="ltr" className="block text-sm">{contact.whatsappDisplay}</span>
+          </span>
+        </a>
+        {contact.email && <a href={`mailto:${contact.email}`} aria-label={`${footer.email}: ${contact.email}`} className={`${linkClass} max-w-full`}>
+          <Mail size={20} className="shrink-0 text-primary-hover" aria-hidden="true" />
+          <span dir="ltr" className="break-all">{contact.email}</span>
+        </a>}
+      </address>
+      {(contact.instagram || contact.facebook) && (
+        <div className="mt-5">
+          <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footer.findUs} />
+        </div>
+      )}
+    </>
   );
 }
