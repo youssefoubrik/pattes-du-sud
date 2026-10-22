@@ -1,3 +1,7 @@
+import type { Locale } from "@/i18n/routing";
+
+export type LocalizedAnimalText = Record<Locale, string>;
+
 export type AnimalPhoto = {
   src: string;
   alt?: string;
@@ -9,8 +13,16 @@ export type Animal = {
   species: "dog" | "cat";
   status: "available" | "inCare" | "adopted";
   ageYears?: number;
-  personality?: "gentle" | "playful" | "curious" | "shy";
-  personalityCustom?: string;
+  personality?:
+    | "gentle"
+    | "playful"
+    | "curious"
+    | "shy"
+    | "affectionate"
+    | "calm"
+    | "energetic"
+    | "independent";
+  story?: LocalizedAnimalText;
   photos: AnimalPhoto[];
   addedAt: string;
   featuredOrder?: number;

@@ -5,6 +5,7 @@ import { useState, type ChangeEvent } from "react";
 type Props = {
   name: string;
   id?: string;
+  dir?: "ltr" | "rtl";
   maxLength: number;
   defaultValue?: string;
   className: string;
@@ -22,6 +23,7 @@ export function CharacterCountField(props: Props) {
   const fieldProps = {
     name: props.name,
     id: props.id,
+    dir: props.dir,
     maxLength: props.maxLength,
     defaultValue: props.defaultValue,
     className: props.className,

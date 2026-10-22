@@ -23,7 +23,6 @@ import {
 import { isLocale, routing } from "@/i18n/routing";
 import {
   ANIMAL_NAME_MAX_LENGTH,
-  ANIMAL_PERSONALITY_MAX_LENGTH,
   ANIMAL_PHOTO_MAX_COUNT,
   ANIMAL_STORY_MAX_LENGTH,
   PHOTO_MAX_UPLOAD_SIZE_BYTES,
@@ -39,6 +38,7 @@ import { homeMessages } from "@/messages/home";
 import { aboutMessages } from "@/messages/about";
 import { pageMessages } from "@/messages/pages";
 import { mediaSlots } from "@/content/media";
+import type { LocalizedAnimalText } from "@/content/animals";
 
 function localeOf(form: FormData) {
   const value = String(form.get("locale") || "en");
@@ -48,6 +48,22 @@ function localeOf(form: FormData) {
 function companionError(locale: string, error: string): never {
   const notice = randomUUID();
   redirect(`/${locale}/admin/companions?error=${error}&notice=${notice}`);
+}
+
+function localizedAnimalText(
+  form: FormData,
+  field: string,
+  maxLength: number,
+): LocalizedAnimalText | undefined {
+  const values = Object.fromEntries(
+    routing.locales.map((language) => [
+      language,
+      String(form.get(`${field}:${language}`) || "")
+        .trim()
+        .slice(0, maxLength),
+    ]),
+  ) as LocalizedAnimalText;
+  return Object.values(values).some(Boolean) ? values : undefined;
 }
 
 export async function login(form: FormData) {
@@ -202,20 +218,21 @@ export async function upsertAnimal(form: FormData) {
     ageYears: Number.isFinite(age) && age > 0 && age < 40 ? age : undefined,
     addedAt: existing?.addedAt || new Date().toISOString().slice(0, 10),
     featuredOrder: existing?.featuredOrder,
-    personality: ["gentle", "playful", "curious", "shy"].includes(
+    personality: [
+      "gentle",
+      "playful",
+      "curious",
+      "shy",
+      "affectionate",
+      "calm",
+      "energetic",
+      "independent",
+    ].includes(
       String(form.get("personalityChoice")),
     )
       ? (String(form.get("personalityChoice")) as NonNullable<EditableAnimal["personality"]>)
       : undefined,
-    personalityCustom:
-      form.get("personalityChoice") === "custom"
-        ? String(form.get("personalityCustom") || "")
-            .trim()
-            .slice(0, ANIMAL_PERSONALITY_MAX_LENGTH) || undefined
-        : undefined,
-    story: String(form.get("story") || "")
-      .trim()
-      .slice(0, ANIMAL_STORY_MAX_LENGTH),
+    story: localizedAnimalText(form, "story", ANIMAL_STORY_MAX_LENGTH),
     sex:
       form.get("sex") === "male"
         ? "male"

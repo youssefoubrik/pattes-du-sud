@@ -5,40 +5,35 @@ import { useState } from "react";
 import type { Animal } from "@/content/animals";
 import type { Locale } from "@/i18n/routing";
 import { animalMessages } from "@/messages/animals";
-import { ANIMAL_PERSONALITY_MAX_LENGTH } from "@/lib/animal-limits";
-import { CharacterCountField } from "@/components/admin/character-count-field";
 
 const options: { value: string; label: string; icon: LucideIcon }[] = [
   { value: "none", label: "None", icon: Ban },
   { value: "gentle", label: "Gentle", icon: Heart },
+  { value: "affectionate", label: "Affectionate", icon: Heart },
   { value: "playful", label: "Playful", icon: Sparkles },
   { value: "curious", label: "Curious", icon: Search },
   { value: "shy", label: "Shy", icon: EyeOff },
-  { value: "custom", label: "Custom", icon: Heart },
+  { value: "calm", label: "Calm", icon: Heart },
+  { value: "energetic", label: "Energetic", icon: Sparkles },
+  { value: "independent", label: "Independent", icon: Search },
 ];
 
 export function PersonalityField({
   locale,
   personality,
-  customText,
 }: {
   locale: Locale;
   personality?: Animal["personality"];
-  customText?: string;
 }) {
-  const initialChoice = customText ? "custom" : personality || "none";
-  const [choice, setChoice] = useState(initialChoice);
-  const [customValue, setCustomValue] = useState(customText || "");
+  const [choice, setChoice] = useState(personality || "none");
   const selectedOption = options.find((option) => option.value === choice);
   const PreviewIcon = selectedOption?.icon ?? Heart;
   const preview =
-    choice === "custom"
-      ? customValue
-      : choice === "none"
-        ? ""
-        : animalMessages[locale].personality[
-            choice as NonNullable<Animal["personality"]>
-          ];
+    choice === "none"
+      ? ""
+      : animalMessages[locale].personality[
+          choice as NonNullable<Animal["personality"]>
+        ];
 
   return (
     <fieldset className="min-w-0">
@@ -61,20 +56,6 @@ export function PersonalityField({
             <span>{label}</span>
           </label>
         ))}
-      </div>
-      <div className={choice === "custom" ? "mt-3" : "hidden"}>
-        <label className="font-semibold" htmlFor="personality-custom">
-          Custom card text
-        </label>
-        <CharacterCountField
-          name="personalityCustom"
-          id="personality-custom"
-          maxLength={ANIMAL_PERSONALITY_MAX_LENGTH}
-          defaultValue={customText}
-          onValueChange={setCustomValue}
-          hint="Shown as entered on companion cards in every language."
-          className="min-h-11 w-full rounded-xl border border-border px-3 font-normal focus-visible:outline-none focus-visible:border-heading"
-        />
       </div>
       {preview && (
         <p

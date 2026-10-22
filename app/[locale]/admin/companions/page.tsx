@@ -29,7 +29,7 @@ import { PhotoUploadManager } from "@/components/admin/photo-upload-manager";
 import { PendingActionButton } from "@/components/admin/pending-action-button";
 import { RemoveCompanionForm } from "@/components/admin/remove-companion-form";
 import { ActionNotice } from "@/components/admin/action-notice";
-import { isLocale, type Locale } from "@/i18n/routing";
+import { isLocale, routing, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals, getAnimalsPage } from "@/lib/db";
 import { animalMessages } from "@/messages/animals";
@@ -42,6 +42,12 @@ import {
 import { upsertAnimal } from "../actions";
 
 const COMPANION_PAGE_SIZE = 6;
+const languageNames = {
+  en: "English",
+  fr: "French",
+  de: "German",
+  ar: "Arabic",
+} as const;
 
 export const metadata = {
   title: "Edit companions",
@@ -211,6 +217,9 @@ function AnimalForm({
       <label className="font-semibold">
         Name <span aria-hidden="true" className="text-required">*</span>
         <span className="sr-only"> required</span>
+        <span className="mt-1 block text-sm font-normal text-muted-foreground">
+          Companion names are shared across languages.
+        </span>
         <CharacterCountField
           name="name"
           required
@@ -264,7 +273,6 @@ function AnimalForm({
       <PersonalityField
         locale={locale}
         personality={animal?.personality}
-        customText={animal?.personalityCustom}
       />
       <PhotoUploadManager
         photos={animal?.photos ?? []}
@@ -273,18 +281,29 @@ function AnimalForm({
         focusClass={focusClass}
         uploadId={`companion-photos-${animal?.id ?? "new"}`}
       />
-      <label className="font-semibold sm:col-span-2">
-        Story
-        <CharacterCountField
-          multiline
-          name="story"
-          rows={4}
-          maxLength={ANIMAL_STORY_MAX_LENGTH}
-          defaultValue={animal?.story}
-          hint="Any text and line breaks are allowed."
-          className={`w-full rounded-xl border border-border p-3 font-normal ${focusClass}`}
-        />
-      </label>
+      <fieldset className="min-w-0 rounded-2xl border border-border bg-background p-4 sm:col-span-2">
+        <legend className="px-1 font-semibold">Story</legend>
+        <p className="mb-3 text-sm text-muted-foreground">
+          Add the companion’s story in each language.
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {routing.locales.map((language) => (
+            <label key={language} className="block font-semibold">
+              {languageNames[language]}
+              <CharacterCountField
+                multiline
+                name={`story:${language}`}
+                rows={4}
+                maxLength={ANIMAL_STORY_MAX_LENGTH}
+                defaultValue={animal?.story?.[language]}
+                hint="Text and line breaks are allowed."
+                dir={language === "ar" ? "rtl" : "ltr"}
+                className={`w-full rounded-xl border border-border bg-surface p-3 font-normal ${focusClass}`}
+              />
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <ChoiceGroup
         label="Vaccination status"
         name="vaccinated"

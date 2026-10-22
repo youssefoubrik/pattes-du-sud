@@ -2,9 +2,10 @@ import "server-only";
 import Database from "better-sqlite3";
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { animals, paginationSampleAnimals, type Animal, type AnimalPhoto } from "@/content/animals";
+import { animals, paginationSampleAnimals, type Animal, type AnimalPhoto, type LocalizedAnimalText } from "@/content/animals";
 import { footerContent } from "@/content/footer";
 import { ANIMAL_NAME_MAX_LENGTH } from "@/lib/animal-limits";
+import { routing } from "@/i18n/routing";
 
 const path =
   process.env.DATABASE_PATH || join(process.cwd(), "data", "site.sqlite");
@@ -12,13 +13,14 @@ let database: Database.Database | undefined;
 
 export type EditableAnimal = Animal & {
   id: number;
-  story?: string;
   sex?: "female" | "male";
   vaccinated?: "yes" | "no";
   sterilized?: "yes" | "no";
 };
 
-type StoredAnimal = Omit<EditableAnimal, "photos" | "id" | "vaccinated" | "sterilized"> & {
+type StoredAnimal = Omit<EditableAnimal, "photos" | "id" | "vaccinated" | "sterilized" | "story"> & {
+  story?: LocalizedAnimalText | string;
+  personalityCustom?: unknown;
   image?: AnimalPhoto;
   photos?: AnimalPhoto[];
   vaccinated?: EditableAnimal["vaccinated"] | boolean;
@@ -30,12 +32,36 @@ function parseHealthStatus(value: StoredAnimal["vaccinated"]): NonNullable<Edita
   return value === true ? "yes" : "no";
 }
 
+function parseLocalizedAnimalText(
+  value: StoredAnimal["story"],
+): LocalizedAnimalText | undefined {
+  if (typeof value === "string") {
+    return Object.fromEntries(
+      routing.locales.map((locale) => [locale, value]),
+    ) as LocalizedAnimalText;
+  }
+  if (!value || typeof value !== "object" || Array.isArray(value)) return undefined;
+  const localized = Object.fromEntries(
+    routing.locales.map((locale) => [
+      locale,
+      typeof (value as Partial<LocalizedAnimalText>)[locale] === "string"
+        ? (value as Partial<LocalizedAnimalText>)[locale]
+        : "",
+    ]),
+  ) as LocalizedAnimalText;
+  return Object.values(localized).some((text) => text.trim())
+    ? localized
+    : undefined;
+}
+
 function parseAnimalData(data: string): Omit<EditableAnimal, "id"> {
   const record = JSON.parse(data) as StoredAnimal;
-  const { image, ...animal } = record;
+  const { image, personalityCustom: _removedCustomText, ...animal } = record;
+  void _removedCustomText;
   return {
     ...animal,
     photos: record.photos?.length ? record.photos : image ? [image] : [],
+    story: parseLocalizedAnimalText(record.story),
     vaccinated: parseHealthStatus(record.vaccinated),
     sterilized: parseHealthStatus(record.sterilized),
   };

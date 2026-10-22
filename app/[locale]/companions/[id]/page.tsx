@@ -14,6 +14,7 @@ import { getAnimal, getSettings } from "@/lib/db";
 import { pageMetadata } from "@/lib/metadata";
 import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
+import { animalCopyForLocale } from "@/lib/animal-copy";
 
 function parseAnimalId(value: string) {
   if (!/^[1-9]\d*$/.test(value)) return undefined;
@@ -65,9 +66,10 @@ async function AnimalDetailContent({
   if (!animal.photos.length) notFound();
   const t = getEditableCopy("pages", locale, pageMessages[locale]).animal;
   const common = animalMessages[locale];
+  const story = animalCopyForLocale(animal.story, locale);
   const settings = getSettings();
   const whatsapp = settings.whatsappNumber
-    ? `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(`Hello, I would like to ask about adopting ${animal.name}.`)}`
+    ? `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(common.adoptionMessage.replace("{name}", animal.name))}`
     : `/${locale}/contact`;
   return (
     <main id="main-content" className="flex-1">
@@ -153,12 +155,11 @@ async function AnimalDetailContent({
                   </div>
                 </dl>
               </section>
-              {(animal.story || animal.personalityCustom || animal.personality) && (
+              {(story || animal.personality) && (
                 <section className="mt-7">
                   <h2 className="text-2xl text-heading">{t.story}</h2>
                   <div className="mt-3 max-w-3xl space-y-4 text-lg leading-relaxed text-foreground">
-                    {(animal.story ||
-                      animal.personalityCustom ||
+                    {(story ||
                       (animal.personality &&
                         common.personality[animal.personality]) ||
                       "")

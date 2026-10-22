@@ -35,9 +35,9 @@ export function AnimalPreview({ animal, locale, portrait = true, linked = true }
           {text.species[animal.species]}
           {` · ${animal.ageYears !== undefined ? text.age.replace("{age}", new Intl.NumberFormat(locale).format(animal.ageYears)) : text.ageUnknown}`}
         </p>
-        {(animal.personalityCustom || animal.personality) && (
+        {animal.personality && (
           <p className="mt-2 text-sm leading-relaxed">
-            {animal.personalityCustom || text.personality[animal.personality!]}
+            {text.personality[animal.personality]}
           </p>
         )}
       </figcaption>
