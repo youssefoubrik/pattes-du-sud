@@ -4,7 +4,6 @@ type FooterMessages = {
   mission: string;
   registration: string;
   explore: string;
-  adopt: string;
   findUs: string;
   contact: string;
   whatsapp: string;
@@ -17,7 +16,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
     mission: "Care and hope for Mirleft’s street dogs and cats.",
     registration: "Registration reference",
     explore: "Explore",
-    adopt: "How to adopt",
     findUs: "Find us",
     contact: "Stay in touch",
     whatsapp: "Contact us on WhatsApp",
@@ -28,7 +26,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
     mission: "Des soins et de l’espoir pour les chiens et chats des rues de Mirleft.",
     registration: "Référence d’enregistrement",
     explore: "Découvrir",
-    adopt: "Comment adopter",
     findUs: "Retrouvez-nous",
     contact: "Restons en contact",
     whatsapp: "Contactez-nous sur WhatsApp",
@@ -39,7 +36,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
     mission: "Fürsorge und Hoffnung für Mirlefts Straßenhunde und Straßenkatzen.",
     registration: "Registrierungsnummer",
     explore: "Entdecken",
-    adopt: "So funktioniert die Adoption",
     findUs: "Folge uns",
     contact: "In Kontakt bleiben",
     whatsapp: "Kontakt über WhatsApp",
@@ -50,7 +46,6 @@ export const footerMessages: Record<Locale, FooterMessages> = {
     mission: "رعاية وأمل لكلاب وقطط الشوارع في ميرلفت.",
     registration: "مرجع تسجيل الجمعية",
     explore: "اكتشف المزيد",
-    adopt: "كيف تتبنّى كلبًا أو قطة؟",
     findUs: "تابعنا",
     contact: "ابقَ على تواصل",
     whatsapp: "تواصل معنا عبر واتساب",
