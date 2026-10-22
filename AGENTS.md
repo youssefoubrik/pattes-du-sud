@@ -301,6 +301,8 @@ Donation page direction: present frequency, amount, PayPal/card and bank transfe
 
 The Contact page uses configured WhatsApp and email links instead of a message form. The editor controls the typical response estimate (default 24 hours) and optional opening and closing hours; hide the hours section when neither is set. Keep the interactive Mirleft map on Home and Contact, using the same CMS-managed map URL.
 
+Show the Contact page response estimate and configured hours as a compact inline sentence, with values emphasized and no separate background panel.
+
 Read `context.txt` before writing association history, care practices, donation uses, or transparency claims. It is the association's presentation for local authorities and describes its vision, activities, red-collar system, and recordkeeping. It does not give a founding date or registration reference. The presentation uses the English name “Southern Paws”; verify naming before using that name in public copy.
 
 ---

@@ -1,6 +1,46 @@
 import type { Locale } from "@/i18n/routing";
 import type { ContactAvailabilitySettings, ContactText } from "@/components/contact/contact-types";
 
+function ContactHours({
+  text,
+  opening,
+  closing,
+}: {
+  text: ContactText;
+  opening: string;
+  closing: string;
+}) {
+  if (opening && closing) {
+    return (
+      <>
+        {" "}{text.hoursStart} <strong className="font-bold text-heading">{opening}</strong>
+        {" "}{text.hoursBetween} <strong className="font-bold text-heading">{closing}</strong>
+        .
+      </>
+    );
+  }
+
+  if (opening) {
+    return (
+      <>
+        {" "}{text.openingTime} <strong className="font-bold text-heading">{opening}</strong>
+        .
+      </>
+    );
+  }
+
+  if (closing) {
+    return (
+      <>
+        {" "}{text.closingTime} <strong className="font-bold text-heading">{closing}</strong>
+        .
+      </>
+    );
+  }
+
+  return null;
+}
+
 export function ContactAvailability({
   locale,
   text,
@@ -10,33 +50,12 @@ export function ContactAvailability({
   text: ContactText;
   settings: ContactAvailabilitySettings;
 }) {
-  const responseTime = text.responseTime.replace(
-    "{hours}",
-    new Intl.NumberFormat(locale).format(Number(settings.responseTimeHours)),
-  );
+  const responseHours = new Intl.NumberFormat(locale).format(Number(settings.responseTimeHours));
 
   return (
-    <div className="mt-8 space-y-3">
-      <p>{responseTime}</p>
-      {(settings.openingHours || settings.closingHours) && (
-        <div className="rounded-2xl bg-background p-5">
-          <h2 className="text-lg font-semibold text-heading">{text.hoursTitle}</h2>
-          <dl className="mt-2 grid gap-2 sm:grid-cols-2">
-            {settings.openingHours && (
-              <div>
-                <dt className="text-sm text-muted-foreground">{text.openingHours}</dt>
-                <dd>{settings.openingHours}</dd>
-              </div>
-            )}
-            {settings.closingHours && (
-              <div>
-                <dt className="text-sm text-muted-foreground">{text.closingHours}</dt>
-                <dd>{settings.closingHours}</dd>
-              </div>
-            )}
-          </dl>
-        </div>
-      )}
-    </div>
+    <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+      {text.responseTime} <strong className="font-bold text-heading">{responseHours}</strong> {text.responseTimeUnit}
+      <ContactHours text={text} opening={settings.openingHours} closing={settings.closingHours} />
+    </p>
   );
 }

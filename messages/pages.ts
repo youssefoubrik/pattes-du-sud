@@ -35,9 +35,11 @@ type Copy = {
     arrange: string;
     unavailable: string;
     responseTime: string;
-    hoursTitle: string;
-    openingHours: string;
-    closingHours: string;
+    responseTimeUnit: string;
+    hoursStart: string;
+    hoursBetween: string;
+    openingTime: string;
+    closingTime: string;
     mapTitle: string;
   };
   donate: {
@@ -174,10 +176,12 @@ export const pageMessages: Record<Locale, Copy> = {
       arrange: "Please arrange visits in advance. We work in Mirleft, Morocco.",
       unavailable:
         "Contact details are being prepared. Please check back soon.",
-      responseTime: "We usually reply within {hours} hours.",
-      hoursTitle: "Contact hours",
-      openingHours: "Opening",
-      closingHours: "Closing",
+      responseTime: "We usually reply within",
+      responseTimeUnit: "hours.",
+      hoursStart: "We are open from",
+      hoursBetween: "to",
+      openingTime: "We open at",
+      closingTime: "We close at",
       mapTitle: "Find us in Mirleft",
     },
     donate: {
@@ -325,10 +329,12 @@ export const pageMessages: Record<Locale, Copy> = {
       arrange:
         "Merci d’organiser les visites à l’avance. Nous agissons à Mirleft, au Maroc.",
       unavailable: "Les coordonnées seront bientôt disponibles.",
-      responseTime: "Nous répondons généralement sous {hours} heures.",
-      hoursTitle: "Heures de contact",
-      openingHours: "Ouverture",
-      closingHours: "Fermeture",
+      responseTime: "Nous répondons généralement sous",
+      responseTimeUnit: "heures.",
+      hoursStart: "Nous sommes ouverts de",
+      hoursBetween: "à",
+      openingTime: "Nous ouvrons à",
+      closingTime: "Nous fermons à",
       mapTitle: "Nous trouver à Mirleft",
     },
     donate: {
@@ -479,10 +485,12 @@ export const pageMessages: Record<Locale, Copy> = {
         "Bitte vereinbare Besuche im Voraus. Wir arbeiten in Mirleft, Marokko.",
       unavailable:
         "Die Kontaktdaten werden vorbereitet. Bitte schau bald wieder vorbei.",
-      responseTime: "Wir antworten normalerweise innerhalb von {hours} Stunden.",
-      hoursTitle: "Kontaktzeiten",
-      openingHours: "Öffnung",
-      closingHours: "Schließung",
+      responseTime: "Wir antworten normalerweise innerhalb von",
+      responseTimeUnit: "Stunden.",
+      hoursStart: "Wir haben geöffnet von",
+      hoursBetween: "bis",
+      openingTime: "Wir öffnen um",
+      closingTime: "Wir schließen um",
       mapTitle: "So findest du uns in Mirleft",
     },
     donate: {
@@ -628,10 +636,12 @@ export const pageMessages: Record<Locale, Copy> = {
       emailOpens: "يفتح تطبيق البريد الإلكتروني",
       arrange: "يرجى ترتيب الزيارات مسبقًا. نعمل في ميرلفت بالمغرب.",
       unavailable: "نعمل على توفير بيانات التواصل قريبًا.",
-      responseTime: "نرد عادةً خلال {hours} ساعة.",
-      hoursTitle: "أوقات التواصل",
-      openingHours: "وقت الافتتاح",
-      closingHours: "وقت الإغلاق",
+      responseTime: "نرد عادةً خلال",
+      responseTimeUnit: "ساعة.",
+      hoursStart: "نكون متاحين من",
+      hoursBetween: "إلى",
+      openingTime: "نبدأ استقبال الرسائل عند",
+      closingTime: "نتوقف عن استقبال الرسائل عند",
       mapTitle: "موقعنا في ميرلفت",
     },
     donate: {
