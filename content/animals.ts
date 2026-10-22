@@ -1,32 +1,5 @@
-import type { Locale } from "@/i18n/routing";
-
-export type LocalizedAnimalText = Record<Locale, string>;
-
-export type AnimalPhoto = {
-  src: string;
-  alt?: string;
-  objectPosition?: string;
-};
-
-export type Animal = {
-  name: string;
-  species: "dog" | "cat";
-  status: "available" | "inCare" | "adopted";
-  ageYears?: number;
-  personality?:
-    | "gentle"
-    | "playful"
-    | "curious"
-    | "shy"
-    | "affectionate"
-    | "calm"
-    | "energetic"
-    | "independent";
-  story?: LocalizedAnimalText;
-  photos: AnimalPhoto[];
-  addedAt: string;
-  featuredOrder?: number;
-};
+import type { Animal } from "@/domain/animal";
+export type { Animal, AnimalPhoto, LocalizedAnimalText } from "@/domain/animal";
 
 // TODO: replace these sample profiles and stock photos with confirmed association records.
 // Stock photos: https://www.pexels.com/photo/{photo-id}/

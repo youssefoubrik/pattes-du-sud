@@ -5,7 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { animalGalleryMessages } from "@/messages/animal-gallery";
-import { createGalleryUrl, type SpeciesFilter, type StatusFilter } from "@/components/animals/gallery-url";
+import { createGalleryUrl } from "@/components/animals/gallery-url";
+import type { AnimalSpeciesFilter, AnimalStatusFilter } from "@/domain/animal";
 
 export function GalleryFilters({
   locale,
@@ -15,14 +16,14 @@ export function GalleryFilters({
 }: {
   locale: Locale;
   search: string;
-  species: SpeciesFilter;
-  status: StatusFilter;
+  species: AnimalSpeciesFilter;
+  status: AnimalStatusFilter;
 }) {
   const text = animalGalleryMessages[locale];
   const pathname = usePathname();
   const router = useRouter();
 
-  function setFilters(nextSpecies: SpeciesFilter, nextStatus: StatusFilter) {
+  function setFilters(nextSpecies: AnimalSpeciesFilter, nextStatus: AnimalStatusFilter) {
     router.replace(createGalleryUrl(pathname, search, nextSpecies, nextStatus, 1), { scroll: false });
   }
 
@@ -54,8 +55,8 @@ function SearchField({
   locale,
 }: {
   search: string;
-  species: SpeciesFilter;
-  status: StatusFilter;
+  species: AnimalSpeciesFilter;
+  status: AnimalStatusFilter;
   locale: Locale;
 }) {
   const text = animalGalleryMessages[locale];

@@ -3,6 +3,7 @@ import Database from "better-sqlite3";
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { animals, paginationSampleAnimals, type Animal, type AnimalPhoto, type LocalizedAnimalText } from "@/content/animals";
+import type { AnimalSpeciesFilter, AnimalStatusFilter } from "@/domain/animal";
 import { footerContent } from "@/content/footer";
 import { ANIMAL_NAME_MAX_LENGTH } from "@/lib/animal-limits";
 import { routing } from "@/i18n/routing";
@@ -13,9 +14,6 @@ let database: Database.Database | undefined;
 
 export type EditableAnimal = Animal & {
   id: number;
-  sex?: "female" | "male";
-  vaccinated?: "yes" | "no";
-  sterilized?: "yes" | "no";
 };
 
 type StoredAnimal = Omit<EditableAnimal, "photos" | "id" | "vaccinated" | "sterilized" | "story"> & {
@@ -255,8 +253,8 @@ export function getAnimalsPage(
 
 export function getPublicAnimalsPage(
   search: string,
-  species: Animal["species"] | "all",
-  status: Animal["status"] | "all",
+  species: AnimalSpeciesFilter,
+  status: AnimalStatusFilter,
   pageSize: number,
   requestedPage: number,
 ): {

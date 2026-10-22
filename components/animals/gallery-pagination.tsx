@@ -4,7 +4,8 @@ import type { ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/i18n/routing";
 import { animalGalleryMessages } from "@/messages/animal-gallery";
-import { createGalleryUrl, type SpeciesFilter, type StatusFilter } from "@/components/animals/gallery-url";
+import { createGalleryUrl } from "@/components/animals/gallery-url";
+import type { AnimalSpeciesFilter, AnimalStatusFilter } from "@/domain/animal";
 
 export function GalleryPagination({
   locale,
@@ -16,8 +17,8 @@ export function GalleryPagination({
 }: {
   locale: Locale;
   search: string;
-  species: SpeciesFilter;
-  status: StatusFilter;
+  species: AnimalSpeciesFilter;
+  status: AnimalStatusFilter;
   page: number;
   pageCount: number;
 }) {

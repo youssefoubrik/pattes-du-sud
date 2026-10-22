@@ -1,11 +1,10 @@
-export type SpeciesFilter = "all" | "dog" | "cat";
-export type StatusFilter = "all" | "available" | "adopted";
+import type { AnimalSpeciesFilter, AnimalStatusFilter } from "@/domain/animal";
 
 export function createGalleryUrl(
   pathname: string,
   search: string,
-  species: SpeciesFilter,
-  status: StatusFilter,
+  species: AnimalSpeciesFilter,
+  status: AnimalStatusFilter,
   page: number,
 ) {
   const params = new URLSearchParams();

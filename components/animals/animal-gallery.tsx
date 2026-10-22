@@ -4,7 +4,7 @@ import { GalleryPagination } from "@/components/animals/gallery-pagination";
 import type { Animal } from "@/content/animals";
 import type { Locale } from "@/i18n/routing";
 import { animalGalleryMessages } from "@/messages/animal-gallery";
-import type { SpeciesFilter, StatusFilter } from "@/components/animals/gallery-url";
+import type { AnimalSpeciesFilter, AnimalStatusFilter } from "@/domain/animal";
 
 export function AnimalGallery({
   animals,
@@ -19,8 +19,8 @@ export function AnimalGallery({
   animals: (Animal & { id: number })[];
   locale: Locale;
   search: string;
-  species: SpeciesFilter;
-  status: StatusFilter;
+  species: AnimalSpeciesFilter;
+  status: AnimalStatusFilter;
   total: number;
   page: number;
   pageCount: number;
