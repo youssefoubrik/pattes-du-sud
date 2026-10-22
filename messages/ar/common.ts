@@ -1,6 +1,6 @@
-import type { Messages } from "./en";
+import type { Messages } from "../en/common";
 
-export const ar: Messages = {
+const data: Messages = {
   location: "ميرلفت، المغرب",
   homeNav: "الرئيسية",
   about: "من نحن",
@@ -17,3 +17,5 @@ export const ar: Messages = {
   skip: "انتقل إلى المحتوى",
   description: "جمعية ترعى كلاب وقطط الشوارع في ميرلفت بالمغرب.",
 };
+
+export { data };

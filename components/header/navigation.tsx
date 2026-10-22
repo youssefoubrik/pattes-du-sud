@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navigation } from "@/content/navigation";
 import type { Locale } from "@/i18n/routing";
-import type { Messages } from "@/messages/en";
+import type { Messages } from "@/messages";
 import { localizedRoute } from "@/lib/routes";
 
 export function Navigation({ locale, labels, mobile = false }: { locale: Locale; labels: Messages; mobile?: boolean }) {

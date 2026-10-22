@@ -1,6 +1,6 @@
-import type { Messages } from "./en";
+import type { Messages } from "../en/common";
 
-export const de: Messages = {
+const data: Messages = {
   location: "Mirleft, Marokko",
   homeNav: "Startseite",
   about: "Über uns",
@@ -17,3 +17,5 @@ export const de: Messages = {
   skip: "Zum Inhalt springen",
   description: "Ein Verein, der sich um Mirlefts Straßenhunde und Straßenkatzen in Marokko kümmert.",
 };
+
+export { data };

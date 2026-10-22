@@ -1,5 +1,5 @@
 import type { Locale } from "@/i18n/routing";
-import type { Messages } from "@/messages/en";
+import type { Messages } from "@/messages";
 import { routePaths } from "@/lib/routes";
 
 export const navigation: { label: keyof Pick<Messages, "homeNav" | "about" | "animals" | "adoptNav" | "volunteer" | "contact">; href: string }[] = [

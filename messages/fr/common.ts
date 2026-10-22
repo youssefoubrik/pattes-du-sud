@@ -1,6 +1,6 @@
-import type { Messages } from "./en";
+import type { Messages } from "../en/common";
 
-export const fr: Messages = {
+const data: Messages = {
   location: "Mirleft, Maroc",
   homeNav: "Accueil",
   about: "À propos",
@@ -17,3 +17,5 @@ export const fr: Messages = {
   skip: "Aller au contenu",
   description: "Une association qui prend soin des chiens et des chats des rues de Mirleft, au Maroc.",
 };
+
+export { data };

@@ -1,4 +1,4 @@
-export const en = {
+const data = {
   location: "Mirleft, Morocco",
   homeNav: "Home",
   about: "About",
@@ -16,4 +16,6 @@ export const en = {
   description: "A nonprofit caring for the street dogs and cats of Mirleft, Morocco.",
 };
 
-export type Messages = { [Key in keyof typeof en]: string };
+export type Messages = { [Key in keyof typeof data]: string };
+
+export { data };
