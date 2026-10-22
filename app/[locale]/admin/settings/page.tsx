@@ -235,7 +235,11 @@ export default async function SettingsPage({
               </div>
             </fieldset>
           ))}
-          <ActionButton type="submit" className="justify-self-start">
+          <ActionButton
+            type="submit"
+            variant="secondary"
+            className="justify-self-start"
+          >
             Save settings
           </ActionButton>
         </form>
