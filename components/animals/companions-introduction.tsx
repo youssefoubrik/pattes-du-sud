@@ -10,7 +10,7 @@ export function CompanionsIntroduction({ locale }: { locale: Locale }) {
   return (
     <Section aria-labelledby="companions-title" className="!pb-0">
       <Container>
-        <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+        <div className="mb-6 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-2xl">
             <h1 id="companions-title" className="text-4xl font-semibold tracking-tight text-heading sm:text-5xl lg:text-6xl">
               {text.title}
