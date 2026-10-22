@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import Image from "next/image";
 import { getMediaSrc } from "@/lib/media";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -34,7 +35,7 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
               {text.introduction}
             </p>
           </div>
-          <ButtonLink href={`/${locale}/volunteer`} variant="secondary" arrow className="w-fit max-w-full">
+          <ButtonLink href={localizedRoute(locale, routePaths.volunteer)} variant="secondary" arrow className="w-fit max-w-full">
             {text.volunteer}
           </ButtonLink>
         </div>

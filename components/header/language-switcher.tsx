@@ -4,6 +4,7 @@ import { Check, ChevronDown, Globe } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { languages } from "@/content/navigation";
 import type { Locale } from "@/i18n/routing";
+import { localizedRoute } from "@/lib/routes";
 import { Disclosure } from "./disclosure";
 
 export function LanguageSwitcher({ locale, label, mobile = false }: { locale: Locale; label: string; mobile?: boolean }) {
@@ -14,7 +15,7 @@ export function LanguageSwitcher({ locale, label, mobile = false }: { locale: Lo
       {languages.map((language) => (
         <li key={language.locale}>
           <a
-            href={`/${language.locale}${path}`}
+            href={localizedRoute(language.locale, path)}
             hrefLang={language.locale}
             lang={language.locale}
             aria-current={locale === language.locale ? "true" : undefined}

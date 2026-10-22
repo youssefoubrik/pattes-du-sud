@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -80,7 +81,7 @@ export default async function AdminAnimals({
     <main className="flex-1 py-12">
       <Container>
         <Link
-          href={`/${locale}/admin`}
+          href={localizedRoute(locale, routePaths.admin)}
           className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
         >
           <ArrowLeft
@@ -158,7 +159,7 @@ export default async function AdminAnimals({
                   </div>
                   <Link
                     className="ms-auto inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full border border-heading px-3 text-sm font-bold text-heading transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
-                    href={`/${locale}/companions/${animal.id}`}
+                    href={localizedRoute(locale, routePaths.companion(animal.id))}
                   >
                     <Eye size={16} aria-hidden="true" />
                     View

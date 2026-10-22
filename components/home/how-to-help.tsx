@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { HandHeart, MessageCircle } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -38,7 +39,7 @@ export function HowToHelp({ locale }: { locale: Locale }) {
               {text.donate.description}
             </p>
             <ButtonLink
-              href={`/${locale}/donate`}
+              href={localizedRoute(locale, routePaths.donate)}
               variant="donate"
               className="mt-7 self-start"
             >
@@ -57,7 +58,7 @@ export function HowToHelp({ locale }: { locale: Locale }) {
               {text.volunteer.description}
             </p>
             <ButtonLink
-              href={`/${locale}/volunteer`}
+              href={localizedRoute(locale, routePaths.volunteer)}
               variant="secondary"
               arrow
               className="mt-7 self-start"

@@ -11,6 +11,7 @@ import { Container } from "@/components/ui/container";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { footerMessages } from "@/messages/footer";
+import { localizedRoute, routePaths } from "@/lib/routes";
 
 const linkClass = "inline-flex min-h-11 items-center gap-2 rounded-sm text-heading transition-colors hover:text-primary-hover hover:underline hover:underline-offset-4";
 
@@ -48,11 +49,11 @@ export function Footer({ locale }: { locale: Locale }) {
             <ul>
               {navigation.filter((item) => item.label !== "contact" && item.label !== "adoptNav").map((item) => (
                 <li key={item.href}>
-                  <Link href={`/${locale}${item.href}`} className={linkClass}>{labels[item.label]}</Link>
+                  <Link href={localizedRoute(locale, item.href)} className={linkClass}>{labels[item.label]}</Link>
                 </li>
               ))}
-              <li><Link href={`/${locale}/adopt`} className={linkClass}>{footer.adopt}</Link></li>
-              <li className="my-3"><ButtonLink href={`/${locale}/donate`} variant="donate">{labels.donate}</ButtonLink></li>
+              <li><Link href={localizedRoute(locale, routePaths.adopt)} className={linkClass}>{footer.adopt}</Link></li>
+              <li className="my-3"><ButtonLink href={localizedRoute(locale, routePaths.donate)} variant="donate">{labels.donate}</ButtonLink></li>
             </ul>
           </nav>
 
@@ -71,7 +72,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <span dir="ltr" className="break-all">{contact.email}</span>
               </a>}
             </address>
-            <Link href={`/${locale}/contact`} className={`${linkClass} mt-2`}>{labels.contact}</Link>
+            <Link href={localizedRoute(locale, routePaths.contact)} className={`${linkClass} mt-2`}>{labels.contact}</Link>
             {(contact.instagram || contact.facebook) && (
               <div className="mt-5">
                 <SocialLinks instagram={contact.instagram} facebook={contact.facebook} label={footer.findUs} />
@@ -84,8 +85,8 @@ export function Footer({ locale }: { locale: Locale }) {
           <p>© {officialName}</p>
           <nav aria-label={footer.legalNavigation}>
             <ul className="flex flex-wrap gap-x-6">
-              <li><Link href={`/${locale}/legal`} className={linkClass}>{footer.legal}</Link></li>
-              <li><Link href={`/${locale}/privacy`} className={linkClass}>{footer.privacy}</Link></li>
+              <li><Link href={localizedRoute(locale, routePaths.legal)} className={linkClass}>{footer.legal}</Link></li>
+              <li><Link href={localizedRoute(locale, routePaths.privacy)} className={linkClass}>{footer.privacy}</Link></li>
             </ul>
           </nav>
         </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { Lora, Nunito_Sans } from "next/font/google";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
@@ -35,7 +36,7 @@ export default function GlobalNotFound() {
               The address may be incorrect, or the page may have moved.
             </p>
             <Link
-              href="/en"
+              href={localizedRoute("en", routePaths.home)}
               className="mt-8 inline-flex min-h-11 items-center rounded-full bg-primary px-6 font-bold text-primary-foreground transition-colors hover:bg-primary-hover"
             >
               Back to home

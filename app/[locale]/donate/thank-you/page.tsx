@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ShareButton } from "@/components/animals/share-button";
@@ -33,7 +34,7 @@ export default async function ThankYou({
           <h1 className="text-4xl text-heading sm:text-5xl">{t.title}</h1>
           <p className="mt-5 text-lg leading-relaxed">{t.intro}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <ButtonLink href={`/${locale}`}>{t.home}</ButtonLink>
+            <ButtonLink href={localizedRoute(locale, routePaths.home)}>{t.home}</ButtonLink>
             <ShareButton
               title="Pattes du Sud"
               label={t.share}

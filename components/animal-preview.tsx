@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import Link from "next/link";
 import { Heart } from "lucide-react";
 import type { Animal } from "@/content/animals";
@@ -48,7 +49,7 @@ export function AnimalPreview({ animal, locale, portrait = true, linked = true }
     <article>
       {linked ? (
         <Link
-          href={`/${locale}/companions/${animal.id}`}
+          href={localizedRoute(locale, routePaths.companion(animal.id))}
           aria-label={`${text.getToKnow} — ${animal.name}`}
           className="group block rounded-3xl"
         >

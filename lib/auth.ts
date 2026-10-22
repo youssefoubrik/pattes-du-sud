@@ -8,6 +8,7 @@ import {
 import { cookies } from "next/headers";
 import { connection } from "next/server";
 import { redirect } from "next/navigation";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { db } from "./db";
 
 const cookieName = "pattes_admin";
@@ -50,7 +51,7 @@ export async function isAdmin() {
 }
 
 export async function requireAdmin(locale: string) {
-  if (!(await isAdmin())) redirect(`/${locale}/admin/login`);
+  if (!(await isAdmin())) redirect(localizedRoute(locale, routePaths.adminLogin));
 }
 
 export async function endSession() {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { Container } from "@/components/ui/container";
 
 export default function NotFound() {
@@ -11,7 +12,7 @@ export default function NotFound() {
           available.
         </p>
         <Link
-          href="/en"
+          href={localizedRoute("en", routePaths.home)}
           className="mt-6 inline-flex min-h-11 items-center rounded-full bg-primary px-6 font-bold text-primary-foreground"
         >
           Go home

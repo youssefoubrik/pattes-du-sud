@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -38,7 +39,7 @@ export default async function Volunteer({
     <main id="main-content" className="flex-1">
       <PageIntro title={t.title} intro={t.intro} className="pb-4! sm:pb-6!">
         <ButtonLink
-          href={`/${locale}/contact`}
+          href={localizedRoute(locale, routePaths.contact)}
           variant="secondary"
           arrow
           className="mt-6"

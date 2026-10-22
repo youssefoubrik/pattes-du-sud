@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import {
   ArrowLeft,
   BadgeCheck,
@@ -191,7 +192,7 @@ export default async function ContentPage({
     <main className="flex-1 py-12">
       <Container className="max-w-4xl">
         <Link
-          href={`/${locale}/admin`}
+          href={localizedRoute(locale, routePaths.admin)}
           className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
         >
           <ArrowLeft

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import {
   Activity,
   Globe2,
@@ -89,7 +90,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
         </div>
         <p className="mt-4 max-w-2xl">Manage companion profiles and site details.</p>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <Link href={`/${locale}/admin/companions`} className={cardClass}>
+          <Link href={localizedRoute(locale, routePaths.adminCompanions)} className={cardClass}>
             <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
               <PawPrint
                 size={22}
@@ -102,7 +103,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               {animals.length} profiles · Add, update and remove profiles
             </p>
           </Link>
-          <Link href={`/${locale}/admin/settings`} className={cardClass}>
+          <Link href={localizedRoute(locale, routePaths.adminSettings)} className={cardClass}>
             <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
               <Settings
                 size={22}
@@ -118,7 +119,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               · Contact and bank details
             </p>
           </Link>
-          <Link href={`/${locale}/admin/content`} className={cardClass}>
+          <Link href={localizedRoute(locale, routePaths.adminContent)} className={cardClass}>
             <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
               <Languages
                 size={22}
@@ -131,7 +132,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               Edit Home, About and other public pages in four languages
             </p>
           </Link>
-          <Link href={`/${locale}/admin/media`} className={cardClass}>
+          <Link href={localizedRoute(locale, routePaths.adminMedia)} className={cardClass}>
             <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
               <Images
                 size={22}
@@ -179,7 +180,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               {topCompanions.map((companion) => (
                 <li key={companion.id} className="inline-flex items-baseline gap-2">
                   <Link
-                    href={`/${locale}/companions/${companion.id}`}
+                    href={localizedRoute(locale, routePaths.companion(companion.id))}
                     className="text-accent underline underline-offset-4 transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
                     {companion.name} ({companion.species})

@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -17,7 +18,7 @@ export function ClosingInvitation({ locale }: { locale: Locale }) {
         <h2 id="about-closing-title" className="max-w-2xl text-2xl font-semibold leading-snug text-heading sm:text-3xl">
           {getEditableCopy("about", locale, aboutMessages[locale]).closingInvitation}
         </h2>
-        <ButtonLink href={`/${locale}/donate`} variant="donate">
+        <ButtonLink href={localizedRoute(locale, routePaths.donate)} variant="donate">
           {labels.donate}
         </ButtonLink>
       </Container>

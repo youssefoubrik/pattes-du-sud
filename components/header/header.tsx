@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { LogoLink } from "@/components/logo-link";
 import { ButtonLink } from "@/components/ui/button-link";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { Container } from "@/components/ui/container";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
@@ -24,7 +25,7 @@ export function Header({ locale }: { locale: Locale }) {
         <div className="hidden xl:block">
           <LanguageSwitcher locale={locale} label={labels.language} />
         </div>
-        <ButtonLink href={`/${locale}/donate`} variant="donate" compact className="ms-auto text-base! sm:text-[19px]! xl:ms-0">
+        <ButtonLink href={localizedRoute(locale, routePaths.donate)} variant="donate" compact className="ms-auto text-base! sm:text-[19px]! xl:ms-0">
           {labels.donate}
         </ButtonLink>
         <Disclosure

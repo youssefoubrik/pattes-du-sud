@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
@@ -70,13 +71,13 @@ async function AnimalDetailContent({
   const settings = getSettings();
   const whatsapp = settings.whatsappNumber
     ? `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(common.adoptionMessage.replace("{name}", animal.name))}`
-    : `/${locale}/contact`;
+    : `${localizedRoute(locale, routePaths.contact)}`;
   return (
     <main id="main-content" className="flex-1">
       <Section>
         <Container>
           <Link
-            href={`/${locale}/companions`}
+            href={localizedRoute(locale, routePaths.companions)}
             className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
           >
             <ArrowLeft
@@ -174,7 +175,7 @@ async function AnimalDetailContent({
                 </section>
               )}
               <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href={`/${locale}/donate`} variant="donate">
+                <ButtonLink href={localizedRoute(locale, routePaths.donate)} variant="donate">
                   {t.help}
                 </ButtonLink>
                 <ShareButton

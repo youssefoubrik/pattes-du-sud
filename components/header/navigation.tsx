@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { navigation } from "@/content/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { Messages } from "@/messages/en";
+import { localizedRoute } from "@/lib/routes";
 
 export function Navigation({ locale, labels, mobile = false }: { locale: Locale; labels: Messages; mobile?: boolean }) {
   const pathname = usePathname();
@@ -13,7 +14,7 @@ export function Navigation({ locale, labels, mobile = false }: { locale: Locale;
     <nav aria-label={labels.navigation}>
       <ul className={mobile ? "flex flex-col gap-1" : "flex items-center gap-2 xl:gap-4"}>
         {navigation.map((item) => {
-          const href = `/${locale}${item.href}`;
+          const href = localizedRoute(locale, item.href);
           const current = pathname === href || (item.href === "" ? pathname === `${href}/` : pathname.startsWith(`${href}/`));
           return (
             <li key={item.href}>

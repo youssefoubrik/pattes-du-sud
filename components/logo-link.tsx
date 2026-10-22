@@ -3,12 +3,13 @@ import Link from "next/link";
 import { siteContent } from "@/content/site";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
+import { localizedRoute, routePaths } from "@/lib/routes";
 
 type Props = { locale: Locale; responsive?: boolean };
 
 export function LogoLink({ locale, responsive = false }: Props) {
   return (
-    <Link href={`/${locale}`} aria-label={messages[locale].home} className="inline-block shrink-0 rounded-sm">
+    <Link href={localizedRoute(locale, routePaths.home)} aria-label={messages[locale].home} className="inline-block shrink-0 rounded-sm">
       <Image
         src={siteContent.logo.src}
         width={siteContent.logo.width}

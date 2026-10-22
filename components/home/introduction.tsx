@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { AnimalGreeting } from "@/components/animal-greeting";
 import { LocationLabel } from "@/components/location-label";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -40,11 +41,11 @@ export function Introduction({ locale }: { locale: Locale }) {
             {text.description}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href={`/${locale}/donate`} variant="donate" className="min-h-13">
+            <ButtonLink href={localizedRoute(locale, routePaths.donate)} variant="donate" className="min-h-13">
               {messages[locale].donate}
             </ButtonLink>
             <ButtonLink
-              href={`/${locale}/companions`}
+              href={localizedRoute(locale, routePaths.companions)}
               variant="secondary"
               arrow
               className="min-h-13 max-w-full gap-3 py-2 text-center"

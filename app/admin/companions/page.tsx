@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
+import { localizedRoute, routePaths } from "@/lib/routes";
 
 export default function AdminCompanionsAlias() {
-  redirect("/en/admin/companions");
+  redirect(localizedRoute("en", routePaths.adminCompanions));
 }

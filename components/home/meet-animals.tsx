@@ -1,4 +1,5 @@
 import { AnimalPreview } from "@/components/animal-preview";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -44,7 +45,7 @@ export function MeetAnimals({ locale }: { locale: Locale }) {
         </ul>
         <div className="mt-10 text-center">
           <ButtonLink
-            href={`/${locale}/companions`}
+            href={localizedRoute(locale, routePaths.companions)}
             variant="secondary"
             arrow
             className="max-w-full gap-3 py-2"

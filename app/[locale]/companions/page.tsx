@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { Suspense } from "react";
 import { ArrowRight, PawPrint } from "lucide-react";
 import Link from "next/link";
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${title} | ${siteContent.name}`,
     description,
-    ...(siteUrl ? { metadataBase: new URL(siteUrl), alternates: { canonical: `/${locale}/companions` } } : {}),
+    ...(siteUrl ? { metadataBase: new URL(siteUrl), alternates: { canonical: `${localizedRoute(locale, routePaths.companions)}` } } : {}),
     openGraph: { title, description, siteName: siteContent.name, type: "website", locale },
     twitter: { card: "summary", title, description },
   };
@@ -47,7 +48,7 @@ export default async function AnimalsPage({ params, searchParams }: Props) {
               <p className="mt-5 text-lg leading-relaxed text-foreground">{text.description}</p>
             </div>
             <Link
-              href={`/${locale}/adopt`}
+              href={localizedRoute(locale, routePaths.adopt)}
               className="group flex min-h-20 w-full shrink-0 items-center gap-4 self-start rounded-2xl bg-secondary-button px-4 py-3 text-background transition-[opacity,box-shadow] duration-200 hover:opacity-90 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:mt-1 sm:w-fit sm:min-w-64"
             >
               <PawPrint

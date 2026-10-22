@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { MapPin } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -32,7 +33,7 @@ export function AssociationInMirleft({ locale }: { locale: Locale }) {
             {text.title}
           </h2>
           <p className="mt-5 leading-relaxed text-foreground">{text.visitNote}</p>
-          <ButtonLink href={`/${locale}/contact`} variant="secondary" arrow className="mt-5 w-fit max-w-full">
+          <ButtonLink href={localizedRoute(locale, routePaths.contact)} variant="secondary" arrow className="mt-5 w-fit max-w-full">
             {text.contact}
           </ButtonLink>
           {(contact.instagram || contact.facebook) && (

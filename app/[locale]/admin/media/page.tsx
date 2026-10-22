@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import Link from "next/link";
 import { ArrowLeft, Heart, House, Users, type LucideIcon } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -39,7 +40,7 @@ export default async function MediaPage({
     <main className="flex-1 py-12">
       <Container>
         <Link
-          href={`/${locale}/admin`}
+          href={localizedRoute(locale, routePaths.admin)}
           className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
         >
           <ArrowLeft

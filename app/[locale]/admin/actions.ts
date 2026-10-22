@@ -1,5 +1,6 @@
 "use server";
 
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -47,7 +48,7 @@ function localeOf(form: FormData) {
 
 function companionError(locale: string, error: string): never {
   const notice = randomUUID();
-  redirect(`/${locale}/admin/companions?error=${error}&notice=${notice}`);
+  redirect(`${localizedRoute(locale, routePaths.adminCompanions)}?error=${error}&notice=${notice}`);
 }
 
 function localizedAnimalText(
@@ -69,15 +70,15 @@ function localizedAnimalText(
 export async function login(form: FormData) {
   const locale = localeOf(form);
   const password = String(form.get("password") || "");
-  if (!verifyPassword(password)) redirect(`/${locale}/admin/login?error=1`);
+  if (!verifyPassword(password)) redirect(`${localizedRoute(locale, routePaths.adminLogin)}?error=1`);
   await createSession();
-  redirect(`/${locale}/admin`);
+  redirect(localizedRoute(locale, routePaths.admin));
 }
 
 export async function logout(form: FormData) {
   const locale = localeOf(form);
   await endSession();
-  redirect(`/${locale}/admin/login`);
+  redirect(localizedRoute(locale, routePaths.adminLogin));
 }
 
 export async function updateSettings(form: FormData) {
@@ -95,7 +96,7 @@ export async function updateSettings(form: FormData) {
   settings.whatsappNumber = settings.whatsappDisplay.replace(/\D/g, "");
   for (const key of Object.keys(settings) as (keyof Settings)[]) {
     if (!settings[key])
-      redirect(`/${locale}/admin/settings?error=required&field=${key}`);
+      redirect(`${localizedRoute(locale, routePaths.adminSettings)}?error=required&field=${key}`);
   }
   for (const key of [
     "instagram",
@@ -106,31 +107,31 @@ export async function updateSettings(form: FormData) {
   ] as const) {
     const value = settings[key];
     if (value && !/^https:\/\//.test(value))
-      redirect(`/${locale}/admin/settings?error=url&field=${key}`);
+      redirect(`${localizedRoute(locale, routePaths.adminSettings)}?error=url&field=${key}`);
   }
   for (const key of ["paypalDonateUrl", "paypalMonthlyUrl"] as const) {
     if (
       settings[key] &&
       !/^https:\/\/(www\.)?paypal\.com\//.test(settings[key])
     )
-      redirect(`/${locale}/admin/settings?error=paypal&field=${key}`);
+      redirect(`${localizedRoute(locale, routePaths.adminSettings)}?error=paypal&field=${key}`);
   }
   for (const key of ["impactAnimalsHelped", "impactAdoptions"] as const) {
     if (settings[key] && !/^\d{1,8}$/.test(settings[key]))
-      redirect(`/${locale}/admin/settings?error=number`);
+      redirect(`${localizedRoute(locale, routePaths.adminSettings)}?error=number`);
   }
   if (
     !/^\d{1,3}$/.test(settings.responseTimeHours) ||
     Number(settings.responseTimeHours) < 1 ||
     Number(settings.responseTimeHours) > 720
   )
-    redirect(`/${locale}/admin/settings?error=response-time`);
+    redirect(`${localizedRoute(locale, routePaths.adminSettings)}?error=response-time`);
   saveSettings(settings);
   for (const language of routing.locales) {
     revalidatePath(`/${language}`, "layout");
   }
   const notice = randomUUID();
-  redirect(`/${locale}/admin/settings?saved=1&notice=${notice}`);
+  redirect(`${localizedRoute(locale, routePaths.adminSettings)}?saved=1&notice=${notice}`);
 }
 
 export async function upsertAnimal(form: FormData) {
@@ -255,7 +256,7 @@ export async function upsertAnimal(form: FormData) {
   }
   const outcome = existing ? "updated" : "added";
   const notice = randomUUID();
-  redirect(`/${locale}/admin/companions?success=${outcome}&notice=${notice}`);
+  redirect(`${localizedRoute(locale, routePaths.adminCompanions)}?success=${outcome}&notice=${notice}`);
 }
 
 export async function removeAnimal(form: FormData) {
@@ -268,7 +269,7 @@ export async function removeAnimal(form: FormData) {
     revalidatePath(`/${language}`);
   }
   const notice = randomUUID();
-  redirect(`/${locale}/admin/companions?success=removed&notice=${notice}`);
+  redirect(`${localizedRoute(locale, routePaths.adminCompanions)}?success=removed&notice=${notice}`);
 }
 
 export async function updateContent(form: FormData) {
@@ -297,7 +298,7 @@ export async function updateContent(form: FormData) {
     saveEditableCopy(section, language, output);
     revalidatePath(`/${language}`, "layout");
   }
-  redirect(`/${locale}/admin/content?saved=1`);
+  redirect(`${localizedRoute(locale, routePaths.adminContent)}?saved=1`);
 }
 
 export async function updateMedia(form: FormData) {
@@ -305,10 +306,10 @@ export async function updateMedia(form: FormData) {
   await requireAdmin(locale);
   const slot = String(form.get("slot") || "");
   if (!mediaSlots.some((item) => item.key === slot))
-    redirect(`/${locale}/admin/media?error=1`);
+    redirect(`${localizedRoute(locale, routePaths.adminMedia)}?error=1`);
   const file = form.get("photo");
   if (!(file instanceof File) || file.size < 1 || file.size > PHOTO_MAX_UPLOAD_SIZE_BYTES)
-    redirect(`/${locale}/admin/media?error=1`);
+    redirect(`${localizedRoute(locale, routePaths.adminMedia)}?error=1`);
   const bytes = Buffer.from(await file.arrayBuffer());
   const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
   const png = bytes
@@ -324,7 +325,7 @@ export async function updateMedia(form: FormData) {
       : webp
         ? "image/webp"
         : null;
-  if (!mime) redirect(`/${locale}/admin/media?error=1`);
+  if (!mime) redirect(`${localizedRoute(locale, routePaths.adminMedia)}?error=1`);
   const id = randomUUID();
   db().transaction(() => {
     db()
@@ -340,5 +341,5 @@ export async function updateMedia(form: FormData) {
   for (const language of routing.locales)
     revalidatePath(`/${language}`, "layout");
   const notice = randomUUID();
-  redirect(`/${locale}/admin/media?saved=1&notice=${notice}`);
+  redirect(`${localizedRoute(locale, routePaths.adminMedia)}?saved=1&notice=${notice}`);
 }

@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import type { Locale } from "@/i18n/routing";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { pageMessages } from "@/messages/pages";
 
 export function AdoptionGuidance({ locale }: { locale: Locale }) {
@@ -22,7 +23,7 @@ export function AdoptionGuidance({ locale }: { locale: Locale }) {
           <p className="mt-3 leading-relaxed">{text.international}</p>
         </div>
         <ButtonLink
-          href={`/${locale}/contact`}
+          href={localizedRoute(locale, routePaths.contact)}
           variant="secondary"
           arrow
           className="w-fit max-w-full md:col-span-2"

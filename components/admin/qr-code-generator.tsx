@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import QRCode from "qrcode";
 import { ActionButton } from "@/components/ui/action-button";
 import type { Locale } from "@/i18n/routing";
@@ -21,7 +22,7 @@ export function QrCodeGenerator({ locale }: { locale: Locale }) {
     setError("");
     setSuccess("");
     try {
-      const target = new URL(`/${locale}/mirleft`, window.location.origin);
+      const target = new URL(localizedRoute(locale, routePaths.mirleft), window.location.origin);
       target.searchParams.set("source", name);
       const qrSvg = await QRCode.toString(target.toString(), {
         type: "svg",

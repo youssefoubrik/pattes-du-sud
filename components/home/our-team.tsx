@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { PawPrint } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -71,7 +72,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
             </dl>}
             <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
               <ButtonLink
-                href={`/${locale}/about`}
+                href={localizedRoute(locale, routePaths.about)}
                 variant="secondary"
                 arrow
                 compact
@@ -80,7 +81,7 @@ export function OurTeam({ locale }: { locale: Locale }) {
                 {text.meetTeam}
               </ButtonLink>
               <ButtonLink
-                href={`/${locale}/volunteer`}
+                href={localizedRoute(locale, routePaths.volunteer)}
                 variant="link"
               >
                 {text.volunteerCta}

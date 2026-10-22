@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -40,13 +41,13 @@ export default async function Mirleft({
             preload
           />
           <div className="mt-7 flex flex-wrap gap-3">
-            <ButtonLink href={`/${locale}/donate`} variant="donate">
+            <ButtonLink href={localizedRoute(locale, routePaths.donate)} variant="donate">
               {t.donate}
             </ButtonLink>
-            <ButtonLink href={`/${locale}/companions`} variant="secondary">
+            <ButtonLink href={localizedRoute(locale, routePaths.companions)} variant="secondary">
               {t.animals}
             </ButtonLink>
-            <ButtonLink href={`/${locale}/contact`} variant="secondary">
+            <ButtonLink href={localizedRoute(locale, routePaths.contact)} variant="secondary">
               {t.contact}
             </ButtonLink>
           </div>

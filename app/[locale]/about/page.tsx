@@ -1,4 +1,5 @@
 import { getEditableCopy } from "@/lib/editable-copy";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AboutIntroduction } from "@/components/about/about-introduction";
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/about">)
   return {
     title: `${title} | ${siteContent.name}`,
     description,
-    ...(siteUrl ? { metadataBase: new URL(siteUrl), alternates: { canonical: `/${locale}/about` } } : {}),
+    ...(siteUrl ? { metadataBase: new URL(siteUrl), alternates: { canonical: `${localizedRoute(locale, routePaths.about)}` } } : {}),
     openGraph: { title, description, siteName: siteContent.name, type: "website", locale },
     twitter: { card: "summary", title, description },
   };
