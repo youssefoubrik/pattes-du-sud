@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
@@ -13,7 +13,7 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/privacy">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).privacy;
+  const t = getPageContent("pages", locale, pageMessages[locale]).privacy;
   return pageMetadata(locale, "/privacy", t.title, t.intro);
 }
 export default async function Privacy({
@@ -21,7 +21,7 @@ export default async function Privacy({
 }: PageProps<"/[locale]/privacy">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).privacy;
+  const t = getPageContent("pages", locale, pageMessages[locale]).privacy;
   return (
     <main id="main-content" className="flex-1">
       <PageIntro title={t.title} intro={t.intro} className="!pb-0" />

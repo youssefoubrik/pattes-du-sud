@@ -1,7 +1,7 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import Image from "next/image";
-import { getMediaSrc } from "@/lib/media";
+import { getMediaSrc } from "@/lib/database/uploaded-media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -13,7 +13,7 @@ import { animalMessages } from "@/messages/animals";
 import { aboutMessages } from "@/messages/about";
 
 export function PeopleBehindCare({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("about", locale, aboutMessages[locale]).team;
+  const text = getPageContent("about", locale, aboutMessages[locale]).team;
   const members = aboutContent.teamMembers.slice(0, 4);
   const photoText = animalMessages[locale];
   const numberFormat = new Intl.NumberFormat(locale);

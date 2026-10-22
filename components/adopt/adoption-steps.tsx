@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
@@ -6,7 +6,7 @@ import type { Locale } from "@/i18n/routing";
 import { pageMessages } from "@/messages/pages";
 
 export function AdoptionSteps({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("pages", locale, pageMessages[locale]).adopt;
+  const text = getPageContent("pages", locale, pageMessages[locale]).adopt;
 
   return (
     <Section aria-labelledby="adoption-steps-title" className="relative bg-secondary">

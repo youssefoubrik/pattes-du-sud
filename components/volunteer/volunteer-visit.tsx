@@ -1,11 +1,11 @@
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import type { Locale } from "@/i18n/routing";
 import { pageMessages } from "@/messages/pages";
 
 export function VolunteerVisit({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("pages", locale, pageMessages[locale]).volunteer;
+  const text = getPageContent("pages", locale, pageMessages[locale]).volunteer;
 
   return (
     <Section>

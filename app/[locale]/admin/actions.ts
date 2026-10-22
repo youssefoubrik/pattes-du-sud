@@ -5,16 +5,12 @@ import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import {
-  db,
   deleteAnimal,
   getAnimal,
-  getSettings,
-  pruneMedia,
   saveAnimal,
-  saveSettings,
-  type EditableAnimal,
-  type Settings,
-} from "@/lib/db";
+} from "@/lib/database/animal-records";
+import type { EditableAnimal } from "@/lib/database/animal-records";
+import { getSettings, saveSettings, type Settings } from "@/lib/database/site-settings";
 import {
   createSession,
   endSession,
@@ -29,12 +25,12 @@ import {
   PHOTO_MAX_UPLOAD_SIZE_BYTES,
 } from "@/lib/animal-limits";
 import {
-  copyFields,
-  getEditableCopy,
-  saveEditableCopy,
-  setCopyField,
-  type CopyNamespace,
-} from "@/lib/editable-copy";
+  getPageContent,
+  savePageContent,
+  type PageContentSection,
+} from "@/lib/database/page-content";
+import { getPageContentFields, setPageContentField } from "@/lib/page-content-fields";
+import { saveMediaSlot, storeUploadedPhoto } from "@/lib/database/uploaded-media";
 import { homeMessages } from "@/messages/home";
 import { aboutMessages } from "@/messages/about";
 import { pageMessages } from "@/messages/pages";
@@ -202,13 +198,8 @@ export async function upsertAnimal(form: FormData) {
     if (!mime) companionError(locale, "photo");
     uploads.push({ mime, bytes });
   }
-  const insertPhoto = db().prepare(
-    "INSERT INTO media (id, mime, bytes) VALUES (?, ?, ?)",
-  );
   for (const upload of uploads) {
-    const photoId = randomUUID();
-    insertPhoto.run(photoId, upload.mime, upload.bytes);
-    photos.push({ src: `/api/media/${photoId}` });
+    photos.push({ src: storeUploadedPhoto(upload.mime, upload.bytes) });
   }
   const animalId = saveAnimal({
     ...(existing ? { id: existing.id } : {}),
@@ -276,7 +267,7 @@ export async function updateContent(form: FormData) {
   const locale = localeOf(form);
   await requireAdmin(locale);
   const sectionValue = String(form.get("section") || "home");
-  const section: CopyNamespace =
+  const section: PageContentSection =
     sectionValue === "about" || sectionValue === "pages"
       ? sectionValue
       : "home";
@@ -288,14 +279,14 @@ export async function updateContent(form: FormData) {
           ? aboutMessages[language]
           : pageMessages[language];
     const output = structuredClone(
-      getEditableCopy(section, language, base),
+      getPageContent(section, language, base),
     ) as object;
-    for (const field of copyFields(base)) {
+    for (const field of getPageContentFields(base)) {
       const key = `field:${field.path}:${language}`;
       if (form.has(key))
-        setCopyField(output, field.path, String(form.get(key)).slice(0, 10000));
+        setPageContentField(output, field.path, String(form.get(key)).slice(0, 10000));
     }
-    saveEditableCopy(section, language, output);
+    savePageContent(section, language, output);
     revalidatePath(`/${language}`, "layout");
   }
   redirect(`${localizedRoute(locale, routePaths.adminContent)}?saved=1`);
@@ -326,18 +317,7 @@ export async function updateMedia(form: FormData) {
         ? "image/webp"
         : null;
   if (!mime) redirect(`${localizedRoute(locale, routePaths.adminMedia)}?error=1`);
-  const id = randomUUID();
-  db().transaction(() => {
-    db()
-      .prepare("INSERT INTO media (id, mime, bytes) VALUES (?, ?, ?)")
-      .run(id, mime, bytes);
-    db()
-      .prepare(
-        "INSERT INTO media_slots (key, media_id) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET media_id=excluded.media_id",
-      )
-      .run(slot, id);
-  })();
-  pruneMedia();
+  saveMediaSlot(slot, mime, bytes);
   for (const language of routing.locales)
     revalidatePath(`/${language}`, "layout");
   const notice = randomUUID();

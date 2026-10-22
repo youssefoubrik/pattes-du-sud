@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { House, Soup, Stethoscope, UsersRound } from "lucide-react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
@@ -6,7 +6,7 @@ import { PhotoCaption } from "@/components/ui/photo-caption";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { homeContent } from "@/content/home";
-import { getMediaSrc } from "@/lib/media";
+import { getMediaSrc } from "@/lib/database/uploaded-media";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
 import { PhotoGalleryLightbox } from "@/components/media/photo-gallery-lightbox";
@@ -20,7 +20,7 @@ const services = [
 ] as const;
 
 export function WhatWeDo({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("home", locale, homeMessages[locale]).whatWeDo;
+  const text = getPageContent("home", locale, homeMessages[locale]).whatWeDo;
   const images = homeContent.workImages;
   const photos = [
     { src: getMediaSrc("home.feeding", images.feeding.src), alt: text.imageAlt, objectPosition: "center 60%" },

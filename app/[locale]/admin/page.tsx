@@ -16,7 +16,9 @@ import { ActionButton } from "@/components/ui/action-button";
 import { QrCodeGenerator } from "@/components/admin/qr-code-generator";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
-import { getAnimals, getSettings, db } from "@/lib/db";
+import { getAnimals } from "@/lib/database/animal-records";
+import { getSettings } from "@/lib/database/site-settings";
+import { getSiteAnalytics } from "@/lib/database/site-analytics";
 import { logout } from "./actions";
 
 export const metadata = {
@@ -49,26 +51,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
   await requireAdmin(locale);
   const animals = getAnimals();
   const settings = getSettings();
-  const events = db()
-    .prepare(
-      "SELECT kind, COUNT(*) AS count FROM events GROUP BY kind ORDER BY count DESC, kind ASC",
-    )
-    .all() as { kind: string; count: number }[];
-  const topAnimals = db()
-    .prepare(
-      "SELECT CAST(SUBSTR(path, INSTR(path, '/companions/') + LENGTH('/companions/')) AS INTEGER) AS animalId, COUNT(*) AS count FROM events WHERE kind = 'view' AND path LIKE '%/companions/%' GROUP BY animalId ORDER BY count DESC, animalId ASC LIMIT 5",
-    )
-    .all() as { animalId: number; count: number }[];
-  const countries = db()
-    .prepare(
-      "SELECT country, COUNT(*) AS count FROM events WHERE country IS NOT NULL GROUP BY country ORDER BY count DESC, country ASC LIMIT 5",
-    )
-    .all() as { country: string; count: number }[];
-  const sources = db()
-    .prepare(
-      "SELECT source, COUNT(*) AS count FROM events WHERE source IS NOT NULL GROUP BY source ORDER BY count DESC, source ASC LIMIT 10",
-    )
-    .all() as { source: string; count: number }[];
+  const { events, topAnimals, countries, sources } = getSiteAnalytics();
   const animalsById = new Map(animals.map((animal) => [animal.id, animal]));
   const topCompanions = topAnimals.flatMap(({ animalId, count }) => {
     const companion = animalsById.get(animalId);

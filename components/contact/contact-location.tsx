@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import type { Settings } from "@/lib/db";
+import type { Settings } from "@/lib/database/site-settings";
 import type { ContactText } from "@/components/contact/contact-types";
 
 export function ContactLocation({

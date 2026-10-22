@@ -1,4 +1,4 @@
-import type { Settings } from "@/lib/db";
+import type { Settings } from "@/lib/database/site-settings";
 import { pageMessages } from "@/messages/pages";
 
 export type ContactText = typeof pageMessages.en.contact;

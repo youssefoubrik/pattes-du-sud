@@ -23,10 +23,10 @@ import { ActionButton } from "@/components/ui/action-button";
 import { isLocale, routing, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import {
-  copyFields,
-  getEditableCopy,
-  type CopyNamespace,
-} from "@/lib/editable-copy";
+  getPageContent,
+  type PageContentSection,
+} from "@/lib/database/page-content";
+import { getPageContentFields } from "@/lib/page-content-fields";
 import { aboutMessages } from "@/messages/about";
 import { homeMessages } from "@/messages/home";
 import { pageMessages } from "@/messages/pages";
@@ -38,13 +38,13 @@ export const metadata = {
 };
 
 export const instant = false;
-const namespaces: CopyNamespace[] = ["home", "about", "pages"];
-const sectionNames: Record<CopyNamespace, string> = {
+const namespaces: PageContentSection[] = ["home", "about", "pages"];
+const sectionNames: Record<PageContentSection, string> = {
   home: "Home page",
   about: "About page",
   pages: "Other pages",
 };
-const sectionIcons: Record<CopyNamespace, LucideIcon> = {
+const sectionIcons: Record<PageContentSection, LucideIcon> = {
   home: House,
   about: Users,
   pages: FileText,
@@ -78,7 +78,7 @@ const pageGroupNames: Record<string, string> = {
   animal: "Companion profile",
 };
 
-function fieldGroupTitle(namespace: CopyNamespace, path: string) {
+function fieldGroupTitle(namespace: PageContentSection, path: string) {
   const section = path.split(".")[0];
   if (namespace === "pages") return pageGroupNames[section] ?? section;
   if (namespace === "home") {
@@ -156,7 +156,7 @@ export default async function ContentPage({
             ? aboutMessages[language]
             : pageMessages[language];
       localizedFields[language] = new Map(
-        copyFields(getEditableCopy(section, language, base)).map((field) => [
+        getPageContentFields(getPageContent(section, language, base)).map((field) => [
           field.path,
           field.value,
         ]),
@@ -168,7 +168,7 @@ export default async function ContentPage({
         : section === "about"
           ? aboutMessages.en
           : pageMessages.en;
-    const fields = copyFields(getEditableCopy(section, "en", base));
+    const fields = getPageContentFields(getPageContent(section, "en", base));
     const groups = new Map<string, EditableField[]>();
     for (const field of fields) {
       const title = fieldGroupTitle(section, field.path);

@@ -9,7 +9,7 @@ import { cookies } from "next/headers";
 import { connection } from "next/server";
 import { redirect } from "next/navigation";
 import { localizedRoute, routePaths } from "@/lib/routes";
-import { db } from "./db";
+import { deleteAdminSession, getAdminSessionExpiry, removeExpiredAdminSessions, saveAdminSession } from "@/lib/database/admin-sessions";
 
 const cookieName = "pattes_admin";
 const lifespan = 60 * 60 * 24 * 7;
@@ -24,12 +24,10 @@ export function verifyPassword(password: string) {
 }
 
 export async function createSession() {
-  db().prepare("DELETE FROM sessions WHERE expires_at <= ?").run(Date.now());
+  removeExpiredAdminSessions(Date.now());
   const token = randomBytes(32).toString("hex");
   const hash = createHash("sha256").update(token).digest("hex");
-  db()
-    .prepare("INSERT INTO sessions (token_hash, expires_at) VALUES (?, ?)")
-    .run(hash, Date.now() + lifespan * 1000);
+  saveAdminSession(hash, Date.now() + lifespan * 1000);
   (await cookies()).set(cookieName, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -44,10 +42,8 @@ export async function isAdmin() {
   const token = (await cookies()).get(cookieName)?.value;
   if (!token || !/^[a-f0-9]{64}$/.test(token)) return false;
   const hash = createHash("sha256").update(token).digest("hex");
-  const row = db()
-    .prepare("SELECT expires_at FROM sessions WHERE token_hash = ?")
-    .get(hash) as { expires_at: number } | undefined;
-  return Boolean(row && row.expires_at > Date.now());
+  const expiresAt = getAdminSessionExpiry(hash);
+  return Boolean(expiresAt && expiresAt > Date.now());
 }
 
 export async function requireAdmin(locale: string) {
@@ -56,9 +52,6 @@ export async function requireAdmin(locale: string) {
 
 export async function endSession() {
   const token = (await cookies()).get(cookieName)?.value;
-  if (token)
-    db()
-      .prepare("DELETE FROM sessions WHERE token_hash = ?")
-      .run(createHash("sha256").update(token).digest("hex"));
+  if (token) deleteAdminSession(createHash("sha256").update(token).digest("hex"));
   (await cookies()).delete(cookieName);
 }

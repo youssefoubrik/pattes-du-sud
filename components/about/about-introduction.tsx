@@ -4,14 +4,14 @@ import { SectionImage } from "@/components/ui/section-image";
 import { PhotoCaption } from "@/components/ui/photo-caption";
 import { PhotoGalleryLightbox } from "@/components/media/photo-gallery-lightbox";
 import { aboutContent } from "@/content/about";
-import { getMediaSrc } from "@/lib/media";
+import { getMediaSrc } from "@/lib/database/uploaded-media";
 import type { Locale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
 import { animalMessages } from "@/messages/animals";
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 
 export function AboutIntroduction({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("about", locale, aboutMessages[locale]);
+  const text = getPageContent("about", locale, aboutMessages[locale]);
   const image = aboutContent.introductionImage;
   const photoSrc = getMediaSrc("about.introduction", image.src);
   const photoText = animalMessages[locale];

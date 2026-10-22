@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import { MapPin } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
@@ -7,13 +7,13 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { footerContent } from "@/content/footer";
-import { getSettings } from "@/lib/db";
+import { getSettings } from "@/lib/database/site-settings";
 import type { Locale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
 import { footerMessages } from "@/messages/footer";
 
 export function AssociationInMirleft({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("about", locale, aboutMessages[locale]).association;
+  const text = getPageContent("about", locale, aboutMessages[locale]).association;
   const footerText = footerMessages[locale];
   const { officialName } = footerContent;
   const settings = getSettings();

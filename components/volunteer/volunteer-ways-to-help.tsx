@@ -6,12 +6,12 @@ import { Section } from "@/components/ui/section";
 import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
 import { volunteerContent } from "@/content/volunteer";
-import { getEditableCopy } from "@/lib/editable-copy";
-import { getMediaSrc } from "@/lib/media";
+import { getPageContent } from "@/lib/database/page-content";
+import { getMediaSrc } from "@/lib/database/uploaded-media";
 import type { Locale } from "@/i18n/routing";
 
 export function VolunteerWaysToHelp({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("pages", locale, pageMessages[locale]).volunteer;
+  const text = getPageContent("pages", locale, pageMessages[locale]).volunteer;
   const photos = volunteerContent.actionImages.map((photo, index) => ({
     src: getMediaSrc(photo.key, photo.src),
     alt: text.actionImageAlts[index],

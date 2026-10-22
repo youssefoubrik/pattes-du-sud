@@ -3,7 +3,7 @@ import { connection } from "next/server";
 import { Mail, MessageCircle } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
 import type { Locale } from "@/i18n/routing";
-import { getSettings } from "@/lib/db";
+import { getSettings } from "@/lib/database/site-settings";
 import { footerMessages } from "@/messages/footer";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { footerLinkClass } from "@/components/footer/footer-link";

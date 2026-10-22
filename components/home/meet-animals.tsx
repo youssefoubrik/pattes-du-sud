@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { getHomepageAnimals } from "@/content/animals";
-import { getAnimals } from "@/lib/db";
+import { getAnimals } from "@/lib/database/animal-records";
 import type { Locale } from "@/i18n/routing";
 import { animalMessages } from "@/messages/animals";
 

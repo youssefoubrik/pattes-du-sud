@@ -32,7 +32,7 @@ import { RemoveCompanionForm } from "@/components/admin/remove-companion-form";
 import { ActionNotice } from "@/components/admin/action-notice";
 import { isLocale, routing, type Locale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
-import { getAnimals, getAnimalsPage } from "@/lib/db";
+import { getAnimals, getAnimalsPage } from "@/lib/database/animal-records";
 import { animalMessages } from "@/messages/animals";
 import {
   ANIMAL_NAME_MAX_LENGTH,

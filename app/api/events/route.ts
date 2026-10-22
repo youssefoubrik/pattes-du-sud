@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { recordSiteEvent } from "@/lib/database/site-analytics";
 
 export async function POST(request: Request) {
   const origin = request.headers.get("origin");
@@ -36,15 +36,11 @@ export async function POST(request: Request) {
     !/[\u0000-\u001f\u007f]/u.test(rawSource)
       ? rawSource.replace(/\s+/gu, " ")
       : null;
-  db()
-    .prepare(
-      "INSERT INTO events (kind, path, country, source) VALUES (?, ?, ?, ?)",
-    )
-    .run(
-      payload.kind,
-      payload.path,
-      country && /^[A-Z]{2}$/.test(country) ? country : null,
-      source,
-    );
+  recordSiteEvent(
+    payload.kind,
+    payload.path,
+    country && /^[A-Z]{2}$/.test(country) ? country : null,
+    source,
+  );
   return new Response(null, { status: 204 });
 }

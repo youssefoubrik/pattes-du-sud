@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { connection } from "next/server";
 import type { Locale } from "@/i18n/routing";
-import { getSettings } from "@/lib/db";
+import { getSettings } from "@/lib/database/site-settings";
 import { footerMessages } from "@/messages/footer";
 
 export function FooterRegistration({ locale }: { locale: Locale }) {

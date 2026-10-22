@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { Suspense } from "react";
@@ -12,12 +12,13 @@ import { BackLink } from "@/components/ui/back-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { isLocale } from "@/i18n/routing";
-import { getAnimal, getSettings } from "@/lib/db";
+import { getAnimal } from "@/lib/database/animal-records";
+import { getSettings } from "@/lib/database/site-settings";
 import { pageMetadata } from "@/lib/metadata";
 import { parseAnimalId } from "@/lib/animal-id";
 import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
-import { animalCopyForLocale } from "@/lib/animal-copy";
+import { animalStoryForLocale } from "@/lib/animal-story";
 import { getCompanionProfileFacts } from "@/lib/companion-profile";
 import { splitParagraphs } from "@/lib/text";
 import { whatsappUrl } from "@/lib/whatsapp";
@@ -62,9 +63,9 @@ async function AnimalDetailContent({
   if (!id) notFound();
   const animal = getAnimal(id);
   if (!animal) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).animal;
+  const t = getPageContent("pages", locale, pageMessages[locale]).animal;
   const common = animalMessages[locale];
-  const story = animalCopyForLocale(animal.story, locale);
+  const story = animalStoryForLocale(animal.story, locale);
   const settings = getSettings();
   const whatsapp = whatsappUrl(
     settings.whatsappNumber,

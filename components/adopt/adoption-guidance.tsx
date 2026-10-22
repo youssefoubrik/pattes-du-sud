@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -8,7 +8,7 @@ import { localizedRoute, routePaths } from "@/lib/routes";
 import { pageMessages } from "@/messages/pages";
 
 export function AdoptionGuidance({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("pages", locale, pageMessages[locale]).adopt;
+  const text = getPageContent("pages", locale, pageMessages[locale]).adopt;
 
   return (
     <Section aria-labelledby="adoption-guidance-title" className="relative">

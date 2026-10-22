@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getUploadedPhoto } from "@/lib/database/uploaded-media";
 
 export async function GET(
   _request: Request,
@@ -6,9 +6,7 @@ export async function GET(
 ) {
   const { id } = await params;
   if (!/^[a-f0-9-]{36}$/.test(id)) return new Response(null, { status: 404 });
-  const row = db()
-    .prepare("SELECT mime, bytes FROM media WHERE id = ?")
-    .get(id) as { mime: string; bytes: Buffer } | undefined;
+  const row = getUploadedPhoto(id);
   if (!row) return new Response(null, { status: 404 });
   return new Response(new Uint8Array(row.bytes), {
     headers: {

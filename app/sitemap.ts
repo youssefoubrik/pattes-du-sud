@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { connection } from "next/server";
 import { routing } from "@/i18n/routing";
-import { getAnimals } from "@/lib/db";
+import { getAnimals } from "@/lib/database/animal-records";
 import { localizedRoute, routePaths } from "@/lib/routes";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

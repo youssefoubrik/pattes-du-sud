@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/about">)
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const { title, description } = getEditableCopy("about", locale, aboutMessages[locale]);
+  const { title, description } = getPageContent("about", locale, aboutMessages[locale]);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   return {

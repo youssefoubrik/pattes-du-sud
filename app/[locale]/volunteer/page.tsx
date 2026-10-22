@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { VolunteerIntroduction } from "@/components/volunteer/volunteer-introduction";
@@ -13,7 +13,7 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/volunteer">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).volunteer;
+  const t = getPageContent("pages", locale, pageMessages[locale]).volunteer;
   return pageMetadata(locale, "/volunteer", t.title, t.intro);
 }
 export default async function Volunteer({

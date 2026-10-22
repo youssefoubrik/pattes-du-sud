@@ -16,7 +16,7 @@ import { ActionButton } from "@/components/ui/action-button";
 import { ActionNotice } from "@/components/admin/action-notice";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
-import { getSettings, type Settings } from "@/lib/db";
+import { getSettings, type Settings } from "@/lib/database/site-settings";
 import { updateSettings } from "../actions";
 
 export const metadata = {

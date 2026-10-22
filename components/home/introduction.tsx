@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import { AnimalGreeting } from "@/components/animal-greeting";
 import { LocationLabel } from "@/components/location-label";
@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionImage } from "@/components/ui/section-image";
 import { homeContent } from "@/content/home";
-import { getMediaSrc } from "@/lib/media";
+import { getMediaSrc } from "@/lib/database/uploaded-media";
 import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { homeMessages } from "@/messages/home";
@@ -15,7 +15,7 @@ import { PhotoGalleryLightbox } from "@/components/media/photo-gallery-lightbox"
 import { animalMessages } from "@/messages/animals";
 
 export function Introduction({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("home", locale, homeMessages[locale]);
+  const text = getPageContent("home", locale, homeMessages[locale]);
   const image = homeContent.introductionImage;
   const photoSrc = getMediaSrc("home.introduction", image.src);
   const photoText = animalMessages[locale];

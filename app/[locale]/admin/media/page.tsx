@@ -9,7 +9,7 @@ import { MediaPhotoForm } from "@/components/admin/media-photo-form";
 import { mediaSlots } from "@/content/media";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
-import { getMediaSrc } from "@/lib/media";
+import { getMediaSrc } from "@/lib/database/uploaded-media";
 import { updateMedia } from "../actions";
 
 export const metadata = {

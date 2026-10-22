@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CopyValue } from "@/components/donate/copy-value";
@@ -9,7 +9,7 @@ import { PageIntro } from "@/components/ui/page-intro";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { isLocale } from "@/i18n/routing";
-import { getSettings } from "@/lib/db";
+import { getSettings } from "@/lib/database/site-settings";
 import { pageMetadata } from "@/lib/metadata";
 import { pageMessages } from "@/messages/pages";
 
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/donate">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).donate;
+  const t = getPageContent("pages", locale, pageMessages[locale]).donate;
   return pageMetadata(locale, "/donate", t.title, t.intro);
 }
 
@@ -27,7 +27,7 @@ export default async function Donate({
 }: PageProps<"/[locale]/donate">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).donate;
+  const t = getPageContent("pages", locale, pageMessages[locale]).donate;
   const s = getSettings();
   const bankDetails = (["bankName", "iban", "rib", "swift"] as const).filter(
     (key) => s[key],

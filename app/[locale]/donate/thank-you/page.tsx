@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -15,7 +15,7 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/donate/thank-you">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).thanks;
+  const t = getPageContent("pages", locale, pageMessages[locale]).thanks;
   return {
     ...pageMetadata(locale, "/donate/thank-you", t.title, t.intro),
     robots: { index: false },
@@ -26,7 +26,7 @@ export default async function ThankYou({
 }: PageProps<"/[locale]/donate/thank-you">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).thanks;
+  const t = getPageContent("pages", locale, pageMessages[locale]).thanks;
   return (
     <main id="main-content" className="flex-1">
       <Section>

@@ -1,14 +1,14 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import { MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
-import { getSettings } from "@/lib/db";
+import { getSettings } from "@/lib/database/site-settings";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
 
 export function Location({ locale }: { locale: Locale }) {
-  const text = getEditableCopy("home", locale, homeMessages[locale]).location;
+  const text = getPageContent("home", locale, homeMessages[locale]).location;
 
   return (
     <Section aria-labelledby="location-title" className="relative">

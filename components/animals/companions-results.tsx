@@ -1,7 +1,7 @@
 import { AnimalGallery } from "@/components/animals/animal-gallery";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { getPublicAnimalsPage } from "@/lib/db";
+import { getPublicAnimalsPage } from "@/lib/database/animal-records";
 import type { Locale } from "@/i18n/routing";
 import {
   normalizeGallerySearch,

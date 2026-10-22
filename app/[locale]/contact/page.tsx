@@ -1,4 +1,4 @@
-import { getEditableCopy } from "@/lib/editable-copy";
+import { getPageContent } from "@/lib/database/page-content";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactAvailability } from "@/components/contact/contact-availability";
@@ -8,7 +8,7 @@ import { ContactMethods } from "@/components/contact/contact-methods";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { isLocale } from "@/i18n/routing";
-import { getSettings } from "@/lib/db";
+import { getSettings } from "@/lib/database/site-settings";
 import { pageMetadata } from "@/lib/metadata";
 import { pageMessages } from "@/messages/pages";
 
@@ -17,7 +17,7 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/contact">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).contact;
+  const t = getPageContent("pages", locale, pageMessages[locale]).contact;
   return pageMetadata(locale, "/contact", t.title, t.intro);
 }
 
@@ -26,7 +26,7 @@ export default async function Contact({
 }: PageProps<"/[locale]/contact">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getEditableCopy("pages", locale, pageMessages[locale]).contact;
+  const t = getPageContent("pages", locale, pageMessages[locale]).contact;
   const s = getSettings();
 
   return (
