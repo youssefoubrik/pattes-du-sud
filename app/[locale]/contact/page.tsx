@@ -1,57 +1,16 @@
 import { getEditableCopy } from "@/lib/editable-copy";
 import type { Metadata } from "next";
-import {
-  ArrowUpRight,
-  Mail,
-  MessageCircle,
-  type LucideIcon,
-} from "lucide-react";
 import { notFound } from "next/navigation";
+import { ContactAvailability } from "@/components/contact/contact-availability";
+import { ContactIntroduction } from "@/components/contact/contact-introduction";
+import { ContactLocation } from "@/components/contact/contact-location";
+import { ContactMethods } from "@/components/contact/contact-methods";
 import { Container } from "@/components/ui/container";
-import { PageIntro } from "@/components/ui/page-intro";
 import { Section } from "@/components/ui/section";
 import { isLocale } from "@/i18n/routing";
 import { getSettings } from "@/lib/db";
 import { pageMetadata } from "@/lib/metadata";
-import { whatsappUrl } from "@/lib/whatsapp";
 import { pageMessages } from "@/messages/pages";
-
-function ContactMethod({
-  href,
-  icon: Icon,
-  title,
-  detail,
-  hint,
-  detailClassName = "",
-}: {
-  href: string;
-  icon: LucideIcon;
-  title: string;
-  detail: string;
-  hint: string;
-  detailClassName?: string;
-}) {
-  return (
-    <a
-      href={href}
-      className="group rounded-3xl bg-secondary p-6 transition-opacity duration-200 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading"
-    >
-      <Icon aria-hidden="true" className="text-primary-hover" />
-      <h2 className="mt-3 flex items-center gap-2 text-xl font-semibold text-heading">
-        <span className="group-hover:underline">{title}</span>
-        <ArrowUpRight
-          size={18}
-          aria-hidden="true"
-          className="shrink-0 motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-focus-visible:translate-x-0.5 motion-safe:group-focus-visible:-translate-y-0.5"
-        />
-      </h2>
-      <p className={`mt-2 ${detailClassName}`} dir="ltr">
-        {detail}
-      </p>
-      <p className="mt-2 text-sm text-muted-foreground">{hint}</p>
-    </a>
-  );
-}
 
 export async function generateMetadata({
   params,
@@ -69,85 +28,17 @@ export default async function Contact({
   if (!isLocale(locale)) notFound();
   const t = getEditableCopy("pages", locale, pageMessages[locale]).contact;
   const s = getSettings();
-  const responseTime = t.responseTime.replace(
-    "{hours}",
-    new Intl.NumberFormat(locale).format(Number(s.responseTimeHours)),
-  );
 
   return (
     <main id="main-content" className="flex-1">
-      <PageIntro
-        title={t.title}
-        intro={t.intro}
-        className="!pb-4"
-      />
+      <ContactIntroduction text={t} />
       <Section className="!pt-0">
         <Container>
-          <div className="grid gap-5 md:grid-cols-2">
-            <ContactMethod
-              href={whatsappUrl(s.whatsappNumber, t.whatsappText)}
-              icon={MessageCircle}
-              title={t.whatsapp}
-              hint={t.whatsappOpens}
-              detail={s.whatsappDisplay || s.whatsappNumber}
-            />
-            {s.email && (
-              <ContactMethod
-                href={`mailto:${s.email}`}
-                icon={Mail}
-                title={t.email}
-                hint={t.emailOpens}
-                detail={s.email}
-                detailClassName="break-all"
-              />
-            )}
-          </div>
-          <div className="mt-8 space-y-3">
-            <p>{responseTime}</p>
-            {(s.openingHours || s.closingHours) && (
-              <div className="rounded-2xl bg-background p-5">
-                <h2 className="text-lg font-semibold text-heading">
-                  {t.hoursTitle}
-                </h2>
-                <dl className="mt-2 grid gap-2 sm:grid-cols-2">
-                  {s.openingHours && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">
-                        {t.openingHours}
-                      </dt>
-                      <dd>{s.openingHours}</dd>
-                    </div>
-                  )}
-                  {s.closingHours && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground">
-                        {t.closingHours}
-                      </dt>
-                      <dd>{s.closingHours}</dd>
-                    </div>
-                  )}
-                </dl>
-              </div>
-            )}
-          </div>
-          <div className="mt-10">
-            <h2 className="mb-4 text-2xl font-semibold text-heading">
-              {t.mapTitle}
-            </h2>
-            <p className="mb-4 max-w-2xl">{t.arrange}</p>
-            <div className="relative min-h-72 overflow-hidden rounded-3xl border border-border bg-background sm:min-h-96">
-              <iframe
-                src={s.mapEmbedUrl}
-                title={t.mapTitle}
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                allowFullScreen
-                className="absolute inset-0 h-full w-full border-0"
-              />
-            </div>
-          </div>
+          <ContactMethods text={t} settings={s} />
+          <ContactAvailability locale={locale} text={t} settings={s} />
         </Container>
       </Section>
+      <ContactLocation text={t} mapEmbedUrl={s.mapEmbedUrl} />
     </main>
   );
 }
