@@ -24,8 +24,8 @@ export default async function Privacy({
   const t = getEditableCopy("pages", locale, pageMessages[locale]).privacy;
   return (
     <main id="main-content" className="flex-1">
-      <PageIntro title={t.title} intro={t.intro} />
-      <Section className="pt-0">
+      <PageIntro title={t.title} intro={t.intro} className="!pb-0" />
+      <Section className="!pt-0">
         <Container className="max-w-3xl space-y-5 text-lg leading-relaxed">
           <p>{t.data}</p>
           <p>{t.payments}</p>
