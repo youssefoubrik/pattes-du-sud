@@ -46,11 +46,14 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
   await connection();
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  const fontVariables = locale === "ar"
+    ? notoSansArabic.variable
+    : `${nunitoSans.variable} ${lora.variable}`;
   return (
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${nunitoSans.variable} ${locale === "ar" ? notoSansArabic.variable : lora.variable} h-full antialiased`}
+      className={`${fontVariables} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Analytics />
