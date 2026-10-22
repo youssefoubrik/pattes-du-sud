@@ -14,18 +14,13 @@ import { Section } from "@/components/ui/section";
 import { isLocale } from "@/i18n/routing";
 import { getAnimal, getSettings } from "@/lib/db";
 import { pageMetadata } from "@/lib/metadata";
+import { parseAnimalId } from "@/lib/animal-id";
 import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
 import { animalCopyForLocale } from "@/lib/animal-copy";
 import { getCompanionProfileFacts } from "@/lib/companion-profile";
 import { splitParagraphs } from "@/lib/text";
 import { whatsappUrl } from "@/lib/whatsapp";
-
-function parseAnimalId(value: string) {
-  if (!/^[1-9]\d*$/.test(value)) return undefined;
-  const id = Number(value);
-  return Number.isSafeInteger(id) ? id : undefined;
-}
 
 type CompanionPageParams = Pick<PageProps<"/[locale]/companions/[id]">, "params">;
 
@@ -41,7 +36,7 @@ export async function generateMetadata({
   const primaryPhoto = animal.photos[0];
   return pageMetadata(
     locale,
-    `/companions/${id}`,
+    routePaths.companion(id),
     animal.name,
     `${animal.name} · ${animalMessages[locale].status[animal.status]} · ${animalMessages[locale].species[animal.species]}`,
     primaryPhoto.src,
