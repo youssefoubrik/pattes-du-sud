@@ -4,7 +4,6 @@ import { Section } from "@/components/ui/section";
 import { ANIMAL_NAME_MAX_LENGTH } from "@/lib/animal-limits";
 import { getPublicAnimalsPage } from "@/lib/db";
 import type { Locale } from "@/i18n/routing";
-import { animalGalleryMessages } from "@/messages/animal-gallery";
 
 const PAGE_SIZE = 6;
 
@@ -29,12 +28,9 @@ export async function CompanionsResults({
     PAGE_SIZE,
     Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
   );
-  const text = animalGalleryMessages[locale];
-
   return (
-    <Section aria-labelledby="companions-results-title" className="!pt-0">
+    <Section aria-labelledby="companions-title" className="!pt-0">
       <Container>
-        <h2 id="companions-results-title" className="sr-only">{text.title}</h2>
         <AnimalGallery
           animals={animals}
           locale={locale}
