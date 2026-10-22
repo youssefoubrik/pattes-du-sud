@@ -12,6 +12,7 @@ import {
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
+import { QrCodeGenerator } from "@/components/admin/qr-code-generator";
 import { isLocale } from "@/i18n/routing";
 import { requireAdmin } from "@/lib/auth";
 import { getAnimals, getSettings, db } from "@/lib/db";
@@ -220,10 +221,8 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               />
               QR locations
             </h3>
+            <QrCodeGenerator locale={locale} />
             <div>
-              <p className="mb-3 mt-2 text-sm">
-                Use /mirleft?source=location-name for each printed QR code.
-              </p>
               <ul className="flex flex-wrap gap-x-6 gap-y-2">
                 {sources.map((row) => (
                   <li
@@ -237,6 +236,11 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
                   </li>
                 ))}
               </ul>
+              {sources.length === 0 && (
+                <p className="mt-2 text-sm text-muted-foreground">
+                  No QR scans recorded yet.
+                </p>
+              )}
             </div>
           </section>
         </div>

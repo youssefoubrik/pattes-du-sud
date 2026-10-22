@@ -28,10 +28,13 @@ export async function POST(request: Request) {
   const country =
     request.headers.get("cf-ipcountry") ||
     request.headers.get("x-vercel-ip-country");
+  const rawSource =
+    typeof payload.source === "string" ? payload.source.trim() : "";
   const source =
-    typeof payload.source === "string" &&
-    /^[a-z0-9-]{1,40}$/.test(payload.source)
-      ? payload.source
+    rawSource.length > 0 &&
+    rawSource.length <= 80 &&
+    !/[\u0000-\u001f\u007f]/u.test(rawSource)
+      ? rawSource.replace(/\s+/gu, " ")
       : null;
   db()
     .prepare(
