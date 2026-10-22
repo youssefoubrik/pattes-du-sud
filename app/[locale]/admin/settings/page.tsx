@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import {
-  ArrowLeft,
   Building2,
   ChartColumn,
   Heart,
@@ -13,6 +11,7 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
+import { BackLink } from "@/components/ui/back-link";
 import { ActionButton } from "@/components/ui/action-button";
 import { ActionNotice } from "@/components/admin/action-notice";
 import { isLocale } from "@/i18n/routing";
@@ -122,17 +121,9 @@ export default async function SettingsPage({
   return (
     <main className="flex-1 py-12">
       <Container className="max-w-3xl">
-        <Link
-          href={localizedRoute(locale, routePaths.admin)}
-          className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
-        >
-          <ArrowLeft
-            size={18}
-            className="text-primary rtl:rotate-180"
-            aria-hidden="true"
-          />
+        <BackLink href={localizedRoute(locale, routePaths.admin)}>
           Editor
-        </Link>
+        </BackLink>
         <h1 className="mt-5 text-4xl text-heading">Settings</h1>
         {query.saved && (
           <ActionNotice

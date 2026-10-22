@@ -2,12 +2,13 @@ import { getEditableCopy } from "@/lib/editable-copy";
 import { localizedRoute, routePaths } from "@/lib/routes";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Heart, PawPrint } from "lucide-react";
 import { CompanionPhotoGallery } from "@/components/companions/companion-photo-gallery";
-import { ShareButton } from "@/components/animals/share-button";
-import { ButtonLink } from "@/components/ui/button-link";
+import { CompanionProfileActions } from "@/components/companions/companion-profile-actions";
+import { CompanionProfileFacts } from "@/components/companions/companion-profile-facts";
+import { CompanionProfileHeading } from "@/components/companions/companion-profile-heading";
+import { CompanionProfileStory } from "@/components/companions/companion-profile-story";
+import { BackLink } from "@/components/ui/back-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { isLocale } from "@/i18n/routing";
@@ -16,6 +17,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
 import { animalCopyForLocale } from "@/lib/animal-copy";
+import { getCompanionProfileFacts } from "@/lib/companion-profile";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 function parseAnimalId(value: string) {
@@ -72,21 +74,16 @@ async function AnimalDetailContent({
     settings.whatsappNumber,
     common.adoptionMessage.replace("{name}", animal.name),
   );
+  const storyText = story || (animal.personality && common.personality[animal.personality]) || "";
+  const paragraphs = storyText.split(/\n\s*\n/).filter(Boolean);
+  const facts = getCompanionProfileFacts(animal, common, t);
   return (
     <main id="main-content" className="flex-1">
       <Section>
         <Container>
-          <Link
-            href={localizedRoute(locale, routePaths.companions)}
-            className="inline-flex min-h-11 items-center gap-2 font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-heading"
-          >
-            <ArrowLeft
-              size={18}
-              className="text-primary rtl:rotate-180"
-              aria-hidden="true"
-            />
+          <BackLink href={localizedRoute(locale, routePaths.companions)}>
             {t.back}
-          </Link>
+          </BackLink>
           <div className="mt-7">
             <div className="mx-auto max-w-4xl">
               <CompanionPhotoGallery
@@ -97,93 +94,22 @@ async function AnimalDetailContent({
               />
             </div>
             <div className="mx-auto mt-8 max-w-4xl">
-              <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-3">
-                <div className="min-w-0">
-                  <h1 className="text-5xl text-heading">{animal.name}</h1>
-                  <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
-                    <p className="inline-flex items-center gap-2 text-base font-semibold text-accent">
-                      <PawPrint size={18} aria-hidden="true" />
-                      {common.species[animal.species]}
-                    </p>
-                    <p className="inline-flex items-center gap-2 text-base font-semibold text-primary-hover">
-                      <Heart size={17} aria-hidden="true" />
-                      {common.status[animal.status]}
-                    </p>
-                  </div>
-                </div>
-                {animal.status === "available" && (
-                  <Link
-                    href={whatsapp}
-                    className="flex min-h-12 w-full max-w-md items-center justify-between gap-4 rounded-full border border-border bg-secondary px-5 py-2 text-heading transition-colors duration-150 hover:bg-secondary/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-fit"
-                  >
-                    <span className="font-bold text-heading">{t.adopt}</span>
-                    <ArrowRight
-                      size={18}
-                      className="shrink-0 rtl:rotate-180"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                )}
-              </div>
-              <section className="rounded-sm mt-6 border-b border-border bg-secondary px-4 py-5 sm:px-6">
-                <h2 className="text-2xl text-heading">{t.facts}</h2>
-                <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
-                  <div>
-                    <dt className="text-sm font-semibold text-muted-foreground">{t.age}</dt>
-                    <dd className="mt-1 font-bold text-heading">
-                      {animal.ageYears !== undefined
-                        ? common.age.replace("{age}", String(animal.ageYears))
-                        : common.ageUnknown}
-                    </dd>
-                  </div>
-                  {animal.sex && (
-                    <div>
-                      <dt className="text-sm font-semibold text-muted-foreground">{t.sex}</dt>
-                      <dd className="mt-1 font-bold text-heading">{t[animal.sex]}</dd>
-                    </div>
-                  )}
-                  <div>
-                    <dt className="text-sm font-semibold text-muted-foreground">{t.vaccinated}</dt>
-                    <dd className="mt-1 font-bold leading-snug text-heading">
-                      {animal.vaccinated === "yes" ? t.vaccinatedYes : t.vaccinatedNo}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-sm font-semibold text-muted-foreground">{t.sterilized}</dt>
-                    <dd className="mt-1 font-bold leading-snug text-heading">
-                      {animal.sterilized === "yes" ? t.sterilizedYes : t.sterilizedNo}
-                    </dd>
-                  </div>
-                </dl>
-              </section>
-              {(story || animal.personality) && (
-                <section className="mt-7">
-                  <h2 className="text-2xl text-heading">{t.story}</h2>
-                  <div className="mt-3 max-w-3xl space-y-4 text-lg leading-relaxed text-foreground">
-                    {(story ||
-                      (animal.personality &&
-                        common.personality[animal.personality]) ||
-                      "")
-                      .split(/\n\s*\n/)
-                      .filter(Boolean)
-                      .map((paragraph, index) => (
-                        <p key={index} className="whitespace-pre-line">
-                          {paragraph}
-                        </p>
-                      ))}
-                  </div>
-                </section>
-              )}
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href={localizedRoute(locale, routePaths.donate)} variant="donate">
-                  {t.help}
-                </ButtonLink>
-                <ShareButton
-                  title={animal.name}
-                  label={t.share}
-                  copied={t.shareFallback}
-                />
-              </div>
+              <CompanionProfileHeading
+                name={animal.name}
+                species={common.species[animal.species]}
+                status={common.status[animal.status]}
+                adoptionHref={animal.status === "available" ? whatsapp : undefined}
+                adoptLabel={t.adopt}
+              />
+              <CompanionProfileFacts title={t.facts} facts={facts} />
+              <CompanionProfileStory title={t.story} paragraphs={paragraphs} />
+              <CompanionProfileActions
+                donateHref={localizedRoute(locale, routePaths.donate)}
+                donateLabel={t.help}
+                shareLabel={t.share}
+                shareFallback={t.shareFallback}
+                title={animal.name}
+              />
             </div>
           </div>
         </Container>
