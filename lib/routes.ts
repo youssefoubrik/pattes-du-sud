@@ -10,7 +10,6 @@ export const routePaths = {
   contact: "/contact",
   volunteer: "/volunteer",
   privacy: "/privacy",
-  legal: "/legal",
   admin: "/admin",
   adminLogin: "/admin/login",
   adminCompanions: "/admin/companions",

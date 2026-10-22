@@ -18,7 +18,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     routePaths.contact,
     routePaths.volunteer,
     routePaths.privacy,
-    routePaths.legal,
   ];
   const animals = getAnimals().map((animal) => routePaths.companion(animal.id));
   return routing.locales.flatMap((locale) =>

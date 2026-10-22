@@ -84,9 +84,8 @@ export function Footer({ locale }: { locale: Locale }) {
 
         <div className="flex flex-col gap-3 border-t border-border py-5 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>© {officialName}</p>
-          <nav aria-label={footer.legalNavigation}>
+          <nav aria-label={footer.privacy}>
             <ul className="flex flex-wrap gap-x-6">
-              <li><Link href={localizedRoute(locale, routePaths.legal)} className={linkClass}>{footer.legal}</Link></li>
               <li><Link href={localizedRoute(locale, routePaths.privacy)} className={linkClass}>{footer.privacy}</Link></li>
             </ul>
           </nav>

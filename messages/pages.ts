@@ -83,13 +83,6 @@ type Copy = {
     payments: string;
     contact: string;
   };
-  legal: {
-    title: string;
-    intro: string;
-    name: string;
-    registration: string;
-    contact: string;
-  };
   animal: {
     story: string;
     facts: string;
@@ -237,13 +230,6 @@ export const pageMessages: Record<Locale, Copy> = {
         "Payments take place with the payment provider or your bank. This website does not collect card details.",
       contact:
         "For a question about your information, use the contact details on our Contact page.",
-    },
-    legal: {
-      title: "Association information",
-      intro: "Pattes du Sud works for animals in Mirleft, Morocco.",
-      name: "Name",
-      registration: "Registration reference",
-      contact: "Contact details",
     },
     animal: {
       story: "My story",
@@ -393,13 +379,6 @@ export const pageMessages: Record<Locale, Copy> = {
       contact:
         "Pour toute question, utilisez les coordonnées de la page Contact.",
     },
-    legal: {
-      title: "Informations sur l’association",
-      intro: "Pattes du Sud agit pour les animaux à Mirleft, au Maroc.",
-      name: "Nom",
-      registration: "Référence d’enregistrement",
-      contact: "Coordonnées",
-    },
     animal: {
       story: "Mon histoire",
       facts: "À propos de moi",
@@ -547,13 +526,6 @@ export const pageMessages: Record<Locale, Copy> = {
         "Zahlungen erfolgen beim Zahlungsanbieter oder deiner Bank. Diese Website speichert keine Kartendaten.",
       contact: "Bei Fragen zu deinen Daten nutze bitte die Kontaktseite.",
     },
-    legal: {
-      title: "Vereinsinformationen",
-      intro: "Pattes du Sud setzt sich für Tiere in Mirleft, Marokko, ein.",
-      name: "Name",
-      registration: "Registrierungsnummer",
-      contact: "Kontaktdaten",
-    },
     animal: {
       story: "Meine Geschichte",
       facts: "Über mich",
@@ -695,13 +667,6 @@ export const pageMessages: Record<Locale, Copy> = {
       payments:
         "تتم المدفوعات لدى مزود الدفع أو بنكك. لا يجمع هذا الموقع بيانات بطاقتك.",
       contact: "للاستفسار عن بياناتك، استخدم وسائل التواصل في صفحة الاتصال.",
-    },
-    legal: {
-      title: "معلومات الجمعية",
-      intro: "تعمل جمعية بات دو سود من أجل الحيوانات في ميرلفت بالمغرب.",
-      name: "الاسم",
-      registration: "رقم التسجيل",
-      contact: "بيانات التواصل",
     },
     animal: {
       story: "قصتي",

@@ -75,7 +75,6 @@ const pageGroupNames: Record<string, string> = {
   thanks: "Donation thank-you page",
   mirleft: "Mirleft page",
   privacy: "Privacy page",
-  legal: "Legal page",
   animal: "Companion profile",
 };
 
@@ -133,7 +132,6 @@ const pageGroupIcons: Record<string, LucideIcon> = {
   "Donation thank-you page": BadgeCheck,
   "Mirleft page": MapPin,
   "Privacy page": Shield,
-  "Legal page": FileText,
   "Companion profile": PawPrint,
 };
 
