@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/i18n/routing";
 import { animalGalleryMessages } from "@/messages/animal-gallery";
-import { createGalleryUrl } from "@/components/animals/gallery-url";
+import { createGalleryUrl } from "@/lib/animal-gallery-url";
 import type { AnimalSpeciesFilter, AnimalStatusFilter } from "@/domain/animal";
 
 export function GalleryPagination({

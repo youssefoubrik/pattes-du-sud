@@ -5,7 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { animalGalleryMessages } from "@/messages/animal-gallery";
-import { createGalleryUrl } from "@/components/animals/gallery-url";
+import { createGalleryUrl } from "@/lib/animal-gallery-url";
+import { normalizeGallerySearch } from "@/lib/animal-gallery-params";
 import type { AnimalSpeciesFilter, AnimalStatusFilter } from "@/domain/animal";
 
 export function GalleryFilters({
@@ -65,7 +66,7 @@ function SearchField({
   const [value, setValue] = useState(search);
 
   useEffect(() => {
-    const term = value.trim();
+    const term = normalizeGallerySearch(value);
     if (term === search) return;
     const timeout = window.setTimeout(() => {
       router.replace(createGalleryUrl(pathname, term, species, status, 1), { scroll: false });
