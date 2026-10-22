@@ -16,6 +16,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { animalMessages } from "@/messages/animals";
 import { pageMessages } from "@/messages/pages";
 import { animalCopyForLocale } from "@/lib/animal-copy";
+import { whatsappUrl } from "@/lib/whatsapp";
 
 function parseAnimalId(value: string) {
   if (!/^[1-9]\d*$/.test(value)) return undefined;
@@ -35,7 +36,6 @@ export async function generateMetadata({
   const animal = getAnimal(id);
   if (!animal) notFound();
   const primaryPhoto = animal.photos[0];
-  if (!primaryPhoto) notFound();
   return pageMetadata(
     locale,
     `/companions/${id}`,
@@ -64,14 +64,14 @@ async function AnimalDetailContent({
   if (!id) notFound();
   const animal = getAnimal(id);
   if (!animal) notFound();
-  if (!animal.photos.length) notFound();
   const t = getEditableCopy("pages", locale, pageMessages[locale]).animal;
   const common = animalMessages[locale];
   const story = animalCopyForLocale(animal.story, locale);
   const settings = getSettings();
-  const whatsapp = settings.whatsappNumber
-    ? `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(common.adoptionMessage.replace("{name}", animal.name))}`
-    : `${localizedRoute(locale, routePaths.contact)}`;
+  const whatsapp = whatsappUrl(
+    settings.whatsappNumber,
+    common.adoptionMessage.replace("{name}", animal.name),
+  );
   return (
     <main id="main-content" className="flex-1">
       <Section>

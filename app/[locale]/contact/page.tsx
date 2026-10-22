@@ -13,6 +13,7 @@ import { Section } from "@/components/ui/section";
 import { isLocale } from "@/i18n/routing";
 import { getSettings } from "@/lib/db";
 import { pageMetadata } from "@/lib/metadata";
+import { whatsappUrl } from "@/lib/whatsapp";
 import { pageMessages } from "@/messages/pages";
 
 function ContactMethod({
@@ -83,15 +84,13 @@ export default async function Contact({
       <Section className="!pt-0">
         <Container>
           <div className="grid gap-5 md:grid-cols-2">
-            {s.whatsappNumber && (
-              <ContactMethod
-                href={`https://wa.me/${s.whatsappNumber}?text=${encodeURIComponent(t.whatsappText)}`}
-                icon={MessageCircle}
-                title={t.whatsapp}
-                hint={t.whatsappOpens}
-                detail={s.whatsappDisplay || s.whatsappNumber}
-              />
-            )}
+            <ContactMethod
+              href={whatsappUrl(s.whatsappNumber, t.whatsappText)}
+              icon={MessageCircle}
+              title={t.whatsapp}
+              hint={t.whatsappOpens}
+              detail={s.whatsappDisplay || s.whatsappNumber}
+            />
             {s.email && (
               <ContactMethod
                 href={`mailto:${s.email}`}
@@ -103,7 +102,6 @@ export default async function Contact({
               />
             )}
           </div>
-          {!s.email && !s.whatsappNumber && <p>{t.unavailable}</p>}
           <div className="mt-8 space-y-3">
             <p>{responseTime}</p>
             {(s.openingHours || s.closingHours) && (

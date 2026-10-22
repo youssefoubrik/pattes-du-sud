@@ -12,6 +12,7 @@ import type { Locale } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { footerMessages } from "@/messages/footer";
 import { localizedRoute, routePaths } from "@/lib/routes";
+import { whatsappUrl } from "@/lib/whatsapp";
 
 const linkClass = "inline-flex min-h-11 items-center gap-2 rounded-sm text-heading transition-colors hover:text-primary-hover hover:underline hover:underline-offset-4";
 
@@ -60,13 +61,13 @@ export function Footer({ locale }: { locale: Locale }) {
           <div>
             <h2 className="mb-3 text-xl font-semibold text-heading">{footer.contact}</h2>
             <address className="flex flex-col items-start not-italic">
-              {contact.whatsappNumber && <a href={`https://wa.me/${contact.whatsappNumber}`} aria-label={`${footer.whatsapp}: ${contact.whatsappDisplay}`} className={linkClass}>
+              <a href={whatsappUrl(contact.whatsappNumber)} aria-label={`${footer.whatsapp}: ${contact.whatsappDisplay}`} className={linkClass}>
                 <MessageCircle size={20} className="text-primary-hover" aria-hidden="true" />
                 <span>
                   <span className="block font-medium">WhatsApp</span>
                   <span dir="ltr" className="block text-sm">{contact.whatsappDisplay}</span>
                 </span>
-              </a>}
+              </a>
               {contact.email && <a href={`mailto:${contact.email}`} aria-label={`${footer.email}: ${contact.email}`} className={`${linkClass} max-w-full`}>
                 <Mail size={20} className="shrink-0 text-primary-hover" aria-hidden="true" />
                 <span dir="ltr" className="break-all">{contact.email}</span>
