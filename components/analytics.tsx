@@ -2,8 +2,9 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { QR_SOURCE_QUERY_PARAM } from "@/lib/qr-source";
 
-type AnalyticsEvent = { kind: "view"; path: string; source: string | null };
+type AnalyticsEvent = { kind: "view"; path: string; qrSource: string | null };
 
 function sendAnalyticsEvent(event: AnalyticsEvent) {
   // Queue the event in the background so tracking never delays navigation.
@@ -14,10 +15,10 @@ function usePageViewTracking(pathname: string | null) {
   useEffect(() => {
     if (!pathname || pathname.includes("/admin")) return;
 
-    const source = pathname.endsWith("/mirleft")
-      ? new URLSearchParams(window.location.search).get("source")
+    const qrSource = pathname.endsWith("/mirleft")
+      ? new URLSearchParams(window.location.search).get(QR_SOURCE_QUERY_PARAM)
       : null;
-    sendAnalyticsEvent({ kind: "view", path: pathname, source });
+    sendAnalyticsEvent({ kind: "view", path: pathname, qrSource });
   }, [pathname]);
 }
 

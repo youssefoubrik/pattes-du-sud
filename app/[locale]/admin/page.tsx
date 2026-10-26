@@ -45,7 +45,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
   await requireAdmin(locale);
   const animals = getAnimals();
   const settings = getSettings();
-  const { pageViews, topAnimals, countries, sources } = getSiteAnalytics();
+  const { pageViews, topAnimals, countries, qrSources } = getSiteAnalytics();
   const animalsById = new Map(animals.map((animal) => [animal.id, animal]));
   const topCompanions = topAnimals.flatMap(({ animalId, count }) => {
     const companion = animalsById.get(animalId);
@@ -195,19 +195,19 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
             <QrCodeGenerator locale={locale} />
             <div>
               <ul className="flex flex-wrap gap-x-6 gap-y-2">
-                {sources.map((row) => (
+                {qrSources.map((row) => (
                   <li
-                    key={row.source}
+                    key={row.location}
                     className="inline-flex items-baseline gap-2"
                   >
-                    <span>{row.source}</span>
+                    <span>{row.location}</span>
                     <span className="font-semibold text-heading">
                       {row.count}
                     </span>
                   </li>
                 ))}
               </ul>
-              {sources.length === 0 && (
+              {qrSources.length === 0 && (
                 <p className="mt-2 text-sm text-muted-foreground">
                   No QR scans recorded yet.
                 </p>

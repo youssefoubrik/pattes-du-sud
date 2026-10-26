@@ -5,6 +5,7 @@ import { localizedRoute, routePaths } from "@/lib/routes";
 import QRCode from "qrcode";
 import { ActionButton } from "@/components/ui/action-button";
 import type { Locale } from "@/i18n/routing";
+import { QR_SOURCE_QUERY_PARAM } from "@/lib/qr-source";
 
 export function QrCodeGenerator({ locale }: { locale: Locale }) {
   const [locationName, setLocationName] = useState("");
@@ -23,7 +24,7 @@ export function QrCodeGenerator({ locale }: { locale: Locale }) {
     setSuccess("");
     try {
       const target = new URL(localizedRoute(locale, routePaths.mirleft), window.location.origin);
-      target.searchParams.set("source", name);
+      target.searchParams.set(QR_SOURCE_QUERY_PARAM, name);
       const qrSvg = await QRCode.toString(target.toString(), {
         type: "svg",
         errorCorrectionLevel: "H",
