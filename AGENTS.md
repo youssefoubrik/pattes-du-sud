@@ -378,10 +378,9 @@ Git:
 
 - work directly on main unless the user explicitly requests a branch
 - never commit unless the user explicitly asks
-- when asked to commit, use small logical commits
-- one logical change per commit
+- when asked to commit, make atomic commits: each commit contains one complete, independently reviewable logical change
 - do not mix feature work with unrelated formatting/refactors
-- use conventionnal commit messages
+- use Conventional Commit messages, in the form `<type>(optional scope): summary`
 
 When preparing a PR:
 
