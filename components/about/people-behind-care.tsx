@@ -26,7 +26,7 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
     <Section aria-labelledby="about-team-title" className="relative bg-background">
       <SectionDivider direction="leave" />
       <Container>
-        <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-10">
+        <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-10">
           <div>
             <h2 id="about-team-title" className="text-3xl font-semibold text-heading sm:text-4xl">
               {text.title}
@@ -35,7 +35,7 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
               {text.introduction}
             </p>
           </div>
-          <ButtonLink href={localizedRoute(locale, routePaths.volunteer)} variant="secondary" arrow className="w-fit max-w-full">
+          <ButtonLink href={localizedRoute(locale, routePaths.volunteer)} variant="secondary" arrow className="w-fit max-w-full md:mt-1">
             {text.volunteer}
           </ButtonLink>
         </div>
@@ -50,7 +50,7 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
             nextLabel={photoText.nextPhoto}
             photoLabel={photoText.photoLabel}
           >
-            <ul className="mt-10 grid gap-4 lg:grid-cols-2 lg:gap-6">
+            <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 md:grid-cols-4 lg:mt-10 lg:gap-x-8">
               {members.map((member, index) => {
                 const currentPhotoLabel = photoText.photoLabel
                   .replace("{number}", numberFormat.format(index + 1))
@@ -59,25 +59,25 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
 
                 return (
                   <li key={member.id}>
-                    <article className="grid h-full grid-cols-[96px_minmax(0,1fr)] items-stretch overflow-hidden rounded-2xl border border-border bg-surface sm:grid-cols-[150px_minmax(0,1fr)] xl:grid-cols-[180px_minmax(0,1fr)]">
+                    <article>
                       <button
                         type="button"
                         data-photo-view-index={index}
                         aria-label={viewLabel}
-                        className="group relative min-h-36 cursor-zoom-in bg-secondary text-start focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading sm:min-h-48"
+                        className="group relative block aspect-[4/5] w-full cursor-zoom-in overflow-hidden rounded-xl bg-secondary text-start focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heading"
                       >
                         <Image
                           src={photos[index].src}
                           alt=""
                           fill
-                          sizes="(max-width: 639px) 96px, (max-width: 1279px) 150px, 180px"
+                          sizes="(max-width: 767px) 50vw, 25vw"
                           className="object-cover transition-transform duration-200 motion-safe:group-hover:scale-[1.03]"
                         />
                       </button>
-                      <div className="min-w-0 self-center p-4 sm:p-5">
+                      <div className="mt-4 min-w-0">
                         <h3 className="text-xl font-semibold text-heading">{member.firstName}</h3>
-                        <p className="mt-1 break-words font-bold leading-snug text-primary-hover">{member.role[locale]}</p>
-                        <p className="mt-3 break-words leading-relaxed text-foreground">{member.work[locale]}</p>
+                        <p className="mt-1 break-words text-sm font-bold leading-snug text-primary-hover">{member.role[locale]}</p>
+                        <p className="mt-2 break-words text-sm leading-relaxed text-foreground">{member.work[locale]}</p>
                       </div>
                     </article>
                   </li>

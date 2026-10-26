@@ -1,6 +1,7 @@
 import { getPageContent } from "@/lib/database/page-content";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { SectionDivider } from "@/components/ui/section-divider";
 import type { Locale } from "@/i18n/routing";
 import { aboutMessages } from "@/messages/about";
 
@@ -10,8 +11,9 @@ export function CareInPractice({ locale }: { locale: Locale }) {
   return (
     <Section
       aria-labelledby="about-care-title"
-      className="!py-8 bg-secondary sm:!py-10 lg:!py-12"
+      className="relative !py-8 bg-secondary sm:!py-10 lg:!py-12"
     >
+      <SectionDivider direction="enter" />
       <Container>
         <div className="max-w-3xl">
           <h2 id="about-care-title" className="text-3xl font-semibold text-heading sm:text-4xl">
