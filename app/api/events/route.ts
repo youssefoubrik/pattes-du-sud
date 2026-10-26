@@ -1,4 +1,4 @@
-import { recordSiteEvent } from "@/lib/database/site-analytics";
+import { recordPageView } from "@/lib/database/site-analytics";
 
 export async function POST(request: Request) {
   const origin = request.headers.get("origin");
@@ -14,12 +14,7 @@ export async function POST(request: Request) {
   } catch {
     return new Response(null, { status: 400 });
   }
-  if (
-    payload.kind !== "view" &&
-    payload.kind !== "donate" &&
-    payload.kind !== "whatsapp"
-  )
-    return new Response(null, { status: 400 });
+  if (payload.kind !== "view") return new Response(null, { status: 400 });
   if (
     typeof payload.path !== "string" ||
     !/^\/(en|fr|de|ar)(\/[-a-z0-9/]*)?$/.test(payload.path)
@@ -36,8 +31,7 @@ export async function POST(request: Request) {
     !/[\u0000-\u001f\u007f]/u.test(rawSource)
       ? rawSource.replace(/\s+/gu, " ")
       : null;
-  recordSiteEvent(
-    payload.kind,
+  recordPageView(
     payload.path,
     country && /^[A-Z]{2}$/.test(country) ? country : null,
     source,

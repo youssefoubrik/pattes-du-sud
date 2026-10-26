@@ -31,12 +31,6 @@ export const instant = false;
 const cardClass =
   "group rounded-3xl border border-border bg-secondary p-6 transition-[opacity,box-shadow] duration-200 hover:opacity-90 hover:shadow-sm hover:shadow-heading/10 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
-const eventLabels: Record<string, string> = {
-  view: "Page views",
-  donate: "Donate clicks",
-  whatsapp: "WhatsApp clicks",
-};
-
 function countryFlag(code: string) {
   return String.fromCodePoint(
     ...Array.from(code.toUpperCase(), (letter) =>
@@ -51,7 +45,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
   await requireAdmin(locale);
   const animals = getAnimals();
   const settings = getSettings();
-  const { events, topAnimals, countries, sources } = getSiteAnalytics();
+  const { pageViews, topAnimals, countries, sources } = getSiteAnalytics();
   const animalsById = new Map(animals.map((animal) => [animal.id, animal]));
   const topCompanions = topAnimals.flatMap(({ animalId, count }) => {
     const companion = animalsById.get(animalId);
@@ -130,7 +124,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
         <h2 className="mt-12 text-2xl text-heading">Activity</h2>
         <div className="mt-4 grid gap-5 rounded-2xl border border-border bg-surface p-5">
           <section
-            aria-label="Activity totals"
+            aria-label="Page views"
             className="min-w-0"
           >
             <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
@@ -139,16 +133,9 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
                 className="shrink-0 text-primary-hover"
                 aria-hidden="true"
               />
-              Totals
+              Page views
             </h3>
-            <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
-              {events.map((event) => (
-                <li key={event.kind} className="inline-flex items-baseline gap-2">
-                  <span>{eventLabels[event.kind] ?? event.kind}</span>
-                  <span className="font-semibold text-heading">{event.count}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-3 font-semibold text-heading">{pageViews}</p>
           </section>
           <section className="min-w-0 border-t border-border pt-5">
             <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
@@ -180,7 +167,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
                 className="shrink-0 text-primary-hover"
                 aria-hidden="true"
               />
-              Visitor countries
+              Page views by country
             </h3>
             <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
               {countries.map((row) => (
