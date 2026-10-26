@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer/footer";
 import { isLocale, routing } from "@/i18n/routing";
 import { messages } from "@/messages";
 import { pageMetadata } from "@/lib/metadata";
+import { Suspense } from "react";
 import "../globals.css";
 
 const nunitoSans = Nunito_Sans({
@@ -51,7 +52,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
       className={`${fontVariables} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Analytics />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         <Header locale={locale} />
         {children}
         <Footer locale={locale} />

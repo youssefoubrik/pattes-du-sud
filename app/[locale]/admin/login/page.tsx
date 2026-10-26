@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Container } from "@/components/ui/container";
 import { ActionButton } from "@/components/ui/action-button";
 import { isLocale } from "@/i18n/routing";
@@ -15,16 +16,13 @@ export default async function Login({
 }: PageProps<"/[locale]/admin/login">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const query = await searchParams;
   return (
     <main className="flex-1 py-16">
       <Container className="max-w-lg">
         <h1 className="text-4xl text-heading">Editor sign in</h1>
-        {query.error && (
-          <p role="alert" className="mt-5 rounded-xl bg-secondary p-4">
-            Incorrect password.
-          </p>
-        )}
+        <Suspense fallback={null}>
+          <LoginError searchParams={searchParams} />
+        </Suspense>
         <form action={login} className="mt-8 space-y-5">
           <input type="hidden" name="locale" value={locale} />
           <label className="block font-semibold" htmlFor="password">
@@ -45,4 +43,17 @@ export default async function Login({
       </Container>
     </main>
   );
+}
+
+async function LoginError({
+  searchParams,
+}: {
+  searchParams: PageProps<"/[locale]/admin/login">["searchParams"];
+}) {
+  const query = await searchParams;
+  return query.error ? (
+    <p role="alert" className="mt-5 rounded-xl bg-secondary p-4">
+      Incorrect password.
+    </p>
+  ) : null;
 }
