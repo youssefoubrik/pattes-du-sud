@@ -6,8 +6,7 @@ const data: GalleryMessages = {
   speciesLabel: "Art", statusLabel: "Status", all: "Alle", dogs: "Hunde", cats: "Katzen", available: "Sucht ein Zuhause", adopted: "Adoptiert",
   count: "{count} Begleiter", loading: "Begleiter werden geladen…", empty: "Für diese Suche und Filter gibt es keine Begleiter. Wähle eine andere Kombination.",
   emptyCollection: "Zurzeit sind keine Begleiter gelistet.",
-  adoptionPrompt: "Möchtest du adoptieren?",
-  adoptionLink: "So geht’s",
+  adoptionLink: "Mehr zur Adoption",
   paginationLabel: "Seiten der Begleitergalerie", pageOf: "Seite {page} von {pages}", pageLabel: "Zu Seite {page}", previousPage: "Zurück", nextPage: "Weiter",
 };
 

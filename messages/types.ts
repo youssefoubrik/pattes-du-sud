@@ -233,7 +233,6 @@ export type GalleryMessages = {
   loading: string;
   empty: string;
   emptyCollection: string;
-  adoptionPrompt: string;
   adoptionLink: string;
   paginationLabel: string;
   pageOf: string;

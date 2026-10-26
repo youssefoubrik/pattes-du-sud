@@ -6,8 +6,7 @@ const data: GalleryMessages = {
   speciesLabel: "Type", statusLabel: "Situation", all: "Tous", dogs: "Chiens", cats: "Chats", available: "Cherche un foyer", adopted: "Adoptés",
   count: "{count} compagnons", loading: "Chargement des compagnons…", empty: "Aucun compagnon ne correspond à votre recherche et à ces filtres. Essayez une autre sélection.",
   emptyCollection: "Aucun compagnon n’est actuellement présenté.",
-  adoptionPrompt: "Envie d’adopter ?",
-  adoptionLink: "Voir comment ça marche",
+  adoptionLink: "En savoir plus sur l’adoption",
   paginationLabel: "Pages de la galerie des compagnons", pageOf: "Page {page} sur {pages}", pageLabel: "Aller à la page {page}", previousPage: "Précédent", nextPage: "Suivant",
 };
 

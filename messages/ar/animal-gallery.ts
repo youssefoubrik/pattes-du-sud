@@ -6,8 +6,7 @@ const data: GalleryMessages = {
   speciesLabel: "النوع", statusLabel: "الحالة", all: "الكل", dogs: "الكلاب", cats: "القطط", available: "يبحث عن بيت", adopted: "تم تبنّيها",
   count: "عدد الرفاق: {count}", loading: "جارٍ تحميل الرفاق…", empty: "لا يوجد رفاق يطابقون بحثك والفلاتر المحددة. جرّب تغييرها.",
   emptyCollection: "لا يوجد رفاق معروضون حاليًا.",
-  adoptionPrompt: "هل ترغب في التبنّي؟",
-  adoptionLink: "تعرّف على الطريقة",
+  adoptionLink: "معلومات عن التبنّي",
   paginationLabel: "صفحات معرض الرفاق", pageOf: "الصفحة {page} من {pages}", pageLabel: "انتقل إلى الصفحة {page}", previousPage: "السابق", nextPage: "التالي",
 };
 
