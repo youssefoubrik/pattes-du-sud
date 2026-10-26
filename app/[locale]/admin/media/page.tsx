@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { localizedRoute, routePaths } from "@/lib/routes";
-import { Heart, House, Users, type LucideIcon } from "lucide-react";
+import { ChevronDown, Heart, House, Users, type LucideIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { BackLink } from "@/components/ui/back-link";
@@ -57,40 +57,49 @@ export default async function MediaPage({
         )}
         <div className="mt-8 grid gap-6">
           {mediaGroups.map((group) => (
-            <fieldset
+            <details
               key={group.prefix}
-              className="min-w-0 rounded-2xl border border-border bg-surface p-5"
+              className="group min-w-0 rounded-2xl border border-border bg-surface"
             >
-              <legend className="inline-flex items-center gap-2 px-1 text-xl font-semibold text-heading">
-                <group.icon size={19} aria-hidden="true" />
-                {group.title}
-              </legend>
-              <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {mediaSlots
-                  .filter((slot) => slot.key.startsWith(group.prefix))
-                  .map((slot) => (
-                    <li
-                      key={slot.key}
-                      className="rounded-3xl border border-border bg-background p-5"
-                    >
-                      <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-secondary">
-                        <Image
-                          src={getMediaSrc(slot.key, slot.fallback)}
-                          alt=""
-                          fill
-                          sizes="(min-width: 1024px) 340px, (min-width: 640px) 50vw, 100vw"
-                          className="object-cover"
+              <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-5 py-3 text-xl font-semibold text-heading marker:hidden [&::-webkit-details-marker]:hidden">
+                <span className="inline-flex items-center gap-2">
+                  <group.icon size={19} aria-hidden="true" />
+                  {group.title}
+                </span>
+                <ChevronDown
+                  size={19}
+                  aria-hidden="true"
+                  className="shrink-0 transition-transform group-open:rotate-180 motion-reduce:transition-none"
+                />
+              </summary>
+              <div className="px-5 pb-5 pt-1">
+                <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {mediaSlots
+                    .filter((slot) => slot.key.startsWith(group.prefix))
+                    .map((slot) => (
+                      <li
+                        key={slot.key}
+                        className="rounded-3xl border border-border bg-background p-5"
+                      >
+                        <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-secondary">
+                          <Image
+                            src={getMediaSrc(slot.key, slot.fallback)}
+                            alt=""
+                            fill
+                            sizes="(min-width: 1024px) 340px, (min-width: 640px) 50vw, 100vw"
+                            className="object-cover"
+                          />
+                        </div>
+                        <MediaPhotoForm
+                          locale={locale}
+                          slot={slot.key}
+                          action={updateMedia}
                         />
-                      </div>
-                      <MediaPhotoForm
-                        locale={locale}
-                        slot={slot.key}
-                        action={updateMedia}
-                      />
-                    </li>
-                  ))}
-              </ul>
-            </fieldset>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </details>
           ))}
         </div>
       </Container>
