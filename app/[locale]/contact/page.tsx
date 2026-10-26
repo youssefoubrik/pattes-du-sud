@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactAvailability } from "@/components/contact/contact-availability";
 import { ContactIntroduction } from "@/components/contact/contact-introduction";
-import { ContactLocation } from "@/components/contact/contact-location";
 import { ContactMethods } from "@/components/contact/contact-methods";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -30,15 +29,25 @@ export default async function Contact({
   const s = getSettings();
 
   return (
-    <main id="main-content" className="flex-1">
-      <ContactIntroduction text={t} />
-      <Section className="!pt-0">
-        <Container>
-          <ContactMethods text={t} settings={s} />
-          <ContactAvailability locale={locale} text={t} settings={s} />
-        </Container>
-      </Section>
-      <ContactLocation text={t} mapEmbedUrl={s.mapEmbedUrl} />
+    <main
+      id="main-content"
+      className="contact-page flex min-h-screen flex-1 flex-col text-foreground"
+    >
+      <div className="my-auto">
+        <ContactIntroduction text={t} />
+        <Section className="!pt-0 !pb-10 sm:!pb-12">
+          <Container width="content">
+            {s.whatsappNumber || s.email ? (
+              <>
+                <ContactMethods text={t} settings={s} />
+                <ContactAvailability locale={locale} text={t} settings={s} />
+              </>
+            ) : (
+              <p className="text-muted-foreground">{t.unavailable}</p>
+            )}
+          </Container>
+        </Section>
+      </div>
     </main>
   );
 }

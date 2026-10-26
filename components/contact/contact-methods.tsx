@@ -1,6 +1,14 @@
-import { ArrowUpRight, Mail, MessageCircle, type LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Mail,
+  MessageCircle,
+  type LucideIcon,
+} from "lucide-react";
 import { whatsappUrl } from "@/lib/whatsapp";
-import type { ContactChannelsSettings, ContactText } from "@/components/contact/contact-types";
+import type {
+  ContactChannelsSettings,
+  ContactText,
+} from "@/components/contact/contact-types";
 
 function ContactMethod({
   href,
@@ -8,33 +16,45 @@ function ContactMethod({
   title,
   detail,
   hint,
-  detailClassName = "",
+  primary = false,
 }: {
   href: string;
   icon: LucideIcon;
   title: string;
   detail: string;
   hint: string;
-  detailClassName?: string;
+  primary?: boolean;
 }) {
   return (
     <a
       href={href}
-      className="group rounded-3xl bg-secondary p-6 transition-opacity duration-200 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading"
+      className="group flex min-h-48 flex-col rounded-2xl border border-border bg-surface p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:p-6"
     >
-      <Icon aria-hidden="true" className="text-primary-hover" />
-      <h2 className="mt-3 flex items-center gap-2 text-xl font-semibold text-heading">
-        <span className="group-hover:underline">{title}</span>
-        <ArrowUpRight
-          size={18}
-          aria-hidden="true"
-          className="shrink-0 motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-focus-visible:translate-x-0.5 motion-safe:group-focus-visible:-translate-y-0.5"
-        />
-      </h2>
-      <p className={`mt-2 ${detailClassName}`} dir="ltr">
+      <span
+        className={`flex size-11 items-center justify-center rounded-xl ${
+          primary ? "bg-primary/10 text-primary" : "bg-secondary text-heading"
+        }`}
+      >
+        <Icon size={21} aria-hidden="true" />
+      </span>
+      <h2 className="mt-4 text-xl font-semibold text-heading">{title}</h2>
+      <p className="mt-2 break-all text-foreground" dir="ltr">
         {detail}
       </p>
-      <p className="mt-2 text-sm text-muted-foreground">{hint}</p>
+      <span
+        className={`mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold ${
+          primary ? "text-primary" : "text-heading"
+        }`}
+      >
+        <span className="group-hover:underline group-focus-visible:underline">
+          {hint}
+        </span>
+        <ArrowRight
+          size={17}
+          aria-hidden="true"
+          className="rtl:rotate-180"
+        />
+      </span>
     </a>
   );
 }
@@ -47,14 +67,17 @@ export function ContactMethods({
   settings: ContactChannelsSettings;
 }) {
   return (
-    <div className="grid gap-5 md:grid-cols-2">
-      <ContactMethod
-        href={whatsappUrl(settings.whatsappNumber, text.whatsappText)}
-        icon={MessageCircle}
-        title={text.whatsapp}
-        hint={text.whatsappOpens}
-        detail={settings.whatsappDisplay || settings.whatsappNumber}
-      />
+    <div className="grid gap-4 sm:grid-cols-2">
+      {settings.whatsappNumber && (
+        <ContactMethod
+          href={whatsappUrl(settings.whatsappNumber, text.whatsappText)}
+          icon={MessageCircle}
+          title={text.whatsapp}
+          hint={text.whatsappOpens}
+          detail={settings.whatsappDisplay || settings.whatsappNumber}
+          primary
+        />
+      )}
       {settings.email && (
         <ContactMethod
           href={`mailto:${settings.email}`}
@@ -62,7 +85,6 @@ export function ContactMethods({
           title={text.email}
           hint={text.emailOpens}
           detail={settings.email}
-          detailClassName="break-all"
         />
       )}
     </div>

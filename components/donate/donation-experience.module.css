@@ -1,0 +1,21 @@
+.stateContent {
+  animation: donation-state-change 200ms ease-out;
+}
+
+@keyframes donation-state-change {
+  from {
+    opacity: 0.55;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stateContent {
+    animation: none;
+  }
+}
