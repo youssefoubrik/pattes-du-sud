@@ -30,7 +30,12 @@ import {
   type PageContentSection,
 } from "@/lib/database/page-content";
 import { getPageContentFields, setPageContentField } from "@/lib/page-content-fields";
-import { saveMediaSlot, storeUploadedPhoto } from "@/lib/database/uploaded-media";
+import { getSupporters, saveSupporters } from "@/lib/database/supporter-records";
+import {
+  pruneUploadedMedia,
+  saveMediaSlot,
+  storeUploadedPhoto,
+} from "@/lib/database/uploaded-media";
 import { homeMessages } from "@/messages/home";
 import { aboutMessages } from "@/messages/about";
 import { pageMessages } from "@/messages/pages";
@@ -322,4 +327,100 @@ export async function updateMedia(form: FormData) {
     revalidatePath(`/${language}`, "layout");
   const notice = randomUUID();
   redirect(`${localizedRoute(locale, routePaths.adminMedia)}?saved=1&notice=${notice}`);
+}
+
+export async function updateSupporters(form: FormData) {
+  const locale = localeOf(form);
+  await requireAdmin(locale);
+
+  const count = Number(form.get("count"));
+  if (!Number.isSafeInteger(count) || count < 0 || count > 1000)
+    redirect(`${localizedRoute(locale, routePaths.adminSupporters)}?error=list`);
+
+  const currentById = new Map(getSupporters().map((supporter) => [supporter.id, supporter]));
+  const seenIds = new Set<string>();
+  const drafts: {
+    supporter: {
+      id: string;
+      name: string;
+      website?: string;
+      logo?: { src: string; width: number; height: number };
+    };
+    upload?: { mime: string; bytes: Buffer };
+  }[] = [];
+  let totalUploadBytes = 0;
+
+  for (let index = 0; index < count; index += 1) {
+    const id = String(form.get(`id:${index}`) || "").trim();
+    const name = String(form.get(`name:${index}`) || "").trim().slice(0, 120);
+    const website = String(form.get(`website:${index}`) || "").trim().slice(0, 500);
+    const logoSrc = String(form.get(`logoSrc:${index}`) || "").trim();
+    const removeLogo = form.get(`removeLogo:${index}`) === "yes";
+    const file = form.get(`logo:${index}`);
+
+    if (!/^[a-z0-9][a-z0-9-]{0,63}$/.test(id) || seenIds.has(id) || !name)
+      redirect(`${localizedRoute(locale, routePaths.adminSupporters)}?error=list`);
+    seenIds.add(id);
+
+    let normalizedWebsite: string | undefined;
+    if (website) {
+      try {
+        const parsed = new URL(website);
+        if (parsed.protocol !== "https:" || !parsed.hostname) throw new Error("Invalid website");
+        normalizedWebsite = parsed.toString();
+      } catch {
+        redirect(`${localizedRoute(locale, routePaths.adminSupporters)}?error=website`);
+      }
+    }
+
+    const logo = !removeLogo && logoSrc ? currentById.get(id)?.logo : undefined;
+    if (!removeLogo && logoSrc && (!logo || logo.src !== logoSrc))
+      redirect(`${localizedRoute(locale, routePaths.adminSupporters)}?error=list`);
+
+    let upload: { mime: string; bytes: Buffer } | undefined;
+    if (file instanceof File && file.size > 0) {
+      totalUploadBytes += file.size;
+      if (file.size > 5_000_000 || totalUploadBytes > 24_000_000)
+        redirect(`${localizedRoute(locale, routePaths.adminSupporters)}?error=photo`);
+      const bytes = Buffer.from(await file.arrayBuffer());
+      const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+      const png = bytes
+        .subarray(0, 8)
+        .equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+      const webp =
+        bytes.toString("ascii", 0, 4) === "RIFF" &&
+        bytes.toString("ascii", 8, 12) === "WEBP";
+      const mime = jpeg ? "image/jpeg" : png ? "image/png" : webp ? "image/webp" : null;
+      if (!mime) redirect(`${localizedRoute(locale, routePaths.adminSupporters)}?error=photo`);
+      upload = { mime, bytes };
+    }
+
+    drafts.push({
+      supporter: {
+        id,
+        name,
+        ...(normalizedWebsite ? { website: normalizedWebsite } : {}),
+        ...(logo ? { logo } : {}),
+      },
+      ...(upload ? { upload } : {}),
+    });
+  }
+
+  const updated = drafts.map(({ supporter, upload }) => ({
+    ...supporter,
+    ...(upload
+      ? {
+          logo: {
+            src: storeUploadedPhoto(upload.mime, upload.bytes),
+            width: 512,
+            height: 512,
+          },
+        }
+      : {}),
+  }));
+  saveSupporters(updated);
+  pruneUploadedMedia();
+  for (const language of routing.locales) revalidatePath(`/${language}`, "layout");
+  const notice = randomUUID();
+  redirect(`${localizedRoute(locale, routePaths.adminSupporters)}?saved=1&notice=${notice}`);
 }

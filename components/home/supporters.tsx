@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionDivider } from "@/components/ui/section-divider";
-import { supporters, type Supporter } from "@/content/supporters";
+import type { Supporter } from "@/content/supporters";
+import { getSupporters } from "@/lib/database/supporter-records";
 import type { Locale } from "@/i18n/routing";
 import { homeMessages } from "@/messages/home";
 
@@ -11,7 +12,7 @@ const cardClassName = "flex min-h-32 w-full items-center justify-center rounded-
 
 function SupporterName({ supporter }: { supporter: Supporter }) {
   return (
-    <span className="flex items-center justify-center gap-4">
+    <span className="flex min-w-0 items-center justify-center gap-4">
       {supporter.logo && (
         <Image
           src={supporter.logo.src}
@@ -21,12 +22,13 @@ function SupporterName({ supporter }: { supporter: Supporter }) {
           className="max-h-12 max-w-20 shrink-0 object-contain"
         />
       )}
-      <span className="text-lg font-bold leading-snug text-heading">{supporter.name}</span>
+      <span className="min-w-0 break-words text-lg font-bold leading-snug text-heading">{supporter.name}</span>
     </span>
   );
 }
 
 export function Supporters({ locale }: { locale: Locale }) {
+  const supporters = getSupporters();
   if (!supporters.length) return null;
   const text = getPageContent("home", locale, homeMessages[locale]).supporters;
 

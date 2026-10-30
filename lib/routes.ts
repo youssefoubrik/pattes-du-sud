@@ -16,6 +16,7 @@ export const routePaths = {
   adminSettings: "/admin/settings",
   adminContent: "/admin/content",
   adminMedia: "/admin/media",
+  adminSupporters: "/admin/supporters",
 } as const;
 
 export function localizedRoute(locale: string, path: string): string {

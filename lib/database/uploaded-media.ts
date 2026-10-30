@@ -31,5 +31,10 @@ export function pruneUploadedMedia() {
   db().exec(`DELETE FROM media
     WHERE NOT EXISTS (SELECT 1 FROM media_slots WHERE media_slots.media_id = media.id)
     AND NOT EXISTS (SELECT 1 FROM animals WHERE json_extract(animals.data, '$.image.src') = '/api/media/' || media.id)
-    AND NOT EXISTS (SELECT 1 FROM animals, json_each(animals.data, '$.photos') AS photo WHERE json_extract(photo.value, '$.src') = '/api/media/' || media.id)`);
+    AND NOT EXISTS (SELECT 1 FROM animals, json_each(animals.data, '$.photos') AS photo WHERE json_extract(photo.value, '$.src') = '/api/media/' || media.id)
+    AND NOT EXISTS (
+      SELECT 1 FROM settings, json_each(CASE WHEN json_valid(settings.value) THEN settings.value ELSE '[]' END) AS supporter
+      WHERE settings.key = 'supporters'
+        AND json_extract(supporter.value, '$.logo.src') = '/api/media/' || media.id
+    )`);
 }

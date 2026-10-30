@@ -3,6 +3,7 @@ import { localizedRoute, routePaths } from "@/lib/routes";
 import {
   Activity,
   Globe2,
+  Handshake,
   Images,
   Languages,
   LogOut,
@@ -66,7 +67,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
           </form>
         </div>
         <p className="mt-4 max-w-2xl">Manage companion profiles and site details.</p>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           <Link href={localizedRoute(locale, routePaths.adminCompanions)} className={cardClass}>
             <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
               <PawPrint
@@ -119,6 +120,13 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
               Page photos
             </h2>
             <p className="mt-2">Update Home and About photography</p>
+          </Link>
+          <Link href={localizedRoute(locale, routePaths.adminSupporters)} className={cardClass}>
+            <h2 className="flex items-center gap-3 text-2xl text-heading group-hover:underline group-hover:underline-offset-4">
+              <Handshake size={22} className="shrink-0 text-primary-hover" aria-hidden="true" />
+              Supporters
+            </h2>
+            <p className="mt-2">Manage supporter names, logos and links</p>
           </Link>
         </div>
         <h2 className="mt-12 text-2xl text-heading">Activity</h2>
