@@ -4,10 +4,12 @@ const data: PageMessages = {
   adopt: {
     title: "Adopt a friend",
     intro:
-      "Adoption starts with a conversation. We want each animal and family to have the right match and enough time to prepare.",
+      "Adopting a companion can be the beginning of a close bond. We’re here to listen, answer your questions, and help you consider whether adoption feels right for you and your future companion.",
+    imageAlt: "A person gently pets a brown dog outdoors.",
+    imageCaption: "A gentle first connection can be the start of something special.",
     stepsTitle: "How adoption works",
     steps: [
-      "Meet an animal and tell us about your home and daily routine.",
+      "Meet a dog or cat and tell us about your home and daily routine.",
       "We discuss care, costs and the practical steps together.",
       "If it feels right for everyone, we agree on a safe handover and follow-up.",
     ],
@@ -16,7 +18,7 @@ const data: PageMessages = {
     local:
       "In Morocco, contact us to arrange a meeting in Mirleft. Please do not arrive without arranging a visit.",
     international:
-      "Living abroad? Tell us where you live. Travel requirements, timing and transport depend on the destination and the animal, so we will discuss what is possible before making any plans.",
+      "Living abroad? Tell us where you live. Travel requirements, timing and transport depend on your destination and the companion you hope to adopt, so we will discuss what is possible before making plans.",
     contact: "Ask about adoption",
   },
   volunteer: {

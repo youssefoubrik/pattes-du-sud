@@ -4,10 +4,12 @@ const data: PageMessages = {
   adopt: {
     title: "Adopter un compagnon",
     intro:
-      "Une adoption commence par une discussion. Nous voulons trouver un bon accord pour chaque animal et chaque famille.",
+      "Adopter un compagnon peut être le début d’un beau lien. Nous sommes là pour vous écouter, répondre à vos questions et vous aider à voir si cette adoption vous correspond à tous les deux.",
+    imageAlt: "Une personne caresse doucement un chien marron en plein air.",
+    imageCaption: "Un premier contact tout en douceur peut être le début d’une belle histoire.",
     stepsTitle: "Comment se passe une adoption",
     steps: [
-      "Rencontrez un animal et parlez-nous de votre foyer et de votre quotidien.",
+      "Rencontrez un chien ou un chat et parlez-nous de votre foyer et de votre quotidien.",
       "Nous discutons ensemble des soins, des coûts et des étapes pratiques.",
       "Si tout convient, nous organisons une arrivée en sécurité et un suivi.",
     ],
@@ -16,7 +18,7 @@ const data: PageMessages = {
     local:
       "Au Maroc, contactez-nous pour organiser une rencontre à Mirleft. Merci de ne pas venir sans rendez-vous.",
     international:
-      "Vous vivez à l’étranger ? Dites-nous où. Les exigences de voyage, les délais et le transport dépendent de la destination et de l’animal. Nous verrons ensemble ce qui est possible.",
+      "Vous vivez à l’étranger ? Dites-nous où. Les exigences de voyage, les délais et le transport dépendent de votre destination et du compagnon que vous souhaitez adopter. Nous verrons ensemble ce qui est possible.",
     contact: "Parler d’une adoption",
   },
   volunteer: {

@@ -4,7 +4,9 @@ const data: PageMessages = {
   adopt: {
     title: "Ein Tier adoptieren",
     intro:
-      "Eine Adoption beginnt mit einem Gespräch. Tier und Familie sollen gut zueinander passen und Zeit zur Vorbereitung haben.",
+      "Ein Tier aufzunehmen kann der Beginn einer besonderen Verbindung sein. Wir hören dir zu, beantworten deine Fragen und helfen dir herauszufinden, ob eine Adoption zu dir und dem Tier passt.",
+    imageAlt: "Eine Person streichelt draußen sanft einen braunen Hund.",
+    imageCaption: "Ein behutsamer erster Kontakt kann der Anfang von etwas Besonderem sein.",
     stepsTitle: "So läuft eine Adoption ab",
     steps: [
       "Lerne ein Tier kennen und erzähle uns von deinem Zuhause und Alltag.",

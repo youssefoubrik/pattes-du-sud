@@ -73,6 +73,8 @@ export type AboutMessages = {
 export type AdoptMessages = {
   title: string;
   intro: string;
+  imageAlt: string;
+  imageCaption: string;
   stepsTitle: string;
   steps: [string, string, string];
   localTitle: string;

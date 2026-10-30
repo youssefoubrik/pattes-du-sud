@@ -1,6 +1,7 @@
 # Content and data principles
 
 - Keep editable copy in typed content and translation data, not page JSX. Structure it so a CMS can replace the source without rewriting the UI.
+- In visitor-facing copy, avoid the generic term “animal”; say “dog”, “cat”, or “companion” as appropriate.
 - Support English, French, German, and Arabic. Arabic should read naturally. Keep proper animal names shared across locales and use English animal stories when a translation is blank.
 - Base public claims on verifiable information. Do not invent association history, registration details, or impact claims.
 - Keep editable image references in the content/data layer. Use meaningful alt text and captions; keep asset-management notes out of visitor-facing copy.
