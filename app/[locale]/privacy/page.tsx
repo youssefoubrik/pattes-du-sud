@@ -26,10 +26,33 @@ export default async function Privacy({
     <main id="main-content" className="flex-1">
       <PageIntro title={t.title} intro={t.intro} className="!pb-0" />
       <Section className="!pt-0">
-        <Container className="max-w-3xl space-y-5 text-lg leading-relaxed">
-          <p>{t.data}</p>
-          <p>{t.payments}</p>
-          <p>{t.contact}</p>
+        <Container className="max-w-3xl text-lg leading-relaxed">
+          <ul className="list-disc space-y-5 ps-6 marker:text-primary">
+            <li>
+              <span className="font-semibold text-heading">{t.analyticsTitle}.</span>{" "}
+              {t.analytics}
+            </li>
+            <li>
+              <span className="font-semibold text-heading">{t.mapTitle}.</span>{" "}
+              {t.map}
+            </li>
+            <li>
+              <span className="font-semibold text-heading">{t.contactMethodsTitle}.</span>{" "}
+              {t.contactMethods}
+            </li>
+            <li>
+              <span className="font-semibold text-heading">{t.cookiesTitle}.</span>{" "}
+              {t.cookies}
+            </li>
+            <li>
+              <span className="font-semibold text-heading">{t.paymentsTitle}.</span>{" "}
+              {t.payments}
+            </li>
+            <li>
+              <span className="font-semibold text-heading">{t.questionsTitle}.</span>{" "}
+              {t.contact}
+            </li>
+          </ul>
         </Container>
       </Section>
     </main>

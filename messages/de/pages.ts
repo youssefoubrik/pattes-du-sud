@@ -123,10 +123,22 @@ const data: PageMessages = {
   privacy: {
     title: "Datenschutz",
     intro:
-      "Wir erheben nur Daten, die für die Website und die Beantwortung deiner Nachricht nötig sind.",
-    data: "Wenn du uns schreibst, nutzen wir deine Kontaktdaten und Nachricht für die Antwort. Wir verkaufen sie nicht. Besuche und Klicks zählen wir ohne Namen oder Tracking-Cookies.",
+      "Hier erfährst du, welche Informationen bei der Nutzung dieser Website und bei einer Kontaktaufnahme verarbeitet werden.",
+    analyticsTitle: "Website-Statistik",
+    analytics:
+      "Wir erfassen jeden Aufruf einer öffentlichen Seite, einen vom Hosting-Anbieter übermittelten Ländercode (falls verfügbar) und die Quellenangabe, wenn jemand die Mirleft-Seite über einen QR-Code aufruft. Diese Einträge speichern wir in der Website-Datenbank und verwenden sie zur Berechnung der Besuchszahlen. Die Statistik erfasst keine Button-Klicks oder IP-Adressen und verwendet keine Tracking-Cookies.",
+    mapTitle: "Eingebettete Karte",
+    map: "Die Google-Karte kann beim Laden technische Informationen wie deine IP-Adresse an Google senden.",
+    contactMethodsTitle: "Wenn du uns kontaktierst",
+    contactMethods:
+      "Wenn du uns per E-Mail oder WhatsApp kontaktierst, verarbeiten diese Dienste deine Kontaktdaten und Nachricht. Wir nutzen sie, um dir zu antworten, und verkaufen sie nicht.",
+    cookiesTitle: "Cookies",
+    cookies:
+      "Die Website verwendet ein Cookie, um deine Sprachauswahl zu merken, sowie ein separates Anmelde-Cookie für den Editor.",
+    paymentsTitle: "Zahlungen",
     payments:
-      "Zahlungen erfolgen beim Zahlungsanbieter oder deiner Bank. Diese Website speichert keine Kartendaten.",
+      "Wenn du einem PayPal-Link folgst, wickelt PayPal die Zahlung gemäß den eigenen Datenschutzbestimmungen ab. Banküberweisungen werden von deiner Bank verarbeitet. Diese Website erhebt oder speichert weder deine Karten- noch deine Bankkontodaten.",
+    questionsTitle: "Fragen",
     contact: "Bei Fragen zu deinen Daten nutze bitte die Kontaktseite.",
   },
   animal: {

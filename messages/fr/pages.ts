@@ -123,10 +123,22 @@ const data: PageMessages = {
   privacy: {
     title: "Vie privée",
     intro:
-      "Nous recueillons uniquement les informations nécessaires au fonctionnement du site et pour vous répondre.",
-    data: "Si vous nous écrivez, nous utilisons vos coordonnées et votre message pour vous répondre. Nous ne les vendons pas. Les visites et clics sont comptés sans nom ni cookie de suivi.",
+      "Cette page explique quelles informations sont traitées lorsque vous utilisez ce site ou nous contactez.",
+    analyticsTitle: "Statistiques du site",
+    analytics:
+      "Nous enregistrons chaque visite d’une page publique, le code du pays transmis par notre hébergeur lorsqu’il est disponible, ainsi que l’étiquette de provenance lorsqu’une personne accède à la page de Mirleft par un QR code. Ces données sont stockées dans la base du site et servent à calculer le nombre de visites. Les statistiques ne comptent pas les clics sur les boutons, ne collectent pas les adresses IP et n’utilisent pas de cookie de suivi.",
+    mapTitle: "Carte intégrée",
+    map: "La carte Google peut transmettre à Google des informations techniques, comme votre adresse IP, lors de son chargement.",
+    contactMethodsTitle: "Lorsque vous nous contactez",
+    contactMethods:
+      "Si vous nous contactez par e-mail ou WhatsApp, ces services traitent vos coordonnées et votre message. Nous les utilisons pour vous répondre et ne les vendons pas.",
+    cookiesTitle: "Cookies",
+    cookies:
+      "Le site utilise un cookie pour mémoriser votre choix de langue et un cookie distinct pour la connexion à l’éditeur.",
+    paymentsTitle: "Paiements",
     payments:
-      "Les paiements se font auprès du prestataire ou de votre banque. Ce site ne recueille pas vos données bancaires.",
+      "Si vous suivez un lien PayPal, PayPal traite le paiement selon sa propre politique de confidentialité. Les virements sont traités par votre banque. Ce site ne recueille ni ne stocke les données de votre carte ou de votre compte bancaire.",
+    questionsTitle: "Questions",
     contact:
       "Pour toute question, utilisez les coordonnées de la page Contact.",
   },

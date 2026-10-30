@@ -123,10 +123,22 @@ const data: PageMessages = {
   privacy: {
     title: "Privacy",
     intro:
-      "We collect only the information needed to run this website and respond when you contact us.",
-    data: "If you email or message us, your contact details and message are used to reply. We do not sell them. Basic visit and button-click counts are stored without names or tracking cookies.",
+      "This page explains what information is handled when you use this website or contact us.",
+    analyticsTitle: "Site analytics",
+    analytics:
+      "We record each public page view, a country code supplied by our hosting provider when available, and the source label when someone visits the Mirleft page through a QR code. These records are stored in the site database and used to produce visit counts. Analytics does not record button clicks or IP addresses and does not use tracking cookies.",
+    mapTitle: "Embedded map",
+    map: "The Google Map may send technical information, such as your IP address, to Google when it loads.",
+    contactMethodsTitle: "When you contact us",
+    contactMethods:
+      "If you contact us by email or WhatsApp, those services handle your contact details and message. We use them to reply and do not sell them.",
+    cookiesTitle: "Cookies",
+    cookies:
+      "The site uses a cookie to remember a language choice, and a separate sign-in cookie for the editor.",
+    paymentsTitle: "Payments",
     payments:
-      "Payments take place with the payment provider or your bank. This website does not collect card details.",
+      "If you follow a PayPal link, PayPal handles the payment under its own privacy policy. Bank transfers are handled by your bank. This website does not collect or store your card or bank account details.",
+    questionsTitle: "Questions",
     contact:
       "For a question about your information, use the contact details on our Contact page.",
   },

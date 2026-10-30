@@ -153,8 +153,17 @@ export type MirleftMessages = {
 export type PrivacyMessages = {
   title: string;
   intro: string;
-  data: string;
+  analyticsTitle: string;
+  analytics: string;
+  mapTitle: string;
+  map: string;
+  contactMethodsTitle: string;
+  contactMethods: string;
+  cookiesTitle: string;
+  cookies: string;
+  paymentsTitle: string;
   payments: string;
+  questionsTitle: string;
   contact: string;
 };
 
