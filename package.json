@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db:backup": "node scripts/backup-db.mjs",
+    "db:reset-sample": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/reset-sample-db.mjs",
     "admin:hash": "node scripts/hash-password.mjs"
   },
   "dependencies": {

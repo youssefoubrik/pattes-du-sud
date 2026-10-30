@@ -17,9 +17,11 @@ Open http://localhost:3000.
 
 The editor is at `/en/admin`. Set `ADMIN_PASSWORD_HASH` in `.env.local` before signing in. Run `npm run admin:hash`, type a password of at least 16 characters at the hidden prompt, and press Enter. Put the printed hash in `.env.local`, restart the server, then sign in with the original password.
 
-Animal records, uploaded photos, translated text, settings and anonymous activity counts live in the SQLite file at `DATABASE_PATH`. The default is `data/site.sqlite`. Keep this file on a persistent disk when deploying; serverless ephemeral storage is unsuitable. The database is created and seeded on first use. Never commit it.
+Profiles, uploaded photos, translated text, settings and anonymous activity counts live in the SQLite file at `DATABASE_PATH`. The default is `data/site.sqlite`. Keep this file on a persistent disk when deploying; serverless ephemeral storage is unsuitable. The database is created and seeded on first use. Never commit it.
 
 Run `npm run db:backup` to create a consistent backup in `data/backups/`. To restore, stop the server, replace `data/site.sqlite` with the backup, then start the server. Back up the database before deployments and on a regular schedule.
+
+For a fresh local editor demo, stop the dev server and run `npm run db:reset-sample`. It replaces `data/site.sqlite` with the current sample profiles and editor settings, and backs up the previous local database first. This command always targets the local `data/site.sqlite`, not `DATABASE_PATH`. The sample email, phone number and bank details are fictional UI examples; remove or replace them before launch. It does not create working payment links.
 
 Set `NEXT_PUBLIC_SITE_URL` to the public HTTPS origin for canonical metadata and the sitemap. In editor Settings, enter verified contact details, the public map URL, bank information and PayPal-hosted donation links. The donation page only shows payment routes that are configured.
 
