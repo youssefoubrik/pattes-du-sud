@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 
 type Props = ComponentProps<"button"> & {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "outline";
   size?: "default" | "small";
 };
 
@@ -15,7 +15,9 @@ export function ActionButton({
   const variantClass =
     variant === "secondary"
       ? "bg-secondary-button text-primary-foreground hover:opacity-90"
-      : "bg-primary text-primary-foreground hover:bg-primary-hover";
+      : variant === "outline"
+        ? "border border-border bg-secondary/70 text-heading hover:bg-secondary/80"
+        : "bg-heading text-primary-foreground hover:opacity-90";
   const sizeClass = size === "small" ? "min-h-11 px-5" : "min-h-12 px-7";
 
   return (

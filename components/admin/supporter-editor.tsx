@@ -89,10 +89,10 @@ export function SupporterEditor({
         ))}
       </ul>
       <div className="flex flex-wrap gap-3">
-        <ActionButton type="button" variant="secondary" onClick={addSupporter}>
+        <ActionButton type="button" variant="outline" onClick={addSupporter}>
           Add a supporter
         </ActionButton>
-        <PendingActionButton variant="primary" pendingLabel="Saving supporters…">
+        <PendingActionButton variant="secondary" pendingLabel="Saving supporters…">
           Save list
         </PendingActionButton>
       </div>

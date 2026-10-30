@@ -15,7 +15,7 @@ export function ButtonLink({ compact = false, arrow = false, variant = "primary"
     : variant === "donate"
       ? "donate-link gap-2 bg-primary text-primary-foreground hover:bg-donate-hover motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5"
       : variant === "primary"
-        ? "bg-primary text-primary-foreground hover:bg-primary-hover"
+        ? "bg-heading text-primary-foreground hover:opacity-90"
         : "bg-secondary-button text-primary-foreground hover:opacity-90";
   const layoutClass = isLink
     ? "group inline-flex min-h-11 items-center gap-2 font-bold transition-opacity duration-200"

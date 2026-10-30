@@ -5,3 +5,4 @@
 - Keep the site warm, calm, trustworthy, and recognizably nonprofit.
 - Make text readable and controls accessible across screen sizes. Use visible focus and sufficient contrast; never rely on color alone.
 - Keep motion subtle and respect reduced-motion preferences.
+- Reserve orange buttons for donation actions. Use the brown or neutral button styles for other actions, including admin save controls.
