@@ -5,6 +5,7 @@ const data: PageMessages = {
     title: "Adopt a friend",
     intro:
       "Adoption starts with a conversation. We want each animal and family to have the right match and enough time to prepare.",
+    stepsTitle: "How adoption works",
     steps: [
       "Meet an animal and tell us about your home and daily routine.",
       "We discuss care, costs and the practical steps together.",

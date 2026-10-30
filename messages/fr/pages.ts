@@ -5,6 +5,7 @@ const data: PageMessages = {
     title: "Adopter un compagnon",
     intro:
       "Une adoption commence par une discussion. Nous voulons trouver un bon accord pour chaque animal et chaque famille.",
+    stepsTitle: "Comment se passe une adoption",
     steps: [
       "Rencontrez un animal et parlez-nous de votre foyer et de votre quotidien.",
       "Nous discutons ensemble des soins, des coûts et des étapes pratiques.",

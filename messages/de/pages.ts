@@ -5,6 +5,7 @@ const data: PageMessages = {
     title: "Ein Tier adoptieren",
     intro:
       "Eine Adoption beginnt mit einem Gespräch. Tier und Familie sollen gut zueinander passen und Zeit zur Vorbereitung haben.",
+    stepsTitle: "So läuft eine Adoption ab",
     steps: [
       "Lerne ein Tier kennen und erzähle uns von deinem Zuhause und Alltag.",
       "Wir besprechen Pflege, Kosten und die nächsten Schritte.",
