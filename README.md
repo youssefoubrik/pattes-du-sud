@@ -21,7 +21,7 @@ Profiles, uploaded photos, translated text, settings and anonymous activity coun
 
 Run `npm run db:backup` to create a consistent backup in `data/backups/`. To restore, stop the server, replace `data/site.sqlite` with the backup, then start the server. Back up the database before deployments and on a regular schedule.
 
-For a fresh local editor demo, stop the dev server and run `npm run db:reset-sample`. It replaces `data/site.sqlite` with the current sample profiles and editor settings, and backs up the previous local database first. This command always targets the local `data/site.sqlite`, not `DATABASE_PATH`. The sample email, phone number and bank details are fictional UI examples; remove or replace them before launch. It does not create working payment links.
+For a fresh local editor demo, stop the dev server and run `npm run db:reset-sample`. It replaces `data/site.sqlite` with the current sample profiles and editor settings, and backs up the previous local database first. This command always targets the local `data/site.sqlite`, not `DATABASE_PATH`. The sample email, phone number, bank details and PayPal links are fictional UI examples; remove or replace them before launch. The PayPal links contain invalid sample IDs and do not accept payments.
 
 Set `NEXT_PUBLIC_SITE_URL` to the public HTTPS origin for canonical metadata and the sitemap. In editor Settings, enter verified contact details, the public map URL, bank information and PayPal-hosted donation links. The donation page only shows payment routes that are configured.
 

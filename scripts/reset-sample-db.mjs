@@ -48,8 +48,8 @@ const sampleSettings = {
   instagram: "",
   facebook: "",
   registrationReference: "SAMPLE ONLY — replace before launch",
-  paypalDonateUrl: "",
-  paypalMonthlyUrl: "",
+  paypalDonateUrl: "https://www.paypal.com/donate/?hosted_button_id=NOT-A-REAL-BUTTON",
+  paypalMonthlyUrl: "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=NOT-A-REAL-PLAN",
   iban: "MA00 0000 0000 0000 0000 0000 00",
   rib: "000 000 0000000000000000 00",
   swift: "DEMOXX00XXX",
@@ -77,4 +77,4 @@ database.transaction(() => {
 database.close();
 
 console.log(`Sample database ready: ${databasePath.replace(`${process.cwd()}/`, "")}`);
-console.log("Contact and bank details are fictional examples; replace before launch.");
+console.log("Contact, bank and PayPal details are fictional examples; replace before launch.");
