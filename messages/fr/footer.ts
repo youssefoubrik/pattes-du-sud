@@ -9,6 +9,8 @@ const data: FooterMessages = {
   whatsapp: "Contactez-nous sur WhatsApp",
   email: "Écrivez-nous",
   privacy: "Confidentialité",
+  footerLinks: "Liens de pied de page",
+  websiteBy: "Site créé par",
 };
 
 export { data };

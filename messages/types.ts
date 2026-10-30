@@ -210,6 +210,8 @@ export type FooterMessages = {
   whatsapp: string;
   email: string;
   privacy: string;
+  footerLinks: string;
+  websiteBy: string;
 };
 
 export type AnimalMessages = {

@@ -9,6 +9,8 @@ const data: FooterMessages = {
   whatsapp: "تواصل معنا عبر واتساب",
   email: "راسلنا عبر البريد الإلكتروني",
   privacy: "الخصوصية",
+  footerLinks: "روابط التذييل",
+  websiteBy: "تصميم الموقع بواسطة",
 };
 
 export { data };
