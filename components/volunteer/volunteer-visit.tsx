@@ -8,10 +8,10 @@ export function VolunteerVisit({ locale }: { locale: Locale }) {
   const text = getPageContent("pages", locale, pageMessages[locale]).volunteer;
 
   return (
-    <Section>
+    <Section className="!pt-6 sm:!pt-8 lg:!pt-10">
       <Container>
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-center text-2xl font-semibold text-heading sm:text-3xl">
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-semibold text-heading sm:text-3xl">
             {text.visitTitle}
           </h2>
           <p className="mt-3 text-lg leading-relaxed">{text.visit}</p>

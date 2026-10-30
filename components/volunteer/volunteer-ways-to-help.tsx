@@ -19,7 +19,7 @@ export function VolunteerWaysToHelp({ locale }: { locale: Locale }) {
   const photoText = animalMessages[locale];
 
   return (
-    <Section className="pt-6! pb-10! sm:pt-8! sm:pb-12! lg:pt-10! lg:pb-14!">
+    <Section className="pt-6! pb-6! sm:pt-8! sm:pb-8! lg:pt-10! lg:pb-10!">
       <Container>
         <h2 className="text-2xl font-semibold text-heading sm:text-3xl">
           {text.actionImagesTitle}
@@ -33,7 +33,7 @@ export function VolunteerWaysToHelp({ locale }: { locale: Locale }) {
           nextLabel={photoText.nextPhoto}
           photoLabel={photoText.photoLabel}
         >
-          <ul className="mt-4 space-y-10 sm:space-y-14">
+          <ul className="mt-4 space-y-7 sm:space-y-10">
             {volunteerContent.actionImages.map((photo, index) => (
               <li key={photo.key}>
                 <article className="grid grid-cols-1 items-start gap-4 sm:gap-6 min-[1100px]:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] min-[1100px]:items-center min-[1100px]:gap-10">
@@ -55,7 +55,7 @@ export function VolunteerWaysToHelp({ locale }: { locale: Locale }) {
                         className="rounded-md object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.03]"
                       />
                     </button>
-                    <PhotoCaption>{text.actionImageCaptions[index]}</PhotoCaption>
+                    <PhotoCaption className="!mt-3">{text.actionImageCaptions[index]}</PhotoCaption>
                   </figure>
                   <div className={index % 2 === 1 ? "min-[1100px]:order-1" : undefined}>
                     <h3 className="text-xl font-semibold text-heading">
