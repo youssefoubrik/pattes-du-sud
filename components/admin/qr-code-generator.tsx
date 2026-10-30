@@ -58,10 +58,9 @@ export function QrCodeGenerator({ locale }: { locale: Locale }) {
   }
 
   return (
-    <div className="mt-4 border-t border-border pt-4">
-      <h4 className="font-semibold text-heading">Generate a QR code</h4>
+    <div className="mt-3">
       <p className="mt-1 text-sm">
-        Enter where the code will be placed. Its scans will appear in QR locations.
+        Enter where the code will be placed. Its scans will appear in the location totals below.
       </p>
       <form onSubmit={generate} className="mt-3 flex flex-wrap items-end gap-3">
         <label className="min-w-52 flex-1 font-semibold">

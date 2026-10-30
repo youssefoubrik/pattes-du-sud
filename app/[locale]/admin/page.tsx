@@ -9,6 +9,7 @@ import {
   LogOut,
   MapPin,
   PawPrint,
+  QrCode,
   Settings,
 } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -193,14 +194,24 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
           </section>
           <section className="min-w-0 border-t border-border pt-5">
             <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
+              <QrCode
+                size={22}
+                className="shrink-0 text-primary-hover"
+                aria-hidden="true"
+              />
+              QR code generator
+            </h3>
+            <QrCodeGenerator locale={locale} />
+          </section>
+          <section className="min-w-0 border-t border-border pt-5">
+            <h3 className="flex items-center gap-3 text-lg font-semibold text-heading">
               <MapPin
                 size={22}
                 className="shrink-0 text-primary-hover"
                 aria-hidden="true"
               />
-              QR locations
+              QR scans by location
             </h3>
-            <QrCodeGenerator locale={locale} />
             <div>
               <ul className="flex flex-wrap gap-x-6 gap-y-2">
                 {qrSources.map((row) => (
