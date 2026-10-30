@@ -2,7 +2,6 @@
 
 import { Heart, LockKeyhole } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
-import styles from "./donation-experience.module.css";
 
 type Props = {
   onceUrl: string | null;
@@ -13,7 +12,6 @@ type Props = {
   frequencyLabel: string;
   securePaymentLabel: string;
   amountNote: string;
-  description: string;
   donateLabel: string;
   frequency: "once" | "monthly";
   onFrequencyChange: (frequency: "once" | "monthly") => void;
@@ -28,7 +26,6 @@ export function DonationCheckout({
   frequencyLabel,
   securePaymentLabel,
   amountNote,
-  description,
   donateLabel,
   frequency,
   onFrequencyChange,
@@ -92,13 +89,6 @@ export function DonationCheckout({
         </h2>
       )}
 
-      <p
-        key={frequency}
-        className={`mt-4 text-center text-sm leading-relaxed text-foreground ${styles.stateContent}`}
-        aria-live="polite"
-      >
-        {description}
-      </p>
       <p className="mt-2 text-center text-sm leading-relaxed text-muted-foreground">
         {amountNote}
       </p>

@@ -76,19 +76,19 @@ const data: PageMessages = {
     title: "Help care continue",
     intro:
       "Your support helps provide food, veterinary care, vaccinations, sterilisation, medicine and a safe place when needed.",
-    impactExamplesTitle: "See what your gift can help provide",
-    impactExamples: [
-      { amount: "€5", impact: "Food & clean water" },
-      { amount: "€15", impact: "Medicine & vaccinations" },
-      { amount: "€30", impact: "Veterinary care" },
+    onceImpactTitle: "A one-time gift can help with:",
+    onceImpacts: [
+      "Contribute to current needs such as food, medicine or veterinary care.",
+      "Offer flexible support as needs and priorities change.",
+    ],
+    monthlyImpactTitle: "Monthly giving can help us:",
+    monthlyImpacts: [
+      "Build a steadier contribution toward regular food and treatment.",
+      "Plan ongoing care with more confidence.",
     ],
     amount: "You’ll choose the amount at checkout.",
     frequency: "Donation frequency",
     securePayment: "Secure donation",
-    onceDescription:
-      "A one-time gift helps meet today’s needs, from food and medicine to veterinary care.",
-    monthlyDescription:
-      "Monthly gifts help us plan ahead for food, treatment and ongoing care.",
     once: "One-time",
     monthly: "Monthly",
     monthlyBadge: "Best for ongoing care",

@@ -1,18 +1,18 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { Soup, Stethoscope, Syringe } from "lucide-react";
 import { DonationCheckout } from "@/components/donate/donation-checkout";
 import type { DonateMessages } from "@/messages/types";
+import styles from "./donation-experience.module.css";
 
 type Copy = Pick<
   DonateMessages,
   | "title"
   | "intro"
-  | "impactExamplesTitle"
-  | "impactExamples"
-  | "onceDescription"
-  | "monthlyDescription"
+  | "onceImpactTitle"
+  | "onceImpacts"
+  | "monthlyImpactTitle"
+  | "monthlyImpacts"
   | "once"
   | "monthly"
   | "monthlyBadge"
@@ -31,8 +31,6 @@ type Props = {
   unavailable?: ReactNode;
 };
 
-const impactIcons = [Soup, Syringe, Stethoscope];
-
 export function DonationExperience({
   copy,
   onceUrl,
@@ -44,6 +42,10 @@ export function DonationExperience({
     onceUrl ? "once" : monthlyUrl ? "monthly" : "once",
   );
   const monthly = frequency === "monthly";
+  const impactTitle = monthly
+    ? copy.monthlyImpactTitle
+    : copy.onceImpactTitle;
+  const impacts = monthly ? copy.monthlyImpacts : copy.onceImpacts;
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] lg:gap-8">
@@ -54,33 +56,15 @@ export function DonationExperience({
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-foreground">
           {copy.intro}
         </p>
-        <section className="mt-7">
-          <h2 className="text-lg font-semibold text-heading">
-            {copy.impactExamplesTitle}
-          </h2>
-          <ul className="mt-3 grid gap-3 sm:grid-cols-3">
-            {copy.impactExamples.map(({ amount, impact }, index) => {
-              const Icon = impactIcons[index] ?? Stethoscope;
-              return (
-                <li
-                  key={`${amount}-${impact}`}
-                  className="rounded-xl border border-border bg-surface p-3.5 sm:p-4"
-                >
-                  <Icon
-                    size={20}
-                    strokeWidth={1.8}
-                    className="text-primary"
-                    aria-hidden="true"
-                  />
-                  <p className="mt-3 text-xl font-bold text-foreground" dir="ltr">
-                    {amount}
-                  </p>
-                  <p className="mt-1 text-sm leading-snug text-muted-foreground">
-                    {impact}
-                  </p>
-                </li>
-              );
-            })}
+        <section className="mt-7" aria-live="polite">
+          <h2 className="text-lg font-semibold text-heading">{impactTitle}</h2>
+          <ul
+            key={frequency}
+            className={`mt-3 min-h-56 list-disc space-y-2 ps-6 text-lg leading-relaxed text-foreground marker:text-primary ${styles.stateContent}`}
+          >
+            {impacts.map((impact) => (
+              <li key={impact}>{impact}</li>
+            ))}
           </ul>
         </section>
       </div>
@@ -98,7 +82,6 @@ export function DonationExperience({
             frequencyLabel={copy.frequency}
             securePaymentLabel={copy.securePayment}
             amountNote={copy.amount}
-            description={monthly ? copy.monthlyDescription : copy.onceDescription}
             donateLabel={monthly ? copy.monthlyCta : copy.onceCta}
           />
         )}

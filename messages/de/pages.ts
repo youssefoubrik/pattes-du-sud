@@ -76,19 +76,19 @@ const data: PageMessages = {
     title: "Hilf mit deiner Spende",
     intro:
       "Deine Unterstützung hilft bei Futter, Tierarztkosten, Impfungen, Kastrationen, Medikamenten und bei Bedarf einem sicheren Ort.",
-    impactExamplesTitle: "Das kann deine Spende möglich machen",
-    impactExamples: [
-      { amount: "5 €", impact: "Futter und sauberes Wasser" },
-      { amount: "15 €", impact: "Medikamente und Impfungen" },
-      { amount: "30 €", impact: "Tierärztliche Versorgung" },
+    onceImpactTitle: "Eine einmalige Spende kann helfen bei:",
+    onceImpacts: [
+      "Aktuellen Bedürfnissen wie Futter, Medikamenten oder tierärztlicher Versorgung.",
+      "Flexibler Unterstützung, wenn sich Bedarf und Prioritäten ändern.",
+    ],
+    monthlyImpactTitle: "Monatliche Spenden können uns helfen:",
+    monthlyImpacts: [
+      "Regelmäßiges Futter und Behandlungen verlässlicher einzuplanen.",
+      "Die laufende Versorgung besser zu planen.",
     ],
     amount: "Den Betrag wählst du im nächsten Schritt.",
     frequency: "Spendenrhythmus",
     securePayment: "Sicher spenden",
-    onceDescription:
-      "Eine einmalige Spende hilft bei dem, was gerade gebraucht wird: Futter, Medikamente und tierärztliche Versorgung.",
-    monthlyDescription:
-      "Monatliche Spenden helfen uns, Futter, Behandlungen und die laufende Versorgung zu planen.",
     once: "Einmalig",
     monthly: "Monatlich",
     monthlyBadge: "Gut für laufende Versorgung",

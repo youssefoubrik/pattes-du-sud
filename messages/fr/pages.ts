@@ -75,19 +75,19 @@ const data: PageMessages = {
     title: "Aider les soins à continuer",
     intro:
       "Votre soutien contribue à la nourriture, aux soins vétérinaires, aux vaccins, à la stérilisation, aux médicaments et à un abri si nécessaire.",
-    impactExamplesTitle: "Voici ce que votre don peut aider à offrir",
-    impactExamples: [
-      { amount: "5 €", impact: "Nourriture et eau propre" },
-      { amount: "15 €", impact: "Médicaments et vaccins" },
-      { amount: "30 €", impact: "Soins vétérinaires" },
+    onceImpactTitle: "Un don ponctuel peut contribuer à :",
+    onceImpacts: [
+      "Répondre aux besoins du moment, comme la nourriture, les médicaments ou les soins vétérinaires.",
+      "Apporter un soutien souple lorsque les besoins et les priorités évoluent.",
+    ],
+    monthlyImpactTitle: "Un don mensuel peut nous aider à :",
+    monthlyImpacts: [
+      "Disposer d’un soutien plus régulier pour la nourriture et les traitements.",
+      "Mieux planifier les soins dans la durée.",
     ],
     amount: "Vous choisirez le montant à l’étape suivante.",
     frequency: "Fréquence du don",
     securePayment: "Don sécurisé",
-    onceDescription:
-      "Un don ponctuel aide à répondre aux besoins immédiats : nourriture, médicaments et soins vétérinaires.",
-    monthlyDescription:
-      "Un don mensuel nous aide à prévoir la nourriture, les traitements et les soins dans la durée.",
     once: "Une fois",
     monthly: "Chaque mois",
     monthlyBadge: "Idéal pour des soins réguliers",

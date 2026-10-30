@@ -117,13 +117,13 @@ export type ContactMessages = {
 export type DonateMessages = {
   title: string;
   intro: string;
-  impactExamplesTitle: string;
-  impactExamples: { amount: string; impact: string }[];
+  onceImpactTitle: string;
+  onceImpacts: string[];
+  monthlyImpactTitle: string;
+  monthlyImpacts: string[];
   amount: string;
   frequency: string;
   securePayment: string;
-  onceDescription: string;
-  monthlyDescription: string;
   once: string;
   monthly: string;
   monthlyBadge: string;
