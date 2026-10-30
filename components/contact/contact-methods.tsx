@@ -16,14 +16,12 @@ function ContactMethod({
   title,
   detail,
   hint,
-  primary = false,
 }: {
   href: string;
   icon: LucideIcon;
   title: string;
   detail: string;
   hint: string;
-  primary?: boolean;
 }) {
   return (
     <a
@@ -31,9 +29,7 @@ function ContactMethod({
       className="group flex min-h-48 flex-col rounded-2xl border border-border bg-surface p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:p-6"
     >
       <span
-        className={`flex size-11 items-center justify-center rounded-xl ${
-          primary ? "bg-primary/10 text-primary" : "bg-secondary text-heading"
-        }`}
+        className="flex size-11 items-center justify-center rounded-xl bg-secondary text-heading"
       >
         <Icon size={21} aria-hidden="true" />
       </span>
@@ -42,9 +38,7 @@ function ContactMethod({
         {detail}
       </p>
       <span
-        className={`mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold ${
-          primary ? "text-primary" : "text-heading"
-        }`}
+        className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold text-heading"
       >
         <span className="group-hover:underline group-focus-visible:underline">
           {hint}
@@ -70,12 +64,11 @@ export function ContactMethods({
     <div className="grid gap-4 sm:grid-cols-2">
       {settings.whatsappNumber && (
         <ContactMethod
-          href={whatsappUrl(settings.whatsappNumber, text.whatsappText)}
+          href={whatsappUrl(settings.whatsappNumber)}
           icon={MessageCircle}
           title={text.whatsapp}
           hint={text.whatsappOpens}
           detail={settings.whatsappDisplay || settings.whatsappNumber}
-          primary
         />
       )}
       {settings.email && (

@@ -58,7 +58,6 @@ const data: PageMessages = {
     intro:
       "Questions about a companion, a visit or a donation? Contact the team.",
     whatsapp: "Chat with us on WhatsApp",
-    whatsappText: "I want to help Pattes du Sud.",
     whatsappOpens: "Open WhatsApp",
     email: "Send us an email",
     emailOpens: "Send email",

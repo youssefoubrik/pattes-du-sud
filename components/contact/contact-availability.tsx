@@ -58,7 +58,7 @@ export function ContactAvailability({
   return (
     <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm leading-relaxed text-muted-foreground">
       <p className="inline-flex items-center gap-2">
-        <Clock3 size={16} className="shrink-0 text-primary" aria-hidden="true" />
+        <Clock3 size={16} className="shrink-0 text-heading" aria-hidden="true" />
         <span>
           {text.responseTime}{" "}
           <strong className="font-semibold text-heading">{responseHours}</strong>{" "}
@@ -67,7 +67,7 @@ export function ContactAvailability({
       </p>
       {hasHours && (
         <p className="inline-flex items-center gap-2">
-          <CalendarDays size={16} className="shrink-0 text-primary" aria-hidden="true" />
+          <CalendarDays size={16} className="shrink-0 text-heading" aria-hidden="true" />
           <span>
             <ContactHours
               text={text}

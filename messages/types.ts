@@ -100,7 +100,6 @@ export type ContactMessages = {
   title: string;
   intro: string;
   whatsapp: string;
-  whatsappText: string;
   whatsappOpens: string;
   email: string;
   emailOpens: string;

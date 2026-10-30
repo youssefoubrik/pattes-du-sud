@@ -58,7 +58,6 @@ const data: PageMessages = {
     intro:
       "Fragen zu unseren Schützlingen, einem Besuch oder einer Spende? Kontaktiere das Team.",
     whatsapp: "Schreib uns auf WhatsApp",
-    whatsappText: "Ich möchte Pattes du Sud helfen.",
     whatsappOpens: "WhatsApp öffnen",
     email: "Schreib uns eine E-Mail",
     emailOpens: "E-Mail senden",

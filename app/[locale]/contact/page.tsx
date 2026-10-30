@@ -31,23 +31,21 @@ export default async function Contact({
   return (
     <main
       id="main-content"
-      className="contact-page flex min-h-screen flex-1 flex-col text-foreground"
+      className="contact-page flex-1 text-foreground"
     >
-      <div className="my-auto">
-        <ContactIntroduction text={t} />
-        <Section className="!pt-0 !pb-10 sm:!pb-12">
-          <Container width="content">
-            {s.whatsappNumber || s.email ? (
-              <>
-                <ContactMethods text={t} settings={s} />
-                <ContactAvailability locale={locale} text={t} settings={s} />
-              </>
-            ) : (
-              <p className="text-muted-foreground">{t.unavailable}</p>
-            )}
-          </Container>
-        </Section>
-      </div>
+      <ContactIntroduction text={t} />
+      <Section className="!pt-0 !pb-10 sm:!pb-12 lg:!pb-24">
+        <Container width="content">
+          {s.whatsappNumber || s.email ? (
+            <>
+              <ContactMethods text={t} settings={s} />
+              <ContactAvailability locale={locale} text={t} settings={s} />
+            </>
+          ) : (
+            <p className="text-muted-foreground">{t.unavailable}</p>
+          )}
+        </Container>
+      </Section>
     </main>
   );
 }
