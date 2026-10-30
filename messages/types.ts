@@ -129,6 +129,9 @@ export type DonateMessages = {
   monthlyBadge: string;
   onceCta: string;
   monthlyCta: string;
+  paypalHandoffBefore: string;
+  paypalHandoffAfter: string;
+  accountability: string;
   transfer: string;
   transferNote: string;
   bankName: string;

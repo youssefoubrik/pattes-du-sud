@@ -11,6 +11,8 @@ type Props = {
   monthlyBadge: string;
   frequencyLabel: string;
   securePaymentLabel: string;
+  paypalHandoffBefore: string;
+  paypalHandoffAfter: string;
   amountNote: string;
   donateLabel: string;
   frequency: "once" | "monthly";
@@ -25,6 +27,8 @@ export function DonationCheckout({
   monthlyBadge,
   frequencyLabel,
   securePaymentLabel,
+  paypalHandoffBefore,
+  paypalHandoffAfter,
   amountNote,
   donateLabel,
   frequency,
@@ -36,7 +40,7 @@ export function DonationCheckout({
   return (
     <section
       aria-label={frequencyLabel}
-      className="w-full max-w-lg rounded-2xl border border-border bg-surface p-5 shadow-sm sm:p-6"
+      className="mx-auto w-full max-w-lg rounded-2xl border border-border bg-surface p-5 shadow-sm sm:p-6"
     >
       <p className="flex items-center justify-center gap-2 text-sm font-semibold text-foreground">
         <LockKeyhole size={16} className="text-primary" aria-hidden="true" />
@@ -93,13 +97,27 @@ export function DonationCheckout({
         {amountNote}
       </p>
       {selectedUrl && (
-        <ButtonLink
-          className="mt-5 w-full"
-          href={selectedUrl}
-          variant="donate"
-        >
-          {donateLabel}
-        </ButtonLink>
+        <>
+          <ButtonLink
+            className="mt-5 w-full"
+            href={selectedUrl}
+            variant="donate"
+          >
+            {donateLabel}
+          </ButtonLink>
+          <p className="mt-3 text-center text-sm leading-relaxed text-muted-foreground">
+            {paypalHandoffBefore}{" "}
+            <a
+              href="https://www.paypal.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-[#003087] transition-colors hover:text-[#0070e0] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#003087]"
+            >
+              PayPal
+            </a>{" "}
+            {paypalHandoffAfter}
+          </p>
+        </>
       )}
     </section>
   );

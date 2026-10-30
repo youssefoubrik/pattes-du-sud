@@ -93,6 +93,10 @@ const data: PageMessages = {
     monthlyBadge: "Idéal pour des soins réguliers",
     onceCta: "Faire un don ponctuel",
     monthlyCta: "Faire un don mensuel",
+    paypalHandoffBefore: "En continuant, vous serez redirigé vers",
+    paypalHandoffAfter: "pour effectuer le paiement.",
+    accountability:
+      "Nous documentons nos recettes et nos dépenses, conservons les factures et documentons les soins vétérinaires.",
     transfer: "Vous préférez un virement bancaire ?",
     transferNote:
       "Vous pouvez aussi programmer un virement régulier auprès de votre banque. Indiquez « Don » en référence.",

@@ -18,6 +18,9 @@ type Copy = Pick<
   | "monthlyBadge"
   | "onceCta"
   | "monthlyCta"
+  | "accountability"
+  | "paypalHandoffBefore"
+  | "paypalHandoffAfter"
   | "frequency"
   | "securePayment"
   | "amount"
@@ -60,12 +63,16 @@ export function DonationExperience({
           <h2 className="text-lg font-semibold text-heading">{impactTitle}</h2>
           <ul
             key={frequency}
-            className={`mt-3 min-h-56 list-disc space-y-2 ps-6 text-lg leading-relaxed text-foreground marker:text-primary ${styles.stateContent}`}
+            className={`mt-3 min-h-24 list-disc space-y-2 ps-6 text-lg leading-relaxed text-foreground marker:text-primary sm:min-h-28 lg:min-h-0 ${styles.stateContent}`}
           >
             {impacts.map((impact) => (
               <li key={impact}>{impact}</li>
             ))}
           </ul>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            <span aria-hidden="true" className="font-bold text-primary">*</span>{" "}
+            {copy.accountability}
+          </p>
         </section>
       </div>
 
@@ -83,6 +90,8 @@ export function DonationExperience({
             securePaymentLabel={copy.securePayment}
             amountNote={copy.amount}
             donateLabel={monthly ? copy.monthlyCta : copy.onceCta}
+            paypalHandoffBefore={copy.paypalHandoffBefore}
+            paypalHandoffAfter={copy.paypalHandoffAfter}
           />
         )}
         {unavailable}

@@ -94,6 +94,10 @@ const data: PageMessages = {
     monthlyBadge: "Gut für laufende Versorgung",
     onceCta: "Einmalig spenden",
     monthlyCta: "Monatlich spenden",
+    paypalHandoffBefore: "Wenn du fortfährst, wickelt",
+    paypalHandoffAfter: "deine Zahlung ab.",
+    accountability:
+      "Wir dokumentieren Einnahmen und Ausgaben, bewahren Rechnungen auf und dokumentieren die tierärztliche Versorgung.",
     transfer: "Lieber per Banküberweisung spenden?",
     transferNote:
       "Du kannst bei deiner Bank auch eine regelmäßige Überweisung einrichten. Gib „Spende“ als Verwendungszweck an.",

@@ -94,6 +94,10 @@ const data: PageMessages = {
     monthlyBadge: "Best for ongoing care",
     onceCta: "Donate once",
     monthlyCta: "Donate monthly",
+    paypalHandoffBefore: "After you continue,",
+    paypalHandoffAfter: "will handle your payment.",
+    accountability:
+      "We document income and expenses, keep invoices, and document veterinary care.",
     transfer: "Prefer a bank transfer?",
     transferNote:
       "You can also set up a recurring transfer with your bank. Include “Donation” as the reference.",

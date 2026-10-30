@@ -92,6 +92,10 @@ const data: PageMessages = {
     monthlyBadge: "مناسب للرعاية المستمرة",
     onceCta: "تبرع مرة واحدة",
     monthlyCta: "تبرع شهريًا",
+    paypalHandoffBefore: "بعد المتابعة، ستتولى",
+    paypalHandoffAfter: "معالجة دفعتك.",
+    accountability:
+      "نوثّق الإيرادات والمصروفات، ونحتفظ بالفواتير، ونوثّق الرعاية البيطرية.",
     transfer: "هل تفضّل التبرع عبر تحويل بنكي؟",
     transferNote:
       "يمكنك ترتيب تحويل دوري لدى بنكك. اكتب «تبرع» في خانة المرجع.",
