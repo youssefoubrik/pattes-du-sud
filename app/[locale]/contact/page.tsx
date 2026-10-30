@@ -34,7 +34,7 @@ export default async function Contact({
       className="contact-page flex-1 text-foreground"
     >
       <ContactIntroduction text={t} />
-      <Section className="!pt-0 !pb-10 sm:!pb-12 lg:!pb-24">
+      <Section className="!pt-0 !pb-10 sm:!pb-12">
         <Container width="content">
           {s.whatsappNumber || s.email ? (
             <>
