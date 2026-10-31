@@ -8,10 +8,13 @@ const data: PageMessages = {
     imageAlt: "A person gently pets a brown dog outdoors.",
     imageCaption: "A gentle first connection can be the start of something special.",
     stepsTitle: "How adoption works",
+    stepsDescription:
+      "We take time to get to know each other, talk through what adoption involves, and plan the next steps together.",
+    stepTitles: ["A first meeting", "Talk through the details", "A thoughtful transition"],
     steps: [
       "Meet a dog or cat and tell us about your home and daily routine.",
-      "We discuss care, costs and the practical steps together.",
-      "If it feels right for everyone, we agree on a safe handover and follow-up.",
+      "Together, we discuss care, costs and practical steps.",
+      "If it feels right for everyone, we plan a safe handover and follow-up.",
     ],
     localTitle: "Mirleft & Morocco",
     internationalTitle: "International",

@@ -8,10 +8,13 @@ const data: PageMessages = {
     imageAlt: "Une personne caresse doucement un chien marron en plein air.",
     imageCaption: "Un premier contact tout en douceur peut être le début d’une belle histoire.",
     stepsTitle: "Comment se passe une adoption",
+    stepsDescription:
+      "Nous prenons le temps de faire connaissance, de parler de ce qu’implique l’adoption et de préparer la suite ensemble.",
+    stepTitles: ["Une première rencontre", "Parler de la suite", "Une transition en douceur"],
     steps: [
       "Rencontrez un chien ou un chat et parlez-nous de votre foyer et de votre quotidien.",
       "Nous discutons ensemble des soins, des coûts et des étapes pratiques.",
-      "Si tout convient, nous organisons une arrivée en sécurité et un suivi.",
+      "Si tout convient, nous préparons une arrivée en sécurité et un suivi.",
     ],
     localTitle: "Mirleft et le Maroc",
     internationalTitle: "À l’étranger",

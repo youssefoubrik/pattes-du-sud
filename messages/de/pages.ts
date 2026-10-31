@@ -8,10 +8,13 @@ const data: PageMessages = {
     imageAlt: "Eine Person streichelt draußen sanft einen braunen Hund.",
     imageCaption: "Ein behutsamer erster Kontakt kann der Anfang von etwas Besonderem sein.",
     stepsTitle: "So läuft eine Adoption ab",
+    stepsDescription:
+      "Wir nehmen uns Zeit, einander kennenzulernen, alles Wichtige zur Adoption zu besprechen und gemeinsam die nächsten Schritte zu planen.",
+    stepTitles: ["Ein erstes Kennenlernen", "Alles gemeinsam besprechen", "Ein behutsamer Übergang"],
     steps: [
-      "Lerne ein Tier kennen und erzähle uns von deinem Zuhause und Alltag.",
+      "Lerne einen Hund oder eine Katze kennen und erzähle uns von deinem Zuhause und Alltag.",
       "Wir besprechen Pflege, Kosten und die nächsten Schritte.",
-      "Wenn alles passt, vereinbaren wir eine sichere Übergabe und bleiben in Kontakt.",
+      "Wenn alles passt, planen wir eine sichere Übergabe und bleiben in Kontakt.",
     ],
     localTitle: "Mirleft und Marokko",
     internationalTitle: "Im Ausland",

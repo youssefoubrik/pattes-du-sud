@@ -76,6 +76,8 @@ export type AdoptMessages = {
   imageAlt: string;
   imageCaption: string;
   stepsTitle: string;
+  stepsDescription: string;
+  stepTitles: [string, string, string];
   steps: [string, string, string];
   localTitle: string;
   internationalTitle: string;
