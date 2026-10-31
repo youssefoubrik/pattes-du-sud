@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Heart, LockKeyhole } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 
@@ -11,6 +12,9 @@ type Props = {
   monthlyBadge: string;
   frequencyLabel: string;
   securePaymentLabel: string;
+  suggestedAmountsTitle: string;
+  suggestedAmounts: string[];
+  customAmountLabel: string;
   paypalHandoffBefore: string;
   paypalHandoffAfter: string;
   amountNote: string;
@@ -27,6 +31,9 @@ export function DonationCheckout({
   monthlyBadge,
   frequencyLabel,
   securePaymentLabel,
+  suggestedAmountsTitle,
+  suggestedAmounts,
+  customAmountLabel,
   paypalHandoffBefore,
   paypalHandoffAfter,
   amountNote,
@@ -34,6 +41,8 @@ export function DonationCheckout({
   frequency,
   onFrequencyChange,
 }: Props) {
+  const [selectedAmount, setSelectedAmount] = useState<string | null>(null);
+  const [customAmount, setCustomAmount] = useState("");
   const canChooseFrequency = Boolean(onceUrl && monthlyUrl);
   const selectedFrequency = frequency;
   const selectedUrl = selectedFrequency === "monthly" ? monthlyUrl : onceUrl;
@@ -92,6 +101,46 @@ export function DonationCheckout({
           {selectedFrequency === "monthly" ? monthlyLabel : onceLabel}
         </h2>
       )}
+
+      <fieldset className="mt-5">
+        <legend className="text-sm font-semibold text-heading">
+          {suggestedAmountsTitle}
+        </legend>
+        <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {suggestedAmounts.map((amount) => (
+            <button
+              key={amount}
+              type="button"
+              aria-pressed={selectedAmount === amount}
+              onClick={() => {
+                setSelectedAmount(amount);
+                setCustomAmount("");
+              }}
+              className="min-h-11 cursor-pointer rounded-xl border border-border bg-secondary/70 px-3 text-sm font-semibold text-heading transition-colors hover:bg-secondary/90 aria-pressed:border-heading aria-pressed:bg-heading aria-pressed:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              {amount}
+            </button>
+          ))}
+        </div>
+        <label className="mt-4 block text-sm font-medium text-foreground">
+          {customAmountLabel}
+          <span className="mt-1.5 flex min-h-11 items-center rounded-xl border border-border bg-surface px-3 focus-within:border-heading focus-within:outline-2 focus-within:outline-heading">
+            <span aria-hidden="true" className="text-muted-foreground">$</span>
+            <input
+              type="number"
+              min="0.01"
+              step="0.01"
+              inputMode="decimal"
+              value={customAmount}
+              onChange={(event) => {
+                setCustomAmount(event.target.value);
+                setSelectedAmount(null);
+              }}
+              className="min-w-0 flex-1 border-0 bg-transparent px-2 py-2 text-foreground outline-none"
+            />
+          </span>
+        </label>
+      </fieldset>
 
       <p className="mt-2 text-center text-sm leading-relaxed text-muted-foreground">
         {amountNote}

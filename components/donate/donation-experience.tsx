@@ -14,6 +14,10 @@ type Copy = Pick<
   | "onceImpacts"
   | "monthlyImpactTitle"
   | "monthlyImpacts"
+  | "suggestedAmountsTitle"
+  | "onceGiftSuggestions"
+  | "monthlyGiftSuggestions"
+  | "customAmountLabel"
   | "once"
   | "monthly"
   | "monthlyBadge"
@@ -50,6 +54,9 @@ export function DonationExperience({
     ? copy.monthlyImpactTitle
     : copy.onceImpactTitle;
   const impacts = monthly ? copy.monthlyImpacts : copy.onceImpacts;
+  const giftSuggestions = monthly
+    ? copy.monthlyGiftSuggestions
+    : copy.onceGiftSuggestions;
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] lg:gap-8">
@@ -83,6 +90,7 @@ export function DonationExperience({
       <div className="grid gap-6">
         {(onceUrl || monthlyUrl) && (
           <DonationCheckout
+            key={frequency}
             onceUrl={onceUrl}
             monthlyUrl={monthlyUrl}
             frequency={frequency}
@@ -92,6 +100,9 @@ export function DonationExperience({
             monthlyBadge={copy.monthlyBadge}
             frequencyLabel={copy.frequency}
             securePaymentLabel={copy.securePayment}
+            suggestedAmountsTitle={copy.suggestedAmountsTitle}
+            suggestedAmounts={giftSuggestions}
+            customAmountLabel={copy.customAmountLabel}
             amountNote={copy.amount}
             donateLabel={monthly ? copy.monthlyCta : copy.onceCta}
             paypalHandoffBefore={copy.paypalHandoffBefore}

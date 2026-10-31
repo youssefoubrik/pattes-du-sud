@@ -122,6 +122,10 @@ export type DonateMessages = {
   onceImpacts: string[];
   monthlyImpactTitle: string;
   monthlyImpacts: string[];
+  suggestedAmountsTitle: string;
+  onceGiftSuggestions: string[];
+  monthlyGiftSuggestions: string[];
+  customAmountLabel: string;
   amount: string;
   frequency: string;
   securePayment: string;
