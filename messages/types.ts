@@ -117,6 +117,7 @@ export type ContactMessages = {
 export type DonateMessages = {
   title: string;
   intro: string;
+  mirleftSupport: string;
   onceImpactTitle: string;
   onceImpacts: string[];
   monthlyImpactTitle: string;

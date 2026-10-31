@@ -9,6 +9,7 @@ type Copy = Pick<
   DonateMessages,
   | "title"
   | "intro"
+  | "mirleftSupport"
   | "onceImpactTitle"
   | "onceImpacts"
   | "monthlyImpactTitle"
@@ -58,6 +59,9 @@ export function DonationExperience({
         </h1>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-foreground">
           {copy.intro}
+        </p>
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-heading">
+          {copy.mirleftSupport}
         </p>
         <section className="mt-7" aria-live="polite">
           <h2 className="text-lg font-semibold text-heading">{impactTitle}</h2>

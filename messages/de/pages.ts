@@ -76,6 +76,8 @@ const data: PageMessages = {
     title: "Hilf mit deiner Spende",
     intro:
       "Deine Unterstützung hilft bei Futter, Tierarztkosten, Impfungen, Kastrationen, Medikamenten und bei Bedarf einem sicheren Ort.",
+    mirleftSupport:
+      "In Mirleft kann auch eine kleine Spende viel bewirken. Sie trägt zur täglichen Versorgung von Hunden und Katzen bei.",
     onceImpactTitle: "Eine einmalige Spende kann helfen bei:",
     onceImpacts: [
       "Aktuellen Bedürfnissen wie Futter, Medikamenten oder tierärztlicher Versorgung.",

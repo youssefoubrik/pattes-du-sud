@@ -75,6 +75,8 @@ const data: PageMessages = {
     title: "Aider les soins à continuer",
     intro:
       "Votre soutien contribue à la nourriture, aux soins vétérinaires, aux vaccins, à la stérilisation, aux médicaments et à un abri si nécessaire.",
+    mirleftSupport:
+      "À Mirleft, même un petit don peut beaucoup aider. Votre soutien contribue aux soins quotidiens des chiens et des chats.",
     onceImpactTitle: "Un don ponctuel peut contribuer à :",
     onceImpacts: [
       "Répondre aux besoins du moment, comme la nourriture, les médicaments ou les soins vétérinaires.",

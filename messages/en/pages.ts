@@ -76,6 +76,8 @@ const data: PageMessages = {
     title: "Help care continue",
     intro:
       "Your support helps provide food, veterinary care, vaccinations, sterilisation, medicine and a safe place when needed.",
+    mirleftSupport:
+      "In Mirleft, a little can go a long way. Your gift helps provide everyday care for dogs and cats.",
     onceImpactTitle: "A one-time gift can help with:",
     onceImpacts: [
       "Contribute to current needs such as food, medicine or veterinary care.",
