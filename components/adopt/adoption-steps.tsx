@@ -48,6 +48,14 @@ export function AdoptionSteps({ locale }: { locale: Locale }) {
                 <p className="mx-auto mt-1 max-w-sm leading-relaxed text-foreground">
                   {step}
                 </p>
+                {i < text.steps.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="mt-3 inline-flex text-heading/35 md:hidden"
+                  >
+                    <PawPrint size={16} fill="currentColor" />
+                  </span>
+                )}
               </li>
             ))}
           </ol>

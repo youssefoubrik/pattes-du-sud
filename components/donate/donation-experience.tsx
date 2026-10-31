@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { PawPrint } from "lucide-react";
 import { DonationCheckout } from "@/components/donate/donation-checkout";
 import type { DonateMessages } from "@/messages/types";
 import styles from "./donation-experience.module.css";
@@ -70,11 +71,23 @@ export function DonationExperience({
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-heading">
           {copy.mirleftSupport}
         </p>
-        <section className="mt-7" aria-live="polite">
+        <section className="relative mt-7" aria-live="polite">
           <h2 className="text-lg font-semibold text-heading">{impactTitle}</h2>
+          <span
+            aria-hidden="true"
+            className="absolute end-1 top-14 -rotate-12 text-heading/20"
+          >
+            <PawPrint size={18} fill="currentColor" />
+          </span>
+          <span
+            aria-hidden="true"
+            className="absolute end-6 top-20 rotate-12 text-heading/20"
+          >
+            <PawPrint size={16} fill="currentColor" />
+          </span>
           <ul
             key={frequency}
-            className={`mt-3 min-h-24 list-disc space-y-2 ps-6 text-lg leading-relaxed text-foreground marker:text-primary sm:min-h-28 lg:min-h-0 ${styles.stateContent}`}
+            className={`mt-3 min-h-24 list-disc space-y-2 ps-6 pe-10 text-lg leading-relaxed text-foreground marker:text-primary sm:min-h-28 lg:min-h-0 ${styles.stateContent}`}
           >
             {impacts.map((impact) => (
               <li key={impact}>{impact}</li>
