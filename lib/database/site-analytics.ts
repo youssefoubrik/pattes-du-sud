@@ -1,6 +1,10 @@
 import "server-only";
 import { db } from "./connection";
 
+const PAGE_VIEW_RETENTION_MONTHS = 12;
+const PRUNE_INTERVAL_MS = 24 * 60 * 60 * 1000;
+let lastPrunedAt = 0;
+
 export type SiteAnalytics = {
   pageViews: number;
   topAnimals: { animalId: number; count: number }[];
@@ -8,11 +12,24 @@ export type SiteAnalytics = {
   qrSources: { location: string; count: number }[];
 };
 
+export function pruneOldPageViews(now = Date.now()) {
+  if (now - lastPrunedAt < PRUNE_INTERVAL_MS) return;
+
+  db()
+    .prepare(
+      `DELETE FROM events
+       WHERE created_at < datetime('now', '-${PAGE_VIEW_RETENTION_MONTHS} months')`,
+    )
+    .run();
+  lastPrunedAt = now;
+}
+
 export function recordPageView(path: string, country: string | null, qrSource: string | null) {
   db().prepare("INSERT INTO events (kind, path, country, source) VALUES ('view', ?, ?, ?)").run(path, country, qrSource);
 }
 
 export function getSiteAnalytics(): SiteAnalytics {
+  pruneOldPageViews();
   const database = db();
   return {
     pageViews: (database.prepare("SELECT COUNT(*) AS count FROM events WHERE kind = 'view'").get() as { count: number }).count,

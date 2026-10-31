@@ -130,7 +130,7 @@ const data: PageMessages = {
       "Cette page explique quelles informations sont traitées lorsque vous utilisez ce site ou nous contactez.",
     analyticsTitle: "Statistiques du site",
     analytics:
-      "Nous enregistrons chaque visite d’une page publique, le code du pays transmis par notre hébergeur lorsqu’il est disponible, ainsi que l’étiquette de provenance lorsqu’une personne accède à la page de Mirleft par un QR code. Ces données sont stockées dans la base du site et servent à calculer le nombre de visites. Les statistiques ne comptent pas les clics sur les boutons, ne collectent pas les adresses IP et n’utilisent pas de cookie de suivi.",
+      "Nous enregistrons chaque visite d’une page publique, le code du pays transmis par notre hébergeur lorsqu’il est disponible, ainsi que l’étiquette de provenance lorsqu’une personne accède à la page de Mirleft par un QR code. Ces données sont stockées dans la base du site et servent à calculer le nombre de visites. Nous les conservons au maximum 12 mois, puis les supprimons. Les statistiques ne comptent pas les clics sur les boutons, ne collectent pas les adresses IP et n’utilisent pas de cookie de suivi.",
     mapTitle: "Carte intégrée",
     map: "La carte Google peut transmettre à Google des informations techniques, comme votre adresse IP, lors de son chargement.",
     contactMethodsTitle: "Lorsque vous nous contactez",

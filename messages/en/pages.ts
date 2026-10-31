@@ -130,7 +130,7 @@ const data: PageMessages = {
       "This page explains what information is handled when you use this website or contact us.",
     analyticsTitle: "Site analytics",
     analytics:
-      "We record each public page view, a country code supplied by our hosting provider when available, and the source label when someone visits the Mirleft page through a QR code. These records are stored in the site database and used to produce visit counts. Analytics does not record button clicks or IP addresses and does not use tracking cookies.",
+      "We record each public page view, a country code supplied by our hosting provider when available, and the source label when someone visits the Mirleft page through a QR code. These records are stored in the site database and used to produce visit counts. We keep them for up to 12 months, then delete them. Analytics does not record button clicks or IP addresses and does not use tracking cookies.",
     mapTitle: "Embedded map",
     map: "The Google Map may send technical information, such as your IP address, to Google when it loads.",
     contactMethodsTitle: "When you contact us",

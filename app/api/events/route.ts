@@ -1,19 +1,72 @@
-import { recordPageView } from "@/lib/database/site-analytics";
+import {
+  pruneOldPageViews,
+  recordPageView,
+} from "@/lib/database/site-analytics";
+
+const MAX_EVENT_BODY_BYTES = 1000;
+
+async function readLimitedBody(request: Request): Promise<string | Response> {
+  const contentLength = request.headers.get("content-length");
+  if (contentLength !== null && Number(contentLength) > MAX_EVENT_BODY_BYTES)
+    return new Response(null, { status: 413 });
+
+  const reader = request.body?.getReader();
+  if (!reader) return new Response(null, { status: 400 });
+
+  const chunks: Uint8Array[] = [];
+  let totalBytes = 0;
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      totalBytes += value.byteLength;
+      if (totalBytes > MAX_EVENT_BODY_BYTES) {
+        await reader.cancel().catch(() => {});
+        return new Response(null, { status: 413 });
+      }
+      chunks.push(value);
+    }
+  } catch {
+    return new Response(null, { status: 400 });
+  } finally {
+    reader.releaseLock();
+  }
+
+  const bytes = new Uint8Array(totalBytes);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+
+  try {
+    return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  } catch {
+    return new Response(null, { status: 400 });
+  }
+}
 
 export async function POST(request: Request) {
   const origin = request.headers.get("origin");
   if (origin && origin !== new URL(request.url).origin)
     return new Response(null, { status: 403 });
-  if (Number(request.headers.get("content-length") || "0") > 1000)
-    return new Response(null, { status: 413 });
-  let payload: { kind?: unknown; path?: unknown; qrSource?: unknown };
+  const body = await readLimitedBody(request);
+  if (body instanceof Response) return body;
+
+  let parsed: unknown;
   try {
-    const body = await request.text();
-    if (body.length > 1000) return new Response(null, { status: 413 });
-    payload = JSON.parse(body);
+    parsed = JSON.parse(body);
   } catch {
     return new Response(null, { status: 400 });
   }
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed))
+    return new Response(null, { status: 400 });
+  const payload = parsed as {
+    kind?: unknown;
+    path?: unknown;
+    qrSource?: unknown;
+  };
   if (payload.kind !== "view") return new Response(null, { status: 400 });
   if (
     typeof payload.path !== "string" ||
@@ -31,6 +84,7 @@ export async function POST(request: Request) {
     !/[\u0000-\u001f\u007f]/u.test(rawQrSource)
       ? rawQrSource.replace(/\s+/gu, " ")
       : null;
+  pruneOldPageViews();
   recordPageView(
     payload.path,
     country && /^[A-Z]{2}$/.test(country) ? country : null,

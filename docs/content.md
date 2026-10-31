@@ -6,5 +6,6 @@
 - Base public claims on verifiable information. Do not invent association history, registration details, or impact claims.
 - Keep editable image references in the content/data layer. Use meaningful alt text and captions; keep asset-management notes out of visitor-facing copy.
 - Keep association settings and uploaded media in the existing persistent SQLite-backed data layer. Store the Mirleft map URL with editable settings/content.
+- Keep the privacy statement aligned with analytics collection: store page-view records for up to 12 months, then delete them.
 - Keep meaningful metadata on public pages and maintain semantic HTML, canonical/social metadata, `robots.ts`, and `sitemap.ts`.
 - Preserve the existing public and admin route structure. Do not add news pages or news administration.

@@ -130,7 +130,7 @@ export default async function Admin({ params }: PageProps<"/[locale]/admin">) {
             <p className="mt-2">Manage supporter names, logos and links</p>
           </Link>
         </div>
-        <h2 className="mt-12 text-2xl text-heading">Activity</h2>
+        <h2 className="mt-12 text-2xl text-heading">Activity (last 12 months)</h2>
         <div className="mt-4 grid gap-5 rounded-2xl border border-border bg-surface p-5">
           <section
             aria-label="Page views"
