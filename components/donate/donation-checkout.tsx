@@ -82,7 +82,7 @@ export function DonationCheckout({
                   : "text-foreground"
               } focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
             >
-              <Heart size={16} aria-hidden="true" />
+              <Heart size={16} fill="currentColor" aria-hidden="true" />
               <span>{monthlyLabel}</span>
               <span
                 className={`text-[10px] font-medium ${
