@@ -24,7 +24,7 @@ export function PeopleBehindCare({ locale }: { locale: Locale }) {
 
   return (
     <Section aria-labelledby="about-team-title" className="relative bg-background">
-      <SectionDivider direction="leave" />
+      <SectionDivider direction="leave" paws />
       <Container>
         <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-10">
           <div>

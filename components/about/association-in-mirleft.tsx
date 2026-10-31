@@ -22,7 +22,7 @@ export function AssociationInMirleft({ locale }: { locale: Locale }) {
 
   return (
     <Section aria-labelledby="about-association-title" className="relative bg-secondary">
-      <SectionDivider direction="enter" />
+      <SectionDivider direction="enter" paws />
       <Container className="grid gap-8 lg:grid-cols-2 lg:gap-14">
         <div>
           <p className="mb-4 inline-flex items-center gap-2 text-sm font-bold text-heading">
