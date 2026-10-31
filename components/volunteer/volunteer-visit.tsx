@@ -1,5 +1,7 @@
+import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { localizedRoute, routePaths } from "@/lib/routes";
 import { getPageContent } from "@/lib/database/page-content";
 import type { Locale } from "@/i18n/routing";
 import { pageMessages } from "@/messages/pages";
@@ -28,6 +30,14 @@ export function VolunteerVisit({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ol>
+          <ButtonLink
+            href={localizedRoute(locale, routePaths.contact)}
+            variant="secondary"
+            arrow
+            className="mt-6"
+          >
+            {text.arrangeVisit}
+          </ButtonLink>
         </div>
       </Container>
     </Section>
