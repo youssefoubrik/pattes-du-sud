@@ -11,7 +11,7 @@ export function AdoptionSteps({ locale }: { locale: Locale }) {
 
   return (
     <Section aria-labelledby="adoption-steps-title" className="relative !py-8 bg-secondary sm:!py-10 lg:!py-12">
-      <SectionDivider direction="enter" />
+      <SectionDivider direction="enter" paws />
       <Container>
         <div className="max-w-3xl">
           <h2 id="adoption-steps-title" className="text-2xl font-semibold text-heading sm:text-3xl">{text.stepsTitle}</h2>
