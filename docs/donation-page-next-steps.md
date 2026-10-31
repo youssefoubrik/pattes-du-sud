@@ -26,9 +26,9 @@ Only promise evidence that exists. The association says it keeps receipts and ca
 
 ## Make the local impact tangible
 
-Help international donors understand that their contribution supports care in Morocco. A simple line such as **“Your gift can go a long way in Mirleft”** can set that context. The euro is currently around MAD 11 (the user's “about MAD 10” is a rough mental conversion); rates shown by PayPal or a donor's bank can differ and change over time. Do not hard-code an exact exchange rate as if it were guaranteed. [Indicative EUR/MAD rate](https://www.exchangerates.org.uk/Euros-to-Moroccan-Dirhams-currency-conversion-page.html)
+Use EUR as the intended display and checkout currency for suggested gifts, subject to confirming that the association's Moroccan PayPal account can receive and withdraw EUR. Help international donors understand that their contribution supports care in Morocco with a line such as **“Your gift can go a long way in Mirleft.”** If showing a MAD equivalent, keep it clearly approximate, update its exchange rate, and explain that PayPal or bank conversion rates and fees may differ. Do not hard-code a rate or promise an exact amount received.
 
-When a donor selects an amount, show a modest, clearly approximate local equivalent and a possible contribution to care, for example: **“About MAD 110 before any conversion fees — could help toward food and daily care.”** The association must provide or confirm local cost examples before writing specific impact claims. Phrase these as **“could help support”** or **“may contribute toward”**, not as a promise that an exact gift pays for one treatment. For custom amounts, decide whether to show only the MAD estimate or a broad verified impact range.
+When a donor selects an amount, show a modest, clearly approximate local equivalent and a possible contribution to care, for example: **“About MAD [current equivalent] before any conversion fees — could help toward food and daily care.”** The association must provide or confirm local cost examples before writing specific impact claims. Phrase these as **“could help support”** or **“may contribute toward”**, not as a promise that an exact gift pays for one treatment. For custom amounts, decide whether to show only the MAD estimate or a broad verified impact range.
 
 ## PayPal and amount choices
 
@@ -44,14 +44,14 @@ The integrated option best matches an on-site frequency and amount selector. Bef
 
 ## Optional processing-fee contribution
 
-Do not hard-code a generic “add $2” fee amount. PayPal’s published Morocco schedule shows a standard local rate of 4.40% plus a fixed fee, while international and currency-conversion cases can differ. The rate that applies depends on the account, transaction and received currency; confirm it in the association’s own PayPal account before displaying a calculation. [PayPal Morocco fees](https://www.paypal.com/ma/business/paypal-business-fees?locale.x=ar_MA)
+Do not hard-code a generic payment-fee amount. PayPal’s published Morocco schedule shows a standard local rate of 4.40% plus a fixed fee, while international and currency-conversion cases can differ. The rate that applies depends on the account, transaction and received currency; confirm it in the association’s own PayPal account before displaying a calculation. [PayPal Morocco fees](https://www.paypal.com/ma/business/paypal-business-fees?locale.x=ar_MA)
 
 If fee coverage is offered, make it an optional, unchecked choice such as **“Add a little to help cover payment fees.”** Show the added amount and total before checkout. Treat it as an additional voluntary gift, not a mandatory surcharge, and do not promise an exact net amount if currency conversion or other fees can change it. Bank transfer fees are separate and controlled by the banks.
 
 ## Decisions for the next session
 
-- Choose the main currency and whether supporters should be offered MAD as well as international currencies.
-- Decide whether to show an indicative EUR-to-MAD equivalent, and how its rate will be updated.
+- Use EUR for suggested gifts and checkout after confirming PayPal account and withdrawal support in Morocco.
+- Decide whether to show an approximate MAD equivalent and how its rate will be updated.
 - Gather real local cost examples so selected amounts can show an honest, approximate care impact.
 - Check the PayPal account’s Donate SDK eligibility and actual processing fees.
 - Choose between hosted links, fixed-amount links, Donate SDK, or Checkout plus recurring subscriptions.

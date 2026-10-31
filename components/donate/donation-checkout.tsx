@@ -125,7 +125,7 @@ export function DonationCheckout({
         <label className="mt-4 block text-sm font-medium text-foreground">
           {customAmountLabel}
           <span className="mt-1.5 flex min-h-11 items-center rounded-xl border border-border bg-surface px-3 focus-within:border-heading focus-within:outline-2 focus-within:outline-heading">
-            <span aria-hidden="true" className="text-muted-foreground">$</span>
+            <span aria-hidden="true" className="text-muted-foreground">€</span>
             <input
               type="number"
               min="0.01"
