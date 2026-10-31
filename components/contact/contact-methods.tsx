@@ -29,7 +29,7 @@ function ContactMethod({
       className="group flex min-h-48 flex-col rounded-2xl border border-border bg-surface p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:p-6"
     >
       <span
-        className="flex size-11 items-center justify-center rounded-xl bg-secondary text-heading"
+        className="flex size-11 items-center justify-center rounded-full bg-secondary text-heading"
       >
         <Icon size={21} aria-hidden="true" />
       </span>
