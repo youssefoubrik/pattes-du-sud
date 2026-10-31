@@ -128,9 +128,9 @@ export function DonationCheckout({
             <span aria-hidden="true" className="text-muted-foreground">€</span>
             <input
               type="number"
-              min="0.01"
-              step="0.01"
-              inputMode="decimal"
+              min="1"
+              step="1"
+              inputMode="numeric"
               value={customAmount}
               onChange={(event) => {
                 setCustomAmount(event.target.value);
